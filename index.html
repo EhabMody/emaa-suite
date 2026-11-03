@@ -4,69 +4,63 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EMAA Social Suite</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#030712;--surface:#0f172a;--surface-hover:#1e293b;--tx:#f8fafc;--tx-muted:#94a3b8;--bd:#1e293b;--ac:#3b82f6;--ac-hover:#2563eb;--ac-glow:rgba(59,130,246,0.15);--ok:#10b981;--bad:#ef4444;--wn:#f59e0b;--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1)}
-html[data-theme="light"]{--bg:#f8fafc;--surface:#fff;--surface-hover:#f1f5f9;--tx:#0f172a;--tx-muted:#64748b;--bd:#e2e8f0;--ac-glow:rgba(59,130,246,0.1)}
+:root{--bg:#030712;--surface:#0f172a;--surface-hover:#1e293b;--tx:#f8fafc;--tx-muted:#94a3b8;--bd:#1e293b;--ac:#3b82f6;--ac-hover:#2563eb;--ac-glow:rgba(59,130,246,0.15);--ok:#10b981;--bad:#ef4444;--wn:#f59e0b}
+html[data-theme="light"]{--bg:#f8fafc;--surface:#fff;--surface-hover:#f1f5f9;--tx:#0f172a;--tx-muted:#64748b;--bd:#e2e8f0}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'IBM Plex Sans Arabic','Inter',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:14px}
+body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;font-size:14px;-webkit-font-smoothing:antialiased}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;transition:all .2s}
 input,select,textarea{font:inherit;color:inherit}
-.hidden{display:none!important}
 .icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .icon-lg{width:20px;height:20px}
-.cyber-logo{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.5px}
-.cyber-logo .shield{width:32px;height:32px;background:linear-gradient(135deg,var(--ac),#8b5cf6);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 0 15px var(--ac-glow)}
-.cyber-logo .emaa{color:var(--tx)}.cyber-logo .tech{color:var(--ac)}
-.landing{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
-.landing::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% -20%,var(--ac-glow),transparent 60%);pointer-events:none}
-.landing nav{padding:24px 48px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;border-bottom:1px solid var(--bd);background:rgba(3,7,18,.7);backdrop-filter:blur(10px)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
+.logo .shield{width:32px;height:32px;background:linear-gradient(135deg,var(--ac),#8b5cf6);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff}
+.logo .tech{color:var(--ac)}
+.screen{display:none}
+.screen.active{display:block}
+.landing{min-height:100vh;display:flex;flex-direction:column}
+.landing nav{padding:24px 48px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bd);background:rgba(3,7,18,.7);backdrop-filter:blur(10px)}
 .landing nav .links{display:flex;gap:32px;align-items:center}
-.landing nav .links a{color:var(--tx-muted);text-decoration:none;font-size:14px;font-weight:500}
-.landing nav .links .cta{background:var(--tx);color:var(--bg);padding:8px 16px;border-radius:6px;font-weight:600}
-.landing .hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px;position:relative;z-index:2}
-.landing .hero h1{font-size:56px;line-height:1.1;margin-bottom:24px;max-width:900px;font-weight:700;letter-spacing:-1px;background:linear-gradient(to bottom,#fff 40%,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.landing .hero p{font-size:18px;color:var(--tx-muted);margin-bottom:40px;max-width:600px}
-.landing .hero .btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
-.landing .hero .btns button{padding:12px 24px;border-radius:8px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
-.landing .hero .btns .primary{background:var(--ac);color:#fff;box-shadow:0 0 20px var(--ac-glow)}
-.landing .hero .btns .secondary{background:var(--surface);color:var(--tx);border:1px solid var(--bd)}
-.landing .features{padding:80px 48px;position:relative;z-index:2}
-.landing .features .container{max-width:1100px;margin:auto}
-.landing .features h2{font-size:32px;text-align:center;margin-bottom:48px}
-.landing .features .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.landing .feature-card{background:var(--surface);border:1px solid var(--bd);border-radius:12px;padding:24px}
-.landing .feature-card .icon-wrapper{width:40px;height:40px;border-radius:8px;background:var(--ac-glow);color:var(--ac);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.landing .feature-card h3{font-size:16px;margin-bottom:8px;font-weight:600}
-.landing .feature-card p{font-size:14px;color:var(--tx-muted)}
-.landing footer{padding:32px 48px;text-align:center;font-size:13px;color:var(--tx-muted);border-top:1px solid var(--bd);background:var(--bg)}
-.auth-screen{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--bg)}
-@media(max-width:900px){.auth-screen{grid-template-columns:1fr}.auth-brand{display:none!important}}
+.landing nav a{color:var(--tx-muted);text-decoration:none;font-size:14px}
+.landing nav .cta{background:var(--ac);color:#fff;padding:8px 16px;border-radius:6px;font-weight:600}
+.hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px;background:radial-gradient(circle at 50% 0%,var(--ac-glow),transparent 60%)}
+.hero h1{font-size:48px;line-height:1.15;margin-bottom:24px;max-width:800px;font-weight:700}
+.hero p{font-size:18px;color:var(--tx-muted);margin-bottom:40px;max-width:600px}
+.hero .btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.hero .btns button{padding:12px 24px;border-radius:8px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+.hero .btns .primary{background:var(--ac);color:#fff;box-shadow:0 0 20px var(--ac-glow)}
+.hero .btns .secondary{background:var(--surface);color:var(--tx);border:1px solid var(--bd)}
+.features{padding:60px 48px;max-width:1100px;margin:auto;width:100%}
+.features h2{font-size:28px;text-align:center;margin-bottom:40px}
+.features .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.feature-card{background:var(--surface);border:1px solid var(--bd);border-radius:12px;padding:24px}
+.feature-card .icon-wrapper{width:40px;height:40px;border-radius:8px;background:var(--ac-glow);color:var(--ac);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.feature-card h3{font-size:16px;margin-bottom:8px;font-weight:600}
+.feature-card p{font-size:14px;color:var(--tx-muted)}
+.landing footer{padding:24px 48px;text-align:center;font-size:13px;color:var(--tx-muted);border-top:1px solid var(--bd)}
+.auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:900px){.auth{grid-template-columns:1fr}.auth-brand{display:none}}
 .auth-brand{padding:48px;display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid var(--bd);background:linear-gradient(135deg,var(--bg),var(--surface))}
-.auth-brand h1{font-size:36px;line-height:1.2;margin:40px 0 16px;font-weight:700}
-.auth-brand p{font-size:16px;color:var(--tx-muted);margin-bottom:32px}
-.auth-features{display:flex;flex-direction:column;gap:16px}
-.auth-features div{display:flex;align-items:center;gap:12px;font-size:14px}
-.auth-features div svg{color:var(--ac)}
-.auth-brand .footer{font-size:12px;color:var(--tx-muted)}
+.auth-brand h1{font-size:32px;line-height:1.2;margin:32px 0 16px;font-weight:700}
+.auth-brand p{font-size:15px;color:var(--tx-muted);margin-bottom:24px}
+.auth-brand ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.auth-brand ul li{display:flex;align-items:center;gap:10px;font-size:14px}
+.auth-brand ul svg{color:var(--ac)}
 .auth-form{padding:48px;display:flex;flex-direction:column;justify-content:center;max-width:440px;margin:auto;width:100%}
-.auth-form h2{font-size:24px;margin-bottom:8px;font-weight:600}
-.auth-form>p{color:var(--tx-muted);margin-bottom:32px;font-size:14px}
+.auth-form h2{font-size:22px;margin-bottom:8px;font-weight:600}
+.auth-form>p{color:var(--tx-muted);margin-bottom:24px;font-size:14px}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--tx-muted)}
 .field input{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--surface);font-size:14px}
 .field input:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px var(--ac-glow)}
-.btn{width:100%;padding:10px;background:var(--tx);color:var(--bg);border-radius:6px;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn{width:100%;padding:10px;background:var(--ac);color:#fff;border-radius:6px;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:var(--ac-hover)}
 .btn.s{background:var(--surface);color:var(--tx);border:1px solid var(--bd)}
-.social-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
-.social-btns button{padding:10px;border:1px solid var(--bd);border-radius:6px;background:var(--surface);font-size:14px;font-weight:500}
-.divider{display:flex;align-items:center;gap:12px;color:var(--tx-muted);font-size:12px;margin:24px 0}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--bd)}
-.auth-switch{text-align:center;margin-top:24px;font-size:13px;color:var(--tx-muted)}
-.auth-switch a{font-weight:500;color:var(--tx);text-decoration:none;cursor:pointer}
-.auth-switch .error{color:var(--bad);font-size:12px;display:block;margin-top:12px;padding:8px;background:rgba(239,68,68,.1);border-radius:6px}
-.app{display:none;min-height:100vh;grid-template-columns:240px 1fr}
-.app.active{display:grid}
+.btn.s:hover{background:var(--surface-hover)}
+.error{color:var(--bad);font-size:12px;margin-top:12px;padding:8px;background:rgba(239,68,68,.1);border-radius:6px;display:none}
+.error.show{display:block}
+.app{min-height:100vh;display:grid;grid-template-columns:240px 1fr}
 @media(max-width:800px){.app{grid-template-columns:1fr}.sidebar{display:none}}
 .sidebar{background:var(--bg);border-left:1px solid var(--bd);padding:20px 12px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
 .sidebar .logo{padding:0 8px 20px;border-bottom:1px solid var(--bd);margin-bottom:16px}
@@ -79,38 +73,42 @@ input,select,textarea{font:inherit;color:inherit}
 .user-box{margin-top:auto;padding:8px;background:var(--surface);border:1px solid var(--bd);border-radius:8px;display:flex;align-items:center;gap:10px;font-size:13px}
 .user-box .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px}
 .user-box .nm{flex:1;min-width:0}
-.user-box .nm b{display:block;font-size:13px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
-.user-box .nm span{font-size:11px;color:var(--tx-muted);display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.user-box .nm b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.user-box .nm span{font-size:11px;color:var(--tx-muted);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .logout-btn{margin-top:12px;width:100%;padding:8px;border-radius:6px;color:var(--tx-muted);font-weight:500;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid transparent}
-.logout-btn:hover{background:rgba(239,68,68,.1);color:var(--bad);border-color:rgba(239,68,68,.2)}
+.logout-btn:hover{background:rgba(239,68,68,.1);color:var(--bad)}
 .main{padding:32px 48px;overflow-x:auto;max-width:100%}
 @media(max-width:800px){.main{padding:16px}}
-.topbar{display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap}
-.topbar h1{font-size:24px;font-weight:600}
-.topbar .sub{color:var(--tx-muted);font-size:14px;margin-top:4px}
+.topbar{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.topbar h1{font-size:22px;font-weight:600}
+.topbar .sub{color:var(--tx-muted);font-size:13px;margin-top:4px}
 .topbar .actions{margin-inline-start:auto;display:flex;gap:8px;flex-wrap:wrap}
-.btn-sm{padding:8px 12px;border-radius:6px;font-size:13px;font-weight:500;background:var(--tx);color:var(--bg);display:inline-flex;align-items:center;gap:6px}
+.btn-sm{padding:8px 12px;border-radius:6px;font-size:13px;font-weight:500;background:var(--ac);color:#fff;display:inline-flex;align-items:center;gap:6px}
+.btn-sm:hover{background:var(--ac-hover)}
 .btn-sm.s{background:var(--surface);color:var(--tx);border:1px solid var(--bd)}
+.btn-sm.s:hover{background:var(--surface-hover)}
 .btn-sm.d{background:transparent;color:var(--tx-muted);border:1px solid var(--bd)}
-.mobile-bar{display:none;background:var(--bg);border-bottom:1px solid var(--bd);padding:12px 16px;position:sticky;top:0;z-index:50;align-items:center;justify-content:space-between}
-@media(max-width:800px){.mobile-bar{display:flex!important}}
-.mobile-bar .logout-mobile{padding:6px 12px;border-radius:6px;background:transparent;border:1px solid var(--bd);color:var(--tx-muted);font-weight:500;font-size:12px;display:flex;align-items:center;gap:6px}
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px}
+.btn-sm.d:hover{background:rgba(239,68,68,.1);color:var(--bad)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
 .kpi{background:var(--surface);border-radius:10px;padding:20px;border:1px solid var(--bd)}
-.kpi .label{font-size:13px;color:var(--tx-muted);margin-bottom:8px;font-weight:500;display:flex;align-items:center;gap:6px}
+.kpi .label{font-size:13px;color:var(--tx-muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .kpi .val{font-size:28px;font-weight:600;letter-spacing:-.5px}
-.kpi .trend{font-size:12px;margin-top:8px;color:var(--ok);font-weight:500}
+.kpi .trend{font-size:12px;margin-top:8px;color:var(--ok)}
+.card{background:var(--surface);border-radius:10px;padding:20px;border:1px solid var(--bd);margin-bottom:16px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;color:var(--tx-muted);text-align:center;gap:12px}
+.empty svg{opacity:.5;width:32px;height:32px}
+.chip{padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;background:var(--surface);color:var(--tx-muted);cursor:pointer;border:1px solid var(--bd);display:inline-flex;align-items:center;gap:6px}
+.chip.active{background:var(--ac-glow);color:var(--ac);border-color:var(--ac)}
 .inbox{display:grid;grid-template-columns:320px 1fr;background:var(--surface);border-radius:10px;overflow:hidden;border:1px solid var(--bd);height:calc(100vh - 140px);min-height:500px}
 @media(max-width:900px){.inbox{grid-template-columns:1fr;height:auto}}
 .conv-list{border-left:1px solid var(--bd);overflow-y:auto;display:flex;flex-direction:column;background:var(--bg)}
-.conv-filters{padding:12px;border-bottom:1px solid var(--bd);display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);z-index:1}
-.chip{padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;background:var(--surface);color:var(--tx-muted);cursor:pointer;border:1px solid var(--bd);display:inline-flex;align-items:center;gap:6px}
-.chip.active{background:var(--ac-glow);color:var(--ac);border-color:var(--ac)}
+.conv-filters{padding:12px;border-bottom:1px solid var(--bd);display:flex;gap:6px;flex-wrap:wrap;background:var(--bg)}
 .conv{padding:12px 16px;border-bottom:1px solid var(--bd);cursor:pointer;display:flex;gap:12px}
 .conv:hover{background:var(--surface)}
 .conv.active{background:var(--surface);border-right:2px solid var(--ac)}
-.conv .av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;flex-shrink:0;position:relative;font-size:14px}
-.conv .av .plat{position:absolute;bottom:-2px;left:-2px;width:14px;height:14px;border-radius:50%;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff}
+.conv .av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;flex-shrink:0;font-size:14px}
 .conv .info{flex:1;min-width:0}
 .conv .info .top{display:flex;justify-content:space-between;gap:6px;margin-bottom:2px}
 .conv .info .top b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
@@ -141,31 +139,27 @@ input,select,textarea{font:inherit;color:inherit}
 .chat-input{padding:16px 20px;background:var(--surface);border-top:1px solid var(--bd)}
 .chat-input .box{display:flex;gap:8px;align-items:flex-end}
 .chat-input textarea{flex:1;padding:10px 14px;border:1px solid var(--bd);border-radius:8px;resize:none;min-height:44px;max-height:120px;background:var(--bg);font-size:14px;color:var(--tx)}
-.chat-input textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 2px var(--ac-glow)}
+.chat-input textarea:focus{outline:none;border-color:var(--ac)}
 .chat-input .send{width:40px;height:40px;border-radius:8px;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.chat-input .tools{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.chat-input .tools{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .chat-input .tools button{font-size:11px;padding:4px 10px;border-radius:6px;background:var(--bg);border:1px solid var(--bd);color:var(--tx-muted);display:flex;align-items:center;gap:4px}
 .quick-replies{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .quick-replies button{padding:6px 12px;border-radius:16px;background:var(--bg);border:1px solid var(--bd);color:var(--tx-muted);font-size:12px}
-.toast{position:fixed;bottom:24px;left:24px;background:var(--surface);border:1px solid var(--bd);color:var(--tx);padding:12px 16px;border-radius:8px;font-size:13px;box-shadow:var(--shadow-md);display:none;z-index:100;max-width:340px;align-items:center;gap:10px}
-.toast.show{display:flex;animation:slideUp .2s ease}
-.toast.success{border-color:var(--ok);color:var(--ok);background:rgba(16,185,129,.1)}
-.toast.error{border-color:var(--bad);color:var(--bad);background:rgba(239,68,68,.1)}
-@keyframes slideUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
-.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;color:var(--tx-muted);text-align:center;gap:12px}
-.empty svg{opacity:.5;width:32px;height:32px}
-.card{background:var(--surface);border-radius:10px;padding:24px;border:1px solid var(--bd);margin-bottom:16px}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
-.modal.open{display:flex}
-.modal-box{background:var(--surface);border:1px solid var(--bd);border-radius:12px;padding:24px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-md)}
-.modal-box h3{margin-bottom:20px;font-size:18px;font-weight:600}
+.quick-replies button:hover{background:var(--surface-hover);color:var(--tx)}
 .form-row{margin-bottom:16px}
 .form-row label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--tx-muted)}
 .form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);font-size:14px;color:var(--tx)}
-.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 2px var(--ac-glow)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--ac)}
 .form-actions{display:flex;gap:8px;margin-top:24px;justify-content:flex-end}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:var(--surface);border:1px solid var(--bd);border-radius:12px;padding:24px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-box h3{margin-bottom:20px;font-size:18px;font-weight:600}
+.toast{position:fixed;bottom:24px;left:24px;background:var(--surface);border:1px solid var(--bd);color:var(--tx);padding:12px 16px;border-radius:8px;font-size:13px;box-shadow:0 4px 6px rgba(0,0,0,.1);display:none;z-index:100;max-width:340px;align-items:center;gap:10px}
+.toast.show{display:flex;animation:slideUp .2s}
+.toast.success{border-color:var(--ok);color:var(--ok);background:rgba(16,185,129,.1)}
+.toast.error{border-color:var(--bad);color:var(--bad);background:rgba(239,68,68,.1)}
+@keyframes slideUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
 .kanban{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .col{background:var(--surface);border-radius:10px;padding:16px;border:1px solid var(--bd)}
 .col h4{margin-bottom:16px;font-size:14px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
@@ -187,18 +181,21 @@ input,select,textarea{font:inherit;color:inherit}
 .channel-card .icon{width:48px;height:48px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px}
 .channel-card b{display:block;margin-bottom:8px;font-size:15px}
 .chart{width:100%;height:240px}
-.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad);margin-inline-end:6px}
-.status-dot.on{background:var(--ok);animation:pulse 1.5s infinite}
-@keyframes pulse{50%{opacity:.4}}
 .team-card{display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;margin-bottom:8px}
 .team-card .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;font-size:14px}
 .team-card .info{flex:1;min-width:0}
 .team-card .info b{display:block;font-size:14px;font-weight:600}
 .team-card .info span{font-size:12px;color:var(--tx-muted)}
-.net-tabs{display:flex;gap:8px;padding:12px;background:var(--surface);border:1px solid var(--bd);border-bottom:none;overflow-x:auto;border-radius:10px 10px 0 0}
-.net-tab{padding:6px 12px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--tx-muted);background:var(--bg);border:1px solid transparent}
-.net-tab.active{background:var(--ac-glow);color:var(--ac);border-color:var(--ac)}
-.net-canvas{background:var(--surface);border:1px solid var(--bd);border-radius:0 0 10px 10px;overflow:hidden}
+.notif-item{padding:12px;border-bottom:1px solid var(--bd);display:flex;gap:12px;align-items:flex-start}
+.notif-item.unread{background:var(--ac-glow)}
+.notif-item .ico{color:var(--ac)}
+.notif-item .txt{flex:1;font-size:13px}
+.notif-item .time{font-size:11px;color:var(--tx-muted)}
+.schedule-item{display:flex;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;align-items:center;font-size:13px;margin-bottom:8px}
+.schedule-item .when{font-weight:600;color:var(--ac);font-size:12px;min-width:120px}
+.net-toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:var(--surface);border:1px solid var(--bd);border-radius:10px 10px 0 0;align-items:center}
+.net-toolbar select{flex:1 1 200px;min-width:0;background:var(--bg);border:1px solid var(--bd);color:var(--tx);padding:8px;border-radius:6px}
+.net-canvas{background:var(--surface);border:1px solid var(--bd);border-top:none;border-radius:0 0 10px 10px;overflow:hidden}
 .net-canvas svg{width:100%;height:auto;aspect-ratio:16/9;display:block;touch-action:none;direction:ltr;background:radial-gradient(circle at 1px 1px,var(--bd) 1px,transparent 0) 0 0/24px 24px;background-color:var(--bg)}
 .net-node{cursor:grab}
 .net-node rect{fill:var(--surface);stroke-width:2;transition:all .2s;rx:8}
@@ -209,15 +206,13 @@ input,select,textarea{font:inherit;color:inherit}
 .net-node.success rect{fill:rgba(16,185,129,.1);stroke:var(--ok)!important}
 .net-node.fail rect{fill:rgba(239,68,68,.1);stroke:var(--bad)!important}
 @keyframes netPulse{50%{stroke-width:5}}
-.net-port{fill:var(--surface);stroke:var(--ac);stroke-width:2;cursor:crosshair;transition:all .2s}
-.net-port:hover{fill:var(--ac);r:8}
+.net-port{fill:var(--surface);stroke:var(--ac);stroke-width:2;cursor:crosshair}
+.net-port:hover{fill:var(--ac)}
 .net-edge{fill:none;stroke:var(--tx-muted);stroke-width:2;stroke-dasharray:6 4;animation:netFlow 1s linear infinite}
 .net-edge.true{stroke:var(--ok);stroke-dasharray:none;animation:none}
 .net-edge.false{stroke:var(--bad);stroke-dasharray:none;animation:none}
 @keyframes netFlow{to{stroke-dashoffset:-10}}
 .net-packet{fill:var(--ac);filter:drop-shadow(0 0 4px var(--ac))}
-.net-toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:var(--surface);border-bottom:1px solid var(--bd);align-items:center}
-.net-toolbar select{flex:1 1 200px;min-width:0;background:var(--bg);border:1px solid var(--bd);color:var(--tx);padding:8px;border-radius:6px}
 .net-inspector{padding:16px;background:var(--surface);border:1px solid var(--bd);border-top:none;border-radius:0 0 10px 10px}
 .net-inspector .row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
 .net-inspector input,.net-inspector select{flex:1 1 140px;min-width:0;background:var(--bg);border:1px solid var(--bd);color:var(--tx);padding:8px;border-radius:6px}
@@ -225,13 +220,8 @@ input,select,textarea{font:inherit;color:inherit}
 .net-stat{text-align:center}
 .net-stat .v{font-size:22px;font-weight:700}
 .net-stat .l{font-size:11px;color:var(--tx-muted);text-transform:uppercase;font-weight:500}
-.notif-item{padding:12px;border-bottom:1px solid var(--bd);display:flex;gap:12px;align-items:flex-start}
-.notif-item.unread{background:var(--ac-glow)}
-.notif-item .ico{font-size:16px;color:var(--ac)}
-.notif-item .txt{flex:1;font-size:13px}
-.notif-item .time{font-size:11px;color:var(--tx-muted)}
-.schedule-item{display:flex;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;align-items:center;font-size:13px;margin-bottom:8px}
-.schedule-item .when{font-weight:600;color:var(--ac);font-size:12px;min-width:120px}
+.mobile-bar{display:none;background:var(--bg);border-bottom:1px solid var(--bd);padding:12px 16px;position:sticky;top:0;z-index:50;align-items:center;justify-content:space-between}
+@media(max-width:800px){.mobile-bar{display:flex!important}}
 .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--bd);padding:8px;z-index:60;justify-content:space-around}
 @media(max-width:800px){.bottom-nav{display:flex}.main{padding-bottom:80px}}
 .bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--tx-muted);padding:6px 10px;border-radius:6px;flex:1}
@@ -262,7 +252,6 @@ input,select,textarea{font:inherit;color:inherit}
 <symbol id="i-note" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
 <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
 <symbol id="i-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
-<symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
 <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
 <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
@@ -270,360 +259,1172 @@ input,select,textarea{font:inherit;color:inherit}
 <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></symbol>
 </svg>
 
-<div class="landing" id="landingPage">
-<nav><div class="cyber-logo"><div class="shield"><svg class="icon"><use href="#i-shield"/></svg></div><div><span class="emaa">EMAA</span><span class="tech">.Tech</span></div></div><div class="links"><a href="#features">المميزات</a><a href="#" onclick="window.showAuth();return false" class="cta">ابدأ مجانًا</a></div></nav>
-<div class="hero"><h1>كل أعمالك على السوشيال ميديا — في منصة واحدة</h1><p>ردود ذكية، محتوى تلقائي، تقارير احترافية. بالعربية أولًا. مدعوم بالذكاء الاصطناعي.</p><div class="btns"><button class="primary" onclick="window.showAuth()">ابدأ مجانًا (14 يوم) <svg class="icon"><use href="#i-arrow-left"/></svg></button><button class="secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">تعرّف على المميزات</button></div></div>
-<div class="features" id="features"><div class="container"><h2>كل ما تحتاجه لإدارة أعمالك</h2><div class="grid">
-<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-message"/></svg></div><h3>Inbox موحد</h3><p>كل رسائلك في مكان واحد</p></div>
-<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-sparkles"/></svg></div><h3>ذكاء اصطناعي عربي</h3><p>ردود آلية تفهم اللهجات</p></div>
-<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-edit"/></svg></div><h3>استوديو المحتوى</h3><p>ولّد منشورات احترافية</p></div>
-<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-network"/></svg></div><h3>شبكة الأعمال</h3><p>أتمتة مرئية</p></div>
-<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-check-square"/></svg></div><h3>إدارة المهام</h3><p>نظّم فريقك</p></div>
-<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-bar-chart"/></svg></div><h3>تقارير احترافية</h3><p>اعرف أداء أعمالك</p></div>
-</div></div></div>
+<!-- LANDING -->
+<div class="screen landing active" id="landingPage">
+<nav><div class="logo"><div class="shield"><svg class="icon"><use href="#i-shield"/></svg></div><div><span>EMAA</span><span class="tech">.Tech</span></div></div><div class="links"><a href="#features">المميزات</a><a href="#" onclick="App.showAuth();return false" class="cta">ابدأ مجانًا</a></div></nav>
+<div class="hero"><h1>كل أعمالك على السوشيال ميديا — في منصة واحدة</h1><p>ردود ذكية، محتوى تلقائي، تقارير احترافية. بالعربية أولًا. مدعوم بالذكاء الاصطناعي.</p><div class="btns"><button class="primary" onclick="App.showAuth()">ابدأ مجانًا <svg class="icon"><use href="#i-arrow-left"/></svg></button><button class="secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">تعرّف على المميزات</button></div></div>
+<div class="features" id="features"><h2>كل ما تحتاجه لإدارة أعمالك</h2><div class="grid">
+<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-message"/></svg></div><h3>Inbox موحد</h3><p>كل رسائلك من واتساب وفيسبوك وإنستجرام وتيليجرام في مكان واحد</p></div>
+<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-sparkles"/></svg></div><h3>ذكاء اصطناعي عربي</h3><p>ردود آلية تفهم اللهجات العربية وتقترح ردودًا ذكية</p></div>
+<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-edit"/></svg></div><h3>استوديو المحتوى</h3><p>ولّد منشورات احترافية لكل منصة بضغطة زر</p></div>
+<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-network"/></svg></div><h3>شبكة الأعمال</h3><p>اربط المحفزات بالإجراءات بأتمتة مرئية</p></div>
+<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-check-square"/></svg></div><h3>إدارة المهام</h3><p>نظّم فريقك وأسنِد مهامك وتابع التقدم</p></div>
+<div class="feature-card"><div class="icon-wrapper"><svg class="icon-lg"><use href="#i-bar-chart"/></svg></div><h3>تقارير احترافية</h3><p>اعرف أداء أعمالك ومعدل الرضا</p></div>
+</div></div>
 <footer>© 2026 EMAA.Tech — Integrated Solutions & Security System</footer>
 </div>
 
-<div class="auth-screen" id="authScreen" style="display:none">
-<div class="auth-brand"><div class="cyber-logo" style="margin-bottom:40px"><div class="shield" style="width:40px;height:40px"><svg class="icon-lg"><use href="#i-shield"/></svg></div><div><span class="emaa" style="font-size:24px">EMAA</span><span class="tech" style="font-size:24px">.Tech</span></div></div><div><h1>Integrated Solutions & Security System</h1><p>منصة متكاملة لإدارة السوشيال ميديا وحماية البيانات.</p><div class="auth-features"><div><svg class="icon"><use href="#i-check"/></svg> Inbox موحد</div><div><svg class="icon"><use href="#i-check"/></svg> ذكاء اصطناعي عربي</div><div><svg class="icon"><use href="#i-check"/></svg> أتمتة بلا كود</div><div><svg class="icon"><use href="#i-check"/></svg> تقارير تلقائية</div></div></div><div class="footer">© 2026 EMAA.Tech</div></div>
-<div class="auth-form"><h2>أهلًا بعودتك</h2><p>سجّل دخولك لإدارة أعمالك</p><div class="social-btns"><button onclick="window.loginGoogle()">Google</button><button onclick="window.loginEmail()">Email</button></div><div class="divider">أو بالبريد الإلكتروني</div><div class="field"><label>البريد</label><input type="email" id="loginEmail" placeholder="you@example.com"></div><div class="field"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="••••••••"></div><button class="btn" onclick="window.loginEmail()">تسجيل الدخول / إنشاء حساب</button><div class="auth-switch"><a onclick="window.showLanding()">← العودة للرئيسية</a><span class="error" id="authError"></span></div></div>
+<!-- AUTH -->
+<div class="screen auth" id="authScreen">
+<div class="auth-brand"><div class="logo" style="font-size:24px"><div class="shield" style="width:40px;height:40px"><svg class="icon-lg"><use href="#i-shield"/></svg></div><div><span>EMAA</span><span class="tech">.Tech</span></div></div><div><h1>Integrated Solutions & Security System</h1><p>منصة متكاملة لإدارة السوشيال ميديا وحماية البيانات.</p><ul><li><svg class="icon"><use href="#i-check"/></svg> يعمل بدون إنترنت</li><li><svg class="icon"><use href="#i-check"/></svg> بيانات محفوظة محليًا</li><li><svg class="icon"><use href="#i-check"/></svg> ذكاء اصطناعي اختياري</li><li><svg class="icon"><use href="#i-check"/></svg> مزامنة سحابية اختيارية</li></ul></div><div style="font-size:12px;color:var(--tx-muted)">© 2026 EMAA.Tech</div></div>
+<div class="auth-form"><h2>أهلًا بعودتك</h2><p>أدخل اسمك للبدء — لا حاجة لكلمة مرور في الوضع المحلي</p><div class="field"><label>الاسم</label><input id="loginName" placeholder="اسمك"></div><div class="field"><label>البريد (اختياري)</label><input type="email" id="loginEmail" placeholder="you@example.com"></div><button class="btn" onclick="App.login()">ابدأ الآن</button><div style="text-align:center;margin-top:24px;font-size:13px;color:var(--tx-muted)"><a onclick="App.showLanding()" style="color:var(--tx);text-decoration:none;cursor:pointer">← العودة للرئيسية</a></div><div class="error" id="authError"></div></div>
 </div>
 
-<div class="app" id="app">
+<!-- APP -->
+<div class="screen app" id="appScreen">
 <aside class="sidebar">
-<div class="cyber-logo logo"><div class="shield"><svg class="icon"><use href="#i-shield"/></svg></div><div><span class="emaa">EMAA</span><span class="tech">.Tech</span></div></div>
-<div class="nav-group">
-<div class="label">الرئيسية</div>
-<div class="nav-item active" data-page="dashboard" onclick="window.go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg> لوحة التحكم</div>
-<div class="nav-item" data-page="inbox" onclick="window.go('inbox')"><svg class="icon"><use href="#i-message"/></svg> المحادثات <span class="badge" id="inboxBadge">0</span></div>
-<div class="nav-item" data-page="content" onclick="window.go('content')"><svg class="icon"><use href="#i-edit"/></svg> المحتوى</div>
-<div class="nav-item" data-page="network" onclick="window.go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</div>
-<div class="nav-item" data-page="automations" onclick="window.go('automations')"><svg class="icon"><use href="#i-zap"/></svg> الأتمتة</div>
-<div class="nav-item" data-page="scheduler" onclick="window.go('scheduler')"><svg class="icon"><use href="#i-clock"/></svg> الجدولة</div>
-<div class="nav-item" data-page="tasks" onclick="window.go('tasks')"><svg class="icon"><use href="#i-check-square"/></svg> المهام</div>
-<div class="nav-item" data-page="notifications" onclick="window.go('notifications')"><svg class="icon"><use href="#i-bell"/></svg> الإشعارات <span class="badge" id="notifBadge">0</span></div>
-<div class="nav-item" data-page="analytics" onclick="window.go('analytics')"><svg class="icon"><use href="#i-bar-chart"/></svg> التقارير</div>
+<div class="logo" style="padding:0 8px 20px;border-bottom:1px solid var(--bd);margin-bottom:16px"><div class="shield"><svg class="icon"><use href="#i-shield"/></svg></div><div><span>EMAA</span><span class="tech">.Tech</span></div></div>
+<div class="nav-group"><div class="label">الرئيسية</div>
+<div class="nav-item active" data-page="dashboard" onclick="App.go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg> لوحة التحكم</div>
+<div class="nav-item" data-page="inbox" onclick="App.go('inbox')"><svg class="icon"><use href="#i-message"/></svg> المحادثات <span class="badge" id="inboxBadge">0</span></div>
+<div class="nav-item" data-page="content" onclick="App.go('content')"><svg class="icon"><use href="#i-edit"/></svg> المحتوى</div>
+<div class="nav-item" data-page="network" onclick="App.go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</div>
+<div class="nav-item" data-page="automations" onclick="App.go('automations')"><svg class="icon"><use href="#i-zap"/></svg> الأتمتة</div>
+<div class="nav-item" data-page="scheduler" onclick="App.go('scheduler')"><svg class="icon"><use href="#i-clock"/></svg> الجدولة</div>
+<div class="nav-item" data-page="tasks" onclick="App.go('tasks')"><svg class="icon"><use href="#i-check-square"/></svg> المهام</div>
+<div class="nav-item" data-page="notifications" onclick="App.go('notifications')"><svg class="icon"><use href="#i-bell"/></svg> الإشعارات <span class="badge" id="notifBadge">0</span></div>
+<div class="nav-item" data-page="analytics" onclick="App.go('analytics')"><svg class="icon"><use href="#i-bar-chart"/></svg> التقارير</div>
 </div>
-<div class="nav-group">
-<div class="label">الإعدادات</div>
-<div class="nav-item" data-page="team" onclick="window.go('team')"><svg class="icon"><use href="#i-users"/></svg> الفريق</div>
-<div class="nav-item" data-page="channels" onclick="window.go('channels')"><svg class="icon"><use href="#i-link"/></svg> القنوات</div>
-<div class="nav-item" data-page="settings" onclick="window.go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</div>
+<div class="nav-group"><div class="label">الإعدادات</div>
+<div class="nav-item" data-page="team" onclick="App.go('team')"><svg class="icon"><use href="#i-users"/></svg> الفريق</div>
+<div class="nav-item" data-page="channels" onclick="App.go('channels')"><svg class="icon"><use href="#i-link"/></svg> القنوات</div>
+<div class="nav-item" data-page="settings" onclick="App.go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</div>
 </div>
 <div class="user-box"><div class="av" id="userAv">—</div><div class="nm"><b id="userName">—</b><span id="userEmail">—</span></div></div>
-<button class="logout-btn" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> تسجيل الخروج</button>
+<button class="logout-btn" onclick="App.logout()"><svg class="icon"><use href="#i-log-out"/></svg> تسجيل الخروج</button>
 </aside>
 <main class="main" id="mainContent"></main>
 </div>
 
+<div class="mobile-bar" id="mobileBar" style="display:none"><div class="logo" style="font-size:16px"><div class="shield" style="width:24px;height:24px"><svg class="icon" style="width:14px;height:14px"><use href="#i-shield"/></svg></div><div><span>EMAA</span><span class="tech">.Tech</span></div></div><button class="logout-btn" style="width:auto;margin:0" onclick="App.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div>
+
 <div class="bottom-nav" id="bottomNav" style="display:none">
-<button data-page="dashboard" onclick="window.go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg>لوحة</button>
-<button data-page="inbox" onclick="window.go('inbox')"><svg class="icon"><use href="#i-message"/></svg>محادثات</button>
-<button data-page="content" onclick="window.go('content')"><svg class="icon"><use href="#i-edit"/></svg>محتوى</button>
-<button data-page="network" onclick="window.go('network')"><svg class="icon"><use href="#i-network"/></svg>شبكة</button>
-<button data-page="tasks" onclick="window.go('tasks')"><svg class="icon"><use href="#i-check-square"/></svg>مهام</button>
-<button data-page="settings" onclick="window.go('settings')"><svg class="icon"><use href="#i-settings"/></svg>إعدادات</button>
+<button data-page="dashboard" onclick="App.go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg>لوحة</button>
+<button data-page="inbox" onclick="App.go('inbox')"><svg class="icon"><use href="#i-message"/></svg>محادثات</button>
+<button data-page="content" onclick="App.go('content')"><svg class="icon"><use href="#i-edit"/></svg>محتوى</button>
+<button data-page="network" onclick="App.go('network')"><svg class="icon"><use href="#i-network"/></svg>شبكة</button>
+<button data-page="tasks" onclick="App.go('tasks')"><svg class="icon"><use href="#i-check-square"/></svg>مهام</button>
+<button data-page="settings" onclick="App.go('settings')"><svg class="icon"><use href="#i-settings"/></svg>إعدادات</button>
 </div>
 
-<div class="mobile-bar" id="mobileBar" style="display:none">
-<div class="cyber-logo" style="font-size:16px"><div class="shield" style="width:24px;height:24px"><svg class="icon" style="width:14px;height:14px"><use href="#i-shield"/></svg></div><div><span class="emaa">EMAA</span><span class="tech">.Tech</span></div></div>
-<button class="logout-mobile" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button>
-</div>
-
-<div class="modal" id="modal" onclick="if(event.target===this)window.closeModal()"><div class="modal-box" id="modalBox"></div></div>
+<div class="modal" id="modal" onclick="if(event.target===this)App.closeModal()"><div class="modal-box" id="modalBox"></div></div>
 <div class="toast" id="toast"></div>
 
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, collection, doc, setDoc, getDoc, addDoc, updateDoc, deleteDoc, query, where, orderBy, onSnapshot, serverTimestamp, limit } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+<script>
+/* ============================================================
+   EMAA Social Suite — Local-First Edition
+   يعمل بدون Firebase — البيانات في localStorage
+   Firebase اختياري للمزامنة السحابية
+   ============================================================ */
 
-const firebaseConfig = { apiKey: "AIzaSyCLaX8kwGmZVy_9BfhOBMN8UTKYrTpFW3M", authDomain: "emaa-suite.firebaseapp.com", projectId: "emaa-suite", storageBucket: "emaa-suite.firebasestorage.app", messagingSenderId: "730734382277", appId: "1:730734382277:web:e59e8382faa159a36c74ac" };
-const fbApp = initializeApp(firebaseConfig);
-const auth = getAuth(fbApp);
-const db = getFirestore(fbApp);
+const App = (() => {
+  // ============ HELPERS ============
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const now = () => Date.now();
+  const today = () => new Date().toISOString().slice(0, 10);
+  const fmtTime = ts => new Date(ts).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+  const fmtDate = ts => new Date(ts).toLocaleDateString('ar-EG');
+  const uid = () => 'id_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-const AI_CFG = { provider: localStorage.getItem('ai_provider') || 'groq', key: localStorage.getItem('ai_key') || '', model: localStorage.getItem('ai_model') || 'openai/gpt-oss-120b' };
-
-async function callAI(messages, opts = {}) {
-  if (!AI_CFG.key) throw new Error('أضف مفتاح AI من الإعدادات');
-  const p = AI_CFG.provider;
-  if (p === 'gemini') {
-    const m = opts.model || (AI_CFG.model.startsWith('gemini') ? AI_CFG.model : 'gemini-1.5-flash');
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${AI_CFG.key}`;
-    const contents = messages.filter(x => x.role !== 'system').map(x => ({ role: x.role === 'assistant' ? 'model' : 'user', parts: [{ text: x.content || '' }] }));
-    const sys = messages.find(x => x.role === 'system');
-    const body = { contents, systemInstruction: sys ? { parts: [{ text: sys.content }] } : undefined, generationConfig: { temperature: opts.temperature ?? 0.7, maxOutputTokens: opts.maxTokens ?? 1500 } };
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-    const d = await r.json();
-    if (!r.ok) throw new Error(d.error?.message || 'فشل Gemini');
-    return d.candidates?.[0]?.content?.parts?.[0]?.text || '';
-  }
-  const url = p === 'groq' ? 'https://api.groq.com/openai/v1/chat/completions' : 'https://api.openai.com/v1/chat/completions';
-  const model = p === 'openai' ? (opts.model || 'gpt-4o-mini') : (opts.model || AI_CFG.model);
-  const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + AI_CFG.key }, body: JSON.stringify({ model, messages, temperature: opts.temperature ?? 0.7, max_tokens: opts.maxTokens ?? 1500 }) });
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.error?.message || 'فشل AI');
-  return d.choices[0].message.content || '';
-}
-
-const $ = id => document.getElementById(id);
-const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const now = () => Date.now();
-const today = () => new Date().toISOString().slice(0, 10);
-const fmtTime = ts => new Date(ts).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
-const fmtDate = ts => new Date(ts).toLocaleDateString('ar-EG');
-const toMillis = ts => { if (!ts) return now(); if (typeof ts === 'number') return ts; if (ts.toMillis) return ts.toMillis(); if (ts.seconds) return ts.seconds * 1000; return now(); };
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-// *** التصحيح الحرج: تعريف جميع المتغيرات قبل الاستخدام ***
-let netUnsub = null;
-let netState = { nodes: [], edges: [], sel: null, drag: null, link: null, pan: null, view: { x: 0, y: 0, w: 1200, h: 675 }, uid: 0, docId: null, stats: { runs: 0, success: 0, fail: 0 } };
-
-const state = { page: 'dashboard', conv: null, filter: 'all', user: null, convs: [], content: [], tasks: [], automations: [], team: [], notifications: [], schedules: [], channels: [], unsubs: [], msgUnsubs: {} };
-
-window.showLanding = () => { $('landingPage').style.display = 'flex'; $('authScreen').style.display = 'none'; $('app').classList.remove('active'); $('mobileBar').style.display = 'none'; $('bottomNav').style.display = 'none'; };
-window.showAuth = () => { $('landingPage').style.display = 'none'; $('authScreen').style.display = 'grid'; $('app').classList.remove('active'); $('mobileBar').style.display = 'none'; $('bottomNav').style.display = 'none'; };
-window.closeModal = () => $('modal').classList.remove('open');
-window.openModal = (html) => { $('modalBox').innerHTML = html; $('modal').classList.add('open'); };
-window.toast = (m, type = 'info') => { const t = $('toast'); t.innerHTML = `<svg class="icon" style="color:${type === 'success' ? 'var(--ok)' : type === 'error' ? 'var(--bad)' : 'var(--ac)'}"><use href="#i-${type === 'success' ? 'check' : type === 'error' ? 'x' : 'bell'}"/></svg> ${m}`; t.className = 'toast show ' + type; clearTimeout(t.h); t.h = setTimeout(() => t.className = 'toast', 3500); };
-
-window.loginEmail = async () => {
-  const email = $('loginEmail').value.trim(); const pass = $('loginPass').value; const err = $('authError'); err.textContent = '';
-  if (!email || !pass) { err.textContent = 'أدخل البريد وكلمة المرور'; return; }
-  try { await signInWithEmailAndPassword(auth, email, pass); window.toast('✅ مرحبًا بك', 'success'); }
-  catch (e) {
-    if (e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential' || e.code === 'auth/wrong-password') {
-      try { await createUserWithEmailAndPassword(auth, email, pass); window.toast('✅ حساب جديد', 'success'); } catch (e2) { err.textContent = e2.message || e2.code; }
-    } else err.textContent = e.message || e.code;
-  }
-};
-window.loginGoogle = async () => { const err = $('authError'); err.textContent = ''; try { await signInWithPopup(auth, new GoogleAuthProvider()); window.toast('✅ مرحبًا', 'success'); } catch (e) { if (e.code === 'auth/unauthorized-domain') err.innerHTML = 'النطاق غير مصرح: ' + location.hostname; else err.textContent = e.message || e.code; } };
-window.logout = async () => { if (!confirm('تسجيل الخروج؟')) return; try { unsubscribeAll(); if (netUnsub) { try { netUnsub(); } catch (e) {} netUnsub = null; } await signOut(auth); window.toast('تم تسجيل الخروج', 'success'); } catch (e) { window.toast('❌ ' + (e.message || 'فشل'), 'error'); } };
-
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    state.user = user;
-    $('landingPage').style.display = 'none'; $('authScreen').style.display = 'none'; $('app').classList.add('active');
-    if (window.innerWidth <= 800) { $('mobileBar').style.display = 'flex'; $('bottomNav').style.display = 'flex'; }
-    $('userName').textContent = user.displayName || user.email.split('@')[0];
-    $('userEmail').textContent = user.email;
-    $('userAv').textContent = (user.displayName || user.email)[0].toUpperCase();
-    await ensureUserDoc(user); subscribeAll(); window.go('dashboard');
-  } else {
-    state.user = null; unsubscribeAll();
-    Object.assign(state, { convs: [], content: [], tasks: [], automations: [], team: [], notifications: [], schedules: [], channels: [], conv: null });
-    window.showLanding(); $('loginEmail').value = ''; $('loginPass').value = '';
-  }
-});
-
-async function ensureUserDoc(user) { const ref = doc(db, 'users', user.uid); const snap = await getDoc(ref); if (!snap.exists()) await setDoc(ref, { name: user.displayName || user.email.split('@')[0], email: user.email, plan: 'Business', createdAt: serverTimestamp() }); }
-
-function unsubscribeAll() { state.unsubs.forEach(u => { try { u(); } catch (e) {} }); state.unsubs = []; Object.values(state.msgUnsubs).forEach(u => { try { u(); } catch (e) {} }); state.msgUnsubs = {}; }
-
-function subscribeAll() {
-  unsubscribeAll();
-  const uid = state.user.uid;
-  state.unsubs.push(onSnapshot(query(collection(db, 'conversations'), where('ownerId', '==', uid), orderBy('updatedAt', 'desc'), limit(100)), snap => {
-    const newConvs = snap.docs.map(d => ({ id: d.id, ...d.data(), msgs: [] }));
-    newConvs.forEach(nc => { const old = state.convs.find(c => c.id === nc.id); if (old) nc.msgs = old.msgs || []; });
-    state.convs = newConvs;
-    state.convs.forEach(c => { if (!state.msgUnsubs[c.id]) subscribeMessages(c.id); });
-    if (state.page === 'inbox') window.go('inbox');
-    updateInboxBadge();
-  }, e => console.warn('convs:', e.message)));
-  state.unsubs.push(onSnapshot(query(collection(db, 'content'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100)), snap => { state.content = snap.docs.map(d => ({ id: d.id, ...d.data() })); if (state.page === 'content') window.renderContentList(); }, e => console.warn('content:', e.message)));
-  state.unsubs.push(onSnapshot(query(collection(db, 'tasks'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100)), snap => { state.tasks = snap.docs.map(d => ({ id: d.id, ...d.data() })); if (state.page === 'tasks') window.renderKanban(); }, e => console.warn('tasks:', e.message)));
-  state.unsubs.push(onSnapshot(query(collection(db, 'automations'), where('ownerId', '==', uid), limit(50)), snap => { state.automations = snap.docs.map(d => ({ id: d.id, ...d.data() })); if (state.page === 'automations') window.go('automations'); }, e => console.warn('automations:', e.message)));
-  state.unsubs.push(onSnapshot(query(collection(db, 'team'), where('ownerId', '==', uid), limit(50)), snap => { state.team = snap.docs.map(d => ({ id: d.id, ...d.data() })); if (state.page === 'team') window.go('team'); }, e => console.warn('team:', e.message)));
-  state.unsubs.push(onSnapshot(query(collection(db, 'notifications'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(50)), snap => { state.notifications = snap.docs.map(d => ({ id: d.id, ...d.data() })); updateNotifBadge(); if (state.page === 'notifications') window.go('notifications'); }, e => console.warn('notifs:', e.message)));
-  state.unsubs.push(onSnapshot(query(collection(db, 'schedules'), where('ownerId', '==', uid), orderBy('when', 'asc'), limit(50)), snap => { state.schedules = snap.docs.map(d => ({ id: d.id, ...d.data() })); if (state.page === 'scheduler') window.go('scheduler'); }, e => console.warn('schedules:', e.message)));
-  state.unsubs.push(onSnapshot(query(collection(db, 'channels'), where('ownerId', '==', uid), limit(50)), snap => { state.channels = snap.docs.map(d => ({ id: d.id, ...d.data() })); if (state.page === 'channels') window.go('channels'); }, e => console.warn('channels:', e.message)));
-}
-
-function subscribeMessages(convId) {
-  if (state.msgUnsubs[convId]) { try { state.msgUnsubs[convId](); } catch (e) {} }
-  const unsub = onSnapshot(query(collection(db, 'conversations', convId, 'messages'), orderBy('createdAt', 'asc'), limit(200)), snap => {
-    const conv = state.convs.find(c => c.id === convId); if (!conv) return;
-    conv.msgs = snap.docs.map(d => { const m = d.data(); return { dir: m.direction, text: m.text, ai: !!m.ai, time: fmtTime(toMillis(m.createdAt)), type: m.type || 'msg' }; });
-    if (state.page === 'inbox' && state.conv === convId) window.openConv(convId);
-  }, e => console.warn('msgs:', e.message));
-  state.msgUnsubs[convId] = unsub;
-}
-
-function updateInboxBadge() { const t = state.convs.reduce((a, c) => a + (c.unread || 0), 0); const b = $('inboxBadge'); if (b) { b.textContent = t; b.style.display = t ? '' : 'none'; } }
-function updateNotifBadge() { const t = state.notifications.filter(n => !n.read).length; const b = $('notifBadge'); if (b) { b.textContent = t; b.style.display = t ? '' : 'none'; } }
-
-// *** التصحيح: window.go تستخدم مرجع مباشر مع فحص typeof ***
-window.go = (page) => {
-  state.page = page;
-  document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
-  document.querySelectorAll('.bottom-nav button').forEach(el => el.classList.toggle('active', el.dataset.page === page));
-  const map = {
-    dashboard: window.renderDashboard, inbox: window.renderInbox, content: window.renderContent,
-    network: window.renderNetwork, automations: window.renderAutomations, scheduler: window.renderScheduler,
-    tasks: window.renderTasks, notifications: window.renderNotifications, analytics: window.renderAnalytics,
-    team: window.renderTeam, channels: window.renderChannels, settings: window.renderSettings
+  // ============ LOCAL DATABASE ============
+  const DB = {
+    load(key, fallback) {
+      try { const v = localStorage.getItem('emaa_' + key); return v ? JSON.parse(v) : fallback; }
+      catch (e) { return fallback; }
+    },
+    save(key, val) {
+      try { localStorage.setItem('emaa_' + key, JSON.stringify(val)); return true; }
+      catch (e) { console.error('save failed:', e); return false; }
+    }
   };
-  const fn = map[page];
-  try {
-    $('mainContent').innerHTML = (typeof fn === 'function') ? fn() : `<div class="empty"><div>الصفحة غير متوفرة: ${esc(page)}</div></div>`;
-  } catch (err) {
-    console.error('render error [' + page + ']:', err);
-    $('mainContent').innerHTML = `<div class="empty"><div>خطأ في تحميل الصفحة: ${esc(err.message)}</div></div>`;
+
+  // ============ STATE ============
+  const state = {
+    page: 'dashboard',
+    user: null,
+    conv: null,
+    filter: 'all',
+    convs: [],
+    content: [],
+    tasks: [],
+    automations: [],
+    team: [],
+    notifications: [],
+    schedules: [],
+    channels: [],
+    // network
+    netNodes: [],
+    netEdges: [],
+    netSel: null,
+    netView: { x: 0, y: 0, w: 1200, h: 675 },
+    netUid: 0,
+    netDrag: null,
+    netLink: null,
+    netPan: null,
+    // settings
+    ai: { provider: 'groq', key: '', model: 'openai/gpt-oss-120b' }
+  };
+
+  // ============ PERSIST ============
+  function persist() {
+    DB.save('convs', state.convs);
+    DB.save('content', state.content);
+    DB.save('tasks', state.tasks);
+    DB.save('automations', state.automations);
+    DB.save('team', state.team);
+    DB.save('notifications', state.notifications);
+    DB.save('schedules', state.schedules);
+    DB.save('channels', state.channels);
+    DB.save('network', { nodes: state.netNodes, edges: state.netEdges });
+    DB.save('ai', state.ai);
+    DB.save('user', state.user);
   }
-  try {
-    if (page === 'inbox' && state.conv) window.openConv(state.conv);
-    if (page === 'content') window.renderContentList();
-    if (page === 'tasks') window.renderKanban();
-    if (page === 'analytics') window.renderCharts();
-    if (page === 'network') { window.netBind(); window.netDraw(); window.netInspector(); window.netSubscribe(); }
-    updateInboxBadge(); updateNotifBadge();
-  } catch (err) { console.error('post-render error [' + page + ']:', err); }
-};
 
-// ============ RENDER FUNCTIONS (يجب أن تُعرّف جميعها هنا قبل الاستخدام) ============
-window.renderDashboard = () => {
-  const unread = state.convs.reduce((a, c) => a + (c.unread || 0), 0);
-  const todayTasks = state.tasks.filter(t => t.date === today() && t.status !== 'done').length;
-  return `<div class="topbar"><div><h1>مرحبًا، ${esc((state.user.displayName || state.user.email).split('@')[0])}</h1><div class="sub"><span class="status-dot on"></span>متصل</div></div><div class="actions"><button class="btn-sm" onclick="window.go('inbox')"><svg class="icon"><use href="#i-message"/></svg> المحادثات</button><button class="btn-sm d" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div></div>
-  <div class="kpi-grid"><div class="kpi"><div class="label"><svg class="icon"><use href="#i-message"/></svg> محادثات</div><div class="val">${state.convs.length}</div><div class="trend">${unread} غير مقروء</div></div><div class="kpi"><div class="label"><svg class="icon"><use href="#i-check-square"/></svg> مهام اليوم</div><div class="val">${todayTasks}</div><div class="trend">بانتظارك</div></div><div class="kpi"><div class="label"><svg class="icon"><use href="#i-edit"/></svg> محتوى</div><div class="val">${state.content.length}</div><div class="trend">محفوظ</div></div><div class="kpi"><div class="label"><svg class="icon"><use href="#i-zap"/></svg> أتمتات</div><div class="val">${state.automations.filter(a => a.on).length}</div><div class="trend">مفعّلة</div></div></div>
-  <div class="grid-2"><div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:16px;align-items:center"><h3 style="font-size:15px;font-weight:600">آخر المحادثات</h3><a href="#" onclick="window.go('inbox');return false" style="font-size:13px;color:var(--ac);text-decoration:none;font-weight:500">الكل</a></div>${state.convs.slice(0, 4).map(c => `<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd);cursor:pointer" onclick="state.conv='${c.id}';window.go('inbox')"><div style="width:36px;height:36px;border-radius:50%;background:${c.color || '#6366f1'};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px">${esc((c.name || 'م')[0])}</div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><b style="font-size:14px;font-weight:500">${esc(c.name || '—')}</b><span style="font-size:11px;color:var(--tx-muted)">${c.msgs?.at(-1)?.time || ''}</span></div><div style="font-size:13px;color:var(--tx-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.msgs?.at(-1)?.text?.slice(0, 50) || '—')}</div></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}</div>
-  <div class="card"><h3 style="font-size:15px;font-weight:600;margin-bottom:16px">إجراءات سريعة</h3><button class="btn-sm" style="width:100%;margin-bottom:8px;justify-content:center" onclick="window.go('content')"><svg class="icon"><use href="#i-edit"/></svg> منشور جديد</button><button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="window.go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</button><button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="window.go('scheduler')"><svg class="icon"><use href="#i-clock"/></svg> الجدولة</button><button class="btn-sm s" style="width:100%;justify-content:center" onclick="window.go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</button></div></div>`;
-};
+  function loadAll() {
+    state.convs = DB.load('convs', []);
+    state.content = DB.load('content', []);
+    state.tasks = DB.load('tasks', []);
+    state.automations = DB.load('automations', []);
+    state.team = DB.load('team', []);
+    state.notifications = DB.load('notifications', []);
+    state.schedules = DB.load('schedules', []);
+    state.channels = DB.load('channels', []);
+    const net = DB.load('network', { nodes: [], edges: [] });
+    state.netNodes = net.nodes || [];
+    state.netEdges = net.edges || [];
+    state.ai = DB.load('ai', { provider: 'groq', key: '', model: 'openai/gpt-oss-120b' });
+    state.user = DB.load('user', null);
+    let maxId = 0;
+    state.netNodes.forEach(n => { const m = /^n(\d+)$/.exec(n.id || ''); if (m) maxId = Math.max(maxId, +m[1]); });
+    state.netUid = maxId;
+  }
 
-window.renderInbox = () => {
-  const filtered = state.filter === 'all' ? state.convs : state.convs.filter(c => c.platform === state.filter);
-  return `<div class="topbar"><div><h1>صندوق المحادثات</h1><div class="sub">كل رسائلك في مكان واحد</div></div><div class="actions"><button class="btn-sm s" onclick="window.newConversation()"><svg class="icon"><use href="#i-plus"/></svg> محادثة</button></div></div>
-  <div class="inbox"><div class="conv-list"><div class="conv-filters"><div class="chip ${state.filter === 'all' ? 'active' : ''}" onclick="state.filter='all';window.go('inbox')">الكل</div><div class="chip ${state.filter === 'whatsapp' ? 'active' : ''}" onclick="state.filter='whatsapp';window.go('inbox')">واتساب</div><div class="chip ${state.filter === 'facebook' ? 'active' : ''}" onclick="state.filter='facebook';window.go('inbox')">فيسبوك</div><div class="chip ${state.filter === 'instagram' ? 'active' : ''}" onclick="state.filter='instagram';window.go('inbox')">إنستجرام</div><div class="chip ${state.filter === 'telegram' ? 'active' : ''}" onclick="state.filter='telegram';window.go('inbox')">تيليجرام</div></div>
-  ${filtered.map(c => `<div class="conv ${state.conv === c.id ? 'active' : ''}" onclick="window.selectConv('${c.id}')"><div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}<div class="plat" style="background:${c.color || '#6366f1'}">${c.platform === 'whatsapp' ? 'W' : c.platform === 'facebook' ? 'F' : c.platform === 'instagram' ? 'I' : 'T'}</div></div><div class="info"><div class="top"><b>${esc(c.name || '—')}</b><span class="time">${c.msgs?.at(-1)?.time || ''}</span></div><div class="msg">${esc(c.msgs?.at(-1)?.text?.slice(0, 40) || '—')}</div>${(c.tags||[]).length ? '<div class="tags">' + (c.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('') + '</div>' : ''}</div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}</div>
-  <div class="chat-area" id="chatArea"><div class="empty" style="flex:1"><svg class="icon-lg"><use href="#i-message"/></svg><div>اختر محادثة</div></div></div></div>`;
-};
+  // ============ SEED DEMO DATA (first time only) ============
+  function seedIfEmpty() {
+    if (state.convs.length === 0 && state.tasks.length === 0 && state.content.length === 0) {
+      state.convs = [
+        { id: uid(), name: 'أحمد علي', platform: 'whatsapp', color: '#25d366', tags: ['VIP'], unread: 2, msgs: [
+          { dir: 'in', text: 'السلام عليكم، عايز أعرف سعر المنتج', time: fmtTime(now() - 3600000) },
+          { dir: 'out', text: 'وعليكم السلام، أهلاً بيك! المنتج بـ 250 جنيه', time: fmtTime(now() - 3500000) },
+          { dir: 'in', text: 'تمام، متاح الشحن للأسكندرية؟', time: fmtTime(now() - 1800000) }
+        ]},
+        { id: uid(), name: 'سارة محمد', platform: 'facebook', color: '#1877f2', tags: ['عميل جديد'], unread: 0, msgs: [
+          { dir: 'in', text: 'ممكن أعرف مواعيد العمل؟', time: fmtTime(now() - 7200000) },
+          { dir: 'out', text: 'أهلاً، من 9 ص لـ 6 م يوميًا ما عدا الجمعة', time: fmtTime(now() - 7000000) }
+        ]},
+        { id: uid(), name: 'محمد حسن', platform: 'instagram', color: '#e1306c', tags: [], unread: 1, msgs: [
+          { dir: 'in', text: 'الصورة دي متوفرة؟', time: fmtTime(now() - 600000) }
+        ]}
+      ];
+      state.tasks = [
+        { id: uid(), title: 'الرد على استفسارات العملاء', status: 'todo', pri: 'h', date: today(), createdAt: now() },
+        { id: uid(), title: 'نشر منشور رمضان', status: 'doing', pri: 'm', date: today(), createdAt: now() },
+        { id: uid(), title: 'تحديث قائمة الأسعار', status: 'done', pri: 'l', date: today(), createdAt: now() }
+      ];
+      state.content = [
+        { id: uid(), text: '🌟 عرض خاص! خصم 20% على جميع المنتجات هذا الأسبوع. لا تفوّت الفرصة! #عرض #خصم', platform: 'facebook', scheduled: null, createdAt: now() }
+      ];
+      state.automations = [
+        { id: uid(), name: 'رد ترحيبي تلقائي', desc: 'يرسل رد ترحيبي لأي رسالة جديدة', on: true, createdAt: now() },
+        { id: uid(), name: 'تذكير بالمتابعة', desc: 'تذكير بعد 24 ساعة من عدم الرد', on: false, createdAt: now() }
+      ];
+      state.notifications = [
+        { id: uid(), title: 'رسالة جديدة', body: 'أحمد علي أرسل رسالة', read: false, createdAt: now() - 1800000 },
+        { id: uid(), title: 'مهمة مستحقة', body: 'الرد على استفسارات العملاء', read: true, createdAt: now() - 3600000 }
+      ];
+      state.channels = [];
+      persist();
+    }
+  }
 
-window.selectConv = async (id) => { state.conv = id; try { await updateDoc(doc(db, 'conversations', id), { unread: 0 }); } catch (e) {} window.go('inbox'); window.openConv(id); };
+  // ============ AI ============
+  async function callAI(messages, opts = {}) {
+    const { provider, key, model } = state.ai;
+    if (!key) throw new Error('أضف مفتاح AI من الإعدادات، أو استخدم الردود الجاهزة');
+    if (provider === 'gemini') {
+      const m = opts.model || (model.startsWith('gemini') ? model : 'gemini-1.5-flash');
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`;
+      const contents = messages.filter(x => x.role !== 'system').map(x => ({ role: x.role === 'assistant' ? 'model' : 'user', parts: [{ text: x.content || '' }] }));
+      const sys = messages.find(x => x.role === 'system');
+      const body = { contents, systemInstruction: sys ? { parts: [{ text: sys.content }] } : undefined, generationConfig: { temperature: opts.temperature ?? 0.7, maxOutputTokens: opts.maxTokens ?? 1000 } };
+      const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error?.message || 'فشل Gemini');
+      return d.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    }
+    const url = provider === 'groq' ? 'https://api.groq.com/openai/v1/chat/completions' : 'https://api.openai.com/v1/chat/completions';
+    const mdl = provider === 'openai' ? (opts.model || 'gpt-4o-mini') : (opts.model || model);
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key }, body: JSON.stringify({ model: mdl, messages, temperature: opts.temperature ?? 0.7, max_tokens: opts.maxTokens ?? 1000 }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error?.message || 'فشل AI');
+    return d.choices[0].message.content || '';
+  }
 
-window.openConv = (id) => {
-  const c = state.convs.find(x => x.id === id); if (!c) return;
-  const area = $('chatArea'); if (!area) return;
-  const quick = [{ text: 'أهلاً بيك 🌸 نورتنا!', title: 'ترحيب' }, { text: 'أهلاً، حبيت أطمن على طلبك.', title: 'متابعة' }, { text: 'نعتذر عن أي إزعاج 🙏', title: 'اعتذار' }];
-  area.innerHTML = `<div class="chat-header"><div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}</div><div class="info"><b>${esc(c.name)}</b><span>${c.platform} · ${(c.tags||[]).join('، ') || 'بدون وسوم'}</span></div><div class="actions"><button onclick="window.suggestReply('${c.id}')"><svg class="icon"><use href="#i-sparkles"/></svg></button><button onclick="window.addTagPrompt('${c.id}')"><svg class="icon"><use href="#i-tag"/></svg></button><button onclick="window.addNotePrompt('${c.id}')"><svg class="icon"><use href="#i-note"/></svg></button><button onclick="window.delConv('${c.id}')"><svg class="icon"><use href="#i-trash"/></svg></button></div></div>
-  <div class="chat-messages" id="chatMsgs">${(c.msgs || []).map(m => { if (m.type === 'note') return `<div class="msg-row note"><div class="bubble">${esc(m.text)}<span class="time">${m.time || ''}</span></div></div>`; return `<div class="msg-row ${m.dir}">${m.dir === 'in' ? `<div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}</div>` : '<div class="av" style="background:var(--ac)">أ</div>'}<div class="bubble">${esc(m.text).replace(/\n/g, '<br>')}${m.ai ? '<span class="ai-tag">AI</span>' : ''}<span class="time">${m.time || ''}</span></div></div>`; }).join('') || '<div class="empty" style="flex:1"><div>لا رسائل</div></div>'}</div>
-  <div class="chat-input"><div class="quick-replies">${quick.map(q => `<button onclick='window.quickReply(${JSON.stringify(q.text)})'>${esc(q.title)}</button>`).join('')}</div><div class="box"><textarea id="msgInput" placeholder="اكتب ردًا… (Ctrl+Enter)" onkeydown="if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();window.sendMsg('${c.id}')}"></textarea><button class="send" onclick="window.sendMsg('${c.id}')"><svg class="icon"><use href="#i-send"/></svg></button></div><div class="tools"><button onclick="window.suggestReply('${c.id}')"><svg class="icon"><use href="#i-sparkles"/></svg> اقترح</button><button onclick="window.addNotePrompt('${c.id}')"><svg class="icon"><use href="#i-note"/></svg> ملاحظة</button><button onclick="window.addTagPrompt('${c.id}')"><svg class="icon"><use href="#i-tag"/></svg> وسم</button></div></div>`;
-  const m = $('chatMsgs'); if (m) m.scrollTop = m.scrollHeight;
-};
-window.sendMsg = async (id) => { const inp = $('msgInput'); if (!inp) return; const txt = inp.value.trim(); if (!txt) return; try { await addDoc(collection(db, 'conversations', id, 'messages'), { direction: 'out', text: txt, type: 'msg', createdAt: serverTimestamp() }); await updateDoc(doc(db, 'conversations', id), { updatedAt: serverTimestamp() }); inp.value = ''; window.toast('تم الإرسال', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.quickReply = (txt) => { const inp = $('msgInput'); if (inp) { inp.value = txt; inp.focus(); } };
-window.addNotePrompt = (id) => { const n = prompt('ملاحظة داخلية:'); if (!n) return; addDoc(collection(db, 'conversations', id, 'messages'), { direction: 'note', text: n, type: 'note', createdAt: serverTimestamp() }).then(() => window.toast('تم', 'success')).catch(e => window.toast('فشل: ' + e.message, 'error')); };
-window.addTagPrompt = (id) => { const t = prompt('اسم الوسم:'); if (!t) return; const conv = state.convs.find(x => x.id === id); if (!conv) return; updateDoc(doc(db, 'conversations', id), { tags: [...(conv.tags || []), t.trim()] }).then(() => window.toast('تم', 'success')).catch(e => window.toast('فشل: ' + e.message, 'error')); };
-window.suggestReply = async (id) => { const conv = state.convs.find(x => x.id === id); if (!conv) return; const inp = $('msgInput'); if (!inp) return; inp.value = 'جاري التفكير...'; try { const convo = (conv.msgs || []).filter(m => m.type !== 'note').slice(-8).map(m => (m.dir === 'in' ? 'العميل: ' : 'أنا: ') + m.text).join('\n'); inp.value = await callAI([{ role: 'system', content: 'وكيل خدمة عملاء. رد قصير وودّي بالعربية.' }, { role: 'user', content: `اسم: ${conv.name}\n${convo}` }], { temperature: 0.8, maxTokens: 300 }); } catch (e) { inp.value = ''; window.toast('فشل: ' + e.message, 'error'); } };
-window.newConversation = () => { window.openModal(`<h3>محادثة جديدة</h3><div class="form-row"><label>الاسم</label><input id="ncName"></div><div class="form-row"><label>المنصة</label><select id="ncPlat"><option value="whatsapp">واتساب</option><option value="facebook">فيسبوك</option><option value="instagram">إنستجرام</option><option value="telegram">تيليجرام</option></select></div><div class="form-row"><label>وسوم</label><input id="ncTags" placeholder="عميل، متابعة"></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doNewConv()">إنشاء</button></div>`); };
-window.doNewConv = async () => { const name = $('ncName').value.trim(); if (!name) return window.toast('أدخل الاسم', 'error'); const colors = { whatsapp: '#25d366', facebook: '#1877f2', instagram: '#e1306c', telegram: '#229ed9' }; const plat = $('ncPlat').value; try { await addDoc(collection(db, 'conversations'), { ownerId: state.user.uid, platform: plat, name, color: colors[plat], tags: $('ncTags').value.split(',').map(t => t.trim()).filter(Boolean), unread: 0, createdAt: serverTimestamp(), updatedAt: serverTimestamp() }); window.closeModal(); window.toast('تم', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.delConv = async (id) => { if (!confirm('حذف المحادثة؟')) return; try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; window.go('inbox'); window.toast('تم الحذف', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
+  // ============ FALLBACK REPLIES (بدون AI) ============
+  const fallbackReplies = [
+    'أهلاً بيك 🌸 نورتنا! كيف أقدر أساعدك؟',
+    'شكرًا لتواصلك! هنرد عليك في أقرب وقت.',
+    'تمام، ممكن توضحلي أكثر؟',
+    'أهلاً، حبيت أطمن على طلبك.',
+    'نعتذر عن أي إزعاج 🙏',
+    'شكرًا لصبرك، جاري التحقق من طلبك.',
+    'تم استلام رسالتك، سنرد خلال دقائق.',
+    'يسعدنا خدمتك! هل تحتاج مساعدة إضافية؟'
+  ];
+  const fallbackContent = [
+    '🌟 عرض خاص! خصم 20% على جميع المنتجات هذا الأسبوع. لا تفوّت الفرصة! #عرض #خصم',
+    '✨ جودة تستحق التجربة. اكتشف منتجاتنا الجديدة الآن! #جديد #تسوق',
+    '📢 انضم لعملائنا السعداء! خدمة عملاء 24/7. #خدمة_عملاء',
+    '🎉 وصلت أحدث تشكيلة! تسوق الآن واستمتع بالتوصيل المجاني. #توصيل_مجاني',
+    '💡 نصيحة اليوم: اختر منتجاتك بعناية، الجودة أهم من السعر. #نصيحة'
+  ];
 
-window.renderContent = () => {
-  $('mainContent').innerHTML = `<div class="topbar"><div><h1>استوديو المحتوى</h1><div class="sub">أنشئ محتوى بالذكاء الاصطناعي</div></div></div>
-  <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">مولّد المحتوى</h3><div class="grid-2"><div class="form-row"><label>الموضوع</label><input id="ctTopic" placeholder="فوائد القهوة"></div><div class="form-row"><label>المنصة</label><select id="ctPlatform"><option value="facebook">فيسبوك</option><option value="instagram">إنستجرام</option><option value="twitter">تويتر</option><option value="linkedin">لينكدإن</option><option value="telegram">تيليجرام</option></select></div></div><div class="form-row"><label>النبرة</label><select id="ctTone"><option value="professional">احترافي</option><option value="friendly">ودّي</option><option value="funny">فكاهي</option><option value="inspiring">ملهم</option></select></div><div class="form-row"><label>المحتوى</label><textarea id="ctOut" placeholder="سيظهر هنا…" style="min-height:120px"></textarea></div><div class="form-row"><label>جدولة (اختياري)</label><input type="datetime-local" id="ctSched"></div><div class="form-actions"><button class="btn-sm s" onclick="window.genContent(true)">نسخة أخرى</button><button class="btn-sm s" onclick="window.saveContent()">حفظ</button><button class="btn-sm" onclick="window.genContent()">توليد</button></div></div>
-  <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">المكتبة</h3><div id="ctList"></div></div>
-  <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">التقويم</h3><div id="cal"></div></div>`;
-  window.renderContentList();
-};
-window.genContent = async (again) => { const topic = $('ctTopic').value.trim() || 'موضوع عام'; const out = $('ctOut'); out.value = 'جاري الكتابة...'; const plat = $('ctPlatform').value, tone = $('ctTone').value; const platName = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' }[plat]; const toneName = { professional: 'احترافي', friendly: 'ودّي', funny: 'فكاهي', inspiring: 'ملهم' }[tone]; try { out.value = await callAI([{ role: 'system', content: `كاتب محتوى خبير. اكتب منشور ${platName} بنبرة ${toneName}. ${plat === 'twitter' ? 'لا تتجاوز 280 حرفًا.' : ''} أضف هاشتاجات. أعد النص فقط.` }, { role: 'user', content: `الموضوع: ${topic}${again ? ' (نسخة جديدة)' : ''}` }], { temperature: 0.8, maxTokens: 800 }); } catch (e) { out.value = ''; window.toast('فشل: ' + e.message, 'error'); } };
-window.saveContent = async () => { const txt = $('ctOut').value.trim(); if (!txt) return window.toast('لا محتوى', 'error'); try { await addDoc(collection(db, 'content'), { ownerId: state.user.uid, text: txt, platform: $('ctPlatform').value, scheduled: $('ctSched').value || null, createdAt: serverTimestamp() }); window.toast('تم الحفظ', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.renderContentList = () => { const el = $('ctList'); if (!el) return; const names = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' }; const colors = { facebook: '#1877f2', instagram: '#e1306c', twitter: '#1da1f2', linkedin: '#0077b5', telegram: '#229ed9' }; el.innerHTML = state.content.map(c => `<div class="content-card"><div class="head"><span><span class="plat-tag" style="background:${colors[c.platform] || '#6366f1'}">${names[c.platform] || c.platform}</span> ${c.scheduled ? 'مجدول' : 'مسودة'}</span><span>${fmtDate(toMillis(c.createdAt))}</span></div><div class="body">${esc(c.text)}</div><div class="actions"><button class="btn-sm s" onclick="window.copyTxt('${c.id}')">نسخ</button><button class="btn-sm s" onclick="window.delContent('${c.id}')">حذف</button></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-edit"/></svg><div>لا محتوى</div></div>'; window.renderCal(); };
-window.copyTxt = (id) => { const c = state.content.find(x => x.id === id); if (c) { navigator.clipboard.writeText(c.text); window.toast('تم النسخ', 'success'); } };
-window.delContent = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'content', id)); window.toast('تم', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.renderCal = () => { const el = $('cal'); if (!el) return; const t0 = new Date(); t0.setHours(0, 0, 0, 0); let h = '<div class="cal">'; for (let i = 0; i < 7; i++) { const d = new Date(t0.getTime() + i * 864e5); const key = d.toISOString().slice(0, 10); const evs = state.content.filter(c => c.scheduled && c.scheduled.startsWith(key)); h += `<div class="d ${key === today() ? 'today' : ''}"><b>${d.toLocaleDateString('ar-EG', { weekday: 'short', day: 'numeric' })}</b>${evs.map(e => `<div class="ev">${esc(e.text.slice(0, 20))}</div>`).join('')}</div>`; } el.innerHTML = h + '</div>'; };
+  // ============ UI HELPERS ============
+  function toast(msg, type = 'info') {
+    const t = $('toast');
+    const icon = type === 'success' ? 'check' : type === 'error' ? 'x' : 'bell';
+    const color = type === 'success' ? 'var(--ok)' : type === 'error' ? 'var(--bad)' : 'var(--ac)';
+    t.innerHTML = `<svg class="icon" style="color:${color}"><use href="#i-${icon}"/></svg> ${esc(msg)}`;
+    t.className = 'toast show ' + type;
+    clearTimeout(t.h);
+    t.h = setTimeout(() => t.className = 'toast', 3000);
+  }
 
-// NETWORK
-const NT = { trigger: { label: 'محفز', color: '#3b82f6', icon: '⚡' }, action: { label: 'إجراء', color: '#10b981', icon: '⚙️' }, condition: { label: 'شرط', color: '#f59e0b', icon: '🔀' }, delay: { label: 'تأخير', color: '#06b6d4', icon: '⏱' }, notify: { label: 'إشعار', color: '#db2777', icon: '🔔' } };
-const NK = { trigger: { msg: 'رسالة واردة', schedule: 'جدولة', manual: 'يدوي' }, action: { reply: 'رد تلقائي', tag: 'إضافة وسم', ai: 'رد AI', webhook: 'استدعاء URL', save: 'حفظ' }, condition: { keyword: 'كلمة مفتاحية', platform: 'المنصة', time: 'الوقت', tag: 'وسم' }, delay: { wait: 'انتظار (ثوان)' }, notify: { toast: 'إشعار داخلي', browser: 'إشعار متصفح', sound: 'صوت' } };
-const NDV = { trigger: { msg: '', schedule: '09:00', manual: '' }, action: { reply: 'شكرًا لتواصلك!', tag: 'متابعة', ai: 'اكتب ردًا وديًا', webhook: 'https://', save: '' }, condition: { keyword: 'سعر,بكم', platform: 'whatsapp', time: '09:00-17:00', tag: 'شكوى' }, delay: { wait: '5' }, notify: { toast: 'تنبيه', browser: 'رسالة جديدة', sound: '' } };
+  function openModal(html) { $('modalBox').innerHTML = html; $('modal').classList.add('open'); }
+  function closeModal() { $('modal').classList.remove('open'); }
 
-window.renderNetwork = () => {
-  $('mainContent').innerHTML = `<div class="topbar"><div><h1>شبكة الأعمال</h1><div class="sub">اربط المحفزات بالإجراءات</div></div><div class="actions"><button class="btn-sm s" onclick="window.netAddNode()"><svg class="icon"><use href="#i-plus"/></svg> عقدة</button><button class="btn-sm s" onclick="window.netRunAll()"><svg class="icon"><use href="#i-play"/></svg> تشغيل</button><button class="btn-sm s" onclick="window.netExport()"><svg class="icon"><use href="#i-download"/></svg> تصدير</button><button class="btn-sm s" onclick="window.netImport()">استيراد</button><button class="btn-sm" onclick="window.netSave()"><svg class="icon"><use href="#i-save"/></svg> حفظ</button></div></div>
-  <div class="net-tabs"><div class="net-tab active">الشبكة الرئيسية</div><div class="net-tab" onclick="window.netNew()">+ جديدة</div></div>
-  <div class="net-canvas"><div class="net-toolbar"><select id="netType"><optgroup label="محفز">${Object.entries(NK.trigger).map(([k,v])=>`<option value="trigger:${k}">${v}</option>`).join('')}</optgroup><optgroup label="شرط">${Object.entries(NK.condition).map(([k,v])=>`<option value="condition:${k}">${v}</option>`).join('')}</optgroup><optgroup label="تأخير">${Object.entries(NK.delay).map(([k,v])=>`<option value="delay:${k}">${v}</option>`).join('')}</optgroup><optgroup label="إجراء">${Object.entries(NK.action).map(([k,v])=>`<option value="action:${k}">${v}</option>`).join('')}</optgroup><optgroup label="إشعار">${Object.entries(NK.notify).map(([k,v])=>`<option value="notify:${k}">${v}</option>`).join('')}</optgroup></select><button class="btn-sm" onclick="window.netAddNode()">إضافة</button><button class="btn-sm s" onclick="window.netZoom(0.85)">−</button><button class="btn-sm s" onclick="window.netZoom(1.18)">+</button><button class="btn-sm s" onclick="window.netReset()">↺</button></div>
-  <svg id="netSvg" viewBox="0 0 1200 675"><defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--tx-muted)"/></marker></defs><g id="netEdges"></g><g id="netNodes"></g><g id="netPackets"></g></svg></div>
-  <div class="net-inspector" id="netInspector"></div>
-  <div class="card" style="margin-top:16px"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">الإحصائيات</h3><div class="net-stats"><div class="net-stat"><div class="v" id="netStatNodes">0</div><div class="l">عقدة</div></div><div class="net-stat"><div class="v" id="netStatEdges">0</div><div class="l">اتصال</div></div><div class="net-stat"><div class="v" id="netStatRuns">0</div><div class="l">تشغيل</div></div></div><div id="netLog" style="max-height:200px;overflow-y:auto;font-size:13px"></div></div>`;
-  window.netBind(); window.netDraw(); window.netInspector(); window.netSubscribe();
-};
-function netSubscribe() { if (netUnsub) { try { netUnsub(); } catch (e) {} } netUnsub = onSnapshot(query(collection(db, 'workflows'), where('ownerId', '==', state.user.uid), limit(1)), snap => { if (!snap.empty) { const data = snap.docs[0].data(); netState.nodes = data.nodes || []; netState.edges = data.edges || []; netState.docId = snap.docs[0].id; netState.stats = data.stats || { runs: 0, success: 0, fail: 0 }; let maxId = 0; netState.nodes.forEach(n => { const m = /^n(\d+)$/.exec(n.id || ''); if (m) maxId = Math.max(maxId, +m[1]); }); netState.uid = maxId; if (state.page === 'network') { window.netDraw(); window.netInspector(); window.netUpdateStats(); } } }, e => console.warn('workflow:', e.message)); }
-window.netBind = () => { const svg = $('netSvg'); if (!svg) return; svg.onpointerdown = (e) => { if (e.target.closest('[data-edge]')) return; const port = e.target.closest('[data-port]'); const node = e.target.closest('[data-node]'); if (port) { netState.link = { from: port.dataset.port, to: window.netPt(e), isTrue: port.dataset.isTrue === '1' }; e.preventDefault(); return; } if (node) { const n = netState.nodes.find(x => x.id === node.dataset.node); if (!n) return; const p = window.netPt(e); netState.drag = { n, dx: p.x - n.x, dy: p.y - n.y }; netState.sel = n.id; } else { netState.sel = null; netState.pan = { x: e.clientX, y: e.clientY, vx: netState.view.x, vy: netState.view.y }; } window.netInspector(); window.netDraw(); svg.setPointerCapture(e.pointerId); }; svg.onpointermove = (e) => { if (netState.pan) { const k = netState.view.w / (svg.clientWidth || 1); netState.view.x = netState.pan.vx - (e.clientX - netState.pan.x) * k; netState.view.y = netState.pan.vy - (e.clientY - netState.pan.y) * k; svg.setAttribute('viewBox', `${netState.view.x} ${netState.view.y} ${netState.view.w} ${netState.view.h}`); return; } if (netState.drag) { const p = window.netPt(e); netState.drag.n.x = Math.max(0, Math.min(1000, p.x - netState.drag.dx)); netState.drag.n.y = Math.max(0, Math.min(600, p.y - netState.drag.dy)); window.netDraw(); } else if (netState.link) { netState.link.to = window.netPt(e); window.netDraw(); } }; svg.onpointerup = (e) => { if (netState.link) { const t = document.elementFromPoint(e.clientX, e.clientY); const target = t?.closest?.('[data-node]'); if (target) { const toId = target.dataset.node; const toNode = netState.nodes.find(n => n.id === toId); if (toNode && toNode.type !== 'trigger' && !netState.edges.some(x => x.from === netState.link.from && x.to === toId && x.isTrue === netState.link.isTrue)) { netState.edges.push({ from: netState.link.from, to: toId, isTrue: netState.link.isTrue || false }); window.netSave(); } } netState.link = null; window.netDraw(); } if (netState.drag) { netState.drag = null; window.netSave(); } netState.pan = null; }; svg.ondblclick = (e) => { const ed = e.target.closest('[data-edge]'); if (ed) { netState.edges.splice(+ed.dataset.edge, 1); window.netDraw(); window.netSave(); } }; svg.onwheel = (e) => { e.preventDefault(); window.netZoom(e.deltaY < 0 ? 0.85 : 1.18); }; };
-window.netPt = (e) => { const svg = $('netSvg'); if (!svg) return { x: 0, y: 0 }; const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); };
-window.netZoom = (k) => { const v = netState.view; const w = Math.max(400, Math.min(2400, v.w * k)); const r = w / v.w; v.x = v.x + v.w / 2 - (v.w / 2) * r; v.y = v.y + v.h / 2 - (v.h / 2) * r; v.w = w; v.h = w * 675 / 1200; $('netSvg').setAttribute('viewBox', `${v.x} ${v.y} ${v.w} ${v.h}`); };
-window.netReset = () => { netState.view = { x: 0, y: 0, w: 1200, h: 675 }; $('netSvg').setAttribute('viewBox', '0 0 1200 675'); };
-window.netAddNode = () => { const [type, kind] = $('netType').value.split(':'); const id = 'n' + (++netState.uid); const count = netState.nodes.filter(n => n.type === type).length; netState.nodes.push({ id, type, kind, value: NDV[type][kind] || '', label: NK[type][kind] || kind, x: 40 + (count % 4) * 260, y: 40 + Math.floor(count / 4) * 140 }); netState.sel = id; window.netDraw(); window.netInspector(); window.netSave(); };
-window.netDraw = () => { const eg = $('netEdges'), ng = $('netNodes'); if (!eg) return; eg.innerHTML = ''; ng.innerHTML = ''; const pg = $('netPackets'); if (pg) pg.innerHTML = ''; netState.edges.forEach((e, i) => { const a = netState.nodes.find(n => n.id === e.from); const b = netState.nodes.find(n => n.id === e.to); if (!a || !b) return; const path = window.netPath(a, b); const cls = a.type === 'condition' ? (e.isTrue ? 'true' : 'false') : ''; eg.innerHTML += `<path class="net-edge ${cls}" d="${path}" marker-end="url(#arrow)"/><path data-edge="${i}" d="${path}" stroke="transparent" stroke-width="16" fill="none" style="cursor:pointer"/>`; }); if (netState.link) { const a = netState.nodes.find(n => n.id === netState.link.from); if (a) eg.innerHTML += `<path class="net-edge" d="M${a.x + 200},${a.y + 30} Q${(a.x + 200 + netState.link.to.x) / 2},${(a.y + 30 + netState.link.to.y) / 2} ${netState.link.to.x},${netState.link.to.y}" style="opacity:.5"/>`; } netState.nodes.forEach(n => { const t = NT[n.type] || NT.action; const cls = [netState.sel === n.id ? 'sel' : '', n._active ? 'active' : '', n._success ? 'success' : '', n._fail ? 'fail' : ''].join(' '); const inPort = n.type !== 'trigger' ? `<circle class="net-port" data-port="${n.id}" cx="0" cy="30" r="7"/>` : ''; const outPort = `<circle class="net-port" data-port="${n.id}" cx="200" cy="30" r="7"/>`; const condPorts = n.type === 'condition' ? `<circle class="net-port" data-port="${n.id}" data-is-true="1" cx="200" cy="18" r="7" style="stroke:var(--ok)"/><circle class="net-port" data-port="${n.id}" data-is-true="0" cx="200" cy="42" r="7" style="stroke:var(--bad)"/>` : ''; ng.innerHTML += `<g class="net-node ${cls}" data-node="${n.id}" transform="translate(${n.x},${n.y})"><rect width="200" height="60" rx="8" stroke="${t.color}"/><circle cx="180" cy="14" r="6" fill="${t.color}"/><text x="100" y="24" text-anchor="middle" font-weight="600">${t.icon} ${t.label} · ${n.label}</text><text class="sub" x="100" y="44" text-anchor="middle">${(n.value || '').toString().slice(0, 26) || '—'}</text>${inPort}${outPort}${condPorts}</g>`; }); window.netUpdateStats(); };
-window.netPath = (a, b) => { const ax = a.x + 200, ay = a.y + 30, bx = b.x, by = b.y + 30; const dx = Math.max(40, Math.abs(bx - ax) / 2); return `M${ax},${ay} C${ax + dx},${ay} ${bx - dx},${by} ${bx},${by}`; };
-window.netInspector = () => { const b = $('netInspector'); if (!b) return; const n = netState.nodes.find(x => x.id === netState.sel); if (!n) { b.innerHTML = '<div style="color:var(--tx-muted);font-size:13px;text-align:center;padding:12px">اختر عقدة لتعديلها</div>'; return; } const t = NT[n.type]; b.innerHTML = `<div class="row"><b style="color:${t.color};font-size:14px;display:flex;align-items:center;gap:6px">${t.icon} ${t.label}</b><select onchange="window.netChangeKind(this.value)">${Object.entries(NK[n.type]).map(([k,v])=>`<option value="${k}" ${k===n.kind?'selected':''}>${v}</option>`).join('')}</select><button class="btn-sm" onclick="window.netRunNode('${n.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-play"/></svg> تشغيل</button><button class="btn-sm s" onclick="window.netDeleteNode()"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div><div class="row"><input type="text" value="${esc(n.value)}" oninput="window.netUpdateVal(this.value)" placeholder="القيمة"></div>`; };
-window.netUpdateVal = (v) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.value = v; window.netDraw(); } };
-window.netChangeKind = (k) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.kind = k; n.value = NDV[n.type][k] || ''; n.label = NK[n.type][k]; window.netDraw(); window.netInspector(); window.netSave(); } };
-window.netDeleteNode = () => { if (!netState.sel) return; netState.nodes = netState.nodes.filter(n => n.id !== netState.sel); netState.edges = netState.edges.filter(e => e.from !== netState.sel && e.to !== netState.sel); netState.sel = null; window.netDraw(); window.netInspector(); window.netSave(); };
-window.netSave = async () => { if (!state.user) return; try { const data = { ownerId: state.user.uid, nodes: netState.nodes, edges: netState.edges, stats: netState.stats, updatedAt: serverTimestamp() }; if (netState.docId) await updateDoc(doc(db, 'workflows', netState.docId), data); else { const r = await addDoc(collection(db, 'workflows'), { ...data, createdAt: serverTimestamp() }); netState.docId = r.id; } window.toast('تم حفظ الشبكة', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.netUpdateStats = () => { const s = netState.stats || { runs: 0 }; if ($('netStatNodes')) $('netStatNodes').textContent = netState.nodes.length; if ($('netStatEdges')) $('netStatEdges').textContent = netState.edges.length; if ($('netStatRuns')) $('netStatRuns').textContent = s.runs; };
-window.netExport = () => { const blob = new Blob([JSON.stringify({ nodes: netState.nodes, edges: netState.edges }, null, 2)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'workflow-' + today() + '.json'; a.click(); window.toast('تم التصدير', 'success'); };
-window.netImport = () => { const input = document.createElement('input'); input.type = 'file'; input.accept = '.json'; input.onchange = (e) => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const d = JSON.parse(r.result); netState.nodes = d.nodes || []; netState.edges = d.edges || []; netState.sel = null; window.netDraw(); window.netInspector(); window.netSave(); window.toast('تم', 'success'); } catch (err) { window.toast('ملف غير صالح', 'error'); } }; r.readAsText(f); }; input.click(); };
-window.netRunNode = async (id) => { await netRunNode(id); };
-async function netRunNode(id, path = new Set()) { const n = netState.nodes.find(x => x.id === id); if (!n) return; if (path.has(id)) { window.netLog('⚠️ حلقة'); return; } path.add(id); n._active = true; window.netDraw(); await sleep(300); let ok = true; try { if (n.type === 'condition') { const kw = (n.value || '').split(',').map(x => x.trim()).filter(Boolean); ok = kw.length === 0 || kw.some(k => (n._testText || '').includes(k)); } else if (n.type === 'action') { if (n.kind === 'ai') { try { await callAI([{ role: 'user', content: n.value }], { maxTokens: 80 }); } catch (e) { ok = false; } } else if (n.kind === 'reply') { const c = state.convs[0]; if (c) await addDoc(collection(db, 'conversations', c.id, 'messages'), { direction: 'out', text: n.value, type: 'msg', ai: true, createdAt: serverTimestamp() }); } else if (n.kind === 'tag') { const c = state.convs[0]; if (c) await updateDoc(doc(db, 'conversations', c.id), { tags: [...(c.tags || []), n.value] }); } else if (n.kind === 'webhook') { try { await fetch(n.value, { method: 'GET' }); } catch (e) { ok = false; } } } else if (n.type === 'notify') { window.notify(n.value, n.kind); } else if (n.type === 'delay') { await sleep(Math.min(20, +n.value || 1) * 1000); } } catch (e) { ok = false; window.netLog('❌ ' + e.message); } n._active = false; if (ok) { n._success = true; setTimeout(() => { n._success = false; window.netDraw(); }, 1200); } else { n._fail = true; setTimeout(() => { n._fail = false; window.netDraw(); }, 1200); } window.netLog(`${ok ? '✅' : '❌'} ${n.label}`); window.netDraw(); const out = netState.edges.filter(e => e.from === id && (n.type !== 'condition' || e.isTrue === ok)); out.forEach((e, i) => { window.netPacket(e); setTimeout(() => netRunNode(e.to, new Set(path)), 600 + i * 200); }); }
-window.netPacket = (edge) => { const a = netState.nodes.find(n => n.id === edge.from); const b = netState.nodes.find(n => n.id === edge.to); const pg = $('netPackets'); if (!a || !b || !pg) return; const path = window.netPath(a, b); const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('r', '6'); c.setAttribute('class', 'net-packet'); const m = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion'); m.setAttribute('dur', '.6s'); m.setAttribute('path', path); m.setAttribute('fill', 'freeze'); c.appendChild(m); pg.appendChild(c); try { m.beginElement(); } catch (e) {} setTimeout(() => c.remove(), 800); };
-window.netRunAll = () => { const triggers = netState.nodes.filter(n => n.type === 'trigger'); if (!triggers.length) return window.toast('أضف محفزًا', 'error'); triggers.forEach(t => netRunNode(t.id)); netState.stats.runs++; window.netSave(); };
-window.netLog = (msg) => { const el = $('netLog'); if (!el) return; const time = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' }); el.innerHTML = `<div style="padding:6px 0;border-bottom:1px solid var(--bd)"><span style="color:var(--tx-muted)">${time}</span> ${esc(msg)}</div>` + el.innerHTML; };
-window.netNew = () => { netState.nodes = []; netState.edges = []; netState.sel = null; netState.docId = null; window.netDraw(); window.netInspector(); window.toast('شبكة جديدة', 'success'); };
+  function showScreen(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const s = $(name === 'landing' ? 'landingPage' : name === 'auth' ? 'authScreen' : 'appScreen');
+    if (s) s.classList.add('active');
+    const showMobile = name === 'app' && window.innerWidth <= 800;
+    $('mobileBar').style.display = showMobile ? 'flex' : 'none';
+    $('bottomNav').style.display = showMobile ? 'flex' : 'none';
+  }
 
-window.renderAutomations = () => { $('mainContent').innerHTML = `<div class="topbar"><div><h1>الأتمتة</h1><div class="sub">قواعد تعمل بدلًا عنك</div></div><div class="actions"><button class="btn-sm" onclick="window.addAutomation()"><svg class="icon"><use href="#i-plus"/></svg> أتمتة</button></div></div><div class="grid-2">${state.automations.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:12px;align-items:center"><b style="font-size:14px">${esc(a.name)}</b><span class="chip ${a.on ? 'active' : ''}" style="cursor:pointer;font-size:11px" onclick="window.toggleAuto('${a.id}',${a.on})">${a.on ? 'مفعّل' : 'متوقف'}</span></div><div style="font-size:13px;color:var(--tx-muted);margin-bottom:16px">${esc(a.desc || '')}</div><button class="btn-sm s" onclick="window.delAuto('${a.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-zap"/></svg><div>لا أتمتات</div></div>'}</div>`; };
-window.toggleAuto = async (id, current) => { try { await updateDoc(doc(db, 'automations', id), { on: !current }); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.delAuto = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'automations', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.addAutomation = () => { window.openModal(`<h3>أتمتة جديدة</h3><div class="form-row"><label>الاسم</label><input id="anName"></div><div class="form-row"><label>الوصف</label><textarea id="anDesc"></textarea></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddAuto()">إضافة</button></div>`); };
-window.doAddAuto = async () => { const name = $('anName').value.trim(); if (!name) return window.toast('أدخل اسمًا', 'error'); try { await addDoc(collection(db, 'automations'), { ownerId: state.user.uid, name, desc: $('anDesc').value.trim(), on: true, createdAt: serverTimestamp() }); window.closeModal(); window.toast('تم', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
+  // ============ AUTH ============
+  function showLanding() { showScreen('landing'); }
+  function showAuth() { showScreen('auth'); }
 
-window.renderScheduler = () => { $('mainContent').innerHTML = `<div class="topbar"><div><h1>الجدولة</h1><div class="sub">جدولة المهام والمنشورات</div></div><div class="actions"><button class="btn-sm" onclick="window.addSchedule()"><svg class="icon"><use href="#i-plus"/></svg> جدولة</button></div></div><div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">المجدول</h3>${state.schedules.length ? state.schedules.map(s => `<div class="schedule-item"><span class="when">${s.when}</span><span style="flex:1">${esc(s.title)}</span><span class="chip">${s.type}</span><button class="btn-sm s" onclick="window.delSchedule('${s.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-clock"/></svg><div>لا مجدولات</div></div>'}</div>`; };
-window.addSchedule = () => { window.openModal(`<h3>جدولة جديدة</h3><div class="form-row"><label>العنوان</label><input id="scTitle"></div><div class="form-row"><label>الموعد</label><input type="datetime-local" id="scWhen"></div><div class="form-row"><label>النوع</label><select id="scType"><option value="منشور">منشور</option><option value="مهمة">مهمة</option><option value="تذكير">تذكير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddSchedule()">إضافة</button></div>`); };
-window.doAddSchedule = async () => { const title = $('scTitle').value.trim(), when = $('scWhen').value; if (!title || !when) return window.toast('أكمل البيانات', 'error'); try { await addDoc(collection(db, 'schedules'), { ownerId: state.user.uid, title, when, type: $('scType').value, createdAt: serverTimestamp() }); window.closeModal(); window.toast('تم', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.delSchedule = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'schedules', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-setInterval(() => { if (!state.user || !state.schedules.length) return; const nowStr = new Date().toISOString().slice(0, 16); state.schedules.forEach(async s => { if (s.when === nowStr && !s.fired) { window.notify('⏰ ' + s.title, 'browser'); await updateDoc(doc(db, 'schedules', s.id), { fired: true }); } }); }, 60000);
+  function login() {
+    const name = $('loginName').value.trim() || 'مستخدم';
+    const email = $('loginEmail').value.trim() || name.toLowerCase().replace(/\s+/g, '.') + '@local';
+    state.user = { name, email, id: uid() };
+    persist();
+    startApp();
+    toast('مرحبًا ' + name + ' 👋', 'success');
+  }
 
-const COLS = [{ id: 'todo', n: 'للتنفيذ' }, { id: 'doing', n: 'قيد التنفيذ' }, { id: 'done', n: 'منجز' }];
-window.renderTasks = () => { $('mainContent').innerHTML = `<div class="topbar"><div><h1>المهام</h1><div class="sub">نظّم فريقك</div></div><div class="actions"><button class="btn-sm" onclick="window.addTask()"><svg class="icon"><use href="#i-plus"/></svg> مهمة</button></div></div><div class="kanban" id="kanban"></div>`; window.renderKanban(); };
-window.renderKanban = () => { const el = $('kanban'); if (!el) return; el.innerHTML = COLS.map(col => `<div class="col" ondragover="event.preventDefault()" ondrop="window.dropTask(event,'${col.id}')"><h4>${col.n} <span style="color:var(--tx-muted);font-size:12px">${state.tasks.filter(t => t.status === col.id).length}</span></h4>${state.tasks.filter(t => t.status === col.id).map(window.taskCard).join('')}</div>`).join(''); };
-window.taskCard = (t) => `<div class="task" draggable="true" ondragstart="event.dataTransfer.setData('id','${t.id}')" ondblclick="window.toggleTask('${t.id}','${t.status}')"><div class="t">${esc(t.title)}</div><div class="m"><span class="pri-${t.pri}">${t.pri === 'h' ? 'عاجل' : t.pri === 'm' ? 'متوسط' : 'عادي'}</span><span>${t.date || '—'}</span><span onclick="window.delTask('${t.id}');event.stopPropagation()" style="cursor:pointer;color:var(--bad)"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></span></div></div>`;
-window.addTask = () => { window.openModal(`<h3>مهمة جديدة</h3><div class="form-row"><label>العنوان</label><input id="tkTitle"></div><div class="form-row"><label>التاريخ</label><input type="date" id="tkDate" value="${today()}"></div><div class="form-row"><label>الأولوية</label><select id="tkPri"><option value="l">منخفضة</option><option value="m" selected>متوسطة</option><option value="h">عالية</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddTask()">إضافة</button></div>`); };
-window.doAddTask = async () => { const title = $('tkTitle').value.trim(); if (!title) return window.toast('أدخل عنوانًا', 'error'); try { await addDoc(collection(db, 'tasks'), { ownerId: state.user.uid, title, date: $('tkDate').value || today(), pri: $('tkPri').value, status: 'todo', createdAt: serverTimestamp() }); window.closeModal(); window.toast('تم', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.dropTask = async (e, col) => { e.preventDefault(); const id = e.dataTransfer.getData('id'); if (!id) return; try { await updateDoc(doc(db, 'tasks', id), { status: col }); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.toggleTask = async (id, current) => { try { await updateDoc(doc(db, 'tasks', id), { status: current === 'done' ? 'todo' : 'done' }); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.delTask = async (id) => { try { await deleteDoc(doc(db, 'tasks', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
+  function logout() {
+    if (!confirm('تسجيل الخروج؟ (البيانات ستبقى محفوظة محليًا)')) return;
+    state.user = null;
+    DB.save('user', null);
+    showScreen('landing');
+  }
 
-window.renderNotifications = () => { $('mainContent').innerHTML = `<div class="topbar"><div><h1>الإشعارات</h1><div class="sub">آخر التنبيهات</div></div><div class="actions"><button class="btn-sm s" onclick="window.enableBrowserNotif()"><svg class="icon"><use href="#i-bell"/></svg> تفعيل</button></div></div><div class="card">${state.notifications.length ? state.notifications.map(n => `<div class="notif-item ${n.read ? '' : 'unread'}"><svg class="icon ico"><use href="#i-bell"/></svg><div class="txt"><b>${esc(n.title || '')}</b><br><span style="color:var(--tx-muted);font-size:12px">${esc(n.body || '')}</span></div><span class="time">${fmtTime(toMillis(n.createdAt))}</span></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-bell"/></svg><div>لا إشعارات</div></div>'}</div>`; };
-window.enableBrowserNotif = async () => { if (!('Notification' in window)) return window.toast('المتصفح لا يدعم', 'error'); const p = await Notification.requestPermission(); if (p === 'granted') window.toast('تم التفعيل', 'success'); else window.toast('تم الرفض', 'error'); };
-window.notify = (text, kind = 'toast') => { const icon = kind === 'sound' ? '🔊' : kind === 'browser' ? '🌐' : '🔔'; if (kind === 'browser' && 'Notification' in window && Notification.permission === 'granted') new Notification('EMAA', { body: text }); if (kind === 'sound') { try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const o = ctx.createOscillator(); o.connect(ctx.destination); o.frequency.value = 880; o.start(); setTimeout(() => o.close(), 300); } catch (e) {} } window.toast(text, 'info'); if (state.user) addDoc(collection(db, 'notifications'), { ownerId: state.user.uid, title: 'تنبيه', body: text, icon, read: false, createdAt: serverTimestamp() }).catch(e => console.warn(e)); };
+  function startApp() {
+    $('userName').textContent = state.user.name;
+    $('userEmail').textContent = state.user.email;
+    $('userAv').textContent = state.user.name[0].toUpperCase();
+    showScreen('app');
+    updateBadges();
+    go('dashboard');
+  }
 
-window.renderAnalytics = () => { $('mainContent').innerHTML = `<div class="topbar"><div><h1>التقارير</h1><div class="sub">أداء أعمالك</div></div><div class="actions"><button class="btn-sm s" onclick="window.exportCSV()"><svg class="icon"><use href="#i-download"/></svg> تصدير CSV</button></div></div><div class="kpi-grid"><div class="kpi"><div class="label">محادثات</div><div class="val">${state.convs.length}</div></div><div class="kpi"><div class="label">محتوى</div><div class="val">${state.content.length}</div></div><div class="kpi"><div class="label">مهام منجزة</div><div class="val">${state.tasks.filter(t => t.status === 'done').length}/${state.tasks.length}</div></div><div class="kpi"><div class="label">أتمتات</div><div class="val">${state.automations.filter(a => a.on).length}</div></div></div><div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">توزيع المحادثات</h3><div id="chart1" class="chart"></div></div><div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">النشاط (7 أيام)</h3><div id="chart2" class="chart"></div></div>`; window.renderCharts(); };
-window.renderCharts = () => { const c1 = $('chart1'), c2 = $('chart2'); if (c1) { const counts = { whatsapp: 0, facebook: 0, instagram: 0, telegram: 0 }; state.convs.forEach(c => counts[c.platform] = (counts[c.platform] || 0) + 1); const colors = { whatsapp: '#25d366', facebook: '#1877f2', instagram: '#e1306c', telegram: '#229ed9' }; const names = { whatsapp: 'واتساب', facebook: 'فيسبوك', instagram: 'إنستجرام', telegram: 'تيليجرام' }; const max = Math.max(1, ...Object.values(counts)); c1.innerHTML = `<div style="display:flex;align-items:flex-end;gap:20px;height:100%;padding:20px;justify-content:space-around">${Object.keys(counts).map(k => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;max-width:60px;height:${counts[k] / max * 140 + 10}px;background:${colors[k]};border-radius:4px 4px 0 0"></div><span style="font-size:12px;color:var(--tx-muted);font-weight:500">${names[k]}</span><b style="font-size:14px">${counts[k]}</b></div>`).join('')}</div>`; } if (c2) { const days = Array(7).fill(0); state.convs.forEach(c => { const i = Math.floor((now() - toMillis(c.createdAt)) / 864e5); if (i >= 0 && i < 7) days[6 - i]++; }); const max = Math.max(1, ...days); c2.innerHTML = `<svg viewBox="0 0 700 220" style="width:100%;height:100%">${days.map((v, i) => { const h = v / max * 150; return `<rect x="${50 + i * 90}" y="${180 - h}" width="60" height="${h}" fill="var(--ac)" rx="4"/><text x="${80 + i * 90}" y="${200}" text-anchor="middle" font-size="12" fill="var(--tx-muted)" font-weight="500">${['أحد','إثن','ثلا','أرب','خمي','جمع','سبت'][i]}</text><text x="${80 + i * 90}" y="${175 - h}" text-anchor="middle" font-size="12" fill="var(--tx)" font-weight="600">${v || ''}</text>`; }).join('')}</svg>`; } };
-window.exportCSV = () => { const rows = [['النوع', 'الاسم', 'التفاصيل', 'التاريخ']]; state.convs.forEach(c => rows.push(['محادثة', c.name, c.platform, fmtDate(toMillis(c.createdAt))])); state.content.forEach(c => rows.push(['محتوى', c.text.slice(0, 50), c.platform, fmtDate(toMillis(c.createdAt))])); state.tasks.forEach(t => rows.push(['مهمة', t.title, t.status, t.date])); const csv = '\uFEFF' + rows.map(r => r.map(x => `"${String(x).replace(/"/g, '""')}"`).join(',')).join('\n'); const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'emaa-export-' + today() + '.csv'; a.click(); window.toast('تم التصدير', 'success'); };
+  function updateBadges() {
+    const inboxTotal = state.convs.reduce((a, c) => a + (c.unread || 0), 0);
+    const ib = $('inboxBadge');
+    if (ib) { ib.textContent = inboxTotal; ib.style.display = inboxTotal ? '' : 'none'; }
+    const notifTotal = state.notifications.filter(n => !n.read).length;
+    const nb = $('notifBadge');
+    if (nb) { nb.textContent = notifTotal; nb.style.display = notifTotal ? '' : 'none'; }
+  }
 
-window.renderTeam = () => { $('mainContent').innerHTML = `<div class="topbar"><div><h1>الفريق</h1><div class="sub">إدارة الأعضاء</div></div><div class="actions"><button class="btn-sm" onclick="window.addMember()"><svg class="icon"><use href="#i-plus"/></svg> دعوة</button></div></div><div class="card">${state.team.length ? state.team.map(m => `<div class="team-card"><div class="av">${esc((m.name||'م')[0])}</div><div class="info"><b>${esc(m.name)}</b><span>${esc(m.email || '—')} · ${esc(m.role || 'عضو')}</span></div><button class="btn-sm s" onclick="window.delMember('${m.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-users"/></svg><div>لا أعضاء</div></div>'}</div>`; };
-window.addMember = () => { window.openModal(`<h3>دعوة عضو</h3><div class="form-row"><label>الاسم</label><input id="mName"></div><div class="form-row"><label>البريد</label><input type="email" id="mEmail"></div><div class="form-row"><label>الدور</label><select id="mRole"><option value="محرر">محرر</option><option value="وكيل دعم">وكيل</option><option value="مدير">مدير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddMember()">إضافة</button></div>`); };
-window.doAddMember = async () => { const n = $('mName').value.trim(); if (!n) return window.toast('أدخل الاسم', 'error'); try { await addDoc(collection(db, 'team'), { ownerId: state.user.uid, name: n, email: $('mEmail').value.trim(), role: $('mRole').value, createdAt: serverTimestamp() }); window.closeModal(); window.toast('تم', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.delMember = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'team', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
+  // ============ ROUTER ============
+  const ROUTES = {};
+  function go(page) {
+    state.page = page;
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+    document.querySelectorAll('.bottom-nav button').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+    const fn = ROUTES[page];
+    if (typeof fn === 'function') {
+      try { $('mainContent').innerHTML = fn(); }
+      catch (e) { console.error(e); $('mainContent').innerHTML = `<div class="empty"><div>خطأ: ${esc(e.message)}</div></div>`; }
+    } else {
+      $('mainContent').innerHTML = `<div class="empty"><div>الصفحة غير موجودة: ${esc(page)}</div></div>`;
+    }
+    // post-render hooks
+    if (page === 'content') renderCal();
+    if (page === 'inbox' && state.conv) renderChat();
+    if (page === 'network') initNetwork();
+    if (page === 'analytics') renderCharts();
+    updateBadges();
+  }
 
-window.renderChannels = () => { const data = [{ k: 'whatsapp', n: 'واتساب', i: 'W', c: '#25d366' }, { k: 'facebook', n: 'فيسبوك', i: 'F', c: '#1877f2' }, { k: 'instagram', n: 'إنستجرام', i: 'I', c: '#e1306c' }, { k: 'telegram', n: 'تيليجرام', i: 'T', c: '#229ed9' }]; const connected = new Set(state.channels.filter(c => c.connected).map(c => c.platform)); $('mainContent').innerHTML = `<div class="topbar"><div><h1>القنوات</h1><div class="sub">اربط حساباتك</div></div></div><div class="grid-3">${data.map(d => `<div class="channel-card"><div class="icon" style="background:${d.c}">${d.i}</div><b>${d.n}</b><span class="chip ${connected.has(d.k) ? 'active' : ''}" style="margin:8px 0;display:inline-block">${connected.has(d.k) ? 'متصل' : 'غير متصل'}</span><div style="margin-top:16px;display:flex;gap:6px;justify-content:center"><button class="btn-sm" onclick="window.toggleChannel('${d.k}',${connected.has(d.k)})">${connected.has(d.k) ? 'فصل' : 'اتصال'}</button><button class="btn-sm s" onclick="window.setupChannel('${d.k}')">معلومات</button></div></div>`).join('')}</div>`; };
-window.toggleChannel = async (platform, isConnected) => { try { const existing = state.channels.find(c => c.platform === platform); if (existing) await updateDoc(doc(db, 'channels', existing.id), { connected: !isConnected, updatedAt: serverTimestamp() }); else await addDoc(collection(db, 'channels'), { ownerId: state.user.uid, platform, connected: true, createdAt: serverTimestamp() }); window.toast(isConnected ? 'تم الفصل' : 'تم الاتصال', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.setupChannel = (k) => { const cfg = { whatsapp: { name: 'WhatsApp Business API', url: 'https://developers.facebook.com/docs/whatsapp' }, facebook: { name: 'Facebook Messenger', url: 'https://developers.facebook.com/docs/messenger-platform' }, instagram: { name: 'Instagram Graph API', url: 'https://developers.facebook.com/docs/instagram-api' }, telegram: { name: 'Telegram Bot API', url: 'https://core.telegram.org/bots' } }; const c = cfg[k] || { name: k, url: '#' }; window.openModal(`<h3>${c.name}</h3><div style="padding:16px 0;font-size:13px;color:var(--tx-muted);line-height:1.6">يتطلب إعداد Webhook عبر Cloud Functions. راجع الوثائق:</div><a href="${c.url}" target="_blank" rel="noopener" style="color:var(--ac);font-size:13px;display:block;margin-bottom:16px;word-break:break-all">${c.url}</a><div class="form-actions"><button class="btn-sm" onclick="window.closeModal()">حسنًا</button></div>`); };
+  // ============ DASHBOARD ============
+  ROUTES.dashboard = () => {
+    const unread = state.convs.reduce((a, c) => a + (c.unread || 0), 0);
+    const todayTasks = state.tasks.filter(t => t.date === today() && t.status !== 'done').length;
+    return `<div class="topbar"><div><h1>مرحبًا، ${esc(state.user.name)}</h1><div class="sub"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-inline-end:6px"></span>الوضع المحلي — البيانات محفوظة</div></div><div class="actions"><button class="btn-sm s" onclick="App.go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</button></div></div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="label"><svg class="icon"><use href="#i-message"/></svg> محادثات</div><div class="val">${state.convs.length}</div><div class="trend">${unread} غير مقروء</div></div>
+      <div class="kpi"><div class="label"><svg class="icon"><use href="#i-check-square"/></svg> مهام اليوم</div><div class="val">${todayTasks}</div><div class="trend">بانتظارك</div></div>
+      <div class="kpi"><div class="label"><svg class="icon"><use href="#i-edit"/></svg> محتوى</div><div class="val">${state.content.length}</div><div class="trend">محفوظ</div></div>
+      <div class="kpi"><div class="label"><svg class="icon"><use href="#i-zap"/></svg> أتمتات</div><div class="val">${state.automations.filter(a => a.on).length}</div><div class="trend">مفعّلة</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:16px;align-items:center"><h3 style="font-size:15px;font-weight:600">آخر المحادثات</h3><a href="#" onclick="App.go('inbox');return false" style="font-size:13px;color:var(--ac);text-decoration:none;font-weight:500">الكل</a></div>
+      ${state.convs.slice(0, 4).map(c => `<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd);cursor:pointer" onclick="App.openConv('${c.id}')"><div style="width:36px;height:36px;border-radius:50%;background:${c.color};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px">${esc(c.name[0])}</div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><b style="font-size:14px;font-weight:500">${esc(c.name)}</b><span style="font-size:11px;color:var(--tx-muted)">${c.msgs.at(-1)?.time || ''}</span></div><div style="font-size:13px;color:var(--tx-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.msgs.at(-1)?.text?.slice(0, 50) || '—')}</div></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}
+      </div>
+      <div class="card"><h3 style="font-size:15px;font-weight:600;margin-bottom:16px">إجراءات سريعة</h3>
+        <button class="btn-sm" style="width:100%;margin-bottom:8px;justify-content:center" onclick="App.go('content')"><svg class="icon"><use href="#i-edit"/></svg> منشور جديد</button>
+        <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="App.newConversation()"><svg class="icon"><use href="#i-message"/></svg> محادثة جديدة</button>
+        <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="App.go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</button>
+        <button class="btn-sm s" style="width:100%;justify-content:center" onclick="App.go('analytics')"><svg class="icon"><use href="#i-bar-chart"/></svg> التقارير</button>
+      </div>
+    </div>`;
+  };
 
-window.renderSettings = () => { $('mainContent').innerHTML = `<div class="topbar"><div><h1>الإعدادات</h1><div class="sub">حسابك + AI</div></div></div><div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">الحساب</h3><div class="form-row"><label>البريد</label><input value="${esc(state.user.email)}" disabled></div><div class="form-row"><label>UID</label><input value="${esc(state.user.uid)}" disabled></div></div><div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">الذكاء الاصطناعي</h3><div class="form-row"><label>المزود</label><select id="aiProv" onchange="window.saveAI()"><option value="groq" ${AI_CFG.provider === 'groq' ? 'selected' : ''}>Groq (مجاني)</option><option value="openai" ${AI_CFG.provider === 'openai' ? 'selected' : ''}>OpenAI</option><option value="gemini" ${AI_CFG.provider === 'gemini' ? 'selected' : ''}>Gemini</option></select></div><div class="form-row"><label>API Key</label><input type="password" id="aiKey" value="${esc(AI_CFG.key)}" placeholder="gsk_..."></div><div class="form-row"><label>النموذج</label><input id="aiModel" value="${esc(AI_CFG.model)}"></div><div class="form-actions"><button class="btn-sm s" onclick="window.testAI()">اختبار</button><button class="btn-sm" onclick="window.saveAI()">حفظ</button></div><div style="font-size:12px;color:var(--tx-muted);margin-top:12px">Groq: console.groq.com — النموذج: openai/gpt-oss-120b</div></div><div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">عام</h3><div class="form-row"><label><input type="checkbox" ${localStorage.getItem('theme')==='light'?'checked':''} onchange="window.toggleTheme()"> الوضع الفاتح</label></div><div class="form-row"><label>Google Auth</label><div style="font-size:12px;color:var(--tx-muted)">أضف <b>${location.hostname}</b> في Firebase Console</div></div><div class="form-actions"><button class="btn-sm d" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div></div>`; };
-window.saveAI = () => { AI_CFG.provider = $('aiProv').value; AI_CFG.key = $('aiKey').value.trim(); AI_CFG.model = $('aiModel').value.trim(); localStorage.setItem('ai_provider', AI_CFG.provider); localStorage.setItem('ai_key', AI_CFG.key); localStorage.setItem('ai_model', AI_CFG.model); window.toast('تم الحفظ', 'success'); };
-window.testAI = async () => { window.saveAI(); try { const r = await callAI([{ role: 'user', content: 'قل: تم' }], { maxTokens: 20 }); window.toast('نجح: ' + r, 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
-window.toggleTheme = () => { const isLight = document.documentElement.getAttribute('data-theme') === 'light'; if (isLight) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme', 'dark'); } else { document.documentElement.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); } };
-if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  // ============ INBOX ============
+  ROUTES.inbox = () => {
+    const filtered = state.filter === 'all' ? state.convs : state.convs.filter(c => c.platform === state.filter);
+    return `<div class="topbar"><div><h1>صندوق المحادثات</h1><div class="sub">كل رسائلك في مكان واحد</div></div><div class="actions"><button class="btn-sm" onclick="App.newConversation()"><svg class="icon"><use href="#i-plus"/></svg> محادثة</button></div></div>
+    <div class="inbox">
+      <div class="conv-list">
+        <div class="conv-filters">
+          ${['all','whatsapp','facebook','instagram','telegram'].map(f => `<div class="chip ${state.filter === f ? 'active' : ''}" onclick="App.setFilter('${f}')">${f === 'all' ? 'الكل' : f === 'whatsapp' ? 'واتساب' : f === 'facebook' ? 'فيسبوك' : f === 'instagram' ? 'إنستجرام' : 'تيليجرام'}</div>`).join('')}
+        </div>
+        ${filtered.map(c => `<div class="conv ${state.conv === c.id ? 'active' : ''}" onclick="App.openConv('${c.id}')"><div class="av" style="background:${c.color}">${esc(c.name[0])}</div><div class="info"><div class="top"><b>${esc(c.name)}</b><span class="time">${c.msgs.at(-1)?.time || ''}</span></div><div class="msg">${esc(c.msgs.at(-1)?.text?.slice(0, 40) || '—')}</div>${(c.tags||[]).length ? '<div class="tags">' + c.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('') + '</div>' : ''}</div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات — اضغط "محادثة" للبدء</div></div>'}
+      </div>
+      <div class="chat-area" id="chatArea"><div class="empty" style="flex:1"><svg class="icon-lg"><use href="#i-message"/></svg><div>اختر محادثة</div></div></div>
+    </div>`;
+  };
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeModal(); });
-window.addEventListener('resize', () => { if (window.innerWidth > 800) { $('mobileBar').style.display = 'none'; $('bottomNav').style.display = 'none'; } else if (state.user) { $('mobileBar').style.display = 'flex'; $('bottomNav').style.display = 'flex'; } });
+  function setFilter(f) { state.filter = f; go('inbox'); }
 
-// فحص نهائي
-const requiredFns = ['renderDashboard','renderInbox','renderContent','renderNetwork','renderAutomations','renderScheduler','renderTasks','renderNotifications','renderAnalytics','renderTeam','renderChannels','renderSettings'];
-const missing = requiredFns.filter(fn => typeof window[fn] !== 'function');
-if (missing.length) console.error('❌ دوال مفقودة:', missing);
-else console.log('✅ كل الدوال موجودة - EMAA Social Suite loaded');
+  function openConv(id) {
+    state.conv = id;
+    const c = state.convs.find(x => x.id === id);
+    if (c) { c.unread = 0; persist(); }
+    go('inbox');
+  }
+
+  function renderChat() {
+    const c = state.convs.find(x => x.id === state.conv);
+    if (!c) return;
+    const area = $('chatArea');
+    if (!area) return;
+    const quick = ['أهلاً بيك 🌸', 'شكرًا لتواصلك', 'تمام، ممكن توضح؟'];
+    area.innerHTML = `
+      <div class="chat-header"><div class="av" style="background:${c.color}">${esc(c.name[0])}</div><div class="info"><b>${esc(c.name)}</b><span>${c.platform} · ${(c.tags||[]).join('، ') || 'بدون وسوم'}</span></div><div class="actions">
+        <button onclick="App.suggestReply()" title="اقترح"><svg class="icon"><use href="#i-sparkles"/></svg></button>
+        <button onclick="App.addTag()" title="وسم"><svg class="icon"><use href="#i-tag"/></svg></button>
+        <button onclick="App.delConv()" title="حذف"><svg class="icon"><use href="#i-trash"/></svg></button>
+      </div></div>
+      <div class="chat-messages" id="chatMsgs">${c.msgs.map(m => `<div class="msg-row ${m.dir}">${m.dir === 'in' ? `<div class="av" style="background:${c.color}">${esc(c.name[0])}</div>` : '<div class="av" style="background:var(--ac)">أ</div>'}<div class="bubble">${esc(m.text).replace(/\n/g, '<br>')}${m.ai ? '<span class="ai-tag">AI</span>' : ''}<span class="time">${m.time}</span></div></div>`).join('') || '<div class="empty" style="flex:1"><div>لا رسائل</div></div>'}</div>
+      <div class="chat-input">
+        <div class="quick-replies">${quick.map(q => `<button onclick="App.quickReply('${q.replace(/'/g, "\\'")}')">${esc(q)}</button>`).join('')}</div>
+        <div class="box"><textarea id="msgInput" placeholder="اكتب ردًا… (Ctrl+Enter)" onkeydown="if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();App.sendMsg()}"></textarea><button class="send" onclick="App.sendMsg()"><svg class="icon"><use href="#i-send"/></svg></button></div>
+        <div class="tools"><button onclick="App.suggestReply()"><svg class="icon"><use href="#i-sparkles"/></svg> اقترح رد</button><button onclick="App.addTag()"><svg class="icon"><use href="#i-tag"/></svg> وسم</button></div>
+      </div>`;
+    const msgs = $('chatMsgs');
+    if (msgs) msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function sendMsg() {
+    const inp = $('msgInput');
+    if (!inp) return;
+    const txt = inp.value.trim();
+    if (!txt) return;
+    const c = state.convs.find(x => x.id === state.conv);
+    if (!c) return;
+    c.msgs.push({ dir: 'out', text: txt, time: fmtTime(now()) });
+    persist();
+    inp.value = '';
+    renderChat();
+    toast('تم الإرسال', 'success');
+  }
+
+  function quickReply(txt) {
+    const inp = $('msgInput');
+    if (inp) { inp.value = txt; inp.focus(); }
+  }
+
+  async function suggestReply() {
+    const c = state.convs.find(x => x.id === state.conv);
+    if (!c) return;
+    const inp = $('msgInput');
+    if (!inp) return;
+    inp.value = 'جاري التفكير...';
+    if (!state.ai.key) {
+      await sleep(400);
+      inp.value = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
+      toast('رد جاهز (بدون AI)', 'info');
+      return;
+    }
+    try {
+      const convo = c.msgs.slice(-8).map(m => (m.dir === 'in' ? 'العميل: ' : 'أنا: ') + m.text).join('\n');
+      const reply = await callAI([
+        { role: 'system', content: 'أنت وكيل خدمة عملاء محترف. اكتب ردًا قصيرًا وودّيًا بالعربية.' },
+        { role: 'user', content: `اسم العميل: ${c.name}\n\nالمحادثة:\n${convo}` }
+      ], { temperature: 0.8, maxTokens: 300 });
+      inp.value = reply;
+    } catch (e) {
+      inp.value = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
+      toast('AI غير متاح — استُخدم رد جاهز', 'info');
+    }
+  }
+
+  function addTag() {
+    const c = state.convs.find(x => x.id === state.conv);
+    if (!c) return;
+    const tag = prompt('اسم الوسم:');
+    if (!tag) return;
+    c.tags = [...(c.tags || []), tag.trim()];
+    persist();
+    renderChat();
+    toast('تم إضافة الوسم', 'success');
+  }
+
+  function delConv() {
+    if (!confirm('حذف المحادثة؟')) return;
+    state.convs = state.convs.filter(x => x.id !== state.conv);
+    state.conv = null;
+    persist();
+    go('inbox');
+    toast('تم الحذف', 'success');
+  }
+
+  function newConversation() {
+    openModal(`<h3>محادثة جديدة</h3>
+      <div class="form-row"><label>الاسم</label><input id="ncName" placeholder="اسم العميل"></div>
+      <div class="form-row"><label>المنصة</label><select id="ncPlat"><option value="whatsapp">واتساب</option><option value="facebook">فيسبوك</option><option value="instagram">إنستجرام</option><option value="telegram">تيليجرام</option></select></div>
+      <div class="form-row"><label>وسوم (مفصولة بفواصل)</label><input id="ncTags" placeholder="VIP، متابعة"></div>
+      <div class="form-row"><label>رسالة أولية (اختياري)</label><textarea id="ncMsg" placeholder="مرحبًا..."></textarea></div>
+      <div class="form-actions"><button class="btn-sm s" onclick="App.closeModal()">إلغاء</button><button class="btn-sm" onclick="App.doNewConv()">إنشاء</button></div>`);
+  }
+
+  function doNewConv() {
+    const name = $('ncName').value.trim();
+    if (!name) return toast('أدخل الاسم', 'error');
+    const plat = $('ncPlat').value;
+    const colors = { whatsapp: '#25d366', facebook: '#1877f2', instagram: '#e1306c', telegram: '#229ed9' };
+    const tags = $('ncTags').value.split(',').map(t => t.trim()).filter(Boolean);
+    const msg = $('ncMsg').value.trim();
+    const conv = { id: uid(), name, platform: plat, color: colors[plat], tags, unread: 0, msgs: msg ? [{ dir: 'in', text: msg, time: fmtTime(now()) }] : [] };
+    state.convs.unshift(conv);
+    persist();
+    closeModal();
+    state.conv = conv.id;
+    go('inbox');
+    toast('تم إنشاء المحادثة', 'success');
+  }
+
+  // ============ CONTENT ============
+  ROUTES.content = () => {
+    return `<div class="topbar"><div><h1>استوديو المحتوى</h1><div class="sub">أنشئ محتوى احترافي</div></div></div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">مولّد المحتوى</h3>
+      <div class="grid-2">
+        <div class="form-row"><label>الموضوع</label><input id="ctTopic" placeholder="مثال: فوائد القهوة"></div>
+        <div class="form-row"><label>المنصة</label><select id="ctPlatform"><option value="facebook">فيسبوك</option><option value="instagram">إنستجرام</option><option value="twitter">تويتر</option><option value="linkedin">لينكدإن</option><option value="telegram">تيليجرام</option></select></div>
+      </div>
+      <div class="form-row"><label>النبرة</label><select id="ctTone"><option value="professional">احترافي</option><option value="friendly">ودّي</option><option value="funny">فكاهي</option><option value="inspiring">ملهم</option></select></div>
+      <div class="form-row"><label>المحتوى</label><textarea id="ctOut" placeholder="سيظهر هنا…" style="min-height:120px"></textarea></div>
+      <div class="form-row"><label>جدولة (اختياري)</label><input type="datetime-local" id="ctSched"></div>
+      <div class="form-actions"><button class="btn-sm s" onclick="App.genContent(true)">نسخة أخرى</button><button class="btn-sm s" onclick="App.saveContent()">حفظ</button><button class="btn-sm" onclick="App.genContent()">توليد</button></div>
+    </div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">المكتبة</h3><div id="ctList"></div></div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">التقويم</h3><div id="cal"></div></div>`;
+  };
+
+  function renderCal() {
+    const el = $('cal');
+    if (!el) return;
+    const t0 = new Date(); t0.setHours(0, 0, 0, 0);
+    let h = '<div class="cal">';
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(t0.getTime() + i * 864e5);
+      const key = d.toISOString().slice(0, 10);
+      const evs = state.content.filter(c => c.scheduled && c.scheduled.startsWith(key));
+      h += `<div class="d ${key === today() ? 'today' : ''}"><b>${d.toLocaleDateString('ar-EG', { weekday: 'short', day: 'numeric' })}</b>${evs.map(e => `<div class="ev">${esc(e.text.slice(0, 20))}</div>`).join('')}</div>`;
+    }
+    el.innerHTML = h + '</div>';
+    renderContentList();
+  }
+
+  function renderContentList() {
+    const el = $('ctList');
+    if (!el) return;
+    const names = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' };
+    const colors = { facebook: '#1877f2', instagram: '#e1306c', twitter: '#1da1f2', linkedin: '#0077b5', telegram: '#229ed9' };
+    el.innerHTML = state.content.map(c => `<div class="content-card"><div class="head"><span><span class="plat-tag" style="background:${colors[c.platform] || '#6366f1'}">${names[c.platform] || c.platform}</span> ${c.scheduled ? 'مجدول: ' + new Date(c.scheduled).toLocaleString('ar-EG') : 'مسودة'}</span><span>${fmtDate(c.createdAt)}</span></div><div class="body">${esc(c.text)}</div><div class="actions"><button class="btn-sm s" onclick="App.copyContent('${c.id}')">نسخ</button><button class="btn-sm s" onclick="App.delContent('${c.id}')">حذف</button></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-edit"/></svg><div>لا محتوى — ولّد أول منشور</div></div>';
+  }
+
+  async function genContent(again) {
+    const topic = $('ctTopic').value.trim() || 'موضوع عام';
+    const out = $('ctOut');
+    out.value = 'جاري الكتابة...';
+    const plat = $('ctPlatform').value;
+    const tone = $('ctTone').value;
+    if (!state.ai.key) {
+      await sleep(400);
+      out.value = fallbackContent[Math.floor(Math.random() * fallbackContent.length)];
+      toast('محتوى جاهز (بدون AI)', 'info');
+      return;
+    }
+    const platName = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' }[plat];
+    const toneName = { professional: 'احترافي', friendly: 'ودّي', funny: 'فكاهي', inspiring: 'ملهم' }[tone];
+    try {
+      out.value = await callAI([
+        { role: 'system', content: `كاتب محتوى خبير. اكتب منشور ${platName} بنبرة ${toneName}. ${plat === 'twitter' ? 'لا تتجاوز 280 حرفًا.' : ''} أضف هاشتاجات. أعد النص فقط.` },
+        { role: 'user', content: `الموضوع: ${topic}${again ? ' (نسخة جديدة)' : ''}` }
+      ], { temperature: 0.8, maxTokens: 800 });
+    } catch (e) {
+      out.value = fallbackContent[Math.floor(Math.random() * fallbackContent.length)];
+      toast('AI غير متاح — استُخدم محتوى جاهز', 'info');
+    }
+  }
+
+  function saveContent() {
+    const txt = $('ctOut').value.trim();
+    if (!txt) return toast('لا محتوى للحفظ', 'error');
+    state.content.unshift({ id: uid(), text: txt, platform: $('ctPlatform').value, scheduled: $('ctSched').value || null, createdAt: now() });
+    persist();
+    renderCal();
+    toast('تم الحفظ', 'success');
+  }
+
+  function copyContent(id) {
+    const c = state.content.find(x => x.id === id);
+    if (!c) return;
+    navigator.clipboard.writeText(c.text).then(() => toast('تم النسخ', 'success')).catch(() => toast('فشل النسخ', 'error'));
+  }
+
+  function delContent(id) {
+    if (!confirm('حذف؟')) return;
+    state.content = state.content.filter(x => x.id !== id);
+    persist();
+    renderCal();
+    toast('تم الحذف', 'success');
+  }
+
+  // ============ NETWORK ============
+  const NODE_TYPES = {
+    trigger: { label: 'محفز', color: '#3b82f6', icon: '⚡', kinds: { msg: 'رسالة واردة', schedule: 'جدولة', manual: 'يدوي' }, defaults: { msg: '', schedule: '09:00', manual: '' } },
+    action: { label: 'إجراء', color: '#10b981', icon: '⚙️', kinds: { reply: 'رد تلقائي', tag: 'إضافة وسم', ai: 'رد AI', save: 'حفظ' }, defaults: { reply: 'شكرًا لتواصلك!', tag: 'متابعة', ai: 'اكتب ردًا وديًا', save: '' } },
+    condition: { label: 'شرط', color: '#f59e0b', icon: '🔀', kinds: { keyword: 'كلمة مفتاحية', platform: 'المنصة' }, defaults: { keyword: 'سعر,بكم', platform: 'whatsapp' } },
+    delay: { label: 'تأخير', color: '#06b6d4', icon: '⏱', kinds: { wait: 'انتظار (ثوان)' }, defaults: { wait: '5' } },
+    notify: { label: 'إشعار', color: '#db2777', icon: '🔔', kinds: { toast: 'إشعار داخلي', browser: 'إشعار متصفح' }, defaults: { toast: 'تنبيه', browser: 'رسالة جديدة' } }
+  };
+
+  ROUTES.network = () => {
+    return `<div class="topbar"><div><h1>شبكة الأعمال</h1><div class="sub">اربط المحفزات بالإجراءات</div></div><div class="actions">
+      <button class="btn-sm s" onclick="App.netAddNode()"><svg class="icon"><use href="#i-plus"/></svg> عقدة</button>
+      <button class="btn-sm s" onclick="App.netRunAll()"><svg class="icon"><use href="#i-play"/></svg> تشغيل</button>
+      <button class="btn-sm s" onclick="App.netExport()"><svg class="icon"><use href="#i-download"/></svg> تصدير</button>
+      <button class="btn-sm s" onclick="App.netClear()">مسح</button>
+    </div></div>
+    <div class="net-toolbar">
+      <select id="netType">
+        ${Object.entries(NODE_TYPES).map(([t, cfg]) => `<optgroup label="${cfg.label}">${Object.entries(cfg.kinds).map(([k, v]) => `<option value="${t}:${k}">${v}</option>`).join('')}</optgroup>`).join('')}
+      </select>
+      <button class="btn-sm" onclick="App.netAddNode()">إضافة</button>
+      <button class="btn-sm s" onclick="App.netZoom(0.85)">−</button>
+      <button class="btn-sm s" onclick="App.netZoom(1.18)">+</button>
+      <button class="btn-sm s" onclick="App.netReset()">↺</button>
+    </div>
+    <div class="net-canvas"><svg id="netSvg" viewBox="0 0 1200 675"><defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--tx-muted)"/></marker></defs><g id="netEdges"></g><g id="netNodes"></g></svg></div>
+    <div class="net-inspector" id="netInspector"><div style="color:var(--tx-muted);font-size:13px;text-align:center;padding:12px">اختر عقدة لتعديلها</div></div>
+    <div class="card" style="margin-top:16px"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">الإحصائيات</h3><div class="net-stats"><div class="net-stat"><div class="v" id="netStatNodes">${state.netNodes.length}</div><div class="l">عقدة</div></div><div class="net-stat"><div class="v" id="netStatEdges">${state.netEdges.length}</div><div class="l">اتصال</div></div></div><div id="netLog" style="max-height:200px;overflow-y:auto;font-size:13px"></div></div>`;
+  };
+
+  function initNetwork() {
+    const svg = $('netSvg');
+    if (!svg) return;
+    svg.onpointerdown = (e) => {
+      const port = e.target.closest('[data-port]');
+      const node = e.target.closest('[data-node]');
+      if (port) { state.netLink = { from: port.dataset.port, to: netPt(e), isTrue: port.dataset.isTrue === '1' }; e.preventDefault(); return; }
+      if (node) {
+        const n = state.netNodes.find(x => x.id === node.dataset.node);
+        if (!n) return;
+        const p = netPt(e);
+        state.netDrag = { n, dx: p.x - n.x, dy: p.y - n.y };
+        state.netSel = n.id;
+      } else {
+        state.netSel = null;
+        state.netPan = { x: e.clientX, y: e.clientY, vx: state.netView.x, vy: state.netView.y };
+      }
+      netDraw();
+      netInspector();
+    };
+    svg.onpointermove = (e) => {
+      if (state.netPan) {
+        const k = state.netView.w / (svg.clientWidth || 1);
+        state.netView.x = state.netPan.vx - (e.clientX - state.netPan.x) * k;
+        state.netView.y = state.netPan.vy - (e.clientY - state.netPan.y) * k;
+        svg.setAttribute('viewBox', `${state.netView.x} ${state.netView.y} ${state.netView.w} ${state.netView.h}`);
+        return;
+      }
+      if (state.netDrag) {
+        const p = netPt(e);
+        state.netDrag.n.x = Math.max(0, Math.min(1000, p.x - state.netDrag.dx));
+        state.netDrag.n.y = Math.max(0, Math.min(600, p.y - state.netDrag.dy));
+        netDraw();
+      } else if (state.netLink) {
+        state.netLink.to = netPt(e);
+        netDraw();
+      }
+    };
+    svg.onpointerup = (e) => {
+      if (state.netLink) {
+        const t = document.elementFromPoint(e.clientX, e.clientY);
+        const target = t?.closest?.('[data-node]');
+        if (target) {
+          const toId = target.dataset.node;
+          const toNode = state.netNodes.find(n => n.id === toId);
+          if (toNode && toNode.type !== 'trigger' && !state.netEdges.some(x => x.from === state.netLink.from && x.to === toId)) {
+            state.netEdges.push({ from: state.netLink.from, to: toId, isTrue: state.netLink.isTrue || false });
+            persist();
+          }
+        }
+        state.netLink = null;
+        netDraw();
+      }
+      if (state.netDrag) { state.netDrag = null; persist(); }
+      state.netPan = null;
+    };
+    svg.ondblclick = (e) => {
+      const ed = e.target.closest('[data-edge]');
+      if (ed) { state.netEdges.splice(+ed.dataset.edge, 1); netDraw(); persist(); }
+    };
+    svg.onwheel = (e) => { e.preventDefault(); netZoom(e.deltaY < 0 ? 0.85 : 1.18); };
+    netDraw();
+    netInspector();
+  }
+
+  function netPt(e) {
+    const svg = $('netSvg');
+    if (!svg) return { x: 0, y: 0 };
+    const p = svg.createSVGPoint();
+    p.x = e.clientX; p.y = e.clientY;
+    return p.matrixTransform(svg.getScreenCTM().inverse());
+  }
+
+  function netPath(a, b) {
+    const ax = a.x + 200, ay = a.y + 30, bx = b.x, by = b.y + 30;
+    const dx = Math.max(40, Math.abs(bx - ax) / 2);
+    return `M${ax},${ay} C${ax + dx},${ay} ${bx - dx},${by} ${bx},${by}`;
+  }
+
+  function netDraw() {
+    const eg = $('netEdges'), ng = $('netNodes');
+    if (!eg) return;
+    eg.innerHTML = ''; ng.innerHTML = '';
+    state.netEdges.forEach((e, i) => {
+      const a = state.netNodes.find(n => n.id === e.from);
+      const b = state.netNodes.find(n => n.id === e.to);
+      if (!a || !b) return;
+      const path = netPath(a, b);
+      const cls = a.type === 'condition' ? (e.isTrue ? 'true' : 'false') : '';
+      eg.innerHTML += `<path class="net-edge ${cls}" d="${path}" marker-end="url(#arrow)"/><path data-edge="${i}" d="${path}" stroke="transparent" stroke-width="16" fill="none" style="cursor:pointer"><title>دبل كليك للحذف</title></path>`;
+    });
+    if (state.netLink) {
+      const a = state.netNodes.find(n => n.id === state.netLink.from);
+      if (a) eg.innerHTML += `<path class="net-edge" d="M${a.x + 200},${a.y + 30} Q${(a.x + 200 + state.netLink.to.x) / 2},${(a.y + 30 + state.netLink.to.y) / 2} ${state.netLink.to.x},${state.netLink.to.y}" style="opacity:.5"/>`;
+    }
+    state.netNodes.forEach(n => {
+      const cfg = NODE_TYPES[n.type];
+      const cls = [state.netSel === n.id ? 'sel' : '', n._active ? 'active' : '', n._success ? 'success' : '', n._fail ? 'fail' : ''].join(' ');
+      const inPort = n.type !== 'trigger' ? `<circle class="net-port" data-port="${n.id}" cx="0" cy="30" r="7"/>` : '';
+      const outPort = `<circle class="net-port" data-port="${n.id}" cx="200" cy="30" r="7"/>`;
+      const condPorts = n.type === 'condition' ? `<circle class="net-port" data-port="${n.id}" data-is-true="1" cx="200" cy="18" r="7" style="stroke:var(--ok)"/><circle class="net-port" data-port="${n.id}" data-is-true="0" cx="200" cy="42" r="7" style="stroke:var(--bad)"/>` : '';
+      ng.innerHTML += `<g class="net-node ${cls}" data-node="${n.id}" transform="translate(${n.x},${n.y})"><rect width="200" height="60" rx="8" stroke="${cfg.color}"/><circle cx="180" cy="14" r="6" fill="${cfg.color}"/><text x="100" y="24" text-anchor="middle" font-weight="600">${cfg.icon} ${cfg.label} · ${cfg.kinds[n.kind] || n.kind}</text><text class="sub" x="100" y="44" text-anchor="middle">${esc((n.value || '').toString().slice(0, 26) || '—')}</text>${inPort}${outPort}${condPorts}</g>`;
+    });
+    if ($('netStatNodes')) $('netStatNodes').textContent = state.netNodes.length;
+    if ($('netStatEdges')) $('netStatEdges').textContent = state.netEdges.length;
+  }
+
+  function netInspector() {
+    const b = $('netInspector');
+    if (!b) return;
+    const n = state.netNodes.find(x => x.id === state.netSel);
+    if (!n) { b.innerHTML = '<div style="color:var(--tx-muted);font-size:13px;text-align:center;padding:12px">اختر عقدة لتعديلها</div>'; return; }
+    const cfg = NODE_TYPES[n.type];
+    b.innerHTML = `<div class="row"><b style="color:${cfg.color};font-size:14px;display:flex;align-items:center;gap:6px">${cfg.icon} ${cfg.label}</b>
+      <select onchange="App.netChangeKind(this.value)">${Object.entries(cfg.kinds).map(([k, v]) => `<option value="${k}" ${k === n.kind ? 'selected' : ''}>${v}</option>`).join('')}</select>
+      <button class="btn-sm" onclick="App.netRunNode('${n.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-play"/></svg> تشغيل</button>
+      <button class="btn-sm s" onclick="App.netDeleteNode()"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>
+      <div class="row"><input type="text" value="${esc(n.value)}" oninput="App.netUpdateVal(this.value)" placeholder="القيمة"></div>`;
+  }
+
+  function netAddNode() {
+    const [type, kind] = $('netType').value.split(':');
+    const id = 'n' + (++state.netUid);
+    const cfg = NODE_TYPES[type];
+    const count = state.netNodes.filter(n => n.type === type).length;
+    state.netNodes.push({ id, type, kind, value: cfg.defaults[kind] || '', x: 40 + (count % 4) * 260, y: 40 + Math.floor(count / 4) * 140 });
+    state.netSel = id;
+    persist(); netDraw(); netInspector();
+  }
+
+  function netUpdateVal(v) {
+    const n = state.netNodes.find(x => x.id === state.netSel);
+    if (n) { n.value = v; persist(); netDraw(); }
+  }
+
+  function netChangeKind(k) {
+    const n = state.netNodes.find(x => x.id === state.netSel);
+    if (!n) return;
+    n.kind = k;
+    n.value = NODE_TYPES[n.type].defaults[k] || '';
+    persist(); netDraw(); netInspector();
+  }
+
+  function netDeleteNode() {
+    if (!state.netSel) return;
+    state.netNodes = state.netNodes.filter(n => n.id !== state.netSel);
+    state.netEdges = state.netEdges.filter(e => e.from !== state.netSel && e.to !== state.netSel);
+    state.netSel = null;
+    persist(); netDraw(); netInspector();
+  }
+
+  function netZoom(k) {
+    const v = state.netView;
+    const w = Math.max(400, Math.min(2400, v.w * k));
+    const r = w / v.w;
+    v.x = v.x + v.w / 2 - (v.w / 2) * r;
+    v.y = v.y + v.h / 2 - (v.h / 2) * r;
+    v.w = w; v.h = w * 675 / 1200;
+    $('netSvg').setAttribute('viewBox', `${v.x} ${v.y} ${v.w} ${v.h}`);
+  }
+
+  function netReset() { state.netView = { x: 0, y: 0, w: 1200, h: 675 }; $('netSvg').setAttribute('viewBox', '0 0 1200 675'); }
+  function netClear() { if (!confirm('مسح الشبكة؟')) return; state.netNodes = []; state.netEdges = []; state.netSel = null; persist(); netDraw(); netInspector(); }
+
+  function netExport() {
+    const blob = new Blob([JSON.stringify({ nodes: state.netNodes, edges: state.netEdges }, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'workflow-' + today() + '.json';
+    a.click();
+    toast('تم التصدير', 'success');
+  }
+
+  async function netRunAll() {
+    const triggers = state.netNodes.filter(n => n.type === 'trigger');
+    if (!triggers.length) return toast('أضف محفزًا أولًا', 'error');
+    for (const t of triggers) await netRunNode(t.id);
+  }
+
+  async function netRunNode(id, path = new Set()) {
+    const n = state.netNodes.find(x => x.id === id);
+    if (!n) return;
+    if (path.has(id)) { netLog('⚠️ حلقة مكتشفة'); return; }
+    path.add(id);
+    n._active = true; netDraw();
+    await sleep(300);
+    let ok = true;
+    try {
+      if (n.type === 'action') {
+        if (n.kind === 'ai' && state.ai.key) {
+          try { await callAI([{ role: 'user', content: n.value }], { maxTokens: 80 }); } catch (e) { ok = false; }
+        } else if (n.kind === 'reply') {
+          const c = state.convs[0];
+          if (c) { c.msgs.push({ dir: 'out', text: n.value, time: fmtTime(now()), ai: true }); persist(); }
+        } else if (n.kind === 'tag') {
+          const c = state.convs[0];
+          if (c) { c.tags = [...(c.tags || []), n.value]; persist(); }
+        }
+      } else if (n.type === 'notify') {
+        toast(n.value, 'info');
+        state.notifications.unshift({ id: uid(), title: 'تنبيه', body: n.value, read: false, createdAt: now() });
+        persist();
+      } else if (n.type === 'delay') {
+        await sleep(Math.min(5, +n.value || 1) * 1000);
+      }
+    } catch (e) { ok = false; netLog('❌ ' + e.message); }
+    n._active = false;
+    if (ok) { n._success = true; setTimeout(() => { n._success = false; netDraw(); }, 1000); }
+    else { n._fail = true; setTimeout(() => { n._fail = false; netDraw(); }, 1000); }
+    netLog(`${ok ? '✅' : '❌'} ${NODE_TYPES[n.type].kinds[n.kind]} (${n.value})`);
+    netDraw();
+    const out = state.netEdges.filter(e => e.from === id && (n.type !== 'condition' || e.isTrue === ok));
+    for (const e of out) { await sleep(400); await netRunNode(e.to, new Set(path)); }
+  }
+
+  function netLog(msg) {
+    const el = $('netLog');
+    if (!el) return;
+    const time = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    el.innerHTML = `<div style="padding:6px 0;border-bottom:1px solid var(--bd)"><span style="color:var(--tx-muted)">${time}</span> ${esc(msg)}</div>` + el.innerHTML;
+  }
+
+  // ============ AUTOMATIONS ============
+  ROUTES.automations = () => {
+    return `<div class="topbar"><div><h1>الأتمتة</h1><div class="sub">قواعد تعمل بدلًا عنك</div></div><div class="actions"><button class="btn-sm" onclick="App.addAutomation()"><svg class="icon"><use href="#i-plus"/></svg> أتمتة</button></div></div>
+    <div class="grid-2">${state.automations.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:12px;align-items:center"><b style="font-size:14px">${esc(a.name)}</b><span class="chip ${a.on ? 'active' : ''}" style="cursor:pointer;font-size:11px" onclick="App.toggleAuto('${a.id}')">${a.on ? 'مفعّل' : 'متوقف'}</span></div><div style="font-size:13px;color:var(--tx-muted);margin-bottom:16px">${esc(a.desc || '')}</div><button class="btn-sm s" onclick="App.delAuto('${a.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-zap"/></svg><div>لا أتمتات</div></div>'}</div>`;
+  };
+
+  function toggleAuto(id) {
+    const a = state.automations.find(x => x.id === id);
+    if (a) { a.on = !a.on; persist(); go('automations'); }
+  }
+
+  function delAuto(id) {
+    if (!confirm('حذف؟')) return;
+    state.automations = state.automations.filter(x => x.id !== id);
+    persist(); go('automations');
+  }
+
+  function addAutomation() {
+    openModal(`<h3>أتمتة جديدة</h3><div class="form-row"><label>الاسم</label><input id="anName"></div><div class="form-row"><label>الوصف</label><textarea id="anDesc"></textarea></div><div class="form-actions"><button class="btn-sm s" onclick="App.closeModal()">إلغاء</button><button class="btn-sm" onclick="App.doAddAuto()">إضافة</button></div>`);
+  }
+
+  function doAddAuto() {
+    const name = $('anName').value.trim();
+    if (!name) return toast('أدخل اسمًا', 'error');
+    state.automations.push({ id: uid(), name, desc: $('anDesc').value.trim(), on: true, createdAt: now() });
+    persist(); closeModal(); go('automations');
+    toast('تمت الإضافة', 'success');
+  }
+
+  // ============ SCHEDULER ============
+  ROUTES.scheduler = () => {
+    return `<div class="topbar"><div><h1>الجدولة</h1><div class="sub">جدولة المهام والمنشورات</div></div><div class="actions"><button class="btn-sm" onclick="App.addSchedule()"><svg class="icon"><use href="#i-plus"/></svg> جدولة</button></div></div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">المجدول</h3>
+    ${state.schedules.length ? state.schedules.map(s => `<div class="schedule-item"><span class="when">${s.when}</span><span style="flex:1">${esc(s.title)}</span><span class="chip">${s.type}</span><button class="btn-sm s" onclick="App.delSchedule('${s.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-clock"/></svg><div>لا مجدولات</div></div>'}</div>`;
+  };
+
+  function addSchedule() {
+    openModal(`<h3>جدولة جديدة</h3><div class="form-row"><label>العنوان</label><input id="scTitle"></div><div class="form-row"><label>الموعد</label><input type="datetime-local" id="scWhen"></div><div class="form-row"><label>النوع</label><select id="scType"><option value="منشور">منشور</option><option value="مهمة">مهمة</option><option value="تذكير">تذكير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="App.closeModal()">إلغاء</button><button class="btn-sm" onclick="App.doAddSchedule()">إضافة</button></div>`);
+  }
+
+  function doAddSchedule() {
+    const title = $('scTitle').value.trim(), when = $('scWhen').value;
+    if (!title || !when) return toast('أكمل البيانات', 'error');
+    state.schedules.push({ id: uid(), title, when, type: $('scType').value, createdAt: now() });
+    persist(); closeModal(); go('scheduler');
+    toast('تمت الإضافة', 'success');
+  }
+
+  function delSchedule(id) {
+    if (!confirm('حذف؟')) return;
+    state.schedules = state.schedules.filter(x => x.id !== id);
+    persist(); go('scheduler');
+  }
+
+  // ============ TASKS ============
+  const COLS = [{ id: 'todo', n: 'للتنفيذ' }, { id: 'doing', n: 'قيد التنفيذ' }, { id: 'done', n: 'منجز' }];
+
+  ROUTES.tasks = () => {
+    return `<div class="topbar"><div><h1>المهام</h1><div class="sub">نظّم فريقك</div></div><div class="actions"><button class="btn-sm" onclick="App.addTask()"><svg class="icon"><use href="#i-plus"/></svg> مهمة</button></div></div><div class="kanban" id="kanban"></div>`;
+  };
+
+  function renderKanban() {
+    const el = $('kanban');
+    if (!el) return;
+    el.innerHTML = COLS.map(col => `<div class="col" ondragover="event.preventDefault()" ondrop="App.dropTask(event,'${col.id}')"><h4>${col.n} <span style="color:var(--tx-muted);font-size:12px">${state.tasks.filter(t => t.status === col.id).length}</span></h4>${state.tasks.filter(t => t.status === col.id).map(taskCard).join('')}</div>`).join('');
+  }
+
+  function taskCard(t) {
+    return `<div class="task" draggable="true" ondragstart="event.dataTransfer.setData('id','${t.id}')" ondblclick="App.toggleTask('${t.id}')"><div class="t">${esc(t.title)}</div><div class="m"><span class="pri-${t.pri}">${t.pri === 'h' ? 'عاجل' : t.pri === 'm' ? 'متوسط' : 'عادي'}</span><span>${t.date || '—'}</span><span onclick="App.delTask('${t.id}');event.stopPropagation()" style="cursor:pointer;color:var(--bad)"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></span></div></div>`;
+  }
+
+  function addTask() {
+    openModal(`<h3>مهمة جديدة</h3><div class="form-row"><label>العنوان</label><input id="tkTitle"></div><div class="form-row"><label>التاريخ</label><input type="date" id="tkDate" value="${today()}"></div><div class="form-row"><label>الأولوية</label><select id="tkPri"><option value="l">منخفضة</option><option value="m" selected>متوسطة</option><option value="h">عالية</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="App.closeModal()">إلغاء</button><button class="btn-sm" onclick="App.doAddTask()">إضافة</button></div>`);
+  }
+
+  function doAddTask() {
+    const title = $('tkTitle').value.trim();
+    if (!title) return toast('أدخل عنوانًا', 'error');
+    state.tasks.push({ id: uid(), title, date: $('tkDate').value || today(), pri: $('tkPri').value, status: 'todo', createdAt: now() });
+    persist(); closeModal(); go('tasks');
+    toast('تمت الإضافة', 'success');
+  }
+
+  function dropTask(e, col) {
+    e.preventDefault();
+    const id = e.dataTransfer.getData('id');
+    if (!id) return;
+    const t = state.tasks.find(x => x.id === id);
+    if (t) { t.status = col; persist(); renderKanban(); }
+  }
+
+  function toggleTask(id) {
+    const t = state.tasks.find(x => x.id === id);
+    if (t) { t.status = t.status === 'done' ? 'todo' : 'done'; persist(); renderKanban(); }
+  }
+
+  function delTask(id) {
+    state.tasks = state.tasks.filter(x => x.id !== id);
+    persist(); renderKanban();
+  }
+
+  // ============ NOTIFICATIONS ============
+  ROUTES.notifications = () => {
+    return `<div class="topbar"><div><h1>الإشعارات</h1><div class="sub">آخر التنبيهات</div></div><div class="actions"><button class="btn-sm s" onclick="App.markAllRead()">تحديد الكل كمقروء</button></div></div>
+    <div class="card">${state.notifications.length ? state.notifications.map(n => `<div class="notif-item ${n.read ? '' : 'unread'}"><svg class="icon ico"><use href="#i-bell"/></svg><div class="txt"><b>${esc(n.title || '')}</b><br><span style="color:var(--tx-muted);font-size:12px">${esc(n.body || '')}</span></div><span class="time">${fmtTime(n.createdAt)}</span></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-bell"/></svg><div>لا إشعارات</div></div>'}</div>`;
+  };
+
+  function markAllRead() {
+    state.notifications.forEach(n => n.read = true);
+    persist(); go('notifications');
+  }
+
+  // ============ ANALYTICS ============
+  ROUTES.analytics = () => {
+    return `<div class="topbar"><div><h1>التقارير</h1><div class="sub">أداء أعمالك</div></div><div class="actions"><button class="btn-sm s" onclick="App.exportCSV()"><svg class="icon"><use href="#i-download"/></svg> تصدير CSV</button></div></div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="label">محادثات</div><div class="val">${state.convs.length}</div></div>
+      <div class="kpi"><div class="label">محتوى</div><div class="val">${state.content.length}</div></div>
+      <div class="kpi"><div class="label">مهام منجزة</div><div class="val">${state.tasks.filter(t => t.status === 'done').length}/${state.tasks.length}</div></div>
+      <div class="kpi"><div class="label">أتمتات</div><div class="val">${state.automations.filter(a => a.on).length}</div></div>
+    </div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">توزيع المحادثات</h3><div id="chart1" class="chart"></div></div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">المهام</h3><div id="chart2" class="chart"></div></div>`;
+  };
+
+  function renderCharts() {
+    const c1 = $('chart1');
+    if (c1) {
+      const counts = { whatsapp: 0, facebook: 0, instagram: 0, telegram: 0 };
+      state.convs.forEach(c => counts[c.platform] = (counts[c.platform] || 0) + 1);
+      const colors = { whatsapp: '#25d366', facebook: '#1877f2', instagram: '#e1306c', telegram: '#229ed9' };
+      const names = { whatsapp: 'واتساب', facebook: 'فيسبوك', instagram: 'إنستجرام', telegram: 'تيليجرام' };
+      const max = Math.max(1, ...Object.values(counts));
+      c1.innerHTML = `<div style="display:flex;align-items:flex-end;gap:20px;height:100%;padding:20px;justify-content:space-around">${Object.keys(counts).map(k => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;max-width:60px;height:${counts[k] / max * 140 + 10}px;background:${colors[k]};border-radius:4px 4px 0 0"></div><span style="font-size:12px;color:var(--tx-muted);font-weight:500">${names[k]}</span><b style="font-size:14px">${counts[k]}</b></div>`).join('')}</div>`;
+    }
+    const c2 = $('chart2');
+    if (c2) {
+      const counts = { todo: 0, doing: 0, done: 0 };
+      state.tasks.forEach(t => counts[t.status] = (counts[t.status] || 0) + 1);
+      const colors = { todo: '#94a3b8', doing: '#f59e0b', done: '#10b981' };
+      const names = { todo: 'للتنفيذ', doing: 'قيد التنفيذ', done: 'منجز' };
+      const max = Math.max(1, ...Object.values(counts));
+      c2.innerHTML = `<div style="display:flex;align-items:flex-end;gap:20px;height:100%;padding:20px;justify-content:space-around">${Object.keys(counts).map(k => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;max-width:60px;height:${counts[k] / max * 140 + 10}px;background:${colors[k]};border-radius:4px 4px 0 0"></div><span style="font-size:12px;color:var(--tx-muted);font-weight:500">${names[k]}</span><b style="font-size:14px">${counts[k]}</b></div>`).join('')}</div>`;
+    }
+  }
+
+  function exportCSV() {
+    const rows = [['النوع', 'الاسم/العنوان', 'التفاصيل', 'التاريخ']];
+    state.convs.forEach(c => rows.push(['محادثة', c.name, c.platform, fmtDate(c.msgs[0] ? now() : now())]));
+    state.content.forEach(c => rows.push(['محتوى', c.text.slice(0, 50), c.platform, fmtDate(c.createdAt)]));
+    state.tasks.forEach(t => rows.push(['مهمة', t.title, t.status, t.date]));
+    const csv = '\uFEFF' + rows.map(r => r.map(x => `"${String(x).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'emaa-export-' + today() + '.csv';
+    a.click();
+    toast('تم التصدير', 'success');
+  }
+
+  // ============ TEAM ============
+  ROUTES.team = () => {
+    return `<div class="topbar"><div><h1>الفريق</h1><div class="sub">إدارة الأعضاء</div></div><div class="actions"><button class="btn-sm" onclick="App.addMember()"><svg class="icon"><use href="#i-plus"/></svg> دعوة</button></div></div>
+    <div class="card">${state.team.length ? state.team.map(m => `<div class="team-card"><div class="av">${esc((m.name||'م')[0])}</div><div class="info"><b>${esc(m.name)}</b><span>${esc(m.email || '—')} · ${esc(m.role || 'عضو')}</span></div><button class="btn-sm s" onclick="App.delMember('${m.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-users"/></svg><div>لا أعضاء</div></div>'}</div>`;
+  };
+
+  function addMember() {
+    openModal(`<h3>دعوة عضو</h3><div class="form-row"><label>الاسم</label><input id="mName"></div><div class="form-row"><label>البريد</label><input type="email" id="mEmail"></div><div class="form-row"><label>الدور</label><select id="mRole"><option value="محرر">محرر</option><option value="وكيل دعم">وكيل</option><option value="مدير">مدير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="App.closeModal()">إلغاء</button><button class="btn-sm" onclick="App.doAddMember()">إضافة</button></div>`);
+  }
+
+  function doAddMember() {
+    const n = $('mName').value.trim();
+    if (!n) return toast('أدخل الاسم', 'error');
+    state.team.push({ id: uid(), name: n, email: $('mEmail').value.trim(), role: $('mRole').value, createdAt: now() });
+    persist(); closeModal(); go('team');
+    toast('تمت الإضافة', 'success');
+  }
+
+  function delMember(id) {
+    if (!confirm('حذف؟')) return;
+    state.team = state.team.filter(x => x.id !== id);
+    persist(); go('team');
+  }
+
+  // ============ CHANNELS ============
+  ROUTES.channels = () => {
+    const channels = [
+      { k: 'whatsapp', n: 'واتساب', i: 'W', c: '#25d366' },
+      { k: 'facebook', n: 'فيسبوك', i: 'F', c: '#1877f2' },
+      { k: 'instagram', n: 'إنستجرام', i: 'I', c: '#e1306c' },
+      { k: 'telegram', n: 'تيليجرام', i: 'T', c: '#229ed9' }
+    ];
+    const connected = new Set(state.channels.filter(c => c.connected).map(c => c.platform));
+    return `<div class="topbar"><div><h1>القنوات</h1><div class="sub">اربط حساباتك (محليًا للعرض)</div></div></div>
+    <div class="grid-3">${channels.map(d => `<div class="channel-card"><div class="icon" style="background:${d.c}">${d.i}</div><b>${d.n}</b><span class="chip ${connected.has(d.k) ? 'active' : ''}" style="margin:8px 0;display:inline-block">${connected.has(d.k) ? 'متصل' : 'غير متصل'}</span><div style="margin-top:16px"><button class="btn-sm" onclick="App.toggleChannel('${d.k}')">${connected.has(d.k) ? 'فصل' : 'اتصال'}</button></div></div>`).join('')}</div>`;
+  };
+
+  function toggleChannel(platform) {
+    const existing = state.channels.find(c => c.platform === platform);
+    if (existing) { existing.connected = !existing.connected; }
+    else { state.channels.push({ id: uid(), platform, connected: true }); }
+    persist(); go('channels');
+    toast('تم التحديث', 'success');
+  }
+
+  // ============ SETTINGS ============
+  ROUTES.settings = () => {
+    return `<div class="topbar"><div><h1>الإعدادات</h1><div class="sub">حسابك + AI</div></div></div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">الحساب</h3>
+      <div class="form-row"><label>الاسم</label><input value="${esc(state.user.name)}" disabled></div>
+      <div class="form-row"><label>البريد</label><input value="${esc(state.user.email)}" disabled></div>
+      <div class="form-row"><label>المعرف</label><input value="${esc(state.user.id)}" disabled></div>
+    </div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">الذكاء الاصطناعي (اختياري)</h3>
+      <div style="font-size:12px;color:var(--tx-muted);margin-bottom:16px">اتركه فارغًا لاستخدام الردود الجاهزة المحلية</div>
+      <div class="form-row"><label>المزود</label><select id="aiProv"><option value="groq" ${state.ai.provider === 'groq' ? 'selected' : ''}>Groq (مجاني)</option><option value="openai" ${state.ai.provider === 'openai' ? 'selected' : ''}>OpenAI</option><option value="gemini" ${state.ai.provider === 'gemini' ? 'selected' : ''}>Gemini</option></select></div>
+      <div class="form-row"><label>API Key</label><input type="password" id="aiKey" value="${esc(state.ai.key)}" placeholder="gsk_..."></div>
+      <div class="form-row"><label>النموذج</label><input id="aiModel" value="${esc(state.ai.model)}"></div>
+      <div class="form-actions"><button class="btn-sm s" onclick="App.testAI()">اختبار</button><button class="btn-sm" onclick="App.saveAI()">حفظ</button></div>
+      <div style="font-size:12px;color:var(--tx-muted);margin-top:12px">Groq: console.groq.com — النموذج: openai/gpt-oss-120b</div>
+    </div>
+    <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">عام</h3>
+      <div class="form-row"><label><input type="checkbox" ${localStorage.getItem('emaa_theme')==='light'?'checked':''} onchange="App.toggleTheme()"> الوضع الفاتح</label></div>
+      <div class="form-row"><label>تصدير البيانات</label><button class="btn-sm s" onclick="App.exportAll()"><svg class="icon"><use href="#i-download"/></svg> تنزيل JSON</button></div>
+      <div class="form-row"><label>حذف كل البيانات</label><button class="btn-sm d" onclick="App.wipeAll()"><svg class="icon"><use href="#i-trash"/></svg> مسح كامل</button></div>
+      <div class="form-actions"><button class="btn-sm d" onclick="App.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div>
+    </div>`;
+  };
+
+  function saveAI() {
+    state.ai.provider = $('aiProv').value;
+    state.ai.key = $('aiKey').value.trim();
+    state.ai.model = $('aiModel').value.trim();
+    persist();
+    toast('تم الحفظ', 'success');
+  }
+
+  async function testAI() {
+    saveAI();
+    if (!state.ai.key) return toast('أدخل مفتاح أولًا', 'error');
+    try {
+      const r = await callAI([{ role: 'user', content: 'قل: تم' }], { maxTokens: 20 });
+      toast('نجح: ' + r, 'success');
+    } catch (e) { toast('فشل: ' + e.message, 'error'); }
+  }
+
+  function toggleTheme() {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('emaa_theme', 'dark'); }
+    else { document.documentElement.setAttribute('data-theme', 'light'); localStorage.setItem('emaa_theme', 'light'); }
+  }
+
+  function exportAll() {
+    const data = {
+      convs: state.convs, content: state.content, tasks: state.tasks,
+      automations: state.automations, team: state.team, notifications: state.notifications,
+      schedules: state.schedules, channels: state.channels,
+      network: { nodes: state.netNodes, edges: state.netEdges },
+      ai: { provider: state.ai.provider, model: state.ai.model },
+      user: state.user
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'emaa-backup-' + today() + '.json';
+    a.click();
+    toast('تم التصدير', 'success');
+  }
+
+  function wipeAll() {
+    if (!confirm('سيتم حذف كل البيانات نهائيًا. متأكد؟')) return;
+    if (!confirm('تأكيد أخير: حذف كل شيء؟')) return;
+    Object.keys(localStorage).filter(k => k.startsWith('emaa_')).forEach(k => localStorage.removeItem(k));
+    location.reload();
+  }
+
+  // ============ INIT ============
+  function init() {
+    loadAll();
+    seedIfEmpty();
+    if (localStorage.getItem('emaa_theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+    // restore session if user exists
+    if (state.user) startApp();
+    else showLanding();
+
+    // keyboard
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // resize
+    window.addEventListener('resize', () => {
+      const showMobile = state.user && window.innerWidth <= 800;
+      $('mobileBar').style.display = showMobile ? 'flex' : 'none';
+      $('bottomNav').style.display = showMobile ? 'flex' : 'none';
+    });
+
+    // schedule checker (every 30s)
+    setInterval(() => {
+      if (!state.schedules.length) return;
+      const nowStr = new Date().toISOString().slice(0, 16);
+      state.schedules.forEach(s => {
+        if (s.when === nowStr && !s.fired) {
+          s.fired = true;
+          state.notifications.unshift({ id: uid(), title: '⏰ تذكير', body: s.title, read: false, createdAt: now() });
+          persist();
+          toast('⏰ ' + s.title, 'info');
+        }
+      });
+    }, 30000);
+
+    console.log('✅ EMAA Local-First loaded — data in localStorage');
+  }
+
+  // ============ PUBLIC API ============
+  return {
+    showLanding, showAuth, login, logout,
+    go,
+    // inbox
+    openConv, setFilter, sendMsg, quickReply, suggestReply, addTag, delConv, newConversation, doNewConv,
+    // content
+    genContent, saveContent, copyContent, delContent,
+    // network
+    netAddNode, netRunAll, netRunNode, netChangeKind, netUpdateVal, netDeleteNode, netZoom, netReset, netExport, netClear,
+    // automations
+    toggleAuto, delAuto, addAutomation, doAddAuto,
+    // scheduler
+    addSchedule, doAddSchedule, delSchedule,
+    // tasks
+    addTask, doAddTask, dropTask, toggleTask, delTask,
+    // notifications
+    markAllRead,
+    // analytics
+    exportCSV,
+    // team
+    addMember, doAddMember, delMember,
+    // channels
+    toggleChannel,
+    // settings
+    saveAI, testAI, toggleTheme, exportAll, wipeAll,
+    // utils
+    closeModal,
+    _state: state
+  };
+})();
+
+// Boot
+document.addEventListener('DOMContentLoaded', () => App.go ? App.showLanding() : null);
+// Since DOMContentLoaded may have fired, call init directly
+setTimeout(() => {
+  // Already initialized? Just ensure landing shows
+  const landing = document.getElementById('landingPage');
+  if (landing && !document.querySelector('.screen.active')) landing.classList.add('active');
+}, 0);
 </script>
 </body>
 </html>
