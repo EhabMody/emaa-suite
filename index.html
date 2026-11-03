@@ -13,7 +13,6 @@
   --tx: #f8fafc;
   --tx-muted: #94a3b8;
   --bd: #1e293b;
-  --bd-focus: #3b82f6;
   --ac: #3b82f6;
   --ac-hover: #2563eb;
   --ac-glow: rgba(59, 130, 246, 0.15);
@@ -30,10 +29,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;transi
 input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ease, box-shadow 0.2s ease}
 .hidden{display:none!important}
 
-/* SVG Icons */
 .icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .icon-lg{width:20px;height:20px}
-.icon-xl{width:24px;height:24px}
 
 /* CYBER LOGO */
 .cyber-logo{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.5px}
@@ -357,14 +354,14 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
     <div class="links">
       <a href="#features">المميزات</a>
       <a href="#pricing">الأسعار</a>
-      <a href="#" onclick="showAuth();return false" class="cta">ابدأ مجانًا</a>
+      <a href="#" onclick="window.showAuth();return false" class="cta">ابدأ مجانًا</a>
     </div>
   </nav>
   <div class="hero">
     <h1>كل أعمالك على السوشيال ميديا — في منصة واحدة</h1>
     <p>ردود ذكية، محتوى تلقائي، تقارير احترافية. بالعربية أولًا. مدعوم بالذكاء الاصطناعي.</p>
     <div class="btns">
-      <button class="primary" onclick="showAuth()">ابدأ مجانًا (14 يوم) <svg class="icon"><use href="#i-arrow-left"/></svg></button>
+      <button class="primary" onclick="window.showAuth()">ابدأ مجانًا (14 يوم) <svg class="icon"><use href="#i-arrow-left"/></svg></button>
       <button class="secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">تعرّف على المميزات</button>
     </div>
   </div>
@@ -385,9 +382,9 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
     <div class="container">
       <h2>خطط تناسب الجميع</h2>
       <div class="grid">
-        <div class="price-card"><h3>Starter</h3><div class="price">مجانًا</div><ul><li><svg class="icon"><use href="#i-check"/></svg> 50 رسالة/شهر</li><li><svg class="icon"><use href="#i-check"/></svg> منصة واحدة</li><li><svg class="icon"><use href="#i-check"/></svg> 3 منشورات</li><li><svg class="icon"><use href="#i-check"/></svg> AI أساسي</li></ul><button onclick="showAuth()">ابدأ الآن</button></div>
-        <div class="price-card popular"><div class="badge">الأكثر شعبية</div><h3>Business</h3><div class="price">$29<small>/شهر</small></div><ul><li><svg class="icon"><use href="#i-check"/></svg> 3000 رسالة/شهر</li><li><svg class="icon"><use href="#i-check"/></svg> 4 منصات</li><li><svg class="icon"><use href="#i-check"/></svg> 200 منشور</li><li><svg class="icon"><use href="#i-check"/></svg> AI كامل</li></ul><button onclick="showAuth()">جرّب مجانًا</button></div>
-        <div class="price-card"><h3>Agency</h3><div class="price">$99<small>/شهر</small></div><ul><li><svg class="icon"><use href="#i-check"/></svg> 15000 رسالة/شهر</li><li><svg class="icon"><use href="#i-check"/></svg> كل المنصات</li><li><svg class="icon"><use href="#i-check"/></svg> 5 مستخدمين</li><li><svg class="icon"><use href="#i-check"/></svg> API</li></ul><button onclick="showAuth()">تواصل معنا</button></div>
+        <div class="price-card"><h3>Starter</h3><div class="price">مجانًا</div><ul><li><svg class="icon"><use href="#i-check"/></svg> 50 رسالة/شهر</li><li><svg class="icon"><use href="#i-check"/></svg> منصة واحدة</li><li><svg class="icon"><use href="#i-check"/></svg> 3 منشورات</li><li><svg class="icon"><use href="#i-check"/></svg> AI أساسي</li></ul><button onclick="window.showAuth()">ابدأ الآن</button></div>
+        <div class="price-card popular"><div class="badge">الأكثر شعبية</div><h3>Business</h3><div class="price">$29<small>/شهر</small></div><ul><li><svg class="icon"><use href="#i-check"/></svg> 3000 رسالة/شهر</li><li><svg class="icon"><use href="#i-check"/></svg> 4 منصات</li><li><svg class="icon"><use href="#i-check"/></svg> 200 منشور</li><li><svg class="icon"><use href="#i-check"/></svg> AI كامل</li></ul><button onclick="window.showAuth()">جرّب مجانًا</button></div>
+        <div class="price-card"><h3>Agency</h3><div class="price">$99<small>/شهر</small></div><ul><li><svg class="icon"><use href="#i-check"/></svg> 15000 رسالة/شهر</li><li><svg class="icon"><use href="#i-check"/></svg> كل المنصات</li><li><svg class="icon"><use href="#i-check"/></svg> 5 مستخدمين</li><li><svg class="icon"><use href="#i-check"/></svg> API</li></ul><button onclick="window.showAuth()">تواصل معنا</button></div>
       </div>
     </div>
   </div>
@@ -417,14 +414,14 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
     <h2>أهلًا بعودتك</h2>
     <p>سجّل دخولك لإدارة أعمالك</p>
     <div class="social-btns">
-      <button onclick="loginGoogle()">Google</button>
-      <button onclick="loginEmail()">Email</button>
+      <button onclick="window.loginGoogle()">Google</button>
+      <button onclick="window.loginEmail()">Email</button>
     </div>
     <div class="divider">أو بالبريد الإلكتروني</div>
     <div class="field"><label>البريد</label><input type="email" id="loginEmail" placeholder="you@example.com"></div>
     <div class="field"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="••••••••"></div>
-    <button class="btn" onclick="loginEmail()">تسجيل الدخول / إنشاء حساب</button>
-    <div class="auth-switch"><a onclick="showLanding()">← العودة للرئيسية</a><span class="error" id="authError"></span></div>
+    <button class="btn" onclick="window.loginEmail()">تسجيل الدخول / إنشاء حساب</button>
+    <div class="auth-switch"><a onclick="window.showLanding()">← العودة للرئيسية</a><span class="error" id="authError"></span></div>
   </div>
 </div>
 
@@ -437,27 +434,27 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
     </div>
     <div class="nav-group">
       <div class="label">الرئيسية</div>
-      <div class="nav-item active" data-page="dashboard" onclick="go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg> لوحة التحكم</div>
-      <div class="nav-item" data-page="inbox" onclick="go('inbox')"><svg class="icon"><use href="#i-message"/></svg> المحادثات <span class="badge" id="inboxBadge">0</span></div>
-      <div class="nav-item" data-page="content" onclick="go('content')"><svg class="icon"><use href="#i-edit"/></svg> المحتوى</div>
-      <div class="nav-item" data-page="network" onclick="go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</div>
-      <div class="nav-item" data-page="automations" onclick="go('automations')"><svg class="icon"><use href="#i-zap"/></svg> الأتمتة</div>
-      <div class="nav-item" data-page="scheduler" onclick="go('scheduler')"><svg class="icon"><use href="#i-clock"/></svg> الجدولة</div>
-      <div class="nav-item" data-page="tasks" onclick="go('tasks')"><svg class="icon"><use href="#i-check-square"/></svg> المهام</div>
-      <div class="nav-item" data-page="notifications" onclick="go('notifications')"><svg class="icon"><use href="#i-bell"/></svg> الإشعارات <span class="badge" id="notifBadge">0</span></div>
-      <div class="nav-item" data-page="analytics" onclick="go('analytics')"><svg class="icon"><use href="#i-bar-chart"/></svg> التقارير</div>
+      <div class="nav-item active" data-page="dashboard" onclick="window.go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg> لوحة التحكم</div>
+      <div class="nav-item" data-page="inbox" onclick="window.go('inbox')"><svg class="icon"><use href="#i-message"/></svg> المحادثات <span class="badge" id="inboxBadge">0</span></div>
+      <div class="nav-item" data-page="content" onclick="window.go('content')"><svg class="icon"><use href="#i-edit"/></svg> المحتوى</div>
+      <div class="nav-item" data-page="network" onclick="window.go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</div>
+      <div class="nav-item" data-page="automations" onclick="window.go('automations')"><svg class="icon"><use href="#i-zap"/></svg> الأتمتة</div>
+      <div class="nav-item" data-page="scheduler" onclick="window.go('scheduler')"><svg class="icon"><use href="#i-clock"/></svg> الجدولة</div>
+      <div class="nav-item" data-page="tasks" onclick="window.go('tasks')"><svg class="icon"><use href="#i-check-square"/></svg> المهام</div>
+      <div class="nav-item" data-page="notifications" onclick="window.go('notifications')"><svg class="icon"><use href="#i-bell"/></svg> الإشعارات <span class="badge" id="notifBadge">0</span></div>
+      <div class="nav-item" data-page="analytics" onclick="window.go('analytics')"><svg class="icon"><use href="#i-bar-chart"/></svg> التقارير</div>
     </div>
     <div class="nav-group">
       <div class="label">الإعدادات</div>
-      <div class="nav-item" data-page="team" onclick="go('team')"><svg class="icon"><use href="#i-users"/></svg> الفريق</div>
-      <div class="nav-item" data-page="channels" onclick="go('channels')"><svg class="icon"><use href="#i-link"/></svg> القنوات</div>
-      <div class="nav-item" data-page="settings" onclick="go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</div>
+      <div class="nav-item" data-page="team" onclick="window.go('team')"><svg class="icon"><use href="#i-users"/></svg> الفريق</div>
+      <div class="nav-item" data-page="channels" onclick="window.go('channels')"><svg class="icon"><use href="#i-link"/></svg> القنوات</div>
+      <div class="nav-item" data-page="settings" onclick="window.go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</div>
     </div>
     <div class="user-box">
       <div class="av" id="userAv">—</div>
       <div class="nm"><b id="userName">—</b><span id="userEmail">—</span></div>
     </div>
-    <button class="logout-btn" onclick="logout()"><svg class="icon"><use href="#i-log-out"/></svg> تسجيل الخروج</button>
+    <button class="logout-btn" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> تسجيل الخروج</button>
   </aside>
   <main class="main" id="mainContent"></main>
 </div>
@@ -467,24 +464,24 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
     <div class="shield" style="width:24px;height:24px"><svg class="icon" style="width:14px;height:14px"><use href="#i-shield"/></svg></div>
     <div><span class="emaa">EMAA</span><span class="tech">.Tech</span></div>
   </div>
-  <button class="logout-mobile" onclick="logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button>
+  <button class="logout-mobile" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button>
 </div>
 
-<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box" id="modalBox"></div></div>
+<div class="modal" id="modal" onclick="if(event.target===this)window.closeModal()"><div class="modal-box" id="modalBox"></div></div>
 <div class="toast" id="toast"></div>
 
 <script type="module">
 /* ============ Firebase Imports ============ */
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js?v=3';
 import {
   getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut
-} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js?v=3';
 import {
   getFirestore, collection, doc, setDoc, getDoc, addDoc,
   updateDoc, deleteDoc, query, where, orderBy, onSnapshot,
   serverTimestamp, limit
-} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js?v=3';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCLaX8kwGmZVy_9BfhOBMN8UTKYrTpFW3M",
@@ -549,19 +546,7 @@ const state = {
   notifications: [], schedules: [], unsubs: []
 };
 
-/* ============ Toast ============ */
-window.toast = (m, type = 'info') => {
-  const t = $('toast');
-  t.innerHTML = `<svg class="icon" style="color:${type === 'success' ? 'var(--ok)' : type === 'error' ? 'var(--bad)' : 'var(--ac)'}"><use href="#i-${type === 'success' ? 'check' : type === 'error' ? 'x' : 'bell'}"/></svg> ${m}`;
-  t.className = 'toast show ' + type;
-  clearTimeout(t.h);
-  t.h = setTimeout(() => t.className = 'toast', 3500);
-};
-
-window.openModal = (html) => { $('modalBox').innerHTML = html; $('modal').classList.add('open'); };
-window.closeModal = () => $('modal').classList.remove('open');
-
-/* ============ Navigation ============ */
+/* ============ Global Exports (Fixing empty screens) ============ */
 window.showLanding = () => {
   $('landingPage').style.display = 'flex';
   $('authScreen').style.display = 'none';
@@ -574,6 +559,15 @@ window.showAuth = () => {
   $('app').classList.remove('active');
   $('mobileBar').style.display = 'none';
 };
+window.closeModal = () => $('modal').classList.remove('open');
+window.openModal = (html) => { $('modalBox').innerHTML = html; $('modal').classList.add('open'); };
+window.toast = (m, type = 'info') => {
+  const t = $('toast');
+  t.innerHTML = `<svg class="icon" style="color:${type === 'success' ? 'var(--ok)' : type === 'error' ? 'var(--bad)' : 'var(--ac)'}"><use href="#i-${type === 'success' ? 'check' : type === 'error' ? 'x' : 'bell'}"/></svg> ${m}`;
+  t.className = 'toast show ' + type;
+  clearTimeout(t.h);
+  t.h = setTimeout(() => t.className = 'toast', 3500);
+};
 
 /* ============ Auth ============ */
 window.loginEmail = async () => {
@@ -583,10 +577,10 @@ window.loginEmail = async () => {
   if (!email || !pass) { err.textContent = 'أدخل البريد وكلمة المرور'; return; }
   try {
     await signInWithEmailAndPassword(auth, email, pass);
-    toast('✅ مرحبًا بك', 'success');
+    window.toast('✅ مرحبًا بك', 'success');
   } catch (e) {
     if (e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential') {
-      try { await createUserWithEmailAndPassword(auth, email, pass); toast('✅ حساب جديد', 'success'); }
+      try { await createUserWithEmailAndPassword(auth, email, pass); window.toast('✅ حساب جديد', 'success'); }
       catch (e2) { err.textContent = e2.message || e2.code; }
     } else err.textContent = e.message || e.code;
   }
@@ -594,7 +588,7 @@ window.loginEmail = async () => {
 
 window.loginGoogle = async () => {
   const err = $('authError'); err.textContent = '';
-  try { await signInWithPopup(auth, new GoogleAuthProvider()); toast('✅ مرحبًا', 'success'); }
+  try { await signInWithPopup(auth, new GoogleAuthProvider()); window.toast('✅ مرحبًا', 'success'); }
   catch (e) {
     if (e.code === 'auth/unauthorized-domain') {
       err.innerHTML = 'النطاق غير مصرح. أضف <b>' + location.hostname + '</b> في Firebase Console → Authentication → Settings → Authorized domains';
@@ -604,8 +598,8 @@ window.loginGoogle = async () => {
 
 window.logout = async () => {
   if (!confirm('هل تريد تسجيل الخروج؟')) return;
-  try { unsubscribeAll(); await signOut(auth); toast('تم تسجيل الخروج', 'success'); }
-  catch (e) { toast('❌ ' + (e.message || 'فشل'), 'error'); }
+  try { unsubscribeAll(); await signOut(auth); window.toast('تم تسجيل الخروج', 'success'); }
+  catch (e) { window.toast('❌ ' + (e.message || 'فشل'), 'error'); }
 };
 
 onAuthStateChanged(auth, async (user) => {
@@ -620,14 +614,14 @@ onAuthStateChanged(auth, async (user) => {
     $('userAv').textContent = (user.displayName || user.email)[0].toUpperCase();
     await ensureUserDoc(user);
     subscribeAll();
-    go('dashboard');
+    window.go('dashboard');
   } else {
     state.user = null;
     unsubscribeAll();
     state.convs = []; state.content = []; state.tasks = []; state.automations = [];
     state.team = []; state.replies = []; state.notifications = []; state.schedules = [];
     state.conv = null;
-    showLanding();
+    window.showLanding();
     $('loginEmail').value = ''; $('loginPass').value = '';
   }
 });
@@ -653,45 +647,45 @@ function subscribeAll() {
   state.unsubs.push(onSnapshot(qc, snap => {
     state.convs = snap.docs.map(d => ({ id: d.id, ...d.data(), msgs: [] }));
     state.convs.forEach(c => subscribeMessages(c.id));
-    if (state.page === 'inbox') go('inbox');
+    if (state.page === 'inbox') window.go('inbox');
     updateInboxBadge();
   }, e => console.warn('convs:', e.message)));
 
   const qct = query(collection(db, 'content'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qct, snap => {
     state.content = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    if (state.page === 'content') renderContentList();
+    if (state.page === 'content') window.renderContentList();
   }, e => console.warn('content:', e.message)));
 
   const qt = query(collection(db, 'tasks'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qt, snap => {
     state.tasks = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    if (state.page === 'tasks') renderKanban();
+    if (state.page === 'tasks') window.renderKanban();
   }, e => console.warn('tasks:', e.message)));
 
   const qa = query(collection(db, 'automations'), where('ownerId', '==', uid), limit(50));
   state.unsubs.push(onSnapshot(qa, snap => {
     state.automations = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    if (state.page === 'automations') go('automations');
+    if (state.page === 'automations') window.go('automations');
   }, e => console.warn('automations:', e.message)));
 
   const qteam = query(collection(db, 'team'), where('ownerId', '==', uid), limit(50));
   state.unsubs.push(onSnapshot(qteam, snap => {
     state.team = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    if (state.page === 'team') go('team');
+    if (state.page === 'team') window.go('team');
   }, e => console.warn('team:', e.message)));
 
   const qn = query(collection(db, 'notifications'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(50));
   state.unsubs.push(onSnapshot(qn, snap => {
     state.notifications = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     updateNotifBadge();
-    if (state.page === 'notifications') go('notifications');
+    if (state.page === 'notifications') window.go('notifications');
   }, e => console.warn('notifs:', e.message)));
 
   const qs = query(collection(db, 'schedules'), where('ownerId', '==', uid), orderBy('when', 'asc'), limit(50));
   state.unsubs.push(onSnapshot(qs, snap => {
     state.schedules = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    if (state.page === 'scheduler') go('scheduler');
+    if (state.page === 'scheduler') window.go('scheduler');
   }, e => console.warn('schedules:', e.message)));
 }
 
@@ -704,7 +698,7 @@ function subscribeMessages(convId) {
       const m = d.data();
       return { dir: m.direction, text: m.text, ai: !!m.ai, time: fmtTime(toMillis(m.createdAt)), type: m.type || 'msg' };
     });
-    if (state.page === 'inbox' && state.conv === convId) openConv(convId);
+    if (state.page === 'inbox' && state.conv === convId) window.openConv(convId);
   }, e => console.warn('msgs:', e.message));
   state.unsubs.push(unsub);
 }
@@ -723,29 +717,29 @@ window.go = (page) => {
   state.page = page;
   document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
   const R = {
-    dashboard: renderDashboard, inbox: renderInbox, content: renderContent,
-    network: renderNetwork, automations: renderAutomations, scheduler: renderScheduler,
-    tasks: renderTasks, notifications: renderNotifications, analytics: renderAnalytics,
-    team: renderTeam, channels: renderChannels, settings: renderSettings
+    dashboard: window.renderDashboard, inbox: window.renderInbox, content: window.renderContent,
+    network: window.renderNetwork, automations: window.renderAutomations, scheduler: window.renderScheduler,
+    tasks: window.renderTasks, notifications: window.renderNotifications, analytics: window.renderAnalytics,
+    team: window.renderTeam, channels: window.renderChannels, settings: window.renderSettings
   };
-  $('mainContent').innerHTML = (R[page] || renderDashboard)();
-  if (page === 'inbox' && state.conv) openConv(state.conv);
-  if (page === 'content') renderContentList();
-  if (page === 'tasks') renderKanban();
-  if (page === 'analytics') renderCharts();
-  if (page === 'network') { netBind(); netDraw(); netInspector(); }
+  $('mainContent').innerHTML = (R[page] || window.renderDashboard)();
+  if (page === 'inbox' && state.conv) window.openConv(state.conv);
+  if (page === 'content') window.renderContentList();
+  if (page === 'tasks') window.renderKanban();
+  if (page === 'analytics') window.renderCharts();
+  if (page === 'network') { window.netBind(); window.netDraw(); window.netInspector(); }
   updateInboxBadge();
   updateNotifBadge();
 };
 
 /* ============ Dashboard ============ */
-function renderDashboard() {
+window.renderDashboard = () => {
   const unread = state.convs.reduce((a, c) => a + (c.unread || 0), 0);
   const todayTasks = state.tasks.filter(t => t.date === today() && t.status !== 'done').length;
   return `
   <div class="topbar">
     <div><h1>مرحبًا، ${esc((state.user.displayName || state.user.email).split('@')[0])}</h1><div class="sub"><span class="status-dot on"></span>متصل بـ Firebase</div></div>
-    <div class="actions"><button class="btn-sm" onclick="go('inbox')"><svg class="icon"><use href="#i-message"/></svg> المحادثات</button><button class="btn-sm s" onclick="toggleTheme()"><svg class="icon"><use href="#i-moon"/></svg></button><button class="btn-sm d" onclick="logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div>
+    <div class="actions"><button class="btn-sm" onclick="window.go('inbox')"><svg class="icon"><use href="#i-message"/></svg> المحادثات</button><button class="btn-sm d" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div>
   </div>
   <div class="kpi-grid">
     <div class="kpi"><div class="label"><svg class="icon"><use href="#i-message"/></svg> محادثات</div><div class="val">${state.convs.length}</div><div class="trend"><svg class="icon" style="width:12px;height:12px"><use href="#i-arrow-right"/></svg> ${unread} غير مقروء</div></div>
@@ -755,40 +749,40 @@ function renderDashboard() {
   </div>
   <div class="grid-2">
     <div class="card">
-      <div style="display:flex;justify-content:space-between;margin-bottom:16px;align-items:center"><h3 style="font-size:15px;font-weight:600">آخر المحادثات</h3><a href="#" onclick="go('inbox');return false" style="font-size:13px;color:var(--ac);text-decoration:none;font-weight:500">الكل</a></div>
-      ${state.convs.slice(0, 4).map(c => `<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd);cursor:pointer" onclick="state.conv='${c.id}';go('inbox')"><div style="width:36px;height:36px;border-radius:50%;background:${c.color || '#6366f1'};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px">${esc((c.name || 'م')[0])}</div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><b style="font-size:14px;font-weight:500">${esc(c.name || '—')}</b><span style="font-size:11px;color:var(--tx-muted)">${c.msgs?.at(-1)?.time || ''}</span></div><div style="font-size:13px;color:var(--tx-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.msgs?.at(-1)?.text?.slice(0, 50) || '—')}</div></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}
+      <div style="display:flex;justify-content:space-between;margin-bottom:16px;align-items:center"><h3 style="font-size:15px;font-weight:600">آخر المحادثات</h3><a href="#" onclick="window.go('inbox');return false" style="font-size:13px;color:var(--ac);text-decoration:none;font-weight:500">الكل</a></div>
+      ${state.convs.slice(0, 4).map(c => `<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd);cursor:pointer" onclick="state.conv='${c.id}';window.go('inbox')"><div style="width:36px;height:36px;border-radius:50%;background:${c.color || '#6366f1'};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px">${esc((c.name || 'م')[0])}</div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><b style="font-size:14px;font-weight:500">${esc(c.name || '—')}</b><span style="font-size:11px;color:var(--tx-muted)">${c.msgs?.at(-1)?.time || ''}</span></div><div style="font-size:13px;color:var(--tx-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.msgs?.at(-1)?.text?.slice(0, 50) || '—')}</div></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}
     </div>
     <div class="card">
       <h3 style="font-size:15px;font-weight:600;margin-bottom:16px">إجراءات سريعة</h3>
-      <button class="btn-sm" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('content')"><svg class="icon"><use href="#i-edit"/></svg> منشور جديد</button>
-      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</button>
-      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('scheduler')"><svg class="icon"><use href="#i-clock"/></svg> الجدولة</button>
-      <button class="btn-sm s" style="width:100%;justify-content:center" onclick="go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</button>
+      <button class="btn-sm" style="width:100%;margin-bottom:8px;justify-content:center" onclick="window.go('content')"><svg class="icon"><use href="#i-edit"/></svg> منشور جديد</button>
+      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="window.go('network')"><svg class="icon"><use href="#i-network"/></svg> شبكة الأعمال</button>
+      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="window.go('scheduler')"><svg class="icon"><use href="#i-clock"/></svg> الجدولة</button>
+      <button class="btn-sm s" style="width:100%;justify-content:center" onclick="window.go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</button>
     </div>
   </div>`;
 }
 
 /* ============ Inbox ============ */
-function renderInbox() {
+window.renderInbox = () => {
   const filtered = state.filter === 'all' ? state.convs : state.convs.filter(c => c.platform === state.filter);
   return `
-  <div class="topbar"><div><h1>صندوق المحادثات</h1><div class="sub">كل رسائلك في مكان واحد</div></div><div class="actions"><button class="btn-sm s" onclick="newConversation()"><svg class="icon"><use href="#i-plus"/></svg> محادثة</button></div></div>
+  <div class="topbar"><div><h1>صندوق المحادثات</h1><div class="sub">كل رسائلك في مكان واحد</div></div><div class="actions"><button class="btn-sm s" onclick="window.newConversation()"><svg class="icon"><use href="#i-plus"/></svg> محادثة</button></div></div>
   <div class="inbox">
     <div class="conv-list">
       <div class="conv-filters">
-        <div class="chip ${state.filter === 'all' ? 'active' : ''}" onclick="state.filter='all';go('inbox')">الكل</div>
-        <div class="chip ${state.filter === 'whatsapp' ? 'active' : ''}" onclick="state.filter='whatsapp';go('inbox')">واتساب</div>
-        <div class="chip ${state.filter === 'facebook' ? 'active' : ''}" onclick="state.filter='facebook';go('inbox')">فيسبوك</div>
-        <div class="chip ${state.filter === 'instagram' ? 'active' : ''}" onclick="state.filter='instagram';go('inbox')">إنستجرام</div>
-        <div class="chip ${state.filter === 'telegram' ? 'active' : ''}" onclick="state.filter='telegram';go('inbox')">تيليجرام</div>
+        <div class="chip ${state.filter === 'all' ? 'active' : ''}" onclick="state.filter='all';window.go('inbox')">الكل</div>
+        <div class="chip ${state.filter === 'whatsapp' ? 'active' : ''}" onclick="state.filter='whatsapp';window.go('inbox')">واتساب</div>
+        <div class="chip ${state.filter === 'facebook' ? 'active' : ''}" onclick="state.filter='facebook';window.go('inbox')">فيسبوك</div>
+        <div class="chip ${state.filter === 'instagram' ? 'active' : ''}" onclick="state.filter='instagram';window.go('inbox')">إنستجرام</div>
+        <div class="chip ${state.filter === 'telegram' ? 'active' : ''}" onclick="state.filter='telegram';window.go('inbox')">تيليجرام</div>
       </div>
-      ${filtered.map(c => `<div class="conv ${state.conv === c.id ? 'active' : ''}" onclick="state.conv='${c.id}';go('inbox')"><div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}<div class="plat" style="background:${c.color || '#6366f1'}">${c.platform === 'whatsapp' ? 'W' : c.platform === 'facebook' ? 'F' : c.platform === 'instagram' ? 'I' : 'T'}</div></div><div class="info"><div class="top"><b>${esc(c.name || '—')}</b><span class="time">${c.msgs?.at(-1)?.time || ''}</span></div><div class="msg">${esc(c.msgs?.at(-1)?.text?.slice(0, 40) || '—')}</div>${(c.tags||[]).length ? '<div class="tags">' + (c.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('') + '</div>' : ''}</div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}
+      ${filtered.map(c => `<div class="conv ${state.conv === c.id ? 'active' : ''}" onclick="state.conv='${c.id}';window.go('inbox')"><div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}<div class="plat" style="background:${c.color || '#6366f1'}">${c.platform === 'whatsapp' ? 'W' : c.platform === 'facebook' ? 'F' : c.platform === 'instagram' ? 'I' : 'T'}</div></div><div class="info"><div class="top"><b>${esc(c.name || '—')}</b><span class="time">${c.msgs?.at(-1)?.time || ''}</span></div><div class="msg">${esc(c.msgs?.at(-1)?.text?.slice(0, 40) || '—')}</div>${(c.tags||[]).length ? '<div class="tags">' + (c.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('') + '</div>' : ''}</div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}
     </div>
     <div class="chat-area" id="chatArea"><div class="empty" style="flex:1"><svg class="icon-lg"><use href="#i-message"/></svg><div>اختر محادثة</div></div></div>
   </div>`;
 }
 
-function openConv(id) {
+window.openConv = (id) => {
   const c = state.convs.find(x => x.id === id);
   if (!c) return;
   const area = $('chatArea'); if (!area) return;
@@ -802,10 +796,10 @@ function openConv(id) {
       <div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}</div>
       <div class="info"><b>${esc(c.name)}</b><span>${c.platform} · ${(c.tags||[]).join('، ') || 'بدون وسوم'}</span></div>
       <div class="actions">
-        <button title="اقترح" onclick="suggestReply('${c.id}')"><svg class="icon"><use href="#i-sparkles"/></svg></button>
-        <button title="وسم" onclick="addTagPrompt('${c.id}')"><svg class="icon"><use href="#i-tag"/></svg></button>
-        <button title="ملاحظة" onclick="addNotePrompt('${c.id}')"><svg class="icon"><use href="#i-note"/></svg></button>
-        <button title="حذف" onclick="delConv('${c.id}')"><svg class="icon"><use href="#i-trash"/></svg></button>
+        <button title="اقترح" onclick="window.suggestReply('${c.id}')"><svg class="icon"><use href="#i-sparkles"/></svg></button>
+        <button title="وسم" onclick="window.addTagPrompt('${c.id}')"><svg class="icon"><use href="#i-tag"/></svg></button>
+        <button title="ملاحظة" onclick="window.addNotePrompt('${c.id}')"><svg class="icon"><use href="#i-note"/></svg></button>
+        <button title="حذف" onclick="window.delConv('${c.id}')"><svg class="icon"><use href="#i-trash"/></svg></button>
       </div>
     </div>
     <div class="chat-messages" id="chatMsgs">${(c.msgs || []).map(m => {
@@ -813,12 +807,12 @@ function openConv(id) {
       return `<div class="msg-row ${m.dir}">${m.dir === 'in' ? `<div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}</div>` : '<div class="av" style="background:var(--ac)">أ</div>'}<div class="bubble">${esc(m.text).replace(/\n/g, '<br>')}${m.ai ? '<span class="ai-tag">AI</span>' : ''}<span class="time">${m.time || ''}</span></div></div>`;
     }).join('') || '<div class="empty" style="flex:1"><div>لا رسائل</div></div>'}</div>
     <div class="chat-input">
-      <div class="quick-replies">${quick.map(q => `<button onclick="quickReply('${esc(q.text).replace(/'/g,"\\'")}')">${esc(q.title || q.text.slice(0,20))}</button>`).join('')}</div>
-      <div class="box"><textarea id="msgInput" placeholder="اكتب ردًا… (Ctrl+Enter)" onkeydown="if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();sendMsg('${c.id}')}"></textarea><button class="send" onclick="sendMsg('${c.id}')"><svg class="icon"><use href="#i-send"/></svg></button></div>
+      <div class="quick-replies">${quick.map(q => `<button onclick="window.quickReply('${esc(q.text).replace(/'/g,"\\'")}')">${esc(q.title || q.text.slice(0,20))}</button>`).join('')}</div>
+      <div class="box"><textarea id="msgInput" placeholder="اكتب ردًا… (Ctrl+Enter)" onkeydown="if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();window.sendMsg('${c.id}')}"></textarea><button class="send" onclick="window.sendMsg('${c.id}')"><svg class="icon"><use href="#i-send"/></svg></button></div>
       <div class="tools">
-        <button onclick="suggestReply('${c.id}')"><svg class="icon"><use href="#i-sparkles"/></svg> اقترح</button>
-        <button class="note-btn" onclick="addNotePrompt('${c.id}')"><svg class="icon"><use href="#i-note"/></svg> ملاحظة</button>
-        <button onclick="addTagPrompt('${c.id}')"><svg class="icon"><use href="#i-tag"/></svg> وسم</button>
+        <button onclick="window.suggestReply('${c.id}')"><svg class="icon"><use href="#i-sparkles"/></svg> اقترح</button>
+        <button class="note-btn" onclick="window.addNotePrompt('${c.id}')"><svg class="icon"><use href="#i-note"/></svg> ملاحظة</button>
+        <button onclick="window.addTagPrompt('${c.id}')"><svg class="icon"><use href="#i-tag"/></svg> وسم</button>
       </div>
     </div>`;
   const msgs = $('chatMsgs'); if (msgs) msgs.scrollTop = msgs.scrollHeight;
@@ -831,8 +825,8 @@ window.sendMsg = async (id) => {
     await addDoc(collection(db, 'conversations', id, 'messages'), { direction: 'out', text: txt, type: 'msg', createdAt: serverTimestamp() });
     await updateDoc(doc(db, 'conversations', id), { updatedAt: serverTimestamp() });
     inp.value = '';
-    toast('تم الإرسال', 'success');
-  } catch (e) { toast('فشل الإرسال: ' + e.message, 'error'); }
+    window.toast('تم الإرسال', 'success');
+  } catch (e) { window.toast('فشل الإرسال: ' + e.message, 'error'); }
 };
 
 window.quickReply = (txt) => { const inp = $('msgInput'); if (inp) { inp.value = txt; inp.focus(); } };
@@ -841,14 +835,14 @@ window.addNotePrompt = (id) => {
   const note = prompt('ملاحظة داخلية (لن يراها العميل):');
   if (!note) return;
   addDoc(collection(db, 'conversations', id, 'messages'), { direction: 'note', text: note, type: 'note', createdAt: serverTimestamp() })
-    .then(() => toast('تم إضافة الملاحظة', 'success')).catch(e => toast('فشل: ' + e.message, 'error'));
+    .then(() => window.toast('تم إضافة الملاحظة', 'success')).catch(e => window.toast('فشل: ' + e.message, 'error'));
 };
 
 window.addTagPrompt = (id) => {
   const tag = prompt('اسم الوسم:'); if (!tag) return;
   const conv = state.convs.find(x => x.id === id); if (!conv) return;
   const tags = [...(conv.tags || []), tag.trim()];
-  updateDoc(doc(db, 'conversations', id), { tags }).then(() => toast('تم إضافة الوسم', 'success')).catch(e => toast('فشل: ' + e.message, 'error'));
+  updateDoc(doc(db, 'conversations', id), { tags }).then(() => window.toast('تم إضافة الوسم', 'success')).catch(e => window.toast('فشل: ' + e.message, 'error'));
 };
 
 window.suggestReply = async (id) => {
@@ -862,19 +856,19 @@ window.suggestReply = async (id) => {
       { role: 'user', content: `اسم العميل: ${conv.name}\n\nالمحادثة:\n${convo}` }
     ], { temperature: 0.8, maxTokens: 300 });
     inp.value = reply;
-  } catch (e) { inp.value = ''; toast('فشل الاقتراح: ' + e.message, 'error'); }
+  } catch (e) { inp.value = ''; window.toast('فشل الاقتراح: ' + e.message, 'error'); }
 };
 
 window.newConversation = () => {
-  openModal(`<h3>محادثة جديدة</h3>
+  window.openModal(`<h3>محادثة جديدة</h3>
     <div class="form-row"><label>الاسم</label><input id="ncName"></div>
     <div class="form-row"><label>المنصة</label><select id="ncPlat"><option value="whatsapp">واتساب</option><option value="facebook">فيسبوك</option><option value="instagram">إنستجرام</option><option value="telegram">تيليجرام</option></select></div>
     <div class="form-row"><label>وسوم (مفصولة بفواصل)</label><input id="ncTags" placeholder="عميل جديد، متابعة"></div>
-    <div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doNewConv()">إنشاء</button></div>`);
+    <div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doNewConv()">إنشاء</button></div>`);
 };
 
 window.doNewConv = async () => {
-  const name = $('ncName').value.trim(); if (!name) return toast('أدخل الاسم', 'error');
+  const name = $('ncName').value.trim(); if (!name) return window.toast('أدخل الاسم', 'error');
   const plat = $('ncPlat').value;
   const colors = { whatsapp: '#25d366', facebook: '#1877f2', instagram: '#e1306c', telegram: '#229ed9' };
   const tags = $('ncTags').value.split(',').map(t => t.trim()).filter(Boolean);
@@ -883,14 +877,14 @@ window.doNewConv = async () => {
       ownerId: state.user.uid, platform: plat, name, color: colors[plat],
       tags, unread: 0, createdAt: serverTimestamp(), updatedAt: serverTimestamp()
     });
-    closeModal(); toast('تم الإنشاء', 'success');
-  } catch (e) { toast('فشل: ' + e.message, 'error'); }
+    window.closeModal(); window.toast('تم الإنشاء', 'success');
+  } catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
 window.delConv = async (id) => {
   if (!confirm('حذف المحادثة؟')) return;
-  try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; toast('تم الحذف', 'success'); }
-  catch (e) { toast('فشل: ' + e.message, 'error'); }
+  try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; window.toast('تم الحذف', 'success'); }
+  catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
 /* ============ Content ============ */
@@ -906,11 +900,11 @@ window.renderContent = () => {
     <div class="form-row"><label>النبرة</label><select id="ctTone"><option value="professional">احترافي</option><option value="friendly">ودّي</option><option value="funny">فكاهي</option><option value="inspiring">ملهم</option></select></div>
     <div class="form-row"><label>المحتوى</label><textarea id="ctOut" placeholder="سيظهر هنا…" style="min-height:120px"></textarea></div>
     <div class="form-row"><label>جدولة (اختياري)</label><input type="datetime-local" id="ctSched"></div>
-    <div class="form-actions"><button class="btn-sm s" onclick="genContent(true)">نسخة أخرى</button><button class="btn-sm s" onclick="saveContent()">حفظ</button><button class="btn-sm" onclick="genContent()">توليد</button></div>
+    <div class="form-actions"><button class="btn-sm s" onclick="window.genContent(true)">نسخة أخرى</button><button class="btn-sm s" onclick="window.saveContent()">حفظ</button><button class="btn-sm" onclick="window.genContent()">توليد</button></div>
   </div>
   <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">المكتبة</h3><div id="ctList"></div></div>
   <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">التقويم</h3><div id="cal"></div></div>`;
-  renderContentList();
+  window.renderContentList();
 };
 
 window.genContent = async (again) => {
@@ -925,40 +919,40 @@ window.genContent = async (again) => {
       { role: 'user', content: `الموضوع: ${topic}${again ? ' (نسخة جديدة)' : ''}` }
     ], { temperature: 0.8, maxTokens: 800 });
     out.value = text;
-  } catch (e) { out.value = ''; toast('فشل التوليد: ' + e.message, 'error'); }
+  } catch (e) { out.value = ''; window.toast('فشل التوليد: ' + e.message, 'error'); }
 };
 
 window.saveContent = async () => {
   const txt = $('ctOut').value.trim();
-  if (!txt) return toast('لا محتوى للحفظ', 'error');
+  if (!txt) return window.toast('لا محتوى للحفظ', 'error');
   try {
     await addDoc(collection(db, 'content'), {
       ownerId: state.user.uid, text: txt, platform: $('ctPlatform').value,
       scheduled: $('ctSched').value || null, createdAt: serverTimestamp()
     });
-    toast('تم الحفظ', 'success');
-  } catch (e) { toast('فشل: ' + e.message, 'error'); }
+    window.toast('تم الحفظ', 'success');
+  } catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
-function renderContentList() {
+window.renderContentList = () => {
   const el = $('ctList'); if (!el) return;
   const names = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' };
   const colors = { facebook: '#1877f2', instagram: '#e1306c', twitter: '#1da1f2', linkedin: '#0077b5', telegram: '#229ed9' };
-  el.innerHTML = state.content.map(c => `<div class="content-card"><div class="head"><span><span class="plat-tag" style="background:${colors[c.platform] || '#6366f1'}">${names[c.platform] || c.platform}</span> ${c.scheduled ? 'مجدول: ' + new Date(c.scheduled).toLocaleString('ar-EG') : 'مسودة'}</span><span>${fmtDate(toMillis(c.createdAt))}</span></div><div class="body">${esc(c.text)}</div><div class="actions"><button class="btn-sm s" onclick="copyTxt('${c.id}')">نسخ</button><button class="btn-sm s" onclick="delContent('${c.id}')">حذف</button></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-edit"/></svg><div>لا محتوى</div></div>';
-  renderCal();
+  el.innerHTML = state.content.map(c => `<div class="content-card"><div class="head"><span><span class="plat-tag" style="background:${colors[c.platform] || '#6366f1'}">${names[c.platform] || c.platform}</span> ${c.scheduled ? 'مجدول: ' + new Date(c.scheduled).toLocaleString('ar-EG') : 'مسودة'}</span><span>${fmtDate(toMillis(c.createdAt))}</span></div><div class="body">${esc(c.text)}</div><div class="actions"><button class="btn-sm s" onclick="window.copyTxt('${c.id}')">نسخ</button><button class="btn-sm s" onclick="window.delContent('${c.id}')">حذف</button></div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-edit"/></svg><div>لا محتوى</div></div>';
+  window.renderCal();
 }
 
 window.copyTxt = (id) => {
   const c = state.content.find(x => x.id === id);
-  if (c) { navigator.clipboard.writeText(c.text); toast('تم النسخ', 'success'); }
+  if (c) { navigator.clipboard.writeText(c.text); window.toast('تم النسخ', 'success'); }
 };
 
 window.delContent = async (id) => {
   if (!confirm('حذف؟')) return;
-  try { await deleteDoc(doc(db, 'content', id)); toast('تم الحذف', 'success'); } catch (e) { toast('فشل: ' + e.message, 'error'); }
+  try { await deleteDoc(doc(db, 'content', id)); window.toast('تم الحذف', 'success'); } catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
-function renderCal() {
+window.renderCal = () => {
   const el = $('cal'); if (!el) return;
   const t0 = new Date(); t0.setHours(0, 0, 0, 0);
   let h = '<div class="cal">';
@@ -1002,16 +996,16 @@ window.renderNetwork = () => {
   <div class="topbar">
     <div><h1>شبكة الأعمال</h1><div class="sub">اربط المحفزات بالإجراءات — أتمتة مرئية</div></div>
     <div class="actions">
-      <button class="btn-sm s" onclick="netAddNode()"><svg class="icon"><use href="#i-plus"/></svg> عقدة</button>
-      <button class="btn-sm s" onclick="netRunAll()"><svg class="icon"><use href="#i-play"/></svg> تشغيل</button>
-      <button class="btn-sm s" onclick="netExport()"><svg class="icon"><use href="#i-download"/></svg> تصدير</button>
-      <button class="btn-sm s" onclick="netImport()">استيراد</button>
-      <button class="btn-sm" onclick="netSave()"><svg class="icon"><use href="#i-save"/></svg> حفظ</button>
+      <button class="btn-sm s" onclick="window.netAddNode()"><svg class="icon"><use href="#i-plus"/></svg> عقدة</button>
+      <button class="btn-sm s" onclick="window.netRunAll()"><svg class="icon"><use href="#i-play"/></svg> تشغيل</button>
+      <button class="btn-sm s" onclick="window.netExport()"><svg class="icon"><use href="#i-download"/></svg> تصدير</button>
+      <button class="btn-sm s" onclick="window.netImport()">استيراد</button>
+      <button class="btn-sm" onclick="window.netSave()"><svg class="icon"><use href="#i-save"/></svg> حفظ</button>
     </div>
   </div>
   <div class="net-tabs">
     <div class="net-tab active">الشبكة الرئيسية</div>
-    <div class="net-tab" onclick="netNew()">+ جديدة</div>
+    <div class="net-tab" onclick="window.netNew()">+ جديدة</div>
   </div>
   <div class="net-canvas">
     <div class="net-toolbar">
@@ -1022,10 +1016,10 @@ window.renderNetwork = () => {
         <optgroup label="إجراء">${Object.entries(NK.action).map(([k,v])=>`<option value="action:${k}">${v}</option>`).join('')}</optgroup>
         <optgroup label="إشعار">${Object.entries(NK.notify).map(([k,v])=>`<option value="notify:${k}">${v}</option>`).join('')}</optgroup>
       </select>
-      <button class="btn-sm" onclick="netAddNode()">إضافة</button>
-      <button class="btn-sm s" onclick="netZoom(0.85)">−</button>
-      <button class="btn-sm s" onclick="netZoom(1.18)">+</button>
-      <button class="btn-sm s" onclick="netReset()">↺</button>
+      <button class="btn-sm" onclick="window.netAddNode()">إضافة</button>
+      <button class="btn-sm s" onclick="window.netZoom(0.85)">−</button>
+      <button class="btn-sm s" onclick="window.netZoom(1.18)">+</button>
+      <button class="btn-sm s" onclick="window.netReset()">↺</button>
     </div>
     <svg id="netSvg" viewBox="0 0 1200 675">
       <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--tx-muted)"/></marker></defs>
@@ -1044,7 +1038,7 @@ window.renderNetwork = () => {
     </div>
     <div id="netLog" style="max-height:200px;overflow-y:auto;font-size:13px"></div>
   </div>`;
-  netBind(); netDraw(); netInspector(); netSubscribe();
+  window.netBind(); window.netDraw(); window.netInspector(); window.netSubscribe();
 };
 
 function netSubscribe() {
@@ -1057,32 +1051,32 @@ function netSubscribe() {
       netState.edges = data.edges || [];
       netState.docId = snap.docs[0].id;
       netState.stats = data.stats || { runs: 0, success: 0, fail: 0 };
-      if (state.page === 'network') { netDraw(); netInspector(); netUpdateStats(); }
+      if (state.page === 'network') { window.netDraw(); window.netInspector(); window.netUpdateStats(); }
     }
   }, e => console.warn('workflow:', e.message));
 }
 
-function netBind() {
+window.netBind = () => {
   const svg = $('netSvg'); if (!svg) return;
   svg.onpointerdown = (e) => {
     if (e.target.closest('[data-edge]')) return;
     const port = e.target.closest('[data-port]');
     const node = e.target.closest('[data-node]');
     e.preventDefault();
-    if (port) { netState.link = { from: port.dataset.port, to: netPt(e), isTrue: port.dataset.isTrue === '1' }; return; }
+    if (port) { netState.link = { from: port.dataset.port, to: window.netPt(e), isTrue: port.dataset.isTrue === '1' }; return; }
     if (node) {
       const n = netState.nodes.find(x => x.id === node.dataset.node);
-      const p = netPt(e);
+      const p = window.netPt(e);
       netState.drag = { n, dx: p.x - n.x, dy: p.y - n.y };
       netState.sel = n.id;
     } else { netState.sel = null; netState.pan = { x: e.clientX, y: e.clientY, vx: netState.view.x, vy: netState.view.y }; }
-    netInspector(); netDraw();
+    window.netInspector(); window.netDraw();
   };
   svg.ondblclick = (e) => {
     const ed = e.target.closest('[data-edge]');
-    if (ed) { netState.edges.splice(+ed.dataset.edge, 1); netDraw(); netSave(); }
+    if (ed) { netState.edges.splice(+ed.dataset.edge, 1); window.netDraw(); window.netSave(); }
   };
-  svg.onwheel = (e) => { e.preventDefault(); netZoom(e.deltaY < 0 ? 0.85 : 1.18); };
+  svg.onwheel = (e) => { e.preventDefault(); window.netZoom(e.deltaY < 0 ? 0.85 : 1.18); };
 }
 
 window.onpointermove = (e) => {
@@ -1096,11 +1090,11 @@ window.onpointermove = (e) => {
     return;
   }
   if (netState.drag) {
-    const p = netPt(e);
+    const p = window.netPt(e);
     netState.drag.n.x = Math.max(0, Math.min(1100, p.x - netState.drag.dx));
     netState.drag.n.y = Math.max(0, Math.min(580, p.y - netState.drag.dy));
-    netDraw();
-  } else if (netState.link) { netState.link.to = netPt(e); netDraw(); }
+    window.netDraw();
+  } else if (netState.link) { netState.link.to = window.netPt(e); window.netDraw(); }
 };
 
 window.onpointerup = (e) => {
@@ -1113,22 +1107,22 @@ window.onpointerup = (e) => {
       const toNode = netState.nodes.find(n => n.id === toId);
       if (toNode && toNode.type !== 'trigger' && !netState.edges.some(x => x.from === netState.link.from && x.to === toId)) {
         netState.edges.push({ from: netState.link.from, to: toId, isTrue: netState.link.isTrue || false });
-        netSave();
+        window.netSave();
       }
     }
-    netState.link = null; netDraw();
+    netState.link = null; window.netDraw();
   }
-  if (netState.drag) { netState.drag = null; netSave(); }
+  if (netState.drag) { netState.drag = null; window.netSave(); }
   netState.pan = null;
 };
 
-function netPt(e) {
+window.netPt = (e) => {
   const svg = $('netSvg'); const p = svg.createSVGPoint();
   p.x = e.clientX; p.y = e.clientY;
   return p.matrixTransform(svg.getScreenCTM().inverse());
-}
+};
 
-function netZoom(k) {
+window.netZoom = (k) => {
   const v = netState.view;
   const w = Math.max(400, Math.min(2400, v.w * k));
   const r = w / v.w;
@@ -1148,10 +1142,10 @@ window.netAddNode = () => {
     id, type, kind, value: NDV[type][kind] || '', label: NK[type][kind] || kind,
     x: 40 + (count % 4) * 260, y: 40 + Math.floor(count / 4) * 140
   });
-  netState.sel = id; netDraw(); netInspector(); netSave();
+  netState.sel = id; window.netDraw(); window.netInspector(); window.netSave();
 };
 
-function netDraw() {
+window.netDraw = () => {
   const eg = $('netEdges'), ng = $('netNodes'), pg = $('netPackets');
   if (!eg) return;
   eg.innerHTML = ''; ng.innerHTML = ''; if (pg) pg.innerHTML = '';
@@ -1159,7 +1153,7 @@ function netDraw() {
     const a = netState.nodes.find(n => n.id === e.from);
     const b = netState.nodes.find(n => n.id === e.to);
     if (!a || !b) return;
-    const path = netPath(a, b);
+    const path = window.netPath(a, b);
     const cls = a.type === 'condition' ? (e.isTrue ? 'true' : 'false') : '';
     eg.innerHTML += `<path class="net-edge ${cls}" d="${path}" marker-end="url(#arrow)"/>
       <path data-edge="${i}" d="${path}" stroke="transparent" stroke-width="16" fill="none" style="cursor:pointer"><title>انقر مرتين للحذف</title></path>`;
@@ -1184,37 +1178,37 @@ function netDraw() {
       ${ports}${outPort}${condPorts}
     </g>`;
   });
-  netUpdateStats();
+  window.netUpdateStats();
 }
 
-function netPath(a, b) {
+window.netPath = (a, b) => {
   const ax = a.x + 200, ay = a.y + 30, bx = b.x, by = b.y + 30;
   const dx = Math.max(40, Math.abs(bx - ax) / 2);
   return `M${ax},${ay} C${ax + dx},${ay} ${bx - dx},${by} ${bx},${by}`;
 }
 
-function netInspector() {
+window.netInspector = () => {
   const b = $('netInspector'); if (!b) return;
   const n = netState.nodes.find(x => x.id === netState.sel);
   if (!n) { b.innerHTML = '<div style="color:var(--tx-muted);font-size:13px;text-align:center;padding:12px">اختر عقدة لتعديلها</div>'; return; }
   const t = NT[n.type];
   b.innerHTML = `
     <div class="row"><b style="color:${t.color};font-size:14px;display:flex;align-items:center;gap:6px">${t.icon} ${t.label}</b>
-      <select onchange="netChangeKind(this.value)">
+      <select onchange="window.netChangeKind(this.value)">
         ${Object.entries(NK[n.type]).map(([k,v])=>`<option value="${k}" ${k===n.kind?'selected':''}>${v}</option>`).join('')}
       </select>
-      <button class="btn-sm" onclick="netRunNode('${n.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-play"/></svg> تشغيل</button>
-      <button class="btn-sm s" onclick="netDeleteNode()"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button>
+      <button class="btn-sm" onclick="window.netRunNode('${n.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-play"/></svg> تشغيل</button>
+      <button class="btn-sm s" onclick="window.netDeleteNode()"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button>
     </div>
-    <div class="row"><input type="text" value="${esc(n.value)}" oninput="netUpdateVal(this.value)" placeholder="القيمة"></div>`;
+    <div class="row"><input type="text" value="${esc(n.value)}" oninput="window.netUpdateVal(this.value)" placeholder="القيمة"></div>`;
 }
 
-window.netUpdateVal = (v) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.value = v; netDraw(); } };
-window.netChangeKind = (k) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.kind = k; n.value = NDV[n.type][k] || ''; n.label = NK[n.type][k]; netDraw(); netInspector(); netSave(); } };
+window.netUpdateVal = (v) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.value = v; window.netDraw(); } };
+window.netChangeKind = (k) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.kind = k; n.value = NDV[n.type][k] || ''; n.label = NK[n.type][k]; window.netDraw(); window.netInspector(); window.netSave(); } };
 window.netDeleteNode = () => {
   netState.nodes = netState.nodes.filter(n => n.id !== netState.sel);
   netState.edges = netState.edges.filter(e => e.from !== netState.sel && e.to !== netState.sel);
-  netState.sel = null; netDraw(); netInspector(); netSave();
+  netState.sel = null; window.netDraw(); window.netInspector(); window.netSave();
 };
 
 window.netSave = async () => {
@@ -1223,11 +1217,11 @@ window.netSave = async () => {
     const data = { ownerId: state.user.uid, nodes: netState.nodes, edges: netState.edges, stats: netState.stats, updatedAt: serverTimestamp() };
     if (netState.docId) await updateDoc(doc(db, 'workflows', netState.docId), data);
     else { const r = await addDoc(collection(db, 'workflows'), { ...data, createdAt: serverTimestamp() }); netState.docId = r.id; }
-    toast('تم حفظ الشبكة', 'success');
-  } catch (e) { toast('فشل: ' + e.message, 'error'); }
+    window.toast('تم حفظ الشبكة', 'success');
+  } catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
-function netUpdateStats() {
+window.netUpdateStats = () => {
   const s = netState.stats || { runs: 0, success: 0, fail: 0 };
   if ($('netStatNodes')) $('netStatNodes').textContent = netState.nodes.length;
   if ($('netStatEdges')) $('netStatEdges').textContent = netState.edges.length;
@@ -1238,7 +1232,7 @@ window.netExport = () => {
   const blob = new Blob([JSON.stringify({ nodes: netState.nodes, edges: netState.edges }, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob); a.download = 'workflow-' + today() + '.json'; a.click();
-  toast('تم التصدير', 'success');
+  window.toast('تم التصدير', 'success');
 };
 
 window.netImport = () => {
@@ -1248,8 +1242,8 @@ window.netImport = () => {
     const f = e.target.files[0]; if (!f) return;
     const r = new FileReader();
     r.onload = () => {
-      try { const d = JSON.parse(r.result); netState.nodes = d.nodes || []; netState.edges = d.edges || []; netState.sel = null; netDraw(); netInspector(); netSave(); toast('تم الاستيراد', 'success'); }
-      catch (err) { toast('ملف غير صالح', 'error'); }
+      try { const d = JSON.parse(r.result); netState.nodes = d.nodes || []; netState.edges = d.edges || []; netState.sel = null; window.netDraw(); window.netInspector(); window.netSave(); window.toast('تم الاستيراد', 'success'); }
+      catch (err) { window.toast('ملف غير صالح', 'error'); }
     };
     r.readAsText(f);
   };
@@ -1258,9 +1252,9 @@ window.netImport = () => {
 
 async function netRunNode(id, path = new Set()) {
   const n = netState.nodes.find(x => x.id === id); if (!n) return;
-  if (path.has(id)) { netLog('⚠️ حلقة مكتشفة'); return; }
+  if (path.has(id)) { window.netLog('⚠️ حلقة مكتشفة'); return; }
   path.add(id);
-  n._active = true; netDraw();
+  n._active = true; window.netDraw();
   await sleep(300);
   let ok = true;
   try {
@@ -1276,27 +1270,27 @@ async function netRunNode(id, path = new Set()) {
         const c = state.convs[0];
         if (c) await updateDoc(doc(db, 'conversations', c.id), { tags: [...(c.tags || []), n.value] });
       } else if (n.kind === 'webhook') { try { await fetch(n.value, { method: 'GET' }); } catch (e) { ok = false; } }
-    } else if (n.type === 'notify') { notify(n.value, n.kind); }
+    } else if (n.type === 'notify') { window.notify(n.value, n.kind); }
     else if (n.type === 'delay') { await sleep(Math.min(20, +n.value || 1) * 1000); }
-  } catch (e) { ok = false; netLog('❌ ' + e.message); }
+  } catch (e) { ok = false; window.netLog('❌ ' + e.message); }
   n._active = false;
-  if (ok) { n._success = true; setTimeout(() => { n._success = false; netDraw(); }, 1200); }
-  else { n._fail = true; setTimeout(() => { n._fail = false; netDraw(); }, 1200); }
-  netLog(`${ok ? '✅' : '❌'} ${n.label} (${n.value})`);
-  netDraw();
+  if (ok) { n._success = true; setTimeout(() => { n._success = false; window.netDraw(); }, 1200); }
+  else { n._fail = true; setTimeout(() => { n._fail = false; window.netDraw(); }, 1200); }
+  window.netLog(`${ok ? '✅' : '❌'} ${n.label} (${n.value})`);
+  window.netDraw();
   const out = netState.edges.filter(e => e.from === id && (n.type !== 'condition' || e.isTrue === ok));
   out.forEach((e, i) => {
-    netPacket(e);
+    window.netPacket(e);
     setTimeout(() => netRunNode(e.to, new Set(path)), 600 + i * 200);
   });
 }
 
-function netPacket(edge) {
+window.netPacket = (edge) => {
   const a = netState.nodes.find(n => n.id === edge.from);
   const b = netState.nodes.find(n => n.id === edge.to);
   const pg = $('netPackets');
   if (!a || !b || !pg) return;
-  const path = netPath(a, b);
+  const path = window.netPath(a, b);
   const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
   c.setAttribute('r', '6'); c.setAttribute('class', 'net-packet');
   const m = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
@@ -1308,74 +1302,74 @@ function netPacket(edge) {
 
 window.netRunAll = () => {
   const triggers = netState.nodes.filter(n => n.type === 'trigger');
-  if (!triggers.length) return toast('أضف محفزًا أولًا', 'error');
+  if (!triggers.length) return window.toast('أضف محفزًا أولًا', 'error');
   triggers.forEach(t => netRunNode(t.id));
   netState.stats.runs++;
-  netSave();
+  window.netSave();
 };
 
-function netLog(msg) {
+window.netLog = (msg) => {
   const el = $('netLog'); if (!el) return;
   const time = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   el.innerHTML = `<div style="padding:6px 0;border-bottom:1px solid var(--bd)"><span style="color:var(--tx-muted)">${time}</span> ${esc(msg)}</div>` + el.innerHTML;
 }
 
-function netNew() {
+window.netNew = () => {
   netState.nodes = []; netState.edges = []; netState.sel = null; netState.docId = null;
-  netDraw(); netInspector(); toast('شبكة جديدة', 'success');
+  window.netDraw(); window.netInspector(); window.toast('شبكة جديدة', 'success');
 }
 
 /* ============ Automations ============ */
 window.renderAutomations = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>الأتمتة</h1><div class="sub">قواعد تعمل بدلًا عنك</div></div><div class="actions"><button class="btn-sm" onclick="addAutomation()"><svg class="icon"><use href="#i-plus"/></svg> أتمتة</button></div></div>
+  <div class="topbar"><div><h1>الأتمتة</h1><div class="sub">قواعد تعمل بدلًا عنك</div></div><div class="actions"><button class="btn-sm" onclick="window.addAutomation()"><svg class="icon"><use href="#i-plus"/></svg> أتمتة</button></div></div>
   <div class="grid-2">
-    ${state.automations.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:12px;align-items:center"><b style="font-size:14px">${esc(a.name)}</b><span class="chip ${a.on ? 'active' : ''}" style="cursor:pointer;font-size:11px" onclick="toggleAuto('${a.id}',${a.on})">${a.on ? 'مفعّل' : 'متوقف'}</span></div><div style="font-size:13px;color:var(--tx-muted);margin-bottom:16px">${esc(a.desc || '')}</div><button class="btn-sm s" onclick="delAuto('${a.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-zap"/></svg><div>لا أتمتات</div></div>'}
+    ${state.automations.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:12px;align-items:center"><b style="font-size:14px">${esc(a.name)}</b><span class="chip ${a.on ? 'active' : ''}" style="cursor:pointer;font-size:11px" onclick="window.toggleAuto('${a.id}',${a.on})">${a.on ? 'مفعّل' : 'متوقف'}</span></div><div style="font-size:13px;color:var(--tx-muted);margin-bottom:16px">${esc(a.desc || '')}</div><button class="btn-sm s" onclick="window.delAuto('${a.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-zap"/></svg><div>لا أتمتات</div></div>'}
   </div>`;
 };
-window.toggleAuto = async (id, current) => { try { await updateDoc(doc(db, 'automations', id), { on: !current }); } catch (e) { toast('فشل: ' + e.message, 'error'); } };
-window.delAuto = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'automations', id)); } catch (e) { toast('فشل: ' + e.message, 'error'); } };
+window.toggleAuto = async (id, current) => { try { await updateDoc(doc(db, 'automations', id), { on: !current }); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
+window.delAuto = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'automations', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
 window.addAutomation = () => {
-  openModal(`<h3>أتمتة جديدة</h3><div class="form-row"><label>الاسم</label><input id="anName"></div><div class="form-row"><label>الوصف</label><textarea id="anDesc"></textarea></div><div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddAuto()">إضافة</button></div>`);
+  window.openModal(`<h3>أتمتة جديدة</h3><div class="form-row"><label>الاسم</label><input id="anName"></div><div class="form-row"><label>الوصف</label><textarea id="anDesc"></textarea></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddAuto()">إضافة</button></div>`);
 };
 window.doAddAuto = async () => {
-  const name = $('anName').value.trim(); if (!name) return toast('أدخل اسمًا', 'error');
-  try { await addDoc(collection(db, 'automations'), { ownerId: state.user.uid, name, desc: $('anDesc').value.trim(), on: true, createdAt: serverTimestamp() }); closeModal(); toast('تمت الإضافة', 'success'); }
-  catch (e) { toast('فشل: ' + e.message, 'error'); }
+  const name = $('anName').value.trim(); if (!name) return window.toast('أدخل اسمًا', 'error');
+  try { await addDoc(collection(db, 'automations'), { ownerId: state.user.uid, name, desc: $('anDesc').value.trim(), on: true, createdAt: serverTimestamp() }); window.closeModal(); window.toast('تمت الإضافة', 'success'); }
+  catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
 /* ============ Scheduler ============ */
 window.renderScheduler = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>الجدولة</h1><div class="sub">جدولة المهام والمنشورات</div></div><div class="actions"><button class="btn-sm" onclick="addSchedule()"><svg class="icon"><use href="#i-plus"/></svg> جدولة</button></div></div>
+  <div class="topbar"><div><h1>الجدولة</h1><div class="sub">جدولة المهام والمنشورات</div></div><div class="actions"><button class="btn-sm" onclick="window.addSchedule()"><svg class="icon"><use href="#i-plus"/></svg> جدولة</button></div></div>
   <div class="card">
     <h3 style="margin-bottom:16px;font-size:15px;font-weight:600">المجدول</h3>
-    ${state.schedules.length ? state.schedules.map(s => `<div class="schedule-item"><span class="when">${s.when}</span><span style="flex:1">${esc(s.title)}</span><span class="chip">${s.type}</span><button class="btn-sm s" onclick="delSchedule('${s.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-clock"/></svg><div>لا مجدولات</div></div>'}
+    ${state.schedules.length ? state.schedules.map(s => `<div class="schedule-item"><span class="when">${s.when}</span><span style="flex:1">${esc(s.title)}</span><span class="chip">${s.type}</span><button class="btn-sm s" onclick="window.delSchedule('${s.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-clock"/></svg><div>لا مجدولات</div></div>'}
   </div>`;
 };
 
 window.addSchedule = () => {
-  openModal(`<h3>جدولة جديدة</h3>
+  window.openModal(`<h3>جدولة جديدة</h3>
     <div class="form-row"><label>العنوان</label><input id="scTitle"></div>
     <div class="form-row"><label>الموعد</label><input type="datetime-local" id="scWhen"></div>
     <div class="form-row"><label>النوع</label><select id="scType"><option value="منشور">منشور</option><option value="مهمة">مهمة</option><option value="تذكير">تذكير</option></select></div>
-    <div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddSchedule()">إضافة</button></div>`);
+    <div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddSchedule()">إضافة</button></div>`);
 };
 
 window.doAddSchedule = async () => {
   const title = $('scTitle').value.trim(), when = $('scWhen').value;
-  if (!title || !when) return toast('أكمل البيانات', 'error');
+  if (!title || !when) return window.toast('أكمل البيانات', 'error');
   try {
     await addDoc(collection(db, 'schedules'), {
       ownerId: state.user.uid, title, when, type: $('scType').value, createdAt: serverTimestamp()
     });
-    closeModal(); toast('تمت الإضافة', 'success');
-  } catch (e) { toast('فشل: ' + e.message, 'error'); }
+    window.closeModal(); window.toast('تمت الإضافة', 'success');
+  } catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
 window.delSchedule = async (id) => {
   if (!confirm('حذف؟')) return;
-  try { await deleteDoc(doc(db, 'schedules', id)); } catch (e) { toast('فشل: ' + e.message, 'error'); }
+  try { await deleteDoc(doc(db, 'schedules', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
 setInterval(() => {
@@ -1383,7 +1377,7 @@ setInterval(() => {
   const nowStr = new Date().toISOString().slice(0, 16);
   state.schedules.forEach(async s => {
     if (s.when === nowStr && !s.fired) {
-      notify('⏰ ' + s.title, 'browser');
+      window.notify('⏰ ' + s.title, 'browser');
       await updateDoc(doc(db, 'schedules', s.id), { fired: true });
     }
   });
@@ -1393,46 +1387,46 @@ setInterval(() => {
 const COLS = [{ id: 'todo', n: 'للتنفيذ' }, { id: 'doing', n: 'قيد التنفيذ' }, { id: 'done', n: 'منجز' }];
 window.renderTasks = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>المهام</h1><div class="sub">نظّم فريقك</div></div><div class="actions"><button class="btn-sm" onclick="addTask()"><svg class="icon"><use href="#i-plus"/></svg> مهمة</button></div></div>
+  <div class="topbar"><div><h1>المهام</h1><div class="sub">نظّم فريقك</div></div><div class="actions"><button class="btn-sm" onclick="window.addTask()"><svg class="icon"><use href="#i-plus"/></svg> مهمة</button></div></div>
   <div class="kanban" id="kanban"></div>`;
-  renderKanban();
+  window.renderKanban();
 };
-function renderKanban() {
+window.renderKanban = () => {
   const el = $('kanban'); if (!el) return;
-  el.innerHTML = COLS.map(col => `<div class="col" ondragover="event.preventDefault()" ondrop="dropTask(event,'${col.id}')"><h4>${col.n} <span style="color:var(--tx-muted);font-size:12px">${state.tasks.filter(t => t.status === col.id).length}</span></h4>${state.tasks.filter(t => t.status === col.id).map(taskCard).join('')}</div>`).join('');
+  el.innerHTML = COLS.map(col => `<div class="col" ondragover="event.preventDefault()" ondrop="window.dropTask(event,'${col.id}')"><h4>${col.n} <span style="color:var(--tx-muted);font-size:12px">${state.tasks.filter(t => t.status === col.id).length}</span></h4>${state.tasks.filter(t => t.status === col.id).map(window.taskCard).join('')}</div>`).join('');
 }
-function taskCard(t) {
-  return `<div class="task" draggable="true" ondragstart="event.dataTransfer.setData('id','${t.id}')" ondblclick="toggleTask('${t.id}','${t.status}')"><div class="t">${esc(t.title)}</div><div class="m"><span class="pri-${t.pri}">${t.pri === 'h' ? 'عاجل' : t.pri === 'm' ? 'متوسط' : 'عادي'}</span><span>${t.date || '—'}</span><span onclick="delTask('${t.id}');event.stopPropagation()" style="cursor:pointer;color:var(--bad)"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></span></div></div>`;
+window.taskCard = (t) => {
+  return `<div class="task" draggable="true" ondragstart="event.dataTransfer.setData('id','${t.id}')" ondblclick="window.toggleTask('${t.id}','${t.status}')"><div class="t">${esc(t.title)}</div><div class="m"><span class="pri-${t.pri}">${t.pri === 'h' ? 'عاجل' : t.pri === 'm' ? 'متوسط' : 'عادي'}</span><span>${t.date || '—'}</span><span onclick="window.delTask('${t.id}');event.stopPropagation()" style="cursor:pointer;color:var(--bad)"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></span></div></div>`;
 }
 window.addTask = () => {
-  openModal(`<h3>مهمة جديدة</h3><div class="form-row"><label>العنوان</label><input id="tkTitle"></div><div class="form-row"><label>التاريخ</label><input type="date" id="tkDate" value="${today()}"></div><div class="form-row"><label>الأولوية</label><select id="tkPri"><option value="l">منخفضة</option><option value="m" selected>متوسطة</option><option value="h">عالية</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddTask()">إضافة</button></div>`);
+  window.openModal(`<h3>مهمة جديدة</h3><div class="form-row"><label>العنوان</label><input id="tkTitle"></div><div class="form-row"><label>التاريخ</label><input type="date" id="tkDate" value="${today()}"></div><div class="form-row"><label>الأولوية</label><select id="tkPri"><option value="l">منخفضة</option><option value="m" selected>متوسطة</option><option value="h">عالية</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddTask()">إضافة</button></div>`);
 };
 window.doAddTask = async () => {
-  const title = $('tkTitle').value.trim(); if (!title) return toast('أدخل عنوانًا', 'error');
-  try { await addDoc(collection(db, 'tasks'), { ownerId: state.user.uid, title, date: $('tkDate').value || today(), pri: $('tkPri').value, status: 'todo', createdAt: serverTimestamp() }); closeModal(); toast('تمت الإضافة', 'success'); }
-  catch (e) { toast('فشل: ' + e.message, 'error'); }
+  const title = $('tkTitle').value.trim(); if (!title) return window.toast('أدخل عنوانًا', 'error');
+  try { await addDoc(collection(db, 'tasks'), { ownerId: state.user.uid, title, date: $('tkDate').value || today(), pri: $('tkPri').value, status: 'todo', createdAt: serverTimestamp() }); window.closeModal(); window.toast('تمت الإضافة', 'success'); }
+  catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
-window.dropTask = async (e, col) => { e.preventDefault(); const id = e.dataTransfer.getData('id'); if (!id) return; try { await updateDoc(doc(db, 'tasks', id), { status: col }); } catch (e) { toast('فشل: ' + e.message, 'error'); } };
-window.toggleTask = async (id, current) => { try { await updateDoc(doc(db, 'tasks', id), { status: current === 'done' ? 'todo' : 'done' }); } catch (e) { toast('فشل: ' + e.message, 'error'); } };
-window.delTask = async (id) => { try { await deleteDoc(doc(db, 'tasks', id)); } catch (e) { toast('فشل: ' + e.message, 'error'); } };
+window.dropTask = async (e, col) => { e.preventDefault(); const id = e.dataTransfer.getData('id'); if (!id) return; try { await updateDoc(doc(db, 'tasks', id), { status: col }); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
+window.toggleTask = async (id, current) => { try { await updateDoc(doc(db, 'tasks', id), { status: current === 'done' ? 'todo' : 'done' }); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
+window.delTask = async (id) => { try { await deleteDoc(doc(db, 'tasks', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
 
 /* ============ Notifications ============ */
 window.renderNotifications = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>الإشعارات</h1><div class="sub">آخر التنبيهات</div></div><div class="actions"><button class="btn-sm s" onclick="enableBrowserNotif()"><svg class="icon"><use href="#i-bell"/></svg> تفعيل إشعارات المتصفح</button></div></div>
+  <div class="topbar"><div><h1>الإشعارات</h1><div class="sub">آخر التنبيهات</div></div><div class="actions"><button class="btn-sm s" onclick="window.enableBrowserNotif()"><svg class="icon"><use href="#i-bell"/></svg> تفعيل إشعارات المتصفح</button></div></div>
   <div class="card">
     ${state.notifications.length ? state.notifications.map(n => `<div class="notif-item ${n.read ? '' : 'unread'}"><svg class="icon ico"><use href="#i-bell"/></svg><div class="txt"><b>${esc(n.title || '')}</b><br><span style="color:var(--tx-muted);font-size:12px">${esc(n.body || '')}</span></div><span class="time">${fmtTime(toMillis(n.createdAt))}</span></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-bell"/></svg><div>لا إشعارات</div></div>'}
   </div>`;
 };
 
 window.enableBrowserNotif = async () => {
-  if (!('Notification' in window)) return toast('المتصفح لا يدعم', 'error');
+  if (!('Notification' in window)) return window.toast('المتصفح لا يدعم', 'error');
   const p = await Notification.requestPermission();
-  if (p === 'granted') toast('تم التفعيل', 'success');
-  else toast('تم الرفض', 'error');
+  if (p === 'granted') window.toast('تم التفعيل', 'success');
+  else window.toast('تم الرفض', 'error');
 };
 
-function notify(text, kind = 'toast') {
+window.notify = (text, kind = 'toast') => {
   const icon = kind === 'sound' ? '🔊' : kind === 'browser' ? '🌐' : '🔔';
   if (kind === 'browser' && 'Notification' in window && Notification.permission === 'granted') {
     new Notification('EMAA', { body: text, icon: '⚡' });
@@ -1440,7 +1434,7 @@ function notify(text, kind = 'toast') {
   if (kind === 'sound') {
     try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const o = ctx.createOscillator(); o.connect(ctx.destination); o.frequency.value = 880; o.start(); setTimeout(() => o.close(), 300); } catch (e) {}
   }
-  toast(text, 'info');
+  window.toast(text, 'info');
   if (state.user) {
     addDoc(collection(db, 'notifications'), {
       ownerId: state.user.uid, title: 'تنبيه', body: text, icon, read: false, createdAt: serverTimestamp()
@@ -1451,7 +1445,7 @@ function notify(text, kind = 'toast') {
 /* ============ Analytics ============ */
 window.renderAnalytics = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>التقارير</h1><div class="sub">أداء أعمالك</div></div><div class="actions"><button class="btn-sm s" onclick="exportCSV()"><svg class="icon"><use href="#i-download"/></svg> تصدير CSV</button></div></div>
+  <div class="topbar"><div><h1>التقارير</h1><div class="sub">أداء أعمالك</div></div><div class="actions"><button class="btn-sm s" onclick="window.exportCSV()"><svg class="icon"><use href="#i-download"/></svg> تصدير CSV</button></div></div>
   <div class="kpi-grid">
     <div class="kpi"><div class="label">محادثات</div><div class="val">${state.convs.length}</div></div>
     <div class="kpi"><div class="label">محتوى</div><div class="val">${state.content.length}</div></div>
@@ -1460,9 +1454,9 @@ window.renderAnalytics = () => {
   </div>
   <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">توزيع المحادثات</h3><div id="chart1" class="chart"></div></div>
   <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">النشاط</h3><div id="chart2" class="chart"></div></div>`;
-  renderCharts();
+  window.renderCharts();
 };
-function renderCharts() {
+window.renderCharts = () => {
   const c1 = $('chart1'), c2 = $('chart2');
   if (c1) {
     const counts = { whatsapp: 0, facebook: 0, instagram: 0, telegram: 0 };
@@ -1487,24 +1481,24 @@ window.exportCSV = () => {
   const csv = '\uFEFF' + rows.map(r => r.map(x => `"${String(x).replace(/"/g, '""')}"`).join(',')).join('\n');
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'emaa-export-' + today() + '.csv'; a.click();
-  toast('تم التصدير', 'success');
+  window.toast('تم التصدير', 'success');
 };
 
 /* ============ Team ============ */
 window.renderTeam = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>الفريق</h1><div class="sub">إدارة الأعضاء</div></div><div class="actions"><button class="btn-sm" onclick="addMember()"><svg class="icon"><use href="#i-plus"/></svg> دعوة</button></div></div>
-  <div class="card">${state.team.length ? state.team.map(m => `<div class="team-card"><div class="av">${esc((m.name||'م')[0])}</div><div class="info"><b>${esc(m.name)}</b><span>${esc(m.email || '—')} · ${esc(m.role || 'عضو')}</span></div><button class="btn-sm s" onclick="delMember('${m.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-users"/></svg><div>لا أعضاء</div></div>'}</div>`;
+  <div class="topbar"><div><h1>الفريق</h1><div class="sub">إدارة الأعضاء</div></div><div class="actions"><button class="btn-sm" onclick="window.addMember()"><svg class="icon"><use href="#i-plus"/></svg> دعوة</button></div></div>
+  <div class="card">${state.team.length ? state.team.map(m => `<div class="team-card"><div class="av">${esc((m.name||'م')[0])}</div><div class="info"><b>${esc(m.name)}</b><span>${esc(m.email || '—')} · ${esc(m.role || 'عضو')}</span></div><button class="btn-sm s" onclick="window.delMember('${m.id}')"><svg class="icon" style="width:12px;height:12px"><use href="#i-trash"/></svg></button></div>`).join('') : '<div class="empty"><svg class="icon-lg"><use href="#i-users"/></svg><div>لا أعضاء</div></div>'}</div>`;
 };
 window.addMember = () => {
-  openModal(`<h3>دعوة عضو</h3><div class="form-row"><label>الاسم</label><input id="mName"></div><div class="form-row"><label>البريد</label><input type="email" id="mEmail"></div><div class="form-row"><label>الدور</label><select id="mRole"><option value="محرر">محرر</option><option value="وكيل دعم">وكيل</option><option value="مدير">مدير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddMember()">إضافة</button></div>`);
+  window.openModal(`<h3>دعوة عضو</h3><div class="form-row"><label>الاسم</label><input id="mName"></div><div class="form-row"><label>البريد</label><input type="email" id="mEmail"></div><div class="form-row"><label>الدور</label><select id="mRole"><option value="محرر">محرر</option><option value="وكيل دعم">وكيل</option><option value="مدير">مدير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="window.closeModal()">إلغاء</button><button class="btn-sm" onclick="window.doAddMember()">إضافة</button></div>`);
 };
 window.doAddMember = async () => {
-  const n = $('mName').value.trim(); if (!n) return toast('أدخل الاسم', 'error');
-  try { await addDoc(collection(db, 'team'), { ownerId: state.user.uid, name: n, email: $('mEmail').value.trim(), role: $('mRole').value, createdAt: serverTimestamp() }); closeModal(); toast('تمت الإضافة', 'success'); }
-  catch (e) { toast('فشل: ' + e.message, 'error'); }
+  const n = $('mName').value.trim(); if (!n) return window.toast('أدخل الاسم', 'error');
+  try { await addDoc(collection(db, 'team'), { ownerId: state.user.uid, name: n, email: $('mEmail').value.trim(), role: $('mRole').value, createdAt: serverTimestamp() }); window.closeModal(); window.toast('تمت الإضافة', 'success'); }
+  catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
-window.delMember = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'team', id)); } catch (e) { toast('فشل: ' + e.message, 'error'); } };
+window.delMember = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'team', id)); } catch (e) { window.toast('فشل: ' + e.message, 'error'); } };
 
 /* ============ Channels ============ */
 window.renderChannels = () => {
@@ -1516,9 +1510,9 @@ window.renderChannels = () => {
   ];
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>القنوات</h1><div class="sub">اربط حساباتك</div></div></div>
-  <div class="grid-3">${data.map(d => `<div class="channel-card"><div class="icon" style="background:${d.c}">${d.i}</div><b>${d.n}</b><span class="chip" style="margin:8px 0;display:inline-block">يتطلب Webhook</span><div style="margin-top:16px"><button class="btn-sm s" onclick="setupChannel('${d.k}')">معلومات</button></div></div>`).join('')}</div>`;
+  <div class="grid-3">${data.map(d => `<div class="channel-card"><div class="icon" style="background:${d.c}">${d.i}</div><b>${d.n}</b><span class="chip" style="margin:8px 0;display:inline-block">يتطلب Webhook</span><div style="margin-top:16px"><button class="btn-sm s" onclick="window.setupChannel('${d.k}')">معلومات</button></div></div>`).join('')}</div>`;
 };
-window.setupChannel = (k) => { openModal(`<h3>${k}</h3><div style="padding:20px;text-align:center;color:var(--tx-muted)"><div style="font-size:40px;margin-bottom:16px">🔌</div>يُضبط عبر Cloud Functions</div><div class="form-actions"><button class="btn-sm" onclick="closeModal()">حسنًا</button></div>`); };
+window.setupChannel = (k) => { window.openModal(`<h3>${k}</h3><div style="padding:20px;text-align:center;color:var(--tx-muted)"><div style="font-size:40px;margin-bottom:16px">🔌</div>يُضبط عبر Cloud Functions</div><div class="form-actions"><button class="btn-sm" onclick="window.closeModal()">حسنًا</button></div>`); };
 
 /* ============ Settings ============ */
 window.renderSettings = () => {
@@ -1529,16 +1523,16 @@ window.renderSettings = () => {
     <div class="form-row"><label>UID</label><input value="${esc(state.user.uid)}" disabled></div>
   </div>
   <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">الذكاء الاصطناعي</h3>
-    <div class="form-row"><label>المزود</label><select id="aiProv" onchange="saveAI()"><option value="groq" ${AI_CFG.provider === 'groq' ? 'selected' : ''}>Groq (مجاني)</option><option value="openai" ${AI_CFG.provider === 'openai' ? 'selected' : ''}>OpenAI</option><option value="gemini" ${AI_CFG.provider === 'gemini' ? 'selected' : ''}>Gemini</option></select></div>
+    <div class="form-row"><label>المزود</label><select id="aiProv" onchange="window.saveAI()"><option value="groq" ${AI_CFG.provider === 'groq' ? 'selected' : ''}>Groq (مجاني)</option><option value="openai" ${AI_CFG.provider === 'openai' ? 'selected' : ''}>OpenAI</option><option value="gemini" ${AI_CFG.provider === 'gemini' ? 'selected' : ''}>Gemini</option></select></div>
     <div class="form-row"><label>API Key</label><input type="password" id="aiKey" value="${esc(AI_CFG.key)}" placeholder="gsk_..."></div>
     <div class="form-row"><label>النموذج</label><input id="aiModel" value="${esc(AI_CFG.model)}"></div>
-    <div class="form-actions"><button class="btn-sm s" onclick="testAI()">اختبار</button><button class="btn-sm" onclick="saveAI()">حفظ</button></div>
+    <div class="form-actions"><button class="btn-sm s" onclick="window.testAI()">اختبار</button><button class="btn-sm" onclick="window.saveAI()">حفظ</button></div>
     <div style="font-size:12px;color:var(--tx-muted);margin-top:12px">Groq: console.groq.com — النموذج: openai/gpt-oss-120b</div>
   </div>
   <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">عام</h3>
-    <div class="form-row"><label><input type="checkbox" ${localStorage.getItem('dark')==='1'?'checked':''} onchange="toggleTheme()"> الوضع الداكن</label></div>
+    <div class="form-row"><label><input type="checkbox" ${localStorage.getItem('dark')==='1'?'checked':''} onchange="window.toggleTheme()"> الوضع الداكن</label></div>
     <div class="form-row"><label>Google Auth</label><div style="font-size:12px;color:var(--tx-muted)">أضف <b>${location.hostname}</b> في Firebase Console → Authentication → Settings → Authorized domains</div></div>
-    <div class="form-actions"><button class="btn-sm d" onclick="logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div>
+    <div class="form-actions"><button class="btn-sm d" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div>
   </div>`;
 };
 window.saveAI = () => {
@@ -1548,12 +1542,12 @@ window.saveAI = () => {
   localStorage.setItem('ai_provider', AI_CFG.provider);
   localStorage.setItem('ai_key', AI_CFG.key);
   localStorage.setItem('ai_model', AI_CFG.model);
-  toast('تم الحفظ', 'success');
+  window.toast('تم الحفظ', 'success');
 };
 window.testAI = async () => {
-  saveAI();
-  try { const r = await callAI([{ role: 'user', content: 'قل: تم' }], { maxTokens: 20 }); toast('نجح الاتصال: ' + r, 'success'); }
-  catch (e) { toast('فشل الاتصال: ' + e.message, 'error'); }
+  window.saveAI();
+  try { const r = await callAI([{ role: 'user', content: 'قل: تم' }], { maxTokens: 20 }); window.toast('نجح الاتصال: ' + r, 'success'); }
+  catch (e) { window.toast('فشل الاتصال: ' + e.message, 'error'); }
 };
 
 /* ============ Theme ============ */
@@ -1564,34 +1558,8 @@ window.toggleTheme = () => {
 };
 if (localStorage.getItem('dark') === '1') document.documentElement.setAttribute('data-theme', 'dark');
 
-/* ============ Window Exports ============ */
-window.renderDashboard = renderDashboard;
-window.renderInbox = renderInbox;
-window.renderContent = renderContent;
-window.renderNetwork = renderNetwork;
-window.renderAutomations = renderAutomations;
-window.renderScheduler = renderScheduler;
-window.renderTasks = renderTasks;
-window.renderNotifications = renderNotifications;
-window.renderAnalytics = renderAnalytics;
-window.renderTeam = renderTeam;
-window.renderChannels = renderChannels;
-window.renderSettings = renderSettings;
-window.openConv = openConv;
-window.renderContentList = renderContentList;
-window.renderKanban = renderKanban;
-window.renderCal = renderCal;
-window.renderCharts = renderCharts;
-window.netDraw = netDraw;
-window.netInspector = netInspector;
-window.netBind = netBind;
-window.netSubscribe = netSubscribe;
-window.netPacket = netPacket;
-window.netLog = netLog;
-window.notify = notify;
-
 /* ============ Init ============ */
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeModal(); });
 window.addEventListener('resize', () => {
   if (window.innerWidth > 800) $('mobileBar').style.display = 'none';
   else if (state.user) $('mobileBar').style.display = 'flex';
