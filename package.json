@@ -1,0 +1,12 @@
+{
+  "name": "functions",
+  "description": "EMAA Social Suite — Cloud Functions",
+  "engines": { "node": "18" },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.5.0",
+    "firebase-functions": "^5.0.1",
+    "node-fetch": "^2.7.0"
+  },
+  "private": true
+}
