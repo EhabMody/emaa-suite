@@ -7,36 +7,25 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg: #030712;
-  --surface: #0f172a;
-  --surface-hover: #1e293b;
-  --tx: #f8fafc;
-  --tx-muted: #94a3b8;
-  --bd: #1e293b;
-  --ac: #3b82f6;
-  --ac-hover: #2563eb;
-  --ac-glow: rgba(59, 130, 246, 0.15);
-  --ok: #10b981;
-  --bad: #ef4444;
-  --wn: #f59e0b;
+  --bg: #030712; --surface: #0f172a; --surface-hover: #1e293b;
+  --tx: #f8fafc; --tx-muted: #94a3b8; --bd: #1e293b;
+  --ac: #3b82f6; --ac-hover: #2563eb; --ac-glow: rgba(59, 130, 246, 0.15);
+  --ok: #10b981; --bad: #ef4444; --wn: #f59e0b;
   --wa: #25d366; --fb: #1877f2; --ig: #e1306c; --tg: #229ed9;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'IBM Plex Sans Arabic','Inter',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:14px}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;transition:all 0.2s ease}
 input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ease, box-shadow 0.2s ease}
 .hidden{display:none!important}
-
 .icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .icon-lg{width:20px;height:20px}
 
 /* CYBER LOGO */
 .cyber-logo{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.5px}
 .cyber-logo .shield{width:32px;height:32px;background:linear-gradient(135deg, var(--ac), #8b5cf6);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 0 15px var(--ac-glow)}
-.cyber-logo .emaa{color:var(--tx)}
-.cyber-logo .tech{color:var(--ac)}
+.cyber-logo .emaa{color:var(--tx)}.cyber-logo .tech{color:var(--ac)}
 
 /* LANDING */
 .landing{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
@@ -314,7 +303,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 </head>
 <body>
 
-<!-- SVG Icons Definition -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
   <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -472,16 +460,16 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 
 <script type="module">
 /* ============ Firebase Imports ============ */
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js?v=3';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import {
   getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut
-} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js?v=3';
+} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import {
   getFirestore, collection, doc, setDoc, getDoc, addDoc,
   updateDoc, deleteDoc, query, where, orderBy, onSnapshot,
   serverTimestamp, limit
-} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js?v=3';
+} from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCLaX8kwGmZVy_9BfhOBMN8UTKYrTpFW3M",
@@ -546,7 +534,7 @@ const state = {
   notifications: [], schedules: [], unsubs: []
 };
 
-/* ============ Global Exports (Fixing empty screens) ============ */
+/* ============ Global Exports ============ */
 window.showLanding = () => {
   $('landingPage').style.display = 'flex';
   $('authScreen').style.display = 'none';
