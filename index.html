@@ -62,7 +62,8 @@ input,select,textarea{font:inherit;color:inherit}
 .user-box .nm{flex:1;min-width:0;overflow:hidden}
 .user-box .nm b{display:block;font-size:13px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
 .user-box .nm span{font-size:11px;color:var(--mu);display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
-.user-box .out{cursor:pointer;color:var(--mu);font-size:16px}
+.logout-btn{margin-top:10px;width:100%;padding:10px;border-radius:8px;background:var(--bad);color:#fff;font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.logout-btn:hover{background:#b91c1c}
 .main{padding:24px;overflow-x:auto;max-width:100%}
 @media(max-width:800px){.main{padding:16px}}
 .topbar{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
@@ -74,6 +75,12 @@ input,select,textarea{font:inherit;color:inherit}
 .btn-sm.s{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
 .btn-sm.s:hover{border-color:var(--ac);color:var(--ac)}
 .btn-sm.d{background:var(--bad)}
+.btn-sm.d:hover{background:#b91c1c}
+.mobile-bar{display:none;background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;position:sticky;top:0;z-index:50;align-items:center;justify-content:space-between}
+@media(max-width:800px){.mobile-bar{display:flex}}
+.mobile-bar .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px}
+.mobile-bar .logo span{background:linear-gradient(135deg,#4f46e5,#7c3aed);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+.mobile-bar .logout-mobile{padding:7px 12px;border-radius:8px;background:var(--bad);color:#fff;font-weight:600;font-size:12px;display:flex;align-items:center;gap:4px}
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
 .kpi{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .kpi::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:var(--ac)}
@@ -167,6 +174,12 @@ input,select,textarea{font:inherit;color:inherit}
 </head>
 <body>
 
+<!-- ============ شريط الموبايل ============ -->
+<div class="mobile-bar" id="mobileBar">
+  <div class="logo"><span>⚡</span> EMAA</div>
+  <button class="logout-mobile" onclick="logout()">⏻ خروج</button>
+</div>
+
 <!-- ============ AUTH ============ -->
 <div class="auth-screen" id="authScreen">
   <div class="auth-brand">
@@ -219,8 +232,8 @@ input,select,textarea{font:inherit;color:inherit}
     <div class="user-box">
       <div class="av" id="userAv">—</div>
       <div class="nm"><b id="userName">—</b><span id="userEmail">—</span></div>
-      <div class="out" onclick="logout()" title="خروج">⏻</div>
     </div>
+    <button class="logout-btn" onclick="logout()">⏻ تسجيل الخروج</button>
   </aside>
   <main class="main" id="mainContent"></main>
 </div>
@@ -228,7 +241,6 @@ input,select,textarea{font:inherit;color:inherit}
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box" id="modalBox"></div></div>
 <div class="toast" id="toast"></div>
 
-<!-- ============ FIREBASE + APP ============ -->
 <script type="module">
 /* ============================================================
    Firebase
@@ -259,8 +271,7 @@ const auth = getAuth(fbApp);
 const db = getFirestore(fbApp);
 
 /* ============================================================
-   AI مباشر (بدون Cloud Functions)
-   ⚠️ المفتاح مكشوف — استخدم للتجربة فقط
+   AI مباشر
    ============================================================ */
 const AI_CFG = {
   provider: localStorage.getItem('ai_provider') || 'groq',
@@ -340,7 +351,16 @@ window.loginGoogle = async () => {
   catch (e) { toast('❌ ' + (e.message || e.code)); }
 };
 
-window.logout = async () => { await signOut(auth); toast('تم تسجيل الخروج'); };
+window.logout = async () => {
+  if (!confirm('هل تريد تسجيل الخروج؟')) return;
+  try {
+    unsubscribeAll();
+    await signOut(auth);
+    toast('تم تسجيل الخروج بنجاح');
+  } catch (e) {
+    toast('❌ ' + (e.message || 'فشل الخروج'));
+  }
+};
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -357,9 +377,16 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     state.user = null;
     unsubscribeAll();
+    state.convs = [];
+    state.content = [];
+    state.tasks = [];
+    state.automations = [];
+    state.conv = null;
     $('authScreen').style.display = 'grid';
     $('app').classList.remove('active');
     $('serverStatus').innerHTML = '🔄 جارٍ الاتصال…';
+    $('loginEmail').value = '';
+    $('loginPass').value = '';
   }
 });
 
@@ -469,7 +496,7 @@ function renderDashboard() {
   return `
   <div class="topbar">
     <div><h1>مرحبًا، ${esc((state.user.displayName || state.user.email).split('@')[0])} 👋</h1><div class="sub"><span class="status-dot on"></span>متصل بـ Firebase</div></div>
-    <div class="actions"><button class="btn-sm" onclick="go('inbox')">💬 المحادثات</button><button class="btn-sm s" onclick="go('settings')">⚙️</button></div>
+    <div class="actions"><button class="btn-sm" onclick="go('inbox')">💬 المحادثات</button><button class="btn-sm s" onclick="go('settings')">⚙️</button><button class="btn-sm d" onclick="logout()">⏻ خروج</button></div>
   </div>
   <div class="kpi-grid">
     <div class="kpi"><div class="label">محادثات</div><div class="val">${state.convs.length}</div><div class="trend">${unread} غير مقروء</div></div>
@@ -486,7 +513,8 @@ function renderDashboard() {
       <h3 style="font-size:16px;margin-bottom:14px">⚡ إجراءات</h3>
       <button class="btn-sm" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('content')">✍️ منشور جديد</button>
       <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('tasks')">✅ مهمة</button>
-      <button class="btn-sm s" style="width:100%;justify-content:center" onclick="go('settings')">⚙️ الإعدادات</button>
+      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('settings')">⚙️ الإعدادات</button>
+      <button class="btn-sm d" style="width:100%;justify-content:center" onclick="logout()">⏻ تسجيل الخروج</button>
     </div>
   </div>`;
 }
@@ -859,6 +887,13 @@ window.testAI = async () => {
     toast('✅ ' + r);
   } catch (e) { toast('❌ ' + e.message); }
 };
+
+/* ============================================================
+   اختصارات لوحة المفاتيح
+   ============================================================ */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
 
 console.log('✅ EMAA Social Suite loaded');
 </script>
