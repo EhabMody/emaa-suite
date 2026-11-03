@@ -1131,6 +1131,17 @@ if (localStorage.getItem('theme') === 'light') document.documentElement.setAttri
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeModal(); });
 window.addEventListener('resize', () => { if (window.innerWidth > 800) { $('mobileBar').style.display = 'none'; $('bottomNav').style.display = 'none'; } else if (state.user) { $('mobileBar').style.display = 'flex'; $('bottomNav').style.display = 'flex'; } });
+// فحص جميع الدوال المطلوبة
+const requiredFns = [
+  'renderDashboard', 'renderInbox', 'renderContent', 'renderNetwork',
+  'renderAutomations', 'renderScheduler', 'renderTasks', 'renderNotifications',
+  'renderAnalytics', 'renderTeam', 'renderChannels', 'renderSettings',
+  'renderContentList', 'renderKanban', 'renderCharts', 'openConv',
+  'netBind', 'netDraw', 'netInspector', 'netSubscribe'
+];
+const missing = requiredFns.filter(fn => typeof window[fn] !== 'function');
+if (missing.length) console.error('❌ دوال مفقودة:', missing);
+else console.log('✅ كل الدوال موجودة');
 console.log('✅ EMAA Social Suite loaded');
 </script>
 </body>
