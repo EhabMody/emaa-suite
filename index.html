@@ -14,7 +14,7 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 input,select,textarea{font:inherit;color:inherit}
 .hidden{display:none!important}
-/* Landing */
+/* LANDING */
 .landing{min-height:100vh;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#db2777 100%);color:#fff;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .landing::before{content:'';position:absolute;width:600px;height:600px;background:rgba(255,255,255,.08);border-radius:50%;top:-300px;right:-300px}
 .landing::after{content:'';position:absolute;width:500px;height:500px;background:rgba(255,255,255,.06);border-radius:50%;bottom:-250px;left:-250px}
@@ -24,8 +24,7 @@ input,select,textarea{font:inherit;color:inherit}
 .landing nav .links{display:flex;gap:20px;align-items:center}
 @media(max-width:700px){.landing nav .links{display:none}.landing nav{padding:16px 24px}}
 .landing nav .links a{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
-.landing nav .links a:hover{opacity:1}
-.landing nav .cta{background:#fff;color:#4f46e5;padding:9px 20px;border-radius:8px;font-weight:600;font-size:14px}
+.landing nav .links .cta{background:#fff;color:#4f46e5;padding:9px 20px;border-radius:8px;font-weight:600;font-size:14px}
 .landing .hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:48px;position:relative;z-index:2}
 .landing .hero h1{font-size:52px;line-height:1.2;margin-bottom:20px;max-width:800px;font-weight:700}
 @media(max-width:700px){.landing .hero h1{font-size:32px}}
@@ -33,14 +32,14 @@ input,select,textarea{font:inherit;color:inherit}
 .landing .hero .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .landing .hero .btns button{padding:14px 32px;border-radius:10px;font-weight:600;font-size:16px}
 .landing .hero .btns .primary{background:#fff;color:#4f46e5}
-.landing .hero .btns .secondary{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}
+.landing .hero .btns .secondary{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
 .landing .features{padding:64px 48px;background:var(--card);color:var(--tx);position:relative;z-index:2}
 .landing .features .container{max-width:1100px;margin:auto}
-.landing .features h2{font-size:32px;text-align:center;margin-bottom:48px;color:var(--tx)}
+.landing .features h2{font-size:32px;text-align:center;margin-bottom:48px}
 .landing .features .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
 .landing .feature-card{background:var(--bg);border-radius:14px;padding:24px;border:1px solid var(--bd)}
 .landing .feature-card .icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
-.landing .feature-card h3{font-size:18px;margin-bottom:8px;color:var(--tx)}
+.landing .feature-card h3{font-size:18px;margin-bottom:8px}
 .landing .feature-card p{font-size:14px;color:var(--mu)}
 .landing .pricing{padding:64px 48px;background:var(--bg)}
 .landing .pricing .container{max-width:1100px;margin:auto}
@@ -57,7 +56,7 @@ input,select,textarea{font:inherit;color:inherit}
 .landing .price-card ul li::before{content:'✓';color:var(--ok);font-weight:700;margin-inline-end:8px}
 .landing .price-card button{width:100%;padding:12px;border-radius:10px;background:#4f46e5;color:#fff;font-weight:600;margin-top:8px}
 .landing footer{padding:24px 48px;text-align:center;font-size:13px;color:var(--mu);background:var(--card)}
-/* Auth */
+/* AUTH */
 .auth-screen{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--card)}
 @media(max-width:900px){.auth-screen{grid-template-columns:1fr}.auth-brand{display:none!important}}
 .auth-brand{background:linear-gradient(135deg,#4f46e5,#7c3aed 50%,#db2777);padding:48px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden}
@@ -88,7 +87,7 @@ input,select,textarea{font:inherit;color:inherit}
 .auth-switch{text-align:center;margin-top:20px;font-size:14px;color:var(--mu)}
 .auth-switch a{font-weight:600;color:var(--ac);text-decoration:none;cursor:pointer}
 .auth-switch .error{color:var(--bad);font-size:12px;display:block;margin-top:8px}
-/* App */
+/* APP */
 .app{display:none;min-height:100vh;grid-template-columns:240px 1fr}
 .app.active{display:grid}
 @media(max-width:800px){.app{grid-template-columns:1fr}.sidebar{display:none}}
@@ -120,7 +119,7 @@ input,select,textarea{font:inherit;color:inherit}
 .btn-sm.s:hover{border-color:var(--ac);color:var(--ac)}
 .btn-sm.d{background:var(--bad)}
 .mobile-bar{display:none;background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;position:sticky;top:0;z-index:50;align-items:center;justify-content:space-between}
-@media(max-width:800px){.mobile-bar{display:flex}}
+@media(max-width:800px){.mobile-bar{display:flex!important}}
 .mobile-bar .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px}
 .mobile-bar .logo span{background:linear-gradient(135deg,#4f46e5,#7c3aed);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
 .mobile-bar .logout-mobile{padding:7px 12px;border-radius:8px;background:var(--bad);color:#fff;font-weight:600;font-size:12px;display:flex;align-items:center;gap:4px}
@@ -149,7 +148,6 @@ input,select,textarea{font:inherit;color:inherit}
 .conv .info .msg{font-size:12px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .conv .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
 .tag{background:var(--ac2);color:var(--ac);padding:1px 8px;border-radius:10px;font-size:10px;font-weight:600}
-.tag.re{background:#fee2e2;color:#991b1b;cursor:pointer}
 .chat-area{display:flex;flex-direction:column;background:var(--bg)}
 .chat-header{padding:14px 18px;background:var(--card);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px}
 .chat-header .av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
@@ -178,6 +176,9 @@ input,select,textarea{font:inherit;color:inherit}
 .chat-input .tools button{font-size:11px;padding:5px 10px;border-radius:6px;background:var(--bg);border:1px solid var(--bd);color:var(--mu)}
 .chat-input .tools button:hover{border-color:var(--ac);color:var(--ac)}
 .chat-input .tools .note-btn{background:#fef3c7;border-color:#f59e0b;color:#92400e}
+.quick-replies{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.quick-replies button{padding:6px 12px;border-radius:16px;background:var(--ac2);color:var(--ac);font-size:12px;font-weight:600}
+.quick-replies button:hover{background:var(--ac);color:#fff}
 .toast{position:fixed;bottom:24px;left:24px;background:var(--tx);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;box-shadow:var(--shadow-lg);display:none;z-index:100;max-width:340px}
 .toast.show{display:block;animation:slideUp .3s}
 .toast.success{background:var(--ok)}
@@ -227,16 +228,49 @@ input,select,textarea{font:inherit;color:inherit}
 .team-card .info{flex:1;min-width:0}
 .team-card .info b{display:block;font-size:14px}
 .team-card .info span{font-size:12px;color:var(--mu)}
-.quick-replies{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.quick-replies button{padding:6px 12px;border-radius:16px;background:var(--ac2);color:var(--ac);font-size:12px;font-weight:600}
-.quick-replies button:hover{background:var(--ac);color:#fff}
-.notification-badge{position:fixed;top:16px;left:16px;background:var(--ac);color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;box-shadow:var(--shadow-lg);z-index:100;display:none;animation:slideDown .3s}
-.notification-badge.show{display:block}
-@keyframes slideDown{from{transform:translateY(-20px);opacity:0}to{transform:translateY(0);opacity:1}}
+/* NETWORK */
+.net-tabs{display:flex;gap:6px;padding:12px;background:var(--card);border-bottom:1px solid var(--bd);overflow-x:auto;border-radius:14px 14px 0 0}
+.net-tab{padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;color:var(--mu);background:var(--bg)}
+.net-tab.active{background:var(--ac2);color:var(--ac);font-weight:600}
+.net-canvas{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.net-canvas svg{width:100%;height:auto;aspect-ratio:16/9;display:block;touch-action:none;direction:ltr;background:radial-gradient(circle at 1px 1px,var(--bd) 1px,transparent 0) 0 0/24px 24px}
+.net-node{cursor:grab}
+.net-node rect{fill:var(--card);stroke-width:2;transition:all .2s}
+.net-node.sel rect{stroke-width:4;filter:drop-shadow(0 0 8px rgba(79,70,229,.4))}
+.net-node text{fill:var(--tx);font-size:13px;font-family:'IBM Plex Sans Arabic',sans-serif;pointer-events:none;direction:rtl}
+.net-node .sub{fill:var(--mu);font-size:11px}
+.net-node.active rect{fill:var(--ac2);animation:netPulse 1.2s infinite}
+.net-node.success rect{fill:#dcfce7;stroke:#16a34a!important}
+.net-node.fail rect{fill:#fee2e2;stroke:#dc2626!important}
+@keyframes netPulse{50%{stroke-width:6}}
+.net-port{fill:var(--card);stroke:var(--ac);stroke-width:2.5;cursor:crosshair;transition:all .2s}
+.net-port:hover{fill:var(--ac)}
+.net-edge{fill:none;stroke:var(--mu);stroke-width:2;stroke-dasharray:6 4;animation:netFlow 1s linear infinite}
+.net-edge.true{stroke:#16a34a;stroke-dasharray:none;animation:none}
+.net-edge.false{stroke:#dc2626;stroke-dasharray:none;animation:none}
+@keyframes netFlow{to{stroke-dashoffset:-10}}
+.net-packet{fill:#22c55e;filter:drop-shadow(0 0 4px #22c55e)}
+.net-toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:var(--card);border-bottom:1px solid var(--bd);align-items:center}
+.net-toolbar select{flex:1 1 200px;min-width:0}
+.net-inspector{padding:16px;background:var(--card);border-top:1px solid var(--bd);border-radius:0 0 14px 14px}
+.net-inspector .row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+.net-inspector input,.net-inspector select{flex:1 1 140px;min-width:0}
+.net-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;padding:12px;background:var(--bg);border-radius:10px;margin-bottom:12px}
+.net-stat{text-align:center}
+.net-stat .v{font-size:20px;font-weight:700;color:var(--ac)}
+.net-stat .l{font-size:11px;color:var(--mu)}
+/* NOTIF */
+.notif-item{padding:10px;border-bottom:1px solid var(--bd);display:flex;gap:8px;align-items:flex-start}
+.notif-item.unread{background:var(--ac2)}
+.notif-item .ico{font-size:18px}
+.notif-item .txt{flex:1;font-size:13px}
+.notif-item .time{font-size:11px;color:var(--mu)}
+.schedule-item{display:flex;gap:10px;padding:10px;background:var(--bg);border-radius:8px;align-items:center;font-size:13px;margin-bottom:8px}
+.schedule-item .when{font-weight:600;color:var(--ac);font-size:12px;min-width:120px}
 </style>
 </head>
 <body>
-<!-- ============ LANDING PAGE ============ -->
+<!-- LANDING -->
 <div class="landing" id="landingPage">
   <nav>
     <div class="logo"><span>⚡</span> EMAA</div>
@@ -258,12 +292,12 @@ input,select,textarea{font:inherit;color:inherit}
     <div class="container">
       <h2>كل ما تحتاجه لإدارة أعمالك</h2>
       <div class="grid">
-        <div class="feature-card"><div class="icon">💬</div><h3>Inbox موحد</h3><p>كل رسائلك من واتساب وفيسبوك وإنستجرام وتيليجرام في مكان واحد</p></div>
+        <div class="feature-card"><div class="icon">💬</div><h3>Inbox موحد</h3><p>كل رسائلك من واتساب وفيسبوك وإنستجرام وتيليجرام</p></div>
         <div class="feature-card"><div class="icon">🤖</div><h3>ذكاء اصطناعي عربي</h3><p>ردود آلية تفهم اللهجات العربية وتقترح ردودًا ذكية</p></div>
         <div class="feature-card"><div class="icon">✍️</div><h3>استوديو المحتوى</h3><p>ولّد منشورات احترافية لكل منصة بضغطة زر</p></div>
-        <div class="feature-card"><div class="icon">⚡</div><h3>أتمتة بلا كود</h3><p>قواعد ذكية تعمل بدلًا عنك على مدار الساعة</p></div>
-        <div class="feature-card"><div class="icon">✅</div><h3>إدارة المهام</h3><p>نظّم فريقك، أسنِد مهامك، وتابع التقدم</p></div>
-        <div class="feature-card"><div class="icon">📈</div><h3>تقارير احترافية</h3><p>اعرف أداء أعمالك، أوقات الذروة، ومعدل الرضا</p></div>
+        <div class="feature-card"><div class="icon">🕸</div><h3>شبكة الأعمال</h3><p>اربط المحفزات بالإجراءات بأتمتة مرئية</p></div>
+        <div class="feature-card"><div class="icon">✅</div><h3>إدارة المهام</h3><p>نظّم فريقك وأسنِد مهامك وتابع التقدم</p></div>
+        <div class="feature-card"><div class="icon">📈</div><h3>تقارير احترافية</h3><p>اعرف أداء أعمالك ومعدل الرضا</p></div>
       </div>
     </div>
   </div>
@@ -271,32 +305,16 @@ input,select,textarea{font:inherit;color:inherit}
     <div class="container">
       <h2>خطط تناسب الجميع</h2>
       <div class="grid">
-        <div class="price-card">
-          <h3>Starter</h3>
-          <div class="price">مجانًا<small></small></div>
-          <ul><li>50 رسالة/شهر</li><li>منصة واحدة</li><li>3 منشورات</li><li>AI أساسي</li></ul>
-          <button onclick="showAuth()">ابدأ الآن</button>
-        </div>
-        <div class="price-card popular">
-          <div class="badge">الأكثر شعبية</div>
-          <h3>Business</h3>
-          <div class="price">$29<small>/شهر</small></div>
-          <ul><li>3000 رسالة/شهر</li><li>4 منصات</li><li>200 منشور</li><li>AI كامل</li><li>تقارير</li></ul>
-          <button onclick="showAuth()">جرّب مجانًا</button>
-        </div>
-        <div class="price-card">
-          <h3>Agency</h3>
-          <div class="price">$99<small>/شهر</small></div>
-          <ul><li>15000 رسالة/شهر</li><li>كل المنصات</li><li>5 مستخدمين</li><li>API</li><li>White-label</li></ul>
-          <button onclick="showAuth()">تواصل معنا</button>
-        </div>
+        <div class="price-card"><h3>Starter</h3><div class="price">مجانًا</div><ul><li>50 رسالة/شهر</li><li>منصة واحدة</li><li>3 منشورات</li><li>AI أساسي</li></ul><button onclick="showAuth()">ابدأ الآن</button></div>
+        <div class="price-card popular"><div class="badge">الأكثر شعبية</div><h3>Business</h3><div class="price">$29<small>/شهر</small></div><ul><li>3000 رسالة/شهر</li><li>4 منصات</li><li>200 منشور</li><li>AI كامل</li></ul><button onclick="showAuth()">جرّب مجانًا</button></div>
+        <div class="price-card"><h3>Agency</h3><div class="price">$99<small>/شهر</small></div><ul><li>15000 رسالة/شهر</li><li>كل المنصات</li><li>5 مستخدمين</li><li>API</li></ul><button onclick="showAuth()">تواصل معنا</button></div>
       </div>
     </div>
   </div>
   <footer>© 2026 EMAA.Tech — جميع الحقوق محفوظة</footer>
 </div>
 
-<!-- ============ AUTH ============ -->
+<!-- AUTH -->
 <div class="auth-screen" id="authScreen" style="display:none">
   <div class="auth-brand">
     <div class="logo"><span>⚡</span> EMAA Social Suite</div>
@@ -306,7 +324,7 @@ input,select,textarea{font:inherit;color:inherit}
       <div class="auth-features">
         <div>Inbox موحد لواتساب وفيسبوك وإنستجرام وتيليجرام</div>
         <div>ذكاء اصطناعي يفهم اللهجات العربية</div>
-        <div>أتمتة بلا كود — ردود، مهام، تقارير</div>
+        <div>أتمتة بلا كود — شبكة أعمال مرئية</div>
         <div>تقارير أسبوعية تلقائية لكل عميل</div>
       </div>
     </div>
@@ -323,14 +341,11 @@ input,select,textarea{font:inherit;color:inherit}
     <div class="field"><label>البريد</label><input type="email" id="loginEmail" placeholder="you@example.com"></div>
     <div class="field"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="••••••••"></div>
     <button class="btn" onclick="loginEmail()">تسجيل الدخول / إنشاء حساب</button>
-    <div class="auth-switch">
-      <a onclick="showLanding()">← العودة للرئيسية</a>
-      <span class="error" id="authError"></span>
-    </div>
+    <div class="auth-switch"><a onclick="showLanding()">← العودة للرئيسية</a><span class="error" id="authError"></span></div>
   </div>
 </div>
 
-<!-- ============ APP ============ -->
+<!-- APP -->
 <div class="app" id="app">
   <aside class="sidebar">
     <div class="logo"><span>⚡</span> EMAA</div>
@@ -339,12 +354,15 @@ input,select,textarea{font:inherit;color:inherit}
       <div class="nav-item active" data-page="dashboard" onclick="go('dashboard')"><span class="icon">📊</span> لوحة التحكم</div>
       <div class="nav-item" data-page="inbox" onclick="go('inbox')"><span class="icon">💬</span> المحادثات <span class="badge" id="inboxBadge">0</span></div>
       <div class="nav-item" data-page="content" onclick="go('content')"><span class="icon">✍️</span> المحتوى</div>
+      <div class="nav-item" data-page="network" onclick="go('network')"><span class="icon">🕸</span> شبكة الأعمال</div>
       <div class="nav-item" data-page="automations" onclick="go('automations')"><span class="icon">⚡</span> الأتمتة</div>
+      <div class="nav-item" data-page="scheduler" onclick="go('scheduler')"><span class="icon">⏰</span> الجدولة</div>
       <div class="nav-item" data-page="tasks" onclick="go('tasks')"><span class="icon">✅</span> المهام</div>
+      <div class="nav-item" data-page="notifications" onclick="go('notifications')"><span class="icon">🔔</span> الإشعارات <span class="badge" id="notifBadge">0</span></div>
       <div class="nav-item" data-page="analytics" onclick="go('analytics')"><span class="icon">📈</span> التقارير</div>
     </div>
     <div class="nav-group">
-      <div class="label">الفريق والإعدادات</div>
+      <div class="label">الإعدادات</div>
       <div class="nav-item" data-page="team" onclick="go('team')"><span class="icon">👥</span> الفريق</div>
       <div class="nav-item" data-page="channels" onclick="go('channels')"><span class="icon">🔗</span> القنوات</div>
       <div class="nav-item" data-page="settings" onclick="go('settings')"><span class="icon">⚙️</span> الإعدادات</div>
@@ -365,9 +383,9 @@ input,select,textarea{font:inherit;color:inherit}
 
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box" id="modalBox"></div></div>
 <div class="toast" id="toast"></div>
-<div class="notification-badge" id="notificationBadge"></div>
 
 <script type="module">
+/* ============ Firebase Imports ============ */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import {
   getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
@@ -393,9 +411,7 @@ const fbApp = initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const db = getFirestore(fbApp);
 
-/* ============================================================
-   AI
-   ============================================================ */
+/* ============ AI ============ */
 const AI_CFG = {
   provider: localStorage.getItem('ai_provider') || 'groq',
   key: localStorage.getItem('ai_key') || '',
@@ -428,34 +444,35 @@ async function callAI(messages, opts = {}) {
   return d.choices[0].message.content || '';
 }
 
-/* ============================================================
-   Helpers
-   ============================================================ */
+/* ============ Helpers ============ */
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 const now = () => Date.now();
 const today = () => new Date().toISOString().slice(0, 10);
 const fmtTime = ts => new Date(ts).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
 const fmtDate = ts => new Date(ts).toLocaleDateString('ar-EG');
-const toMillis = ts => {
-  if (!ts) return now();
-  if (typeof ts === 'number') return ts;
-  if (ts.toMillis) return ts.toMillis();
-  if (ts.seconds) return ts.seconds * 1000;
-  return now();
-};
+const toMillis = ts => { if (!ts) return now(); if (typeof ts === 'number') return ts; if (ts.toMillis) return ts.toMillis(); if (ts.seconds) return ts.seconds * 1000; return now(); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const state = {
   page: 'dashboard', conv: null, filter: 'all', user: null,
   convs: [], content: [], tasks: [], automations: [], team: [], replies: [],
-  unsubs: [],
-  tags: ['عميل جديد', 'شكوى', 'استفسار سعر', 'متابعة']
+  notifications: [], schedules: [], unsubs: []
 };
 
-/* ============================================================
-   Navigation: Landing / Auth / App
-   ============================================================ */
+/* ============ Toast ============ */
+window.toast = (m, type = 'info') => {
+  const t = $('toast');
+  t.textContent = m;
+  t.className = 'toast show ' + type;
+  clearTimeout(t.h);
+  t.h = setTimeout(() => t.className = 'toast', 3500);
+};
+
+window.openModal = (html) => { $('modalBox').innerHTML = html; $('modal').classList.add('open'); };
+window.closeModal = () => $('modal').classList.remove('open');
+
+/* ============ Navigation ============ */
 window.showLanding = () => {
   $('landingPage').style.display = 'flex';
   $('authScreen').style.display = 'none';
@@ -469,35 +486,27 @@ window.showAuth = () => {
   $('mobileBar').style.display = 'none';
 };
 
-/* ============================================================
-   Auth
-   ============================================================ */
+/* ============ Auth ============ */
 window.loginEmail = async () => {
   const email = $('loginEmail').value.trim();
   const pass = $('loginPass').value;
-  const err = $('authError');
-  err.textContent = '';
+  const err = $('authError'); err.textContent = '';
   if (!email || !pass) { err.textContent = 'أدخل البريد وكلمة المرور'; return; }
   try {
     await signInWithEmailAndPassword(auth, email, pass);
     toast('✅ مرحبًا بك', 'success');
   } catch (e) {
     if (e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential') {
-      try {
-        await createUserWithEmailAndPassword(auth, email, pass);
-        toast('✅ حساب جديد أُنشئ', 'success');
-      } catch (e2) { err.textContent = e2.message || e2.code; }
+      try { await createUserWithEmailAndPassword(auth, email, pass); toast('✅ حساب جديد', 'success'); }
+      catch (e2) { err.textContent = e2.message || e2.code; }
     } else err.textContent = e.message || e.code;
   }
 };
 
 window.loginGoogle = async () => {
-  const err = $('authError');
-  err.textContent = '';
-  try {
-    await signInWithPopup(auth, new GoogleAuthProvider());
-    toast('✅ مرحبًا', 'success');
-  } catch (e) {
+  const err = $('authError'); err.textContent = '';
+  try { await signInWithPopup(auth, new GoogleAuthProvider()); toast('✅ مرحبًا', 'success'); }
+  catch (e) {
     if (e.code === 'auth/unauthorized-domain') {
       err.innerHTML = 'النطاق غير مصرح. أضف <b>' + location.hostname + '</b> في Firebase Console → Authentication → Settings → Authorized domains';
     } else err.textContent = e.message || e.code;
@@ -506,11 +515,8 @@ window.loginGoogle = async () => {
 
 window.logout = async () => {
   if (!confirm('هل تريد تسجيل الخروج؟')) return;
-  try {
-    unsubscribeAll();
-    await signOut(auth);
-    toast('تم تسجيل الخروج', 'success');
-  } catch (e) { toast('❌ ' + (e.message || 'فشل'), 'error'); }
+  try { unsubscribeAll(); await signOut(auth); toast('تم تسجيل الخروج', 'success'); }
+  catch (e) { toast('❌ ' + (e.message || 'فشل'), 'error'); }
 };
 
 onAuthStateChanged(auth, async (user) => {
@@ -529,7 +535,8 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     state.user = null;
     unsubscribeAll();
-    state.convs = []; state.content = []; state.tasks = []; state.automations = []; state.team = []; state.replies = [];
+    state.convs = []; state.content = []; state.tasks = []; state.automations = [];
+    state.team = []; state.replies = []; state.notifications = []; state.schedules = [];
     state.conv = null;
     showLanding();
     $('loginEmail').value = ''; $('loginPass').value = '';
@@ -540,10 +547,7 @@ async function ensureUserDoc(user) {
   const ref = doc(db, 'users', user.uid);
   const snap = await getDoc(ref);
   if (!snap.exists()) {
-    await setDoc(ref, {
-      name: user.displayName || user.email.split('@')[0],
-      email: user.email, plan: 'Business', createdAt: serverTimestamp()
-    });
+    await setDoc(ref, { name: user.displayName || user.email.split('@')[0], email: user.email, plan: 'Business', createdAt: serverTimestamp() });
   }
 }
 
@@ -556,7 +560,6 @@ function subscribeAll() {
   unsubscribeAll();
   const uid = state.user.uid;
 
-  // محادثات
   const qc = query(collection(db, 'conversations'), where('ownerId', '==', uid), orderBy('updatedAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qc, snap => {
     state.convs = snap.docs.map(d => ({ id: d.id, ...d.data(), msgs: [] }));
@@ -565,39 +568,42 @@ function subscribeAll() {
     updateInboxBadge();
   }, e => console.warn('convs:', e.message)));
 
-  // محتوى
   const qct = query(collection(db, 'content'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qct, snap => {
     state.content = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     if (state.page === 'content') renderContentList();
   }, e => console.warn('content:', e.message)));
 
-  // مهام
   const qt = query(collection(db, 'tasks'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qt, snap => {
     state.tasks = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     if (state.page === 'tasks') renderKanban();
   }, e => console.warn('tasks:', e.message)));
 
-  // أتمتة
   const qa = query(collection(db, 'automations'), where('ownerId', '==', uid), limit(50));
   state.unsubs.push(onSnapshot(qa, snap => {
     state.automations = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     if (state.page === 'automations') go('automations');
   }, e => console.warn('automations:', e.message)));
 
-  // فريق
   const qteam = query(collection(db, 'team'), where('ownerId', '==', uid), limit(50));
   state.unsubs.push(onSnapshot(qteam, snap => {
     state.team = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     if (state.page === 'team') go('team');
   }, e => console.warn('team:', e.message)));
 
-  // ردود سريعة
-  const qr = query(collection(db, 'quickReplies'), where('ownerId', '==', uid), limit(50));
-  state.unsubs.push(onSnapshot(qr, snap => {
-    state.replies = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-  }, e => console.warn('replies:', e.message)));
+  const qn = query(collection(db, 'notifications'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(50));
+  state.unsubs.push(onSnapshot(qn, snap => {
+    state.notifications = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    updateNotifBadge();
+    if (state.page === 'notifications') go('notifications');
+  }, e => console.warn('notifs:', e.message)));
+
+  const qs = query(collection(db, 'schedules'), where('ownerId', '==', uid), orderBy('when', 'asc'), limit(50));
+  state.unsubs.push(onSnapshot(qs, snap => {
+    state.schedules = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    if (state.page === 'scheduler') go('scheduler');
+  }, e => console.warn('schedules:', e.message)));
 }
 
 function subscribeMessages(convId) {
@@ -614,15 +620,23 @@ function subscribeMessages(convId) {
   state.unsubs.push(unsub);
 }
 
-/* ============================================================
-   Router
-   ============================================================ */
+function updateInboxBadge() {
+  const total = state.convs.reduce((a, c) => a + (c.unread || 0), 0);
+  const b = $('inboxBadge'); if (b) { b.textContent = total; b.style.display = total ? '' : 'none'; }
+}
+function updateNotifBadge() {
+  const total = state.notifications.filter(n => !n.read).length;
+  const b = $('notifBadge'); if (b) { b.textContent = total; b.style.display = total ? '' : 'none'; }
+}
+
+/* ============ Router ============ */
 window.go = (page) => {
   state.page = page;
   document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
   const R = {
     dashboard: renderDashboard, inbox: renderInbox, content: renderContent,
-    automations: renderAutomations, tasks: renderTasks, analytics: renderAnalytics,
+    network: renderNetwork, automations: renderAutomations, scheduler: renderScheduler,
+    tasks: renderTasks, notifications: renderNotifications, analytics: renderAnalytics,
     team: renderTeam, channels: renderChannels, settings: renderSettings
   };
   $('mainContent').innerHTML = (R[page] || renderDashboard)();
@@ -630,40 +644,19 @@ window.go = (page) => {
   if (page === 'content') renderContentList();
   if (page === 'tasks') renderKanban();
   if (page === 'analytics') renderCharts();
+  if (page === 'network') { netBind(); netDraw(); netInspector(); netSubscribe(); }
   updateInboxBadge();
+  updateNotifBadge();
 };
 
-function updateInboxBadge() {
-  const total = state.convs.reduce((a, c) => a + (c.unread || 0), 0);
-  const b = $('inboxBadge');
-  if (b) { b.textContent = total; b.style.display = total ? '' : 'none'; }
-}
-
-window.toast = (m, type = 'info') => {
-  const t = $('toast');
-  t.textContent = m;
-  t.className = 'toast show ' + type;
-  clearTimeout(t.h);
-  t.h = setTimeout(() => t.className = 'toast', 3500);
-};
-
-window.openModal = (html) => { $('modalBox').innerHTML = html; $('modal').classList.add('open'); };
-window.closeModal = () => $('modal').classList.remove('open');
-
-/* ============================================================
-   Dashboard
-   ============================================================ */
+/* ============ Dashboard ============ */
 function renderDashboard() {
   const unread = state.convs.reduce((a, c) => a + (c.unread || 0), 0);
   const todayTasks = state.tasks.filter(t => t.date === today() && t.status !== 'done').length;
   return `
   <div class="topbar">
     <div><h1>مرحبًا، ${esc((state.user.displayName || state.user.email).split('@')[0])} 👋</h1><div class="sub"><span class="status-dot on"></span>متصل بـ Firebase</div></div>
-    <div class="actions">
-      <button class="btn-sm" onclick="go('inbox')">💬 المحادثات</button>
-      <button class="btn-sm s" onclick="toggleTheme()">🌙</button>
-      <button class="btn-sm d" onclick="logout()">⏻ خروج</button>
-    </div>
+    <div class="actions"><button class="btn-sm" onclick="go('inbox')">💬 المحادثات</button><button class="btn-sm s" onclick="toggleTheme()">🌙</button><button class="btn-sm d" onclick="logout()">⏻ خروج</button></div>
   </div>
   <div class="kpi-grid">
     <div class="kpi"><div class="label">محادثات</div><div class="val">${state.convs.length}</div><div class="trend">${unread} غير مقروء</div></div>
@@ -679,16 +672,14 @@ function renderDashboard() {
     <div class="card">
       <h3 style="font-size:16px;margin-bottom:14px">⚡ إجراءات</h3>
       <button class="btn-sm" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('content')">✍️ منشور جديد</button>
-      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('tasks')">✅ مهمة</button>
-      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('team')">👥 الفريق</button>
+      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('network')">🕸 شبكة الأعمال</button>
+      <button class="btn-sm s" style="width:100%;margin-bottom:8px;justify-content:center" onclick="go('scheduler')">⏰ الجدولة</button>
       <button class="btn-sm s" style="width:100%;justify-content:center" onclick="go('settings')">⚙️ الإعدادات</button>
     </div>
   </div>`;
 }
 
-/* ============================================================
-   Inbox with Tags + Notes + Quick Replies
-   ============================================================ */
+/* ============ Inbox ============ */
 function renderInbox() {
   const filtered = state.filter === 'all' ? state.convs : state.convs.filter(c => c.platform === state.filter);
   return `
@@ -711,13 +702,12 @@ function renderInbox() {
 function openConv(id) {
   const c = state.convs.find(x => x.id === id);
   if (!c) return;
-  const area = $('chatArea');
-  if (!area) return;
-  const quick = (state.replies.length ? state.replies : [
+  const area = $('chatArea'); if (!area) return;
+  const quick = state.replies.length ? state.replies : [
     { text: 'أهلاً بيك 🌸 نورتنا!', title: 'ترحيب' },
     { text: 'أهلاً، حبيت أطمن على طلبك.', title: 'متابعة' },
     { text: 'نعتذر عن أي إزعاج 🙏', title: 'اعتذار' }
-  ]);
+  ];
   area.innerHTML = `
     <div class="chat-header">
       <div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}</div>
@@ -738,19 +728,16 @@ function openConv(id) {
       <div class="box"><textarea id="msgInput" placeholder="اكتب ردًا… (Ctrl+Enter)" onkeydown="if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();sendMsg('${c.id}')}"></textarea><button class="send" onclick="sendMsg('${c.id}')">➤</button></div>
       <div class="tools">
         <button onclick="suggestReply('${c.id}')">✨ اقترح</button>
-        <button class="note-btn" onclick="addNotePrompt('${c.id}')">📝 ملاحظة داخلية</button>
-        <button onclick="addTagPrompt('${c.id}')">🏷️ إضافة وسم</button>
+        <button class="note-btn" onclick="addNotePrompt('${c.id}')">📝 ملاحظة</button>
+        <button onclick="addTagPrompt('${c.id}')">🏷️ وسم</button>
       </div>
     </div>`;
-  const msgs = $('chatMsgs');
-  if (msgs) msgs.scrollTop = msgs.scrollHeight;
+  const msgs = $('chatMsgs'); if (msgs) msgs.scrollTop = msgs.scrollHeight;
 }
 
 window.sendMsg = async (id) => {
-  const inp = $('msgInput');
-  if (!inp) return;
-  const txt = inp.value.trim();
-  if (!txt) return;
+  const inp = $('msgInput'); if (!inp) return;
+  const txt = inp.value.trim(); if (!txt) return;
   try {
     await addDoc(collection(db, 'conversations', id, 'messages'), { direction: 'out', text: txt, type: 'msg', createdAt: serverTimestamp() });
     await updateDoc(doc(db, 'conversations', id), { updatedAt: serverTimestamp() });
@@ -759,33 +746,25 @@ window.sendMsg = async (id) => {
   } catch (e) { toast('❌ ' + e.message, 'error'); }
 };
 
-window.quickReply = (txt) => {
-  const inp = $('msgInput');
-  if (inp) { inp.value = txt; inp.focus(); }
-};
+window.quickReply = (txt) => { const inp = $('msgInput'); if (inp) { inp.value = txt; inp.focus(); } };
 
 window.addNotePrompt = (id) => {
-  const note = prompt('اكتب ملاحظة داخلية (لن يراها العميل):');
+  const note = prompt('ملاحظة داخلية (لن يراها العميل):');
   if (!note) return;
-  addDoc(collection(db, 'conversations', id, 'messages'), {
-    direction: 'note', text: note, type: 'note', createdAt: serverTimestamp()
-  }).then(() => toast('📝 أُضيفت', 'success')).catch(e => toast('❌ ' + e.message, 'error'));
+  addDoc(collection(db, 'conversations', id, 'messages'), { direction: 'note', text: note, type: 'note', createdAt: serverTimestamp() })
+    .then(() => toast('📝 أُضيفت', 'success')).catch(e => toast('❌ ' + e.message, 'error'));
 };
 
 window.addTagPrompt = (id) => {
-  const tag = prompt('اسم الوسم (مثال: شكوى، عميل جديد):');
-  if (!tag) return;
-  const conv = state.convs.find(x => x.id === id);
-  if (!conv) return;
+  const tag = prompt('اسم الوسم:'); if (!tag) return;
+  const conv = state.convs.find(x => x.id === id); if (!conv) return;
   const tags = [...(conv.tags || []), tag.trim()];
-  updateDoc(doc(db, 'conversations', id), { tags }).then(() => toast('🏷️ أُضيف', 'success')).catch(e => toast('❌ ' + e.message, 'error'));
+  updateDoc(doc(db, 'conversations', id), { tags }).then(() => toast('🏷️', 'success')).catch(e => toast('❌ ' + e.message, 'error'));
 };
 
 window.suggestReply = async (id) => {
-  const conv = state.convs.find(x => x.id === id);
-  if (!conv) return;
-  const inp = $('msgInput');
-  if (!inp) return;
+  const conv = state.convs.find(x => x.id === id); if (!conv) return;
+  const inp = $('msgInput'); if (!inp) return;
   inp.value = '⏳ يفكر…';
   try {
     const convo = (conv.msgs || []).filter(m => m.type !== 'note').slice(-8).map(m => (m.dir === 'in' ? 'العميل: ' : 'أنا: ') + m.text).join('\n');
@@ -806,8 +785,7 @@ window.newConversation = () => {
 };
 
 window.doNewConv = async () => {
-  const name = $('ncName').value.trim();
-  if (!name) return toast('أدخل الاسم', 'error');
+  const name = $('ncName').value.trim(); if (!name) return toast('أدخل الاسم', 'error');
   const plat = $('ncPlat').value;
   const colors = { whatsapp: '#25d366', facebook: '#1877f2', instagram: '#e1306c', telegram: '#229ed9' };
   const tags = $('ncTags').value.split(',').map(t => t.trim()).filter(Boolean);
@@ -816,19 +794,17 @@ window.doNewConv = async () => {
       ownerId: state.user.uid, platform: plat, name, color: colors[plat],
       tags, unread: 0, createdAt: serverTimestamp(), updatedAt: serverTimestamp()
     });
-    closeModal(); toast('✅ أُنشئت', 'success');
+    closeModal(); toast('✅', 'success');
   } catch (e) { toast('❌ ' + e.message, 'error'); }
 };
 
 window.delConv = async (id) => {
   if (!confirm('حذف المحادثة؟')) return;
-  try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; toast('✅ حُذفت', 'success'); }
+  try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; toast('✅', 'success'); }
   catch (e) { toast('❌ ' + e.message, 'error'); }
 };
 
-/* ============================================================
-   Content
-   ============================================================ */
+/* ============ Content ============ */
 window.renderContent = () => {
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>استوديو المحتوى</h1><div class="sub">أنشئ محتوى بالذكاء الاصطناعي</div></div></div>
@@ -850,8 +826,7 @@ window.renderContent = () => {
 
 window.genContent = async (again) => {
   const topic = $('ctTopic').value.trim() || 'موضوع عام';
-  const out = $('ctOut');
-  out.value = '⏳ يكتب…';
+  const out = $('ctOut'); out.value = '⏳ يكتب…';
   const plat = $('ctPlatform').value, tone = $('ctTone').value;
   const platName = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' }[plat];
   const toneName = { professional: 'احترافي', friendly: 'ودّي', funny: 'فكاهي', inspiring: 'ملهم' }[tone];
@@ -877,8 +852,7 @@ window.saveContent = async () => {
 };
 
 function renderContentList() {
-  const el = $('ctList');
-  if (!el) return;
+  const el = $('ctList'); if (!el) return;
   const names = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' };
   const colors = { facebook: '#1877f2', instagram: '#e1306c', twitter: '#1da1f2', linkedin: '#0077b5', telegram: '#229ed9' };
   el.innerHTML = state.content.map(c => `<div class="content-card"><div class="head"><span><span class="plat-tag" style="background:${colors[c.platform] || '#6366f1'}">${names[c.platform] || c.platform}</span> ${c.scheduled ? '⏰ ' + new Date(c.scheduled).toLocaleString('ar-EG') : 'مسودة'}</span><span>${fmtDate(toMillis(c.createdAt))}</span></div><div class="body">${esc(c.text)}</div><div class="actions"><button class="btn-sm s" onclick="copyTxt('${c.id}')">📋</button><button class="btn-sm s" onclick="delContent('${c.id}')">🗑</button></div></div>`).join('') || '<div class="empty"><div class="icon">✍️</div><div>لا محتوى</div></div>';
@@ -887,7 +861,7 @@ function renderContentList() {
 
 window.copyTxt = (id) => {
   const c = state.content.find(x => x.id === id);
-  if (c) { navigator.clipboard.writeText(c.text); toast('📋 نُسخ', 'success'); }
+  if (c) { navigator.clipboard.writeText(c.text); toast('📋', 'success'); }
 };
 
 window.delContent = async (id) => {
@@ -896,10 +870,8 @@ window.delContent = async (id) => {
 };
 
 function renderCal() {
-  const el = $('cal');
-  if (!el) return;
-  const t0 = new Date();
-  t0.setHours(0, 0, 0, 0);
+  const el = $('cal'); if (!el) return;
+  const t0 = new Date(); t0.setHours(0, 0, 0, 0);
   let h = '<div class="cal">';
   for (let i = 0; i < 7; i++) {
     const d = new Date(t0.getTime() + i * 864e5);
@@ -910,9 +882,362 @@ function renderCal() {
   el.innerHTML = h + '</div>';
 }
 
-/* ============================================================
-   Automations
-   ============================================================ */
+/* ============ Network ============ */
+const NT = {
+  trigger: { label: 'محفز', color: '#4f46e5', icon: '⚡' },
+  action: { label: 'إجراء', color: '#16a34a', icon: '⚙️' },
+  condition: { label: 'شرط', color: '#f59e0b', icon: '🔀' },
+  delay: { label: 'تأخير', color: '#0891b2', icon: '⏱' },
+  notify: { label: 'إشعار', color: '#db2777', icon: '🔔' }
+};
+const NK = {
+  trigger: { msg: 'رسالة واردة', schedule: 'جدولة', manual: 'يدوي' },
+  action: { reply: 'رد تلقائي', tag: 'إضافة وسم', ai: 'رد AI', webhook: 'استدعاء URL', save: 'حفظ في السجل' },
+  condition: { keyword: 'كلمة مفتاحية', platform: 'المنصة', time: 'الوقت', tag: 'وسم' },
+  delay: { wait: 'انتظار (ثوان)' },
+  notify: { toast: 'إشعار داخلي', browser: 'إشعار متصفح', sound: 'صوت' }
+};
+const NDV = {
+  trigger: { msg: '', schedule: '09:00', manual: '' },
+  action: { reply: 'شكرًا لتواصلك!', tag: 'متابعة', ai: 'اكتب ردًا وديًا', webhook: 'https://', save: '' },
+  condition: { keyword: 'سعر,بكم', platform: 'whatsapp', time: '09:00-17:00', tag: 'شكوى' },
+  delay: { wait: '5' },
+  notify: { toast: 'تنبيه', browser: 'رسالة جديدة', sound: '' }
+};
+
+let netState = { nodes: [], edges: [], sel: null, drag: null, link: null, pan: null, view: { x: 0, y: 0, w: 1200, h: 675 }, uid: 0, docId: null, stats: { runs: 0, success: 0, fail: 0 } };
+let netUnsub = null;
+
+window.renderNetwork = () => {
+  $('mainContent').innerHTML = `
+  <div class="topbar">
+    <div><h1>🕸 شبكة الأعمال</h1><div class="sub">اربط المحفزات بالإجراءات — أتمتة مرئية</div></div>
+    <div class="actions">
+      <button class="btn-sm s" onclick="netAddNode()">+ عقدة</button>
+      <button class="btn-sm s" onclick="netRunAll()">▶ تشغيل</button>
+      <button class="btn-sm s" onclick="netExport()">💾 تصدير</button>
+      <button class="btn-sm s" onclick="netImport()">📥 استيراد</button>
+      <button class="btn-sm" onclick="netSave()">💾 حفظ</button>
+    </div>
+  </div>
+  <div class="net-tabs">
+    <div class="net-tab active">الشبكة الرئيسية</div>
+    <div class="net-tab" onclick="netNew()">+ جديدة</div>
+  </div>
+  <div class="net-canvas">
+    <div class="net-toolbar">
+      <select id="netType">
+        <optgroup label="محفز">${Object.entries(NK.trigger).map(([k,v])=>`<option value="trigger:${k}">⚡ ${v}</option>`).join('')}</optgroup>
+        <optgroup label="شرط">${Object.entries(NK.condition).map(([k,v])=>`<option value="condition:${k}">🔀 ${v}</option>`).join('')}</optgroup>
+        <optgroup label="تأخير">${Object.entries(NK.delay).map(([k,v])=>`<option value="delay:${k}">⏱ ${v}</option>`).join('')}</optgroup>
+        <optgroup label="إجراء">${Object.entries(NK.action).map(([k,v])=>`<option value="action:${k}">⚙️ ${v}</option>`).join('')}</optgroup>
+        <optgroup label="إشعار">${Object.entries(NK.notify).map(([k,v])=>`<option value="notify:${k}">🔔 ${v}</option>`).join('')}</optgroup>
+      </select>
+      <button class="btn-sm" onclick="netAddNode()">+ إضافة</button>
+      <button class="btn-sm s" onclick="netZoom(0.85)">−</button>
+      <button class="btn-sm s" onclick="netZoom(1.18)">+</button>
+      <button class="btn-sm s" onclick="netReset()">↺</button>
+      <span style="font-size:12px;color:var(--mu);margin-inline-start:auto">💡 اسحب الدائرة للوصل — انقر مرتين على الخط للحذف</span>
+    </div>
+    <svg id="netSvg" viewBox="0 0 1200 675">
+      <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="var(--mu)"/></marker></defs>
+      <g id="netEdges"></g>
+      <g id="netNodes"></g>
+      <g id="netPackets"></g>
+    </svg>
+  </div>
+  <div class="net-inspector" id="netInspector"><div style="color:var(--mu);font-size:13px;text-align:center;padding:12px">اختر عقدة لتعديلها</div></div>
+  <div class="card" style="margin-top:16px">
+    <h3 style="margin-bottom:12px">📊 الإحصائيات</h3>
+    <div class="net-stats">
+      <div class="net-stat"><div class="v" id="netStatNodes">0</div><div class="l">عقدة</div></div>
+      <div class="net-stat"><div class="v" id="netStatEdges">0</div><div class="l">اتصال</div></div>
+      <div class="net-stat"><div class="v" id="netStatRuns">0</div><div class="l">تشغيل</div></div>
+    </div>
+    <div id="netLog" style="max-height:200px;overflow-y:auto;font-size:12px"></div>
+  </div>`;
+  netBind(); netDraw(); netInspector(); netSubscribe();
+};
+
+function netSubscribe() {
+  if (netUnsub) { try { netUnsub(); } catch(e) {} }
+  const q = query(collection(db, 'workflows'), where('ownerId', '==', state.user.uid), limit(1));
+  netUnsub = onSnapshot(q, snap => {
+    if (!snap.empty) {
+      const data = snap.docs[0].data();
+      netState.nodes = data.nodes || [];
+      netState.edges = data.edges || [];
+      netState.docId = snap.docs[0].id;
+      netState.stats = data.stats || { runs: 0, success: 0, fail: 0 };
+      if (state.page === 'network') { netDraw(); netInspector(); netUpdateStats(); }
+    }
+  }, e => console.warn('workflow:', e.message));
+}
+
+function netBind() {
+  const svg = $('netSvg'); if (!svg) return;
+  svg.onpointerdown = (e) => {
+    if (e.target.closest('[data-edge]')) return;
+    const port = e.target.closest('[data-port]');
+    const node = e.target.closest('[data-node]');
+    e.preventDefault();
+    if (port) { netState.link = { from: port.dataset.port, to: netPt(e), isTrue: port.dataset.isTrue === '1' }; return; }
+    if (node) {
+      const n = netState.nodes.find(x => x.id === node.dataset.node);
+      const p = netPt(e);
+      netState.drag = { n, dx: p.x - n.x, dy: p.y - n.y };
+      netState.sel = n.id;
+    } else { netState.sel = null; netState.pan = { x: e.clientX, y: e.clientY, vx: netState.view.x, vy: netState.view.y }; }
+    netInspector(); netDraw();
+  };
+  svg.ondblclick = (e) => {
+    const ed = e.target.closest('[data-edge]');
+    if (ed) { netState.edges.splice(+ed.dataset.edge, 1); netDraw(); netSave(); }
+  };
+  svg.onwheel = (e) => { e.preventDefault(); netZoom(e.deltaY < 0 ? 0.85 : 1.18); };
+}
+
+window.onpointermove = (e) => {
+  if (!netState || state.page !== 'network') return;
+  const svg = $('netSvg'); if (!svg) return;
+  if (netState.pan) {
+    const k = netState.view.w / (svg.clientWidth || 1);
+    netState.view.x = netState.pan.vx - (e.clientX - netState.pan.x) * k;
+    netState.view.y = netState.pan.vy - (e.clientY - netState.pan.y) * k;
+    svg.setAttribute('viewBox', `${netState.view.x} ${netState.view.y} ${netState.view.w} ${netState.view.h}`);
+    return;
+  }
+  if (netState.drag) {
+    const p = netPt(e);
+    netState.drag.n.x = Math.max(0, Math.min(1100, p.x - netState.drag.dx));
+    netState.drag.n.y = Math.max(0, Math.min(580, p.y - netState.drag.dy));
+    netDraw();
+  } else if (netState.link) { netState.link.to = netPt(e); netDraw(); }
+};
+
+window.onpointerup = (e) => {
+  if (!netState) return;
+  if (netState.link) {
+    const t = document.elementFromPoint(e.clientX, e.clientY);
+    const target = t?.closest?.('[data-node]');
+    if (target) {
+      const toId = target.dataset.node;
+      const toNode = netState.nodes.find(n => n.id === toId);
+      if (toNode && toNode.type !== 'trigger' && !netState.edges.some(x => x.from === netState.link.from && x.to === toId)) {
+        netState.edges.push({ from: netState.link.from, to: toId, isTrue: netState.link.isTrue || false });
+        netSave();
+      }
+    }
+    netState.link = null; netDraw();
+  }
+  if (netState.drag) { netState.drag = null; netSave(); }
+  netState.pan = null;
+};
+
+function netPt(e) {
+  const svg = $('netSvg'); const p = svg.createSVGPoint();
+  p.x = e.clientX; p.y = e.clientY;
+  return p.matrixTransform(svg.getScreenCTM().inverse());
+}
+
+function netZoom(k) {
+  const v = netState.view;
+  const w = Math.max(400, Math.min(2400, v.w * k));
+  const r = w / v.w;
+  v.x = v.x + v.w / 2 - (v.w / 2) * r;
+  v.y = v.y + v.h / 2 - (v.h / 2) * r;
+  v.w = w; v.h = w * 675 / 1200;
+  $('netSvg').setAttribute('viewBox', `${v.x} ${v.y} ${v.w} ${v.h}`);
+}
+
+window.netReset = () => { netState.view = { x: 0, y: 0, w: 1200, h: 675 }; $('netSvg').setAttribute('viewBox', '0 0 1200 675'); };
+
+window.netAddNode = () => {
+  const [type, kind] = $('netType').value.split(':');
+  const id = 'n' + (++netState.uid);
+  const count = netState.nodes.filter(n => n.type === type).length;
+  netState.nodes.push({
+    id, type, kind, value: NDV[type][kind] || '', label: NK[type][kind] || kind,
+    x: 40 + (count % 4) * 260, y: 40 + Math.floor(count / 4) * 140
+  });
+  netState.sel = id; netDraw(); netInspector(); netSave();
+};
+
+function netDraw() {
+  const eg = $('netEdges'), ng = $('netNodes'), pg = $('netPackets');
+  if (!eg) return;
+  eg.innerHTML = ''; ng.innerHTML = ''; if (pg) pg.innerHTML = '';
+  netState.edges.forEach((e, i) => {
+    const a = netState.nodes.find(n => n.id === e.from);
+    const b = netState.nodes.find(n => n.id === e.to);
+    if (!a || !b) return;
+    const path = netPath(a, b);
+    const cls = a.type === 'condition' ? (e.isTrue ? 'true' : 'false') : '';
+    eg.innerHTML += `<path class="net-edge ${cls}" d="${path}" marker-end="url(#arrow)"/>
+      <path data-edge="${i}" d="${path}" stroke="transparent" stroke-width="16" fill="none" style="cursor:pointer"><title>انقر مرتين للحذف</title></path>`;
+  });
+  if (netState.link) {
+    const a = netState.nodes.find(n => n.id === netState.link.from);
+    if (a) eg.innerHTML += `<path class="net-edge" d="M${a.x + 200},${a.y + 30} Q${(a.x + 200 + netState.link.to.x) / 2},${(a.y + 30 + netState.link.to.y) / 2} ${netState.link.to.x},${netState.link.to.y}" style="opacity:.5"/>`;
+  }
+  netState.nodes.forEach(n => {
+    const t = NT[n.type] || NT.action;
+    const cls = [netState.sel === n.id ? 'sel' : '', n._active ? 'active' : '', n._success ? 'success' : '', n._fail ? 'fail' : ''].join(' ');
+    const ports = n.type !== 'trigger' ? `<circle class="net-port" data-port="${n.id}" cx="0" cy="30" r="7"/>` : '';
+    const outPort = `<circle class="net-port" data-port="${n.id}" cx="200" cy="30" r="7"/>`;
+    const condPorts = n.type === 'condition' ? `
+      <circle class="net-port" data-port="${n.id}" data-is-true="1" cx="200" cy="18" r="7" style="stroke:#16a34a"/>
+      <circle class="net-port" data-port="${n.id}" data-is-true="0" cx="200" cy="42" r="7" style="stroke:#dc2626"/>` : '';
+    ng.innerHTML += `<g class="net-node ${cls}" data-node="${n.id}" transform="translate(${n.x},${n.y})">
+      <rect width="200" height="60" rx="10" stroke="${t.color}"/>
+      <circle cx="180" cy="14" r="6" fill="${t.color}"/>
+      <text x="100" y="24" text-anchor="middle" font-weight="700">${t.icon} ${t.label} · ${n.label}</text>
+      <text class="sub" x="100" y="44" text-anchor="middle">${(n.value || '').toString().slice(0, 26) || '—'}</text>
+      ${ports}${outPort}${condPorts}
+    </g>`;
+  });
+  netUpdateStats();
+}
+
+function netPath(a, b) {
+  const ax = a.x + 200, ay = a.y + 30, bx = b.x, by = b.y + 30;
+  const dx = Math.max(40, Math.abs(bx - ax) / 2);
+  return `M${ax},${ay} C${ax + dx},${ay} ${bx - dx},${by} ${bx},${by}`;
+}
+
+function netInspector() {
+  const b = $('netInspector'); if (!b) return;
+  const n = netState.nodes.find(x => x.id === netState.sel);
+  if (!n) { b.innerHTML = '<div style="color:var(--mu);font-size:13px;text-align:center;padding:12px">اختر عقدة لتعديلها</div>'; return; }
+  const t = NT[n.type];
+  b.innerHTML = `
+    <div class="row"><b style="color:${t.color}">${t.icon} ${t.label}</b>
+      <select onchange="netChangeKind(this.value)">
+        ${Object.entries(NK[n.type]).map(([k,v])=>`<option value="${k}" ${k===n.kind?'selected':''}>${v}</option>`).join('')}
+      </select>
+      <button class="btn-sm" onclick="netRunNode('${n.id}')">▶ تشغيل</button>
+      <button class="btn-sm s" onclick="netDeleteNode()">🗑</button>
+    </div>
+    <div class="row"><input type="text" value="${esc(n.value)}" oninput="netUpdateVal(this.value)" placeholder="القيمة"></div>`;
+}
+
+window.netUpdateVal = (v) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.value = v; netDraw(); } };
+window.netChangeKind = (k) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.kind = k; n.value = NDV[n.type][k] || ''; n.label = NK[n.type][k]; netDraw(); netInspector(); netSave(); } };
+window.netDeleteNode = () => {
+  netState.nodes = netState.nodes.filter(n => n.id !== netState.sel);
+  netState.edges = netState.edges.filter(e => e.from !== netState.sel && e.to !== netState.sel);
+  netState.sel = null; netDraw(); netInspector(); netSave();
+};
+
+window.netSave = async () => {
+  if (!state.user) return;
+  try {
+    const data = { ownerId: state.user.uid, nodes: netState.nodes, edges: netState.edges, stats: netState.stats, updatedAt: serverTimestamp() };
+    if (netState.docId) await updateDoc(doc(db, 'workflows', netState.docId), data);
+    else { const r = await addDoc(collection(db, 'workflows'), { ...data, createdAt: serverTimestamp() }); netState.docId = r.id; }
+    toast('💾', 'success');
+  } catch (e) { toast('❌ ' + e.message, 'error'); }
+};
+
+function netUpdateStats() {
+  const s = netState.stats || { runs: 0, success: 0, fail: 0 };
+  if ($('netStatNodes')) $('netStatNodes').textContent = netState.nodes.length;
+  if ($('netStatEdges')) $('netStatEdges').textContent = netState.edges.length;
+  if ($('netStatRuns')) $('netStatRuns').textContent = s.runs;
+}
+
+window.netExport = () => {
+  const blob = new Blob([JSON.stringify({ nodes: netState.nodes, edges: netState.edges }, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'workflow-' + today() + '.json'; a.click();
+  toast('💾', 'success');
+};
+
+window.netImport = () => {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json';
+  input.onchange = (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => {
+      try { const d = JSON.parse(r.result); netState.nodes = d.nodes || []; netState.edges = d.edges || []; netState.sel = null; netDraw(); netInspector(); netSave(); toast('📥', 'success'); }
+      catch (err) { toast('❌ ملف غير صالح', 'error'); }
+    };
+    r.readAsText(f);
+  };
+  input.click();
+};
+
+async function netRunNode(id, path = new Set()) {
+  const n = netState.nodes.find(x => x.id === id); if (!n) return;
+  if (path.has(id)) { netLog('⚠️ حلقة مكتشفة'); return; }
+  path.add(id);
+  n._active = true; netDraw();
+  await sleep(300);
+  let ok = true;
+  try {
+    if (n.type === 'condition') {
+      const kw = (n.value || '').split(',').map(x => x.trim()).filter(Boolean);
+      ok = kw.length === 0 || kw.some(k => (n._testText || '').includes(k));
+    } else if (n.type === 'action') {
+      if (n.kind === 'ai') { try { await callAI([{ role: 'user', content: n.value }], { maxTokens: 80 }); } catch (e) { ok = false; } }
+      else if (n.kind === 'reply') {
+        const c = state.convs[0];
+        if (c) await addDoc(collection(db, 'conversations', c.id, 'messages'), { direction: 'out', text: n.value, type: 'msg', ai: true, createdAt: serverTimestamp() });
+      } else if (n.kind === 'tag') {
+        const c = state.convs[0];
+        if (c) await updateDoc(doc(db, 'conversations', c.id), { tags: [...(c.tags || []), n.value] });
+      } else if (n.kind === 'webhook') { try { await fetch(n.value, { method: 'GET' }); } catch (e) { ok = false; } }
+    } else if (n.type === 'notify') { notify(n.value, n.kind); }
+    else if (n.type === 'delay') { await sleep(Math.min(20, +n.value || 1) * 1000); }
+  } catch (e) { ok = false; netLog('❌ ' + e.message); }
+  n._active = false;
+  if (ok) { n._success = true; setTimeout(() => { n._success = false; netDraw(); }, 1200); }
+  else { n._fail = true; setTimeout(() => { n._fail = false; netDraw(); }, 1200); }
+  netLog(`${ok ? '✅' : '❌'} ${n.label} (${n.value})`);
+  netDraw();
+  const out = netState.edges.filter(e => e.from === id && (n.type !== 'condition' || e.isTrue === ok));
+  out.forEach((e, i) => {
+    netPacket(e);
+    setTimeout(() => netRunNode(e.to, new Set(path)), 600 + i * 200);
+  });
+}
+
+function netPacket(edge) {
+  const a = netState.nodes.find(n => n.id === edge.from);
+  const b = netState.nodes.find(n => n.id === edge.to);
+  const pg = $('netPackets');
+  if (!a || !b || !pg) return;
+  const path = netPath(a, b);
+  const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c.setAttribute('r', '6'); c.setAttribute('class', 'net-packet');
+  const m = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+  m.setAttribute('dur', '.6s'); m.setAttribute('path', path); m.setAttribute('fill', 'freeze');
+  c.appendChild(m); pg.appendChild(c);
+  try { m.beginElement(); } catch (e) {}
+  setTimeout(() => c.remove(), 800);
+}
+
+window.netRunAll = () => {
+  const triggers = netState.nodes.filter(n => n.type === 'trigger');
+  if (!triggers.length) return toast('أضف محفزًا أولًا', 'error');
+  triggers.forEach(t => netRunNode(t.id));
+  netState.stats.runs++;
+  netSave();
+};
+
+function netLog(msg) {
+  const el = $('netLog'); if (!el) return;
+  const time = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  el.innerHTML = `<div style="padding:4px 0;border-bottom:1px solid var(--bd)"><span style="color:var(--mu)">${time}</span> ${esc(msg)}</div>` + el.innerHTML;
+}
+
+function netNew() {
+  netState.nodes = []; netState.edges = []; netState.sel = null; netState.docId = null;
+  netDraw(); netInspector(); toast('شبكة جديدة', 'success');
+}
+
+/* ============ Automations ============ */
 window.renderAutomations = () => {
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>الأتمتة</h1><div class="sub">قواعد تعمل بدلًا عنك</div></div><div class="actions"><button class="btn-sm" onclick="addAutomation()">+ أتمتة</button></div></div>
@@ -920,88 +1245,123 @@ window.renderAutomations = () => {
     ${state.automations.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:8px"><b>${esc(a.name)}</b><span class="chip ${a.on ? 'active' : ''}" style="cursor:pointer" onclick="toggleAuto('${a.id}',${a.on})">${a.on ? 'مفعّل' : 'متوقف'}</span></div><div style="font-size:13px;color:var(--mu);margin-bottom:12px">${esc(a.desc || '')}</div><button class="btn-sm s" onclick="delAuto('${a.id}')">🗑</button></div>`).join('') || '<div class="empty"><div class="icon">⚡</div><div>لا أتمتات</div></div>'}
   </div>`;
 };
-
-window.toggleAuto = async (id, current) => {
-  try { await updateDoc(doc(db, 'automations', id), { on: !current }); } catch (e) { toast('❌ ' + e.message, 'error'); }
-};
-
-window.delAuto = async (id) => {
-  if (!confirm('حذف؟')) return;
-  try { await deleteDoc(doc(db, 'automations', id)); } catch (e) { toast('❌ ' + e.message, 'error'); }
-};
-
+window.toggleAuto = async (id, current) => { try { await updateDoc(doc(db, 'automations', id), { on: !current }); } catch (e) { toast('❌ ' + e.message, 'error'); } };
+window.delAuto = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'automations', id)); } catch (e) { toast('❌ ' + e.message, 'error'); } };
 window.addAutomation = () => {
   openModal(`<h3>أتمتة جديدة</h3><div class="form-row"><label>الاسم</label><input id="anName"></div><div class="form-row"><label>الوصف</label><textarea id="anDesc"></textarea></div><div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddAuto()">إضافة</button></div>`);
 };
-
 window.doAddAuto = async () => {
-  const name = $('anName').value.trim();
-  if (!name) return toast('أدخل اسمًا', 'error');
+  const name = $('anName').value.trim(); if (!name) return toast('أدخل اسمًا', 'error');
+  try { await addDoc(collection(db, 'automations'), { ownerId: state.user.uid, name, desc: $('anDesc').value.trim(), on: true, createdAt: serverTimestamp() }); closeModal(); toast('✅', 'success'); }
+  catch (e) { toast('❌ ' + e.message, 'error'); }
+};
+
+/* ============ Scheduler ============ */
+window.renderScheduler = () => {
+  $('mainContent').innerHTML = `
+  <div class="topbar"><div><h1>⏰ الجدولة</h1><div class="sub">جدولة المهام والمنشورات</div></div><div class="actions"><button class="btn-sm" onclick="addSchedule()">+ جدولة</button></div></div>
+  <div class="card">
+    <h3 style="margin-bottom:14px">المجدول</h3>
+    ${state.schedules.length ? state.schedules.map(s => `<div class="schedule-item"><span class="when">${s.when}</span><span style="flex:1">${esc(s.title)}</span><span class="chip">${s.type}</span><button class="btn-sm s" onclick="delSchedule('${s.id}')">🗑</button></div>`).join('') : '<div class="empty"><div class="icon">⏰</div><div>لا مجدولات</div></div>'}
+  </div>`;
+};
+
+window.addSchedule = () => {
+  openModal(`<h3>جدولة جديدة</h3>
+    <div class="form-row"><label>العنوان</label><input id="scTitle"></div>
+    <div class="form-row"><label>الموعد</label><input type="datetime-local" id="scWhen"></div>
+    <div class="form-row"><label>النوع</label><select id="scType"><option value="منشور">منشور</option><option value="مهمة">مهمة</option><option value="تذكير">تذكير</option></select></div>
+    <div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddSchedule()">إضافة</button></div>`);
+};
+
+window.doAddSchedule = async () => {
+  const title = $('scTitle').value.trim(), when = $('scWhen').value;
+  if (!title || !when) return toast('أكمل البيانات', 'error');
   try {
-    await addDoc(collection(db, 'automations'), {
-      ownerId: state.user.uid, name, desc: $('anDesc').value.trim(),
-      on: true, createdAt: serverTimestamp()
+    await addDoc(collection(db, 'schedules'), {
+      ownerId: state.user.uid, title, when, type: $('scType').value, createdAt: serverTimestamp()
     });
     closeModal(); toast('✅', 'success');
   } catch (e) { toast('❌ ' + e.message, 'error'); }
 };
 
-/* ============================================================
-   Tasks
-   ============================================================ */
-const COLS = [{ id: 'todo', n: '📥 للتنفيذ' }, { id: 'doing', n: '⚙️ قيد التنفيذ' }, { id: 'done', n: '✅ منجز' }];
+window.delSchedule = async (id) => {
+  if (!confirm('حذف؟')) return;
+  try { await deleteDoc(doc(db, 'schedules', id)); } catch (e) { toast('❌ ' + e.message, 'error'); }
+};
 
+/* Scheduler check every 60s */
+setInterval(() => {
+  if (!state.user || !state.schedules.length) return;
+  const nowStr = new Date().toISOString().slice(0, 16);
+  state.schedules.forEach(async s => {
+    if (s.when === nowStr && !s.fired) {
+      notify('⏰ ' + s.title, 'browser');
+      await updateDoc(doc(db, 'schedules', s.id), { fired: true });
+    }
+  });
+}, 60000);
+
+/* ============ Tasks ============ */
+const COLS = [{ id: 'todo', n: '📥 للتنفيذ' }, { id: 'doing', n: '⚙️ قيد التنفيذ' }, { id: 'done', n: '✅ منجز' }];
 window.renderTasks = () => {
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>المهام</h1><div class="sub">نظّم فريقك</div></div><div class="actions"><button class="btn-sm" onclick="addTask()">+ مهمة</button></div></div>
   <div class="kanban" id="kanban"></div>`;
   renderKanban();
 };
-
 function renderKanban() {
-  const el = $('kanban');
-  if (!el) return;
+  const el = $('kanban'); if (!el) return;
   el.innerHTML = COLS.map(col => `<div class="col" ondragover="event.preventDefault()" ondrop="dropTask(event,'${col.id}')"><h4>${col.n} <span style="color:var(--mu);font-size:12px">${state.tasks.filter(t => t.status === col.id).length}</span></h4>${state.tasks.filter(t => t.status === col.id).map(taskCard).join('')}</div>`).join('');
 }
-
 function taskCard(t) {
   return `<div class="task" draggable="true" ondragstart="event.dataTransfer.setData('id','${t.id}')" ondblclick="toggleTask('${t.id}','${t.status}')"><div class="t">${esc(t.title)}</div><div class="m"><span class="pri-${t.pri}">${t.pri === 'h' ? '● عاجل' : t.pri === 'm' ? '● متوسط' : '● عادي'}</span><span>📅 ${t.date || '—'}</span><span onclick="delTask('${t.id}');event.stopPropagation()" style="cursor:pointer;color:var(--bad)">🗑</span></div></div>`;
 }
-
 window.addTask = () => {
   openModal(`<h3>مهمة جديدة</h3><div class="form-row"><label>العنوان</label><input id="tkTitle"></div><div class="form-row"><label>التاريخ</label><input type="date" id="tkDate" value="${today()}"></div><div class="form-row"><label>الأولوية</label><select id="tkPri"><option value="l">منخفضة</option><option value="m" selected>متوسطة</option><option value="h">عالية</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddTask()">إضافة</button></div>`);
 };
-
 window.doAddTask = async () => {
-  const title = $('tkTitle').value.trim();
-  if (!title) return toast('أدخل عنوانًا', 'error');
-  try {
-    await addDoc(collection(db, 'tasks'), {
-      ownerId: state.user.uid, title, date: $('tkDate').value || today(),
-      pri: $('tkPri').value, status: 'todo', createdAt: serverTimestamp()
-    });
-    closeModal(); toast('✅', 'success');
-  } catch (e) { toast('❌ ' + e.message, 'error'); }
+  const title = $('tkTitle').value.trim(); if (!title) return toast('أدخل عنوانًا', 'error');
+  try { await addDoc(collection(db, 'tasks'), { ownerId: state.user.uid, title, date: $('tkDate').value || today(), pri: $('tkPri').value, status: 'todo', createdAt: serverTimestamp() }); closeModal(); toast('✅', 'success'); }
+  catch (e) { toast('❌ ' + e.message, 'error'); }
+};
+window.dropTask = async (e, col) => { e.preventDefault(); const id = e.dataTransfer.getData('id'); if (!id) return; try { await updateDoc(doc(db, 'tasks', id), { status: col }); } catch (e) { toast('❌ ' + e.message, 'error'); } };
+window.toggleTask = async (id, current) => { try { await updateDoc(doc(db, 'tasks', id), { status: current === 'done' ? 'todo' : 'done' }); } catch (e) { toast('❌ ' + e.message, 'error'); } };
+window.delTask = async (id) => { try { await deleteDoc(doc(db, 'tasks', id)); } catch (e) { toast('❌ ' + e.message, 'error'); } };
+
+/* ============ Notifications ============ */
+window.renderNotifications = () => {
+  $('mainContent').innerHTML = `
+  <div class="topbar"><div><h1>🔔 الإشعارات</h1><div class="sub">آخر التنبيهات</div></div><div class="actions"><button class="btn-sm s" onclick="enableBrowserNotif()">🔔 تفعيل إشعارات المتصفح</button></div></div>
+  <div class="card">
+    ${state.notifications.length ? state.notifications.map(n => `<div class="notif-item ${n.read ? '' : 'unread'}"><span class="ico">${n.icon || '🔔'}</span><div class="txt"><b>${esc(n.title || '')}</b><br><span style="color:var(--mu);font-size:12px">${esc(n.body || '')}</span></div><span class="time">${fmtTime(toMillis(n.createdAt))}</span></div>`).join('') : '<div class="empty"><div class="icon">🔔</div><div>لا إشعارات</div></div>'}
+  </div>`;
 };
 
-window.dropTask = async (e, col) => {
-  e.preventDefault();
-  const id = e.dataTransfer.getData('id');
-  if (!id) return;
-  try { await updateDoc(doc(db, 'tasks', id), { status: col }); } catch (e) { toast('❌ ' + e.message, 'error'); }
+window.enableBrowserNotif = async () => {
+  if (!('Notification' in window)) return toast('المتصفح لا يدعم', 'error');
+  const p = await Notification.requestPermission();
+  if (p === 'granted') toast('✅ مفعّل', 'success');
+  else toast('❌ مرفوض', 'error');
 };
 
-window.toggleTask = async (id, current) => {
-  try { await updateDoc(doc(db, 'tasks', id), { status: current === 'done' ? 'todo' : 'done' }); } catch (e) { toast('❌ ' + e.message, 'error'); }
-};
+function notify(text, kind = 'toast') {
+  const icon = kind === 'sound' ? '🔊' : kind === 'browser' ? '🌐' : '🔔';
+  if (kind === 'browser' && 'Notification' in window && Notification.permission === 'granted') {
+    new Notification('EMAA', { body: text, icon: '⚡' });
+  }
+  if (kind === 'sound') {
+    try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const o = ctx.createOscillator(); o.connect(ctx.destination); o.frequency.value = 880; o.start(); setTimeout(() => o.close(), 300); } catch (e) {}
+  }
+  toast(text, 'info');
+  if (state.user) {
+    addDoc(collection(db, 'notifications'), {
+      ownerId: state.user.uid, title: 'تنبيه', body: text, icon, read: false, createdAt: serverTimestamp()
+    }).catch(e => console.warn(e));
+  }
+}
 
-window.delTask = async (id) => {
-  try { await deleteDoc(doc(db, 'tasks', id)); } catch (e) { toast('❌ ' + e.message, 'error'); }
-};
-
-/* ============================================================
-   Analytics
-   ============================================================ */
+/* ============ Analytics ============ */
 window.renderAnalytics = () => {
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>التقارير</h1><div class="sub">أداء أعمالك</div></div><div class="actions"><button class="btn-sm s" onclick="exportCSV()">📥 تصدير CSV</button></div></div>
@@ -1015,7 +1375,6 @@ window.renderAnalytics = () => {
   <div class="card"><h3 style="margin-bottom:14px">النشاط</h3><div id="chart2" class="chart"></div></div>`;
   renderCharts();
 };
-
 function renderCharts() {
   const c1 = $('chart1'), c2 = $('chart2');
   if (c1) {
@@ -1033,56 +1392,34 @@ function renderCharts() {
     c2.innerHTML = `<svg viewBox="0 0 700 220" style="width:100%;height:100%">${days.map((v, i) => { const h = v / max * 150; return `<rect x="${50 + i * 90}" y="${180 - h}" width="60" height="${h}" fill="#4f46e5" rx="6"/><text x="${80 + i * 90}" y="${200}" text-anchor="middle" font-size="11" fill="currentColor">${['أحد','إثن','ثلا','أرب','خمي','جمع','سبت'][i]}</text><text x="${80 + i * 90}" y="${175 - h}" text-anchor="middle" font-size="11" fill="currentColor" font-weight="700">${v || ''}</text>`; }).join('')}</svg>`;
   }
 }
-
 window.exportCSV = () => {
-  const rows = [['النوع', 'الاسم/العنوان', 'المنصة/الحالة', 'التاريخ']];
+  const rows = [['النوع', 'الاسم/العنوان', 'التفاصيل', 'التاريخ']];
   state.convs.forEach(c => rows.push(['محادثة', c.name, c.platform, fmtDate(toMillis(c.createdAt))]));
   state.content.forEach(c => rows.push(['محتوى', c.text.slice(0, 50), c.platform, fmtDate(toMillis(c.createdAt))]));
   state.tasks.forEach(t => rows.push(['مهمة', t.title, t.status, t.date]));
   const csv = '\uFEFF' + rows.map(r => r.map(x => `"${String(x).replace(/"/g, '""')}"`).join(',')).join('\n');
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'emaa-export-' + today() + '.csv';
-  a.click();
-  toast('📥 تم التصدير', 'success');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'emaa-export-' + today() + '.csv'; a.click();
+  toast('📥', 'success');
 };
 
-/* ============================================================
-   Team
-   ============================================================ */
+/* ============ Team ============ */
 window.renderTeam = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>الفريق</h1><div class="sub">إدارة الأعضاء والصلاحيات</div></div><div class="actions"><button class="btn-sm" onclick="addMember()">+ دعوة عضو</button></div></div>
-  <div class="card">
-    ${state.team.length ? state.team.map(m => `<div class="team-card"><div class="av">${esc((m.name||'م')[0])}</div><div class="info"><b>${esc(m.name)}</b><span>${esc(m.email || '—')} · ${esc(m.role || 'عضو')}</span></div><button class="btn-sm s" onclick="delMember('${m.id}')">🗑</button></div>`).join('') : '<div class="empty"><div class="icon">👥</div><div>لا أعضاء — أضف أول عضو</div></div>'}
-  </div>`;
+  <div class="topbar"><div><h1>الفريق</h1><div class="sub">إدارة الأعضاء</div></div><div class="actions"><button class="btn-sm" onclick="addMember()">+ دعوة</button></div></div>
+  <div class="card">${state.team.length ? state.team.map(m => `<div class="team-card"><div class="av">${esc((m.name||'م')[0])}</div><div class="info"><b>${esc(m.name)}</b><span>${esc(m.email || '—')} · ${esc(m.role || 'عضو')}</span></div><button class="btn-sm s" onclick="delMember('${m.id}')">🗑</button></div>`).join('') : '<div class="empty"><div class="icon">👥</div><div>لا أعضاء</div></div>'}</div>`;
 };
-
 window.addMember = () => {
-  openModal(`<h3>دعوة عضو</h3><div class="form-row"><label>الاسم</label><input id="mName"></div><div class="form-row"><label>البريد</label><input type="email" id="mEmail"></div><div class="form-row"><label>الدور</label><select id="mRole"><option value="محرر">محرر</option><option value="وكيل دعم">وكيل دعم</option><option value="مدير">مدير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddMember()">إضافة</button></div>`);
+  openModal(`<h3>دعوة عضو</h3><div class="form-row"><label>الاسم</label><input id="mName"></div><div class="form-row"><label>البريد</label><input type="email" id="mEmail"></div><div class="form-row"><label>الدور</label><select id="mRole"><option value="محرر">محرر</option><option value="وكيل دعم">وكيل</option><option value="مدير">مدير</option></select></div><div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doAddMember()">إضافة</button></div>`);
 };
-
 window.doAddMember = async () => {
-  const n = $('mName').value.trim();
-  if (!n) return toast('أدخل الاسم', 'error');
-  try {
-    await addDoc(collection(db, 'team'), {
-      ownerId: state.user.uid, name: n, email: $('mEmail').value.trim(),
-      role: $('mRole').value, createdAt: serverTimestamp()
-    });
-    closeModal(); toast('✅', 'success');
-  } catch (e) { toast('❌ ' + e.message, 'error'); }
+  const n = $('mName').value.trim(); if (!n) return toast('أدخل الاسم', 'error');
+  try { await addDoc(collection(db, 'team'), { ownerId: state.user.uid, name: n, email: $('mEmail').value.trim(), role: $('mRole').value, createdAt: serverTimestamp() }); closeModal(); toast('✅', 'success'); }
+  catch (e) { toast('❌ ' + e.message, 'error'); }
 };
+window.delMember = async (id) => { if (!confirm('حذف؟')) return; try { await deleteDoc(doc(db, 'team', id)); } catch (e) { toast('❌ ' + e.message, 'error'); } };
 
-window.delMember = async (id) => {
-  if (!confirm('حذف العضو؟')) return;
-  try { await deleteDoc(doc(db, 'team', id)); } catch (e) { toast('❌ ' + e.message, 'error'); }
-};
-
-/* ============================================================
-   Channels
-   ============================================================ */
+/* ============ Channels ============ */
 window.renderChannels = () => {
   const data = [
     { k: 'whatsapp', n: 'واتساب', i: '📱', c: '#25d366' },
@@ -1092,18 +1429,11 @@ window.renderChannels = () => {
   ];
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>القنوات</h1><div class="sub">اربط حساباتك</div></div></div>
-  <div class="grid-3">
-    ${data.map(d => `<div class="channel-card"><div class="icon" style="background:${d.c}">${d.i}</div><b>${d.n}</b><span class="chip" style="margin:8px 0;display:inline-block">يتطلب Webhook</span><div style="margin-top:12px"><button class="btn-sm s" onclick="setupChannel('${d.k}')">معلومات</button></div></div>`).join('')}
-  </div>`;
+  <div class="grid-3">${data.map(d => `<div class="channel-card"><div class="icon" style="background:${d.c}">${d.i}</div><b>${d.n}</b><span class="chip" style="margin:8px 0;display:inline-block">يتطلب Webhook</span><div style="margin-top:12px"><button class="btn-sm s" onclick="setupChannel('${d.k}')">معلومات</button></div></div>`).join('')}</div>`;
 };
+window.setupChannel = (k) => { openModal(`<h3>${k}</h3><div style="padding:20px;text-align:center;color:var(--mu)"><div style="font-size:40px;margin-bottom:12px">🔌</div>يُضبط عبر Cloud Functions</div><div class="form-actions"><button class="btn-sm" onclick="closeModal()">حسنًا</button></div>`); };
 
-window.setupChannel = (k) => {
-  openModal(`<h3>${k}</h3><div style="padding:20px;text-align:center;color:var(--mu)"><div style="font-size:40px;margin-bottom:12px">🔌</div>يُضبط عبر Cloud Functions وWebhook</div><div class="form-actions"><button class="btn-sm" onclick="closeModal()">حسنًا</button></div>`);
-};
-
-/* ============================================================
-   Settings
-   ============================================================ */
+/* ============ Settings ============ */
 window.renderSettings = () => {
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>الإعدادات</h1><div class="sub">حسابك + AI</div></div></div>
@@ -1112,25 +1442,18 @@ window.renderSettings = () => {
     <div class="form-row"><label>UID</label><input value="${esc(state.user.uid)}" disabled></div>
   </div>
   <div class="card"><h3 style="margin-bottom:14px">🤖 الذكاء الاصطناعي</h3>
-    <div class="form-row"><label>المزود</label>
-      <select id="aiProv" onchange="saveAI()">
-        <option value="groq" ${AI_CFG.provider === 'groq' ? 'selected' : ''}>Groq (مجاني)</option>
-        <option value="openai" ${AI_CFG.provider === 'openai' ? 'selected' : ''}>OpenAI</option>
-        <option value="gemini" ${AI_CFG.provider === 'gemini' ? 'selected' : ''}>Gemini</option>
-      </select>
-    </div>
+    <div class="form-row"><label>المزود</label><select id="aiProv" onchange="saveAI()"><option value="groq" ${AI_CFG.provider === 'groq' ? 'selected' : ''}>Groq (مجاني)</option><option value="openai" ${AI_CFG.provider === 'openai' ? 'selected' : ''}>OpenAI</option><option value="gemini" ${AI_CFG.provider === 'gemini' ? 'selected' : ''}>Gemini</option></select></div>
     <div class="form-row"><label>API Key</label><input type="password" id="aiKey" value="${esc(AI_CFG.key)}" placeholder="gsk_..."></div>
     <div class="form-row"><label>النموذج</label><input id="aiModel" value="${esc(AI_CFG.model)}"></div>
     <div class="form-actions"><button class="btn-sm s" onclick="testAI()">اختبار</button><button class="btn-sm" onclick="saveAI()">حفظ</button></div>
     <div style="font-size:12px;color:var(--mu);margin-top:8px">Groq: console.groq.com — النموذج: openai/gpt-oss-120b</div>
   </div>
   <div class="card"><h3 style="margin-bottom:14px">⚙️ عام</h3>
-    <div class="form-row"><label><input type="checkbox" id="darkMode" ${localStorage.getItem('dark')==='1'?'checked':''} onchange="toggleTheme()"> الوضع الداكن</label></div>
-    <div class="form-row"><label>Google Auth</label><div style="font-size:12px;color:var(--mu)">أضف النطاق <b>${location.hostname}</b> في Firebase Console → Authentication → Settings → Authorized domains</div></div>
-    <div class="form-actions"><button class="btn-sm d" onclick="logout()">🚪 تسجيل الخروج</button></div>
+    <div class="form-row"><label><input type="checkbox" ${localStorage.getItem('dark')==='1'?'checked':''} onchange="toggleTheme()"> الوضع الداكن</label></div>
+    <div class="form-row"><label>Google Auth</label><div style="font-size:12px;color:var(--mu)">أضف <b>${location.hostname}</b> في Firebase Console → Authentication → Settings → Authorized domains</div></div>
+    <div class="form-actions"><button class="btn-sm d" onclick="logout()">🚪 خروج</button></div>
   </div>`;
 };
-
 window.saveAI = () => {
   AI_CFG.provider = $('aiProv').value;
   AI_CFG.key = $('aiKey').value.trim();
@@ -1140,35 +1463,26 @@ window.saveAI = () => {
   localStorage.setItem('ai_model', AI_CFG.model);
   toast('✅ حُفظ', 'success');
 };
-
 window.testAI = async () => {
   saveAI();
-  try {
-    const r = await callAI([{ role: 'user', content: 'قل: تم' }], { maxTokens: 20 });
-    toast('✅ ' + r, 'success');
-  } catch (e) { toast('❌ ' + e.message, 'error'); }
+  try { const r = await callAI([{ role: 'user', content: 'قل: تم' }], { maxTokens: 20 }); toast('✅ ' + r, 'success'); }
+  catch (e) { toast('❌ ' + e.message, 'error'); }
 };
 
-/* ============================================================
-   Theme
-   ============================================================ */
+/* ============ Theme ============ */
 window.toggleTheme = () => {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  if (isDark) {
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('dark', '0');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    localStorage.setItem('dark', '1');
-  }
+  if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('dark', '0'); }
+  else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('dark', '1'); }
 };
-
 if (localStorage.getItem('dark') === '1') document.documentElement.setAttribute('data-theme', 'dark');
 
-/* ============================================================
-   Init
-   ============================================================ */
+/* ============ Init ============ */
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 800) $('mobileBar').style.display = 'none';
+  else if (state.user) $('mobileBar').style.display = 'flex';
+});
 console.log('✅ EMAA Social Suite loaded');
 </script>
 </body>
