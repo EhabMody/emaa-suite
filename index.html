@@ -299,10 +299,18 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 
 .schedule-item{display:flex;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;align-items:center;font-size:13px;margin-bottom:8px;color:var(--tx)}
 .schedule-item .when{font-weight:600;color:var(--ac);font-size:12px;min-width:120px}
+
+/* MOBILE BOTTOM NAV */
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--bd);padding:8px;z-index:60;justify-content:space-around}
+@media(max-width:800px){.bottom-nav{display:flex}.main{padding-bottom:80px}}
+.bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--tx-muted);padding:6px 10px;border-radius:6px;flex:1}
+.bottom-nav button.active{color:var(--ac);background:var(--ac-glow)}
+.bottom-nav button svg{width:18px;height:18px}
 </style>
 </head>
 <body>
 
+<!-- SVG Icons -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
   <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -447,6 +455,16 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
   <main class="main" id="mainContent"></main>
 </div>
 
+<!-- Mobile Bottom Nav -->
+<div class="bottom-nav" id="bottomNav" style="display:none">
+  <button data-page="dashboard" onclick="window.go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg>لوحة</button>
+  <button data-page="inbox" onclick="window.go('inbox')"><svg class="icon"><use href="#i-message"/></svg>محادثات</button>
+  <button data-page="content" onclick="window.go('content')"><svg class="icon"><use href="#i-edit"/></svg>محتوى</button>
+  <button data-page="network" onclick="window.go('network')"><svg class="icon"><use href="#i-network"/></svg>شبكة</button>
+  <button data-page="tasks" onclick="window.go('tasks')"><svg class="icon"><use href="#i-check-square"/></svg>مهام</button>
+  <button data-page="settings" onclick="window.go('settings')"><svg class="icon"><use href="#i-settings"/></svg>إعدادات</button>
+</div>
+
 <div class="mobile-bar" id="mobileBar" style="display:none">
   <div class="cyber-logo" style="font-size:16px">
     <div class="shield" style="width:24px;height:24px"><svg class="icon" style="width:14px;height:14px"><use href="#i-shield"/></svg></div>
@@ -459,7 +477,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 <div class="toast" id="toast"></div>
 
 <script type="module">
-/* ============ Firebase Imports ============ */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import {
   getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
@@ -485,7 +502,6 @@ const fbApp = initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const db = getFirestore(fbApp);
 
-/* ============ AI ============ */
 const AI_CFG = {
   provider: localStorage.getItem('ai_provider') || 'groq',
   key: localStorage.getItem('ai_key') || '',
@@ -518,7 +534,6 @@ async function callAI(messages, opts = {}) {
   return d.choices[0].message.content || '';
 }
 
-/* ============ Helpers ============ */
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const now = () => Date.now();
@@ -534,18 +549,20 @@ const state = {
   notifications: [], schedules: [], unsubs: []
 };
 
-/* ============ Global Exports ============ */
+/* ============ Global Exports (Fixing empty screens) ============ */
 window.showLanding = () => {
   $('landingPage').style.display = 'flex';
   $('authScreen').style.display = 'none';
   $('app').classList.remove('active');
   $('mobileBar').style.display = 'none';
+  $('bottomNav').style.display = 'none';
 };
 window.showAuth = () => {
   $('landingPage').style.display = 'none';
   $('authScreen').style.display = 'grid';
   $('app').classList.remove('active');
   $('mobileBar').style.display = 'none';
+  $('bottomNav').style.display = 'none';
 };
 window.closeModal = () => $('modal').classList.remove('open');
 window.openModal = (html) => { $('modalBox').innerHTML = html; $('modal').classList.add('open'); };
@@ -596,7 +613,7 @@ onAuthStateChanged(auth, async (user) => {
     $('landingPage').style.display = 'none';
     $('authScreen').style.display = 'none';
     $('app').classList.add('active');
-    if (window.innerWidth <= 800) $('mobileBar').style.display = 'flex';
+    if (window.innerWidth <= 800) { $('mobileBar').style.display = 'flex'; $('bottomNav').style.display = 'flex'; }
     $('userName').textContent = user.displayName || user.email.split('@')[0];
     $('userEmail').textContent = user.email;
     $('userAv').textContent = (user.displayName || user.email)[0].toUpperCase();
@@ -704,13 +721,15 @@ function updateNotifBadge() {
 window.go = (page) => {
   state.page = page;
   document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+  document.querySelectorAll('.bottom-nav button').forEach(el => el.classList.toggle('active', el.dataset.page === page));
   const R = {
     dashboard: window.renderDashboard, inbox: window.renderInbox, content: window.renderContent,
     network: window.renderNetwork, automations: window.renderAutomations, scheduler: window.renderScheduler,
     tasks: window.renderTasks, notifications: window.renderNotifications, analytics: window.renderAnalytics,
     team: window.renderTeam, channels: window.renderChannels, settings: window.renderSettings
   };
-  $('mainContent').innerHTML = (R[page] || window.renderDashboard)();
+  const fn = R[page];
+  if (fn) { $('mainContent').innerHTML = fn(); } else { $('mainContent').innerHTML = window.renderDashboard(); }
   if (page === 'inbox' && state.conv) window.openConv(state.conv);
   if (page === 'content') window.renderContentList();
   if (page === 'tasks') window.renderKanban();
@@ -1549,8 +1568,8 @@ if (localStorage.getItem('dark') === '1') document.documentElement.setAttribute(
 /* ============ Init ============ */
 document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeModal(); });
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 800) $('mobileBar').style.display = 'none';
-  else if (state.user) $('mobileBar').style.display = 'flex';
+  if (window.innerWidth > 800) { $('mobileBar').style.display = 'none'; $('bottomNav').style.display = 'none'; }
+  else if (state.user) { $('mobileBar').style.display = 'flex'; $('bottomNav').style.display = 'flex'; }
 });
 console.log('✅ EMAA Social Suite loaded');
 </script>
