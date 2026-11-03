@@ -582,20 +582,33 @@ window.go = (page) => {
   state.page = page;
   document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
   document.querySelectorAll('.bottom-nav button').forEach(el => el.classList.toggle('active', el.dataset.page === page));
-  const R = {
-    dashboard: window.renderDashboard, inbox: window.renderInbox, content: window.renderContent,
-    network: window.renderNetwork, automations: window.renderAutomations, scheduler: window.renderScheduler,
-    tasks: window.renderTasks, notifications: window.renderNotifications, analytics: window.renderAnalytics,
-    team: window.renderTeam, channels: window.renderChannels, settings: window.renderSettings
+  
+  const renderers = {
+    dashboard: window.renderDashboard,
+    inbox: window.renderInbox,
+    content: window.renderContent,
+    network: window.renderNetwork,
+    automations: window.renderAutomations,
+    scheduler: window.renderScheduler,
+    tasks: window.renderTasks,
+    notifications: window.renderNotifications,
+    analytics: window.renderAnalytics,
+    team: window.renderTeam,
+    channels: window.renderChannels,
+    settings: window.renderSettings
   };
-  const fn = R[page];
-  $('mainContent').innerHTML = fn ? fn() : window.renderDashboard();
+  
+  const fn = renderers[page];
+  const html = (typeof fn === 'function') ? fn() : `<div class="empty"><div>الصفحة غير متوفرة: ${page}</div></div>`;
+  $('mainContent').innerHTML = html || `<div class="empty"><div>خطأ في تحميل الصفحة</div></div>`;
+  
   if (page === 'inbox' && state.conv) window.openConv(state.conv);
   if (page === 'content') window.renderContentList();
   if (page === 'tasks') window.renderKanban();
   if (page === 'analytics') window.renderCharts();
   if (page === 'network') { window.netBind(); window.netDraw(); window.netInspector(); window.netSubscribe(); }
-  updateInboxBadge(); updateNotifBadge();
+  updateInboxBadge();
+  updateNotifBadge();
 };
 
 window.renderDashboard = () => {
