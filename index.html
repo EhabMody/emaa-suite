@@ -14,6 +14,12 @@
   --wa: #25d366; --fb: #1877f2; --ig: #e1306c; --tg: #229ed9;
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
+/* Light theme */
+html[data-theme="light"]{
+  --bg: #f8fafc; --surface: #ffffff; --surface-hover: #f1f5f9;
+  --tx: #0f172a; --tx-muted: #64748b; --bd: #e2e8f0;
+  --ac-glow: rgba(59, 130, 246, 0.1);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'IBM Plex Sans Arabic','Inter',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:14px}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;transition:all 0.2s ease}
@@ -21,13 +27,9 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .hidden{display:none!important}
 .icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .icon-lg{width:20px;height:20px}
-
-/* CYBER LOGO */
 .cyber-logo{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.5px}
 .cyber-logo .shield{width:32px;height:32px;background:linear-gradient(135deg, var(--ac), #8b5cf6);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 0 15px var(--ac-glow)}
 .cyber-logo .emaa{color:var(--tx)}.cyber-logo .tech{color:var(--ac)}
-
-/* LANDING */
 .landing{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .landing::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% -20%, var(--ac-glow), transparent 60%);pointer-events:none}
 .landing nav{padding:24px 48px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;border-bottom:1px solid var(--bd);background:rgba(3,7,18,0.7);backdrop-filter:blur(10px)}
@@ -71,8 +73,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .landing .price-card button{width:100%;padding:10px;border-radius:6px;background:var(--surface);color:var(--tx);font-weight:600;border:1px solid var(--bd)}
 .landing .price-card button:hover{background:var(--surface-hover)}
 .landing footer{padding:32px 48px;text-align:center;font-size:13px;color:var(--tx-muted);border-top:1px solid var(--bd);background:var(--bg)}
-
-/* AUTH */
 .auth-screen{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--bg)}
 @media(max-width:900px){.auth-screen{grid-template-columns:1fr}.auth-brand{display:none!important}}
 .auth-brand{padding:48px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;border-left:1px solid var(--bd);background:linear-gradient(135deg, var(--bg), var(--surface))}
@@ -103,8 +103,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .auth-switch a{font-weight:500;color:var(--tx);text-decoration:none;cursor:pointer}
 .auth-switch a:hover{text-decoration:underline}
 .auth-switch .error{color:var(--bad);font-size:12px;display:block;margin-top:12px;padding:8px;background:rgba(239,68,68,0.1);border-radius:6px;border:1px solid rgba(239,68,68,0.2)}
-
-/* APP */
 .app{display:none;min-height:100vh;grid-template-columns:240px 1fr}
 .app.active{display:grid}
 @media(max-width:800px){.app{grid-template-columns:1fr}.sidebar{display:none}}
@@ -123,7 +121,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .user-box .nm span{font-size:11px;color:var(--tx-muted);display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
 .logout-btn{margin-top:12px;width:100%;padding:8px;border-radius:6px;background:transparent;color:var(--tx-muted);font-weight:500;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid transparent}
 .logout-btn:hover{background:rgba(239,68,68,0.1);color:var(--bad);border-color:rgba(239,68,68,0.2)}
-
 .main{padding:32px 48px;overflow-x:auto;max-width:100%}
 @media(max-width:800px){.main{padding:16px}}
 .topbar{display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap}
@@ -139,13 +136,11 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .mobile-bar{display:none;background:var(--bg);border-bottom:1px solid var(--bd);padding:12px 16px;position:sticky;top:0;z-index:50;align-items:center;justify-content:space-between}
 @media(max-width:800px){.mobile-bar{display:flex!important}}
 .mobile-bar .logout-mobile{padding:6px 12px;border-radius:6px;background:transparent;border:1px solid var(--bd);color:var(--tx-muted);font-weight:500;font-size:12px;display:flex;align-items:center;gap:6px}
-
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px}
 .kpi{background:var(--surface);border-radius:10px;padding:20px;border:1px solid var(--bd);position:relative;overflow:hidden}
 .kpi .label{font-size:13px;color:var(--tx-muted);margin-bottom:8px;font-weight:500;display:flex;align-items:center;gap:6px}
 .kpi .val{font-size:28px;font-weight:600;line-height:1;letter-spacing:-0.5px;color:var(--tx)}
 .kpi .trend{font-size:12px;margin-top:8px;color:var(--ok);font-weight:500;display:flex;align-items:center;gap:4px}
-
 .inbox{display:grid;grid-template-columns:320px 1fr;background:var(--surface);border-radius:10px;overflow:hidden;border:1px solid var(--bd);height:calc(100vh - 140px);min-height:500px}
 @media(max-width:900px){.inbox{grid-template-columns:1fr;height:auto}.inbox .conv-list{max-height:220px}}
 .conv-list{border-left:1px solid var(--bd);overflow-y:auto;display:flex;flex-direction:column;background:var(--bg)}
@@ -164,7 +159,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .conv .info .msg{font-size:13px;color:var(--tx-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .conv .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
 .tag{background:var(--surface-hover);color:var(--tx-muted);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500;border:1px solid var(--bd)}
-
 .chat-area{display:flex;flex-direction:column;background:var(--bg)}
 .chat-header{padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px}
 .chat-header .av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px}
@@ -185,7 +179,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .msg-row.note .bubble{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--wn);font-size:12px;text-align:center;padding:6px 12px;border-radius:6px}
 .bubble .time{font-size:10px;opacity:.7;margin-top:4px;display:block}
 .ai-tag{font-size:10px;background:rgba(255,255,255,0.2);padding:1px 6px;border-radius:4px;margin-inline-start:6px;font-weight:600}
-
 .chat-input{padding:16px 20px;background:var(--surface);border-top:1px solid var(--bd)}
 .chat-input .box{display:flex;gap:8px;align-items:flex-end}
 .chat-input textarea{flex:1;padding:10px 14px;border:1px solid var(--bd);border-radius:8px;resize:none;min-height:44px;max-height:120px;background:var(--bg);font-size:14px;color:var(--tx)}
@@ -200,19 +193,16 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .quick-replies{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .quick-replies button{padding:6px 12px;border-radius:16px;background:var(--bg);border:1px solid var(--bd);color:var(--tx-muted);font-size:12px}
 .quick-replies button:hover{background:var(--surface-hover);color:var(--tx);border-color:var(--tx-muted)}
-
 .toast{position:fixed;bottom:24px;left:24px;background:var(--surface);border:1px solid var(--bd);color:var(--tx);padding:12px 16px;border-radius:8px;font-size:13px;box-shadow:var(--shadow-md);display:none;z-index:100;max-width:340px;align-items:center;gap:10px}
 .toast.show{display:flex;animation:slideUp .2s ease}
 .toast.success{border-color:var(--ok);color:var(--ok);background:rgba(16,185,129,0.1)}
 .toast.error{border-color:var(--bad);color:var(--bad);background:rgba(239,68,68,0.1)}
 @keyframes slideUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
-
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;color:var(--tx-muted);text-align:center;gap:12px}
 .empty svg{opacity:.5;width:32px;height:32px}
 .card{background:var(--surface);border-radius:10px;padding:24px;border:1px solid var(--bd);margin-bottom:16px}
 .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
 .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
 .modal.open{display:flex}
 .modal-box{background:var(--surface);border:1px solid var(--bd);border-radius:12px;padding:24px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-md)}
@@ -222,7 +212,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);font-size:14px;color:var(--tx)}
 .form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 2px var(--ac-glow)}
 .form-actions{display:flex;gap:8px;margin-top:24px;justify-content:flex-end}
-
 .kanban{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .col{background:var(--surface);border-radius:10px;padding:16px;border:1px solid var(--bd)}
 .col h4{margin-bottom:16px;font-size:14px;font-weight:600;display:flex;justify-content:space-between;align-items:center;color:var(--tx)}
@@ -231,35 +220,28 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .task .t{font-weight:500;margin-bottom:6px;color:var(--tx)}
 .task .m{font-size:11px;color:var(--tx-muted);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .pri-h{color:var(--bad);font-weight:600}.pri-m{color:var(--wn)}.pri-l{color:var(--tx-muted)}
-
 .content-card{background:var(--surface);border-radius:10px;padding:16px;margin-bottom:12px;border:1px solid var(--bd);border-right:3px solid var(--ac)}
 .content-card .head{display:flex;justify-content:space-between;font-size:11px;color:var(--tx-muted);margin-bottom:8px;align-items:center}
 .content-card .body{white-space:pre-wrap;font-size:13px;margin-bottom:12px;color:var(--tx);line-height:1.6}
 .content-card .actions{display:flex;gap:6px;flex-wrap:wrap}
 .plat-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;color:#fff;font-weight:600}
-
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
 .cal .d{background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:8px;min-height:80px;font-size:11px;color:var(--tx)}
 .cal .d.today{border-color:var(--ac)}
 .cal .d b{display:block;font-size:11px;color:var(--tx-muted);margin-bottom:4px;font-weight:500}
 .cal .d .ev{background:var(--ac-glow);color:var(--ac);border-radius:4px;padding:2px 4px;margin-top:4px;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid rgba(59,130,246,0.3)}
-
 .channel-card{background:var(--surface);border:1px solid var(--bd);border-radius:10px;padding:24px;text-align:center}
 .channel-card .icon{width:48px;height:48px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px}
 .channel-card b{display:block;margin-bottom:8px;color:var(--tx);font-size:15px}
 .chart{width:100%;height:240px}
-
 .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad);margin-inline-end:6px}
 .status-dot.on{background:var(--ok);animation:pulse 1.5s infinite}
 @keyframes pulse{50%{opacity:.4}}
-
 .team-card{display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;margin-bottom:8px}
 .team-card .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;font-size:14px}
 .team-card .info{flex:1;min-width:0}
 .team-card .info b{display:block;font-size:14px;color:var(--tx);font-weight:600}
 .team-card .info span{font-size:12px;color:var(--tx-muted)}
-
-/* NETWORK */
 .net-tabs{display:flex;gap:8px;padding:12px;background:var(--surface);border:1px solid var(--bd);border-bottom:none;overflow-x:auto;border-radius:10px 10px 0 0}
 .net-tab{padding:6px 12px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--tx-muted);background:var(--bg);border:1px solid transparent}
 .net-tab.active{background:var(--ac-glow);color:var(--ac);border-color:var(--ac)}
@@ -290,17 +272,13 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 .net-stat{text-align:center}
 .net-stat .v{font-size:22px;font-weight:700;color:var(--tx)}
 .net-stat .l{font-size:11px;color:var(--tx-muted);text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
-
 .notif-item{padding:12px;border-bottom:1px solid var(--bd);display:flex;gap:12px;align-items:flex-start}
 .notif-item.unread{background:var(--ac-glow)}
 .notif-item .ico{font-size:16px;color:var(--ac)}
 .notif-item .txt{flex:1;font-size:13px;color:var(--tx)}
 .notif-item .time{font-size:11px;color:var(--tx-muted)}
-
 .schedule-item{display:flex;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;align-items:center;font-size:13px;margin-bottom:8px;color:var(--tx)}
 .schedule-item .when{font-weight:600;color:var(--ac);font-size:12px;min-width:120px}
-
-/* MOBILE BOTTOM NAV */
 .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--bd);padding:8px;z-index:60;justify-content:space-around}
 @media(max-width:800px){.bottom-nav{display:flex}.main{padding-bottom:80px}}
 .bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--tx-muted);padding:6px 10px;border-radius:6px;flex:1}
@@ -310,7 +288,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
 </head>
 <body>
 
-<!-- SVG Icons -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
   <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -340,7 +317,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
   <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></symbol>
 </svg>
 
-<!-- LANDING -->
 <div class="landing" id="landingPage">
   <nav>
     <div class="cyber-logo">
@@ -387,7 +363,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
   <footer>© 2026 EMAA.Tech — Integrated Solutions & Security System</footer>
 </div>
 
-<!-- AUTH -->
 <div class="auth-screen" id="authScreen" style="display:none">
   <div class="auth-brand">
     <div class="cyber-logo" style="margin-bottom:40px">
@@ -421,7 +396,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
   </div>
 </div>
 
-<!-- APP -->
 <div class="app" id="app">
   <aside class="sidebar">
     <div class="cyber-logo logo">
@@ -455,7 +429,6 @@ input,select,textarea{font:inherit;color:inherit;transition:border-color 0.2s ea
   <main class="main" id="mainContent"></main>
 </div>
 
-<!-- Mobile Bottom Nav -->
 <div class="bottom-nav" id="bottomNav" style="display:none">
   <button data-page="dashboard" onclick="window.go('dashboard')"><svg class="icon"><use href="#i-bar-chart"/></svg>لوحة</button>
   <button data-page="inbox" onclick="window.go('inbox')"><svg class="icon"><use href="#i-message"/></svg>محادثات</button>
@@ -546,10 +519,10 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const state = {
   page: 'dashboard', conv: null, filter: 'all', user: null,
   convs: [], content: [], tasks: [], automations: [], team: [], replies: [],
-  notifications: [], schedules: [], unsubs: []
+  notifications: [], schedules: [], unsubs: [], msgUnsubs: {}
 };
 
-/* ============ Global Exports (Fixing empty screens) ============ */
+/* ============ Global Exports ============ */
 window.showLanding = () => {
   $('landingPage').style.display = 'flex';
   $('authScreen').style.display = 'none';
@@ -584,7 +557,7 @@ window.loginEmail = async () => {
     await signInWithEmailAndPassword(auth, email, pass);
     window.toast('✅ مرحبًا بك', 'success');
   } catch (e) {
-    if (e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential') {
+    if (e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential' || e.code === 'auth/wrong-password') {
       try { await createUserWithEmailAndPassword(auth, email, pass); window.toast('✅ حساب جديد', 'success'); }
       catch (e2) { err.textContent = e2.message || e2.code; }
     } else err.textContent = e.message || e.code;
@@ -603,8 +576,12 @@ window.loginGoogle = async () => {
 
 window.logout = async () => {
   if (!confirm('هل تريد تسجيل الخروج؟')) return;
-  try { unsubscribeAll(); await signOut(auth); window.toast('تم تسجيل الخروج', 'success'); }
-  catch (e) { window.toast('❌ ' + (e.message || 'فشل'), 'error'); }
+  try {
+    unsubscribeAll();
+    if (netUnsub) { try { netUnsub(); } catch(e) {} netUnsub = null; }
+    await signOut(auth);
+    window.toast('تم تسجيل الخروج', 'success');
+  } catch (e) { window.toast('❌ ' + (e.message || 'فشل'), 'error'); }
 };
 
 onAuthStateChanged(auth, async (user) => {
@@ -642,6 +619,8 @@ async function ensureUserDoc(user) {
 function unsubscribeAll() {
   state.unsubs.forEach(u => { try { u(); } catch (e) {} });
   state.unsubs = [];
+  Object.values(state.msgUnsubs).forEach(u => { try { u(); } catch (e) {} });
+  state.msgUnsubs = {};
 }
 
 function subscribeAll() {
@@ -650,8 +629,14 @@ function subscribeAll() {
 
   const qc = query(collection(db, 'conversations'), where('ownerId', '==', uid), orderBy('updatedAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qc, snap => {
-    state.convs = snap.docs.map(d => ({ id: d.id, ...d.data(), msgs: [] }));
-    state.convs.forEach(c => subscribeMessages(c.id));
+    const newConvs = snap.docs.map(d => ({ id: d.id, ...d.data(), msgs: [] }));
+    // preserve existing msgs
+    newConvs.forEach(nc => {
+      const old = state.convs.find(c => c.id === nc.id);
+      if (old) nc.msgs = old.msgs || [];
+    });
+    state.convs = newConvs;
+    state.convs.forEach(c => { if (!state.msgUnsubs[c.id]) subscribeMessages(c.id); });
     if (state.page === 'inbox') window.go('inbox');
     updateInboxBadge();
   }, e => console.warn('convs:', e.message)));
@@ -695,6 +680,7 @@ function subscribeAll() {
 }
 
 function subscribeMessages(convId) {
+  if (state.msgUnsubs[convId]) { try { state.msgUnsubs[convId](); } catch(e) {} }
   const q = query(collection(db, 'conversations', convId, 'messages'), orderBy('createdAt', 'asc'), limit(200));
   const unsub = onSnapshot(q, snap => {
     const conv = state.convs.find(c => c.id === convId);
@@ -705,7 +691,7 @@ function subscribeMessages(convId) {
     });
     if (state.page === 'inbox' && state.conv === convId) window.openConv(convId);
   }, e => console.warn('msgs:', e.message));
-  state.unsubs.push(unsub);
+  state.msgUnsubs[convId] = unsub;
 }
 
 function updateInboxBadge() {
@@ -734,7 +720,7 @@ window.go = (page) => {
   if (page === 'content') window.renderContentList();
   if (page === 'tasks') window.renderKanban();
   if (page === 'analytics') window.renderCharts();
-  if (page === 'network') { window.netBind(); window.netDraw(); window.netInspector(); }
+  if (page === 'network') { window.netBind(); window.netDraw(); window.netInspector(); window.netSubscribe(); }
   updateInboxBadge();
   updateNotifBadge();
 };
@@ -767,7 +753,7 @@ window.renderDashboard = () => {
       <button class="btn-sm s" style="width:100%;justify-content:center" onclick="window.go('settings')"><svg class="icon"><use href="#i-settings"/></svg> الإعدادات</button>
     </div>
   </div>`;
-}
+};
 
 /* ============ Inbox ============ */
 window.renderInbox = () => {
@@ -783,11 +769,19 @@ window.renderInbox = () => {
         <div class="chip ${state.filter === 'instagram' ? 'active' : ''}" onclick="state.filter='instagram';window.go('inbox')">إنستجرام</div>
         <div class="chip ${state.filter === 'telegram' ? 'active' : ''}" onclick="state.filter='telegram';window.go('inbox')">تيليجرام</div>
       </div>
-      ${filtered.map(c => `<div class="conv ${state.conv === c.id ? 'active' : ''}" onclick="state.conv='${c.id}';window.go('inbox')"><div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}<div class="plat" style="background:${c.color || '#6366f1'}">${c.platform === 'whatsapp' ? 'W' : c.platform === 'facebook' ? 'F' : c.platform === 'instagram' ? 'I' : 'T'}</div></div><div class="info"><div class="top"><b>${esc(c.name || '—')}</b><span class="time">${c.msgs?.at(-1)?.time || ''}</span></div><div class="msg">${esc(c.msgs?.at(-1)?.text?.slice(0, 40) || '—')}</div>${(c.tags||[]).length ? '<div class="tags">' + (c.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('') + '</div>' : ''}</div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}
+      ${filtered.map(c => `<div class="conv ${state.conv === c.id ? 'active' : ''}" onclick="window.selectConv('${c.id}')"><div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}<div class="plat" style="background:${c.color || '#6366f1'}">${c.platform === 'whatsapp' ? 'W' : c.platform === 'facebook' ? 'F' : c.platform === 'instagram' ? 'I' : 'T'}</div></div><div class="info"><div class="top"><b>${esc(c.name || '—')}</b><span class="time">${c.msgs?.at(-1)?.time || ''}</span></div><div class="msg">${esc(c.msgs?.at(-1)?.text?.slice(0, 40) || '—')}</div>${(c.tags||[]).length ? '<div class="tags">' + (c.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('') + '</div>' : ''}</div></div>`).join('') || '<div class="empty"><svg class="icon-lg"><use href="#i-message"/></svg><div>لا محادثات</div></div>'}
     </div>
     <div class="chat-area" id="chatArea"><div class="empty" style="flex:1"><svg class="icon-lg"><use href="#i-message"/></svg><div>اختر محادثة</div></div></div>
   </div>`;
-}
+};
+
+window.selectConv = async (id) => {
+  state.conv = id;
+  // mark as read
+  try { await updateDoc(doc(db, 'conversations', id), { unread: 0 }); } catch(e) {}
+  window.go('inbox');
+  window.openConv(id);
+};
 
 window.openConv = (id) => {
   const c = state.convs.find(x => x.id === id);
@@ -814,7 +808,7 @@ window.openConv = (id) => {
       return `<div class="msg-row ${m.dir}">${m.dir === 'in' ? `<div class="av" style="background:${c.color || '#6366f1'}">${esc((c.name || 'م')[0])}</div>` : '<div class="av" style="background:var(--ac)">أ</div>'}<div class="bubble">${esc(m.text).replace(/\n/g, '<br>')}${m.ai ? '<span class="ai-tag">AI</span>' : ''}<span class="time">${m.time || ''}</span></div></div>`;
     }).join('') || '<div class="empty" style="flex:1"><div>لا رسائل</div></div>'}</div>
     <div class="chat-input">
-      <div class="quick-replies">${quick.map(q => `<button onclick="window.quickReply('${esc(q.text).replace(/'/g,"\\'")}')">${esc(q.title || q.text.slice(0,20))}</button>`).join('')}</div>
+      <div class="quick-replies">${quick.map(q => `<button onclick="window.quickReply(${JSON.stringify(q.text)})">${esc(q.title || q.text.slice(0,20))}</button>`).join('')}</div>
       <div class="box"><textarea id="msgInput" placeholder="اكتب ردًا… (Ctrl+Enter)" onkeydown="if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();window.sendMsg('${c.id}')}"></textarea><button class="send" onclick="window.sendMsg('${c.id}')"><svg class="icon"><use href="#i-send"/></svg></button></div>
       <div class="tools">
         <button onclick="window.suggestReply('${c.id}')"><svg class="icon"><use href="#i-sparkles"/></svg> اقترح</button>
@@ -823,7 +817,7 @@ window.openConv = (id) => {
       </div>
     </div>`;
   const msgs = $('chatMsgs'); if (msgs) msgs.scrollTop = msgs.scrollHeight;
-}
+};
 
 window.sendMsg = async (id) => {
   const inp = $('msgInput'); if (!inp) return;
@@ -890,7 +884,7 @@ window.doNewConv = async () => {
 
 window.delConv = async (id) => {
   if (!confirm('حذف المحادثة؟')) return;
-  try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; window.toast('تم الحذف', 'success'); }
+  try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; window.go('inbox'); window.toast('تم الحذف', 'success'); }
   catch (e) { window.toast('فشل: ' + e.message, 'error'); }
 };
 
@@ -1058,6 +1052,13 @@ function netSubscribe() {
       netState.edges = data.edges || [];
       netState.docId = snap.docs[0].id;
       netState.stats = data.stats || { runs: 0, success: 0, fail: 0 };
+      // update uid to avoid duplicate ids
+      let maxId = 0;
+      netState.nodes.forEach(n => {
+        const m = /^n(\d+)$/.exec(n.id || '');
+        if (m) maxId = Math.max(maxId, +m[1]);
+      });
+      netState.uid = maxId;
       if (state.page === 'network') { window.netDraw(); window.netInspector(); window.netUpdateStats(); }
     }
   }, e => console.warn('workflow:', e.message));
@@ -1069,15 +1070,48 @@ window.netBind = () => {
     if (e.target.closest('[data-edge]')) return;
     const port = e.target.closest('[data-port]');
     const node = e.target.closest('[data-node]');
-    e.preventDefault();
-    if (port) { netState.link = { from: port.dataset.port, to: window.netPt(e), isTrue: port.dataset.isTrue === '1' }; return; }
+    if (port) { netState.link = { from: port.dataset.port, to: window.netPt(e), isTrue: port.dataset.isTrue === '1' }; e.preventDefault(); return; }
     if (node) {
       const n = netState.nodes.find(x => x.id === node.dataset.node);
+      if (!n) return;
       const p = window.netPt(e);
       netState.drag = { n, dx: p.x - n.x, dy: p.y - n.y };
       netState.sel = n.id;
     } else { netState.sel = null; netState.pan = { x: e.clientX, y: e.clientY, vx: netState.view.x, vy: netState.view.y }; }
     window.netInspector(); window.netDraw();
+    svg.setPointerCapture(e.pointerId);
+  };
+  svg.onpointermove = (e) => {
+    if (netState.pan) {
+      const k = netState.view.w / (svg.clientWidth || 1);
+      netState.view.x = netState.pan.vx - (e.clientX - netState.pan.x) * k;
+      netState.view.y = netState.pan.vy - (e.clientY - netState.pan.y) * k;
+      svg.setAttribute('viewBox', `${netState.view.x} ${netState.view.y} ${netState.view.w} ${netState.view.h}`);
+      return;
+    }
+    if (netState.drag) {
+      const p = window.netPt(e);
+      netState.drag.n.x = Math.max(0, Math.min(1000, p.x - netState.drag.dx));
+      netState.drag.n.y = Math.max(0, Math.min(600, p.y - netState.drag.dy));
+      window.netDraw();
+    } else if (netState.link) { netState.link.to = window.netPt(e); window.netDraw(); }
+  };
+  svg.onpointerup = (e) => {
+    if (netState.link) {
+      const t = document.elementFromPoint(e.clientX, e.clientY);
+      const target = t?.closest?.('[data-node]');
+      if (target) {
+        const toId = target.dataset.node;
+        const toNode = netState.nodes.find(n => n.id === toId);
+        if (toNode && toNode.type !== 'trigger' && !netState.edges.some(x => x.from === netState.link.from && x.to === toId && x.isTrue === netState.link.isTrue)) {
+          netState.edges.push({ from: netState.link.from, to: toId, isTrue: netState.link.isTrue || false });
+          window.netSave();
+        }
+      }
+      netState.link = null; window.netDraw();
+    }
+    if (netState.drag) { netState.drag = null; window.netSave(); }
+    netState.pan = null;
   };
   svg.ondblclick = (e) => {
     const ed = e.target.closest('[data-edge]');
@@ -1086,45 +1120,10 @@ window.netBind = () => {
   svg.onwheel = (e) => { e.preventDefault(); window.netZoom(e.deltaY < 0 ? 0.85 : 1.18); };
 }
 
-window.onpointermove = (e) => {
-  if (!netState || state.page !== 'network') return;
-  const svg = $('netSvg'); if (!svg) return;
-  if (netState.pan) {
-    const k = netState.view.w / (svg.clientWidth || 1);
-    netState.view.x = netState.pan.vx - (e.clientX - netState.pan.x) * k;
-    netState.view.y = netState.pan.vy - (e.clientY - netState.pan.y) * k;
-    svg.setAttribute('viewBox', `${netState.view.x} ${netState.view.y} ${netState.view.w} ${netState.view.h}`);
-    return;
-  }
-  if (netState.drag) {
-    const p = window.netPt(e);
-    netState.drag.n.x = Math.max(0, Math.min(1100, p.x - netState.drag.dx));
-    netState.drag.n.y = Math.max(0, Math.min(580, p.y - netState.drag.dy));
-    window.netDraw();
-  } else if (netState.link) { netState.link.to = window.netPt(e); window.netDraw(); }
-};
-
-window.onpointerup = (e) => {
-  if (!netState) return;
-  if (netState.link) {
-    const t = document.elementFromPoint(e.clientX, e.clientY);
-    const target = t?.closest?.('[data-node]');
-    if (target) {
-      const toId = target.dataset.node;
-      const toNode = netState.nodes.find(n => n.id === toId);
-      if (toNode && toNode.type !== 'trigger' && !netState.edges.some(x => x.from === netState.link.from && x.to === toId)) {
-        netState.edges.push({ from: netState.link.from, to: toId, isTrue: netState.link.isTrue || false });
-        window.netSave();
-      }
-    }
-    netState.link = null; window.netDraw();
-  }
-  if (netState.drag) { netState.drag = null; window.netSave(); }
-  netState.pan = null;
-};
-
 window.netPt = (e) => {
-  const svg = $('netSvg'); const p = svg.createSVGPoint();
+  const svg = $('netSvg');
+  if (!svg) return { x: 0, y: 0 };
+  const p = svg.createSVGPoint();
   p.x = e.clientX; p.y = e.clientY;
   return p.matrixTransform(svg.getScreenCTM().inverse());
 };
@@ -1172,7 +1171,7 @@ window.netDraw = () => {
   netState.nodes.forEach(n => {
     const t = NT[n.type] || NT.action;
     const cls = [netState.sel === n.id ? 'sel' : '', n._active ? 'active' : '', n._success ? 'success' : '', n._fail ? 'fail' : ''].join(' ');
-    const ports = n.type !== 'trigger' ? `<circle class="net-port" data-port="${n.id}" cx="0" cy="30" r="7"/>` : '';
+    const inPort = n.type !== 'trigger' ? `<circle class="net-port" data-port="${n.id}" cx="0" cy="30" r="7"/>` : '';
     const outPort = `<circle class="net-port" data-port="${n.id}" cx="200" cy="30" r="7"/>`;
     const condPorts = n.type === 'condition' ? `
       <circle class="net-port" data-port="${n.id}" data-is-true="1" cx="200" cy="18" r="7" style="stroke:var(--ok)"/>
@@ -1182,7 +1181,7 @@ window.netDraw = () => {
       <circle cx="180" cy="14" r="6" fill="${t.color}"/>
       <text x="100" y="24" text-anchor="middle" font-weight="600">${t.icon} ${t.label} · ${n.label}</text>
       <text class="sub" x="100" y="44" text-anchor="middle">${(n.value || '').toString().slice(0, 26) || '—'}</text>
-      ${ports}${outPort}${condPorts}
+      ${inPort}${outPort}${condPorts}
     </g>`;
   });
   window.netUpdateStats();
@@ -1213,6 +1212,7 @@ window.netInspector = () => {
 window.netUpdateVal = (v) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.value = v; window.netDraw(); } };
 window.netChangeKind = (k) => { const n = netState.nodes.find(x => x.id === netState.sel); if (n) { n.kind = k; n.value = NDV[n.type][k] || ''; n.label = NK[n.type][k]; window.netDraw(); window.netInspector(); window.netSave(); } };
 window.netDeleteNode = () => {
+  if (!netState.sel) return;
   netState.nodes = netState.nodes.filter(n => n.id !== netState.sel);
   netState.edges = netState.edges.filter(e => e.from !== netState.sel && e.to !== netState.sel);
   netState.sel = null; window.netDraw(); window.netInspector(); window.netSave();
@@ -1256,6 +1256,8 @@ window.netImport = () => {
   };
   input.click();
 };
+
+window.netRunNode = async (id) => { await netRunNode(id); };
 
 async function netRunNode(id, path = new Set()) {
   const n = netState.nodes.find(x => x.id === id); if (!n) return;
@@ -1537,7 +1539,7 @@ window.renderSettings = () => {
     <div style="font-size:12px;color:var(--tx-muted);margin-top:12px">Groq: console.groq.com — النموذج: openai/gpt-oss-120b</div>
   </div>
   <div class="card"><h3 style="margin-bottom:16px;font-size:15px;font-weight:600">عام</h3>
-    <div class="form-row"><label><input type="checkbox" ${localStorage.getItem('dark')==='1'?'checked':''} onchange="window.toggleTheme()"> الوضع الداكن</label></div>
+    <div class="form-row"><label><input type="checkbox" ${localStorage.getItem('theme')==='light'?'checked':''} onchange="window.toggleTheme()"> الوضع الفاتح</label></div>
     <div class="form-row"><label>Google Auth</label><div style="font-size:12px;color:var(--tx-muted)">أضف <b>${location.hostname}</b> في Firebase Console → Authentication → Settings → Authorized domains</div></div>
     <div class="form-actions"><button class="btn-sm d" onclick="window.logout()"><svg class="icon"><use href="#i-log-out"/></svg> خروج</button></div>
   </div>`;
@@ -1559,11 +1561,11 @@ window.testAI = async () => {
 
 /* ============ Theme ============ */
 window.toggleTheme = () => {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('dark', '0'); }
-  else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('dark', '1'); }
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  if (isLight) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme', 'dark'); }
+  else { document.documentElement.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); }
 };
-if (localStorage.getItem('dark') === '1') document.documentElement.setAttribute('data-theme', 'dark');
+if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
 
 /* ============ Init ============ */
 document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeModal(); });
