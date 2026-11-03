@@ -167,6 +167,7 @@ input,select,textarea{font:inherit;color:inherit}
 </head>
 <body>
 
+<!-- ============ AUTH ============ -->
 <div class="auth-screen" id="authScreen">
   <div class="auth-brand">
     <div class="logo"><span>⚡</span> EMAA Social Suite</div>
@@ -190,13 +191,14 @@ input,select,textarea{font:inherit;color:inherit}
       <button onclick="loginEmail()">📧 Email</button>
     </div>
     <div class="divider">أو بالبريد الإلكتروني</div>
-    <div class="field"><label>البريد</label><input type="email" id="loginEmail" value=""></div>
-    <div class="field"><label>كلمة المرور</label><input type="password" id="loginPass" value=""></div>
+    <div class="field"><label>البريد</label><input type="email" id="loginEmail" placeholder="you@example.com"></div>
+    <div class="field"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="••••••••"></div>
     <button class="btn" onclick="loginEmail()">تسجيل الدخول / إنشاء حساب</button>
     <div class="auth-switch"><span id="serverStatus">🔄 جارٍ الاتصال…</span></div>
   </div>
 </div>
 
+<!-- ============ APP ============ -->
 <div class="app" id="app">
   <aside class="sidebar">
     <div class="logo"><span>⚡</span> EMAA</div>
@@ -215,7 +217,7 @@ input,select,textarea{font:inherit;color:inherit}
       <div class="nav-item" data-page="settings" onclick="go('settings')"><span class="icon">⚙️</span> الإعدادات</div>
     </div>
     <div class="user-box">
-      <div class="av" id="userAv">أ</div>
+      <div class="av" id="userAv">—</div>
       <div class="nm"><b id="userName">—</b><span id="userEmail">—</span></div>
       <div class="out" onclick="logout()" title="خروج">⏻</div>
     </div>
@@ -225,7 +227,9 @@ input,select,textarea{font:inherit;color:inherit}
 
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box" id="modalBox"></div></div>
 <div class="toast" id="toast"></div>
-<script>
+
+<!-- ============ FIREBASE + APP ============ -->
+<script type="module">
 /* ============================================================
    Firebase
    ============================================================ */
@@ -235,11 +239,10 @@ import {
   GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import {
-  getFirestore, collection, doc, setDoc, getDoc, getDocs, addDoc,
+  getFirestore, collection, doc, setDoc, getDoc, addDoc,
   updateDoc, deleteDoc, query, where, orderBy, onSnapshot,
   serverTimestamp, limit
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
-import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-functions.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCLaX8kwGmZVy_9BfhOBMN8UTKYrTpFW3M",
@@ -254,20 +257,48 @@ const firebaseConfig = {
 const fbApp = initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const db = getFirestore(fbApp);
-const functions = getFunctions(fbApp);
 
-const AI = {
-  chat: httpsCallable(functions, 'aiChat'),
-  suggest: httpsCallable(functions, 'aiSuggest'),
-  content: httpsCallable(functions, 'aiContent'),
-  autoReply: httpsCallable(functions, 'autoReply')
+/* ============================================================
+   AI مباشر (بدون Cloud Functions)
+   ⚠️ المفتاح مكشوف — استخدم للتجربة فقط
+   ============================================================ */
+const AI_CFG = {
+  provider: localStorage.getItem('ai_provider') || 'groq',
+  key: localStorage.getItem('ai_key') || '',
+  model: localStorage.getItem('ai_model') || 'openai/gpt-oss-120b'
 };
+
+async function callAI(messages, opts = {}) {
+  if (!AI_CFG.key) throw new Error('أضف مفتاح AI من الإعدادات');
+  const p = AI_CFG.provider;
+  if (p === 'gemini') {
+    const m = opts.model || (AI_CFG.model.startsWith('gemini') ? AI_CFG.model : 'gemini-1.5-flash');
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${AI_CFG.key}`;
+    const contents = messages.filter(x => x.role !== 'system').map(x => ({ role: x.role === 'assistant' ? 'model' : 'user', parts: [{ text: x.content || '' }] }));
+    const sys = messages.find(x => x.role === 'system');
+    const body = { contents, systemInstruction: sys ? { parts: [{ text: sys.content }] } : undefined, generationConfig: { temperature: opts.temperature ?? 0.7, maxOutputTokens: opts.maxTokens ?? 1500 } };
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error?.message || 'فشل Gemini');
+    return d.candidates?.[0]?.content?.parts?.[0]?.text || '';
+  }
+  const url = p === 'groq' ? 'https://api.groq.com/openai/v1/chat/completions' : 'https://api.openai.com/v1/chat/completions';
+  const model = p === 'openai' ? (opts.model || 'gpt-4o-mini') : (opts.model || AI_CFG.model);
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + AI_CFG.key },
+    body: JSON.stringify({ model, messages, temperature: opts.temperature ?? 0.7, max_tokens: opts.maxTokens ?? 1500 })
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error?.message || 'فشل AI');
+  return d.choices[0].message.content || '';
+}
 
 /* ============================================================
    Helpers
    ============================================================ */
 const $ = id => document.getElementById(id);
-const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 const now = () => Date.now();
 const today = () => new Date().toISOString().slice(0, 10);
@@ -281,19 +312,9 @@ const toMillis = ts => {
   return now();
 };
 
-/* ============================================================
-   الحالة
-   ============================================================ */
 const state = {
-  page: 'dashboard',
-  conv: null,
-  filter: 'all',
-  user: null,
-  convs: [],
-  content: [],
-  tasks: [],
-  automations: [],
-  unsubs: []
+  page: 'dashboard', conv: null, filter: 'all', user: null,
+  convs: [], content: [], tasks: [], automations: [], unsubs: []
 };
 
 /* ============================================================
@@ -305,35 +326,21 @@ window.loginEmail = async () => {
   if (!email || !pass) return toast('أدخل البريد وكلمة المرور');
   try {
     await signInWithEmailAndPassword(auth, email, pass);
-    toast('✅ مرحبًا بك');
+    toast('✅ مرحبًا');
   } catch (e) {
     if (e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential') {
-      try {
-        await createUserWithEmailAndPassword(auth, email, pass);
-        toast('✅ حساب جديد أُنشئ');
-      } catch (e2) {
-        toast('❌ ' + (e2.message || e2.code));
-      }
-    } else {
-      toast('❌ ' + (e.message || e.code));
-    }
+      try { await createUserWithEmailAndPassword(auth, email, pass); toast('✅ حساب جديد'); }
+      catch (e2) { toast('❌ ' + (e2.message || e2.code)); }
+    } else toast('❌ ' + (e.message || e.code));
   }
 };
 
 window.loginGoogle = async () => {
-  try {
-    const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
-    toast('✅ مرحبًا');
-  } catch (e) {
-    toast('❌ ' + (e.message || e.code));
-  }
+  try { await signInWithPopup(auth, new GoogleAuthProvider()); toast('✅'); }
+  catch (e) { toast('❌ ' + (e.message || e.code)); }
 };
 
-window.logout = async () => {
-  await signOut(auth);
-  toast('تم تسجيل الخروج');
-};
+window.logout = async () => { await signOut(auth); toast('تم تسجيل الخروج'); };
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -343,6 +350,7 @@ onAuthStateChanged(auth, async (user) => {
     $('userName').textContent = user.displayName || user.email.split('@')[0];
     $('userEmail').textContent = user.email;
     $('userAv').textContent = (user.displayName || user.email)[0].toUpperCase();
+    $('serverStatus').innerHTML = '<span class="status-dot on"></span>Firebase متصل';
     await ensureUserDoc(user);
     subscribeAll();
     go('dashboard');
@@ -351,6 +359,7 @@ onAuthStateChanged(auth, async (user) => {
     unsubscribeAll();
     $('authScreen').style.display = 'grid';
     $('app').classList.remove('active');
+    $('serverStatus').innerHTML = '🔄 جارٍ الاتصال…';
   }
 });
 
@@ -360,9 +369,7 @@ async function ensureUserDoc(user) {
   if (!snap.exists()) {
     await setDoc(ref, {
       name: user.displayName || user.email.split('@')[0],
-      email: user.email,
-      plan: 'Business',
-      createdAt: serverTimestamp()
+      email: user.email, plan: 'Business', createdAt: serverTimestamp()
     });
   }
 }
@@ -376,7 +383,6 @@ function subscribeAll() {
   unsubscribeAll();
   const uid = state.user.uid;
 
-  // محادثات
   const qc = query(collection(db, 'conversations'), where('ownerId', '==', uid), orderBy('updatedAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qc, snap => {
     state.convs = snap.docs.map(d => ({ id: d.id, ...d.data(), msgs: [] }));
@@ -385,21 +391,18 @@ function subscribeAll() {
     updateInboxBadge();
   }, e => console.warn('convs:', e.message)));
 
-  // محتوى
   const qct = query(collection(db, 'content'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qct, snap => {
     state.content = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     if (state.page === 'content') renderContentList();
   }, e => console.warn('content:', e.message)));
 
-  // مهام
   const qt = query(collection(db, 'tasks'), where('ownerId', '==', uid), orderBy('createdAt', 'desc'), limit(100));
   state.unsubs.push(onSnapshot(qt, snap => {
     state.tasks = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     if (state.page === 'tasks') renderKanban();
   }, e => console.warn('tasks:', e.message)));
 
-  // أتمتة
   const qa = query(collection(db, 'automations'), where('ownerId', '==', uid), limit(50));
   state.unsubs.push(onSnapshot(qa, snap => {
     state.automations = snap.docs.map(d => ({ id: d.id, ...d.data() }));
@@ -414,12 +417,7 @@ function subscribeMessages(convId) {
     if (!conv) return;
     conv.msgs = snap.docs.map(d => {
       const m = d.data();
-      return {
-        dir: m.direction,
-        text: m.text,
-        ai: !!m.ai,
-        time: fmtTime(toMillis(m.createdAt))
-      };
+      return { dir: m.direction, text: m.text, ai: !!m.ai, time: fmtTime(toMillis(m.createdAt)) };
     });
     if (state.page === 'inbox' && state.conv === convId) openConv(convId);
   }, e => console.warn('msgs:', e.message));
@@ -471,7 +469,7 @@ function renderDashboard() {
   return `
   <div class="topbar">
     <div><h1>مرحبًا، ${esc((state.user.displayName || state.user.email).split('@')[0])} 👋</h1><div class="sub"><span class="status-dot on"></span>متصل بـ Firebase</div></div>
-    <div class="actions"><button class="btn-sm" onclick="go('inbox')">💬 المحادثات</button></div>
+    <div class="actions"><button class="btn-sm" onclick="go('inbox')">💬 المحادثات</button><button class="btn-sm s" onclick="go('settings')">⚙️</button></div>
   </div>
   <div class="kpi-grid">
     <div class="kpi"><div class="label">محادثات</div><div class="val">${state.convs.length}</div><div class="trend">${unread} غير مقروء</div></div>
@@ -533,27 +531,16 @@ window.sendMsg = async (id) => {
   if (!inp) return;
   const txt = inp.value.trim();
   if (!txt) return;
-  const conv = state.convs.find(x => x.id === id);
-  if (!conv) return;
   try {
-    await addDoc(collection(db, 'conversations', id, 'messages'), {
-      direction: 'out',
-      text: txt,
-      createdAt: serverTimestamp()
-    });
+    await addDoc(collection(db, 'conversations', id, 'messages'), { direction: 'out', text: txt, createdAt: serverTimestamp() });
     await updateDoc(doc(db, 'conversations', id), { updatedAt: serverTimestamp() });
     inp.value = '';
     toast('✅ أُرسل');
-  } catch (e) {
-    toast('❌ ' + e.message);
-  }
+  } catch (e) { toast('❌ ' + e.message); }
 };
 
 window.quickReply = (type) => {
-  const bodies = {
-    ترحيب: 'أهلاً بيك 🌸 نورتنا! كيف أقدر أساعدك؟',
-    متابعة: 'أهلاً، حبيت أطمن على طلبك. في أي حاجة تحتاجها؟'
-  };
+  const bodies = { ترحيب: 'أهلاً بيك 🌸 نورتنا! كيف أقدر أساعدك؟', متابعة: 'أهلاً، حبيت أطمن على طلبك. في أي حاجة تحتاجها؟' };
   const inp = $('msgInput');
   if (inp) { inp.value = bodies[type] || ''; inp.focus(); }
 };
@@ -565,20 +552,19 @@ window.suggestReply = async (id) => {
   if (!inp) return;
   inp.value = '⏳ يفكر…';
   try {
-    const history = (conv.msgs || []).map(m => ({ direction: m.dir, text: m.text }));
-    const res = await AI.suggest({ history, name: conv.name });
-    inp.value = res.data.reply;
-  } catch (e) {
-    inp.value = '';
-    toast('❌ ' + (e.message || 'فشل AI'));
-  }
+    const convo = (conv.msgs || []).slice(-8).map(m => (m.dir === 'in' ? 'العميل: ' : 'أنا: ') + m.text).join('\n');
+    const reply = await callAI([
+      { role: 'system', content: 'أنت وكيل خدمة عملاء محترف. اكتب ردًا قصيرًا وودّيًا بالعربية.' },
+      { role: 'user', content: `اسم العميل: ${conv.name}\n\nالمحادثة:\n${convo}` }
+    ], { temperature: 0.8, maxTokens: 300 });
+    inp.value = reply;
+  } catch (e) { inp.value = ''; toast('❌ ' + e.message); }
 };
 
 window.newConversation = () => {
   openModal(`<h3>محادثة جديدة</h3>
     <div class="form-row"><label>الاسم</label><input id="ncName"></div>
     <div class="form-row"><label>المنصة</label><select id="ncPlat"><option value="whatsapp">واتساب</option><option value="facebook">فيسبوك</option><option value="instagram">إنستجرام</option><option value="telegram">تيليجرام</option></select></div>
-    <div class="form-row"><label>معرّف خارجي (اختياري)</label><input id="ncExt" placeholder="رقم واتساب أو chat_id"></div>
     <div class="form-actions"><button class="btn-sm s" onclick="closeModal()">إلغاء</button><button class="btn-sm" onclick="doNewConv()">إنشاء</button></div>`);
 };
 
@@ -589,29 +575,17 @@ window.doNewConv = async () => {
   const colors = { whatsapp: '#25d366', facebook: '#1877f2', instagram: '#e1306c', telegram: '#229ed9' };
   try {
     await addDoc(collection(db, 'conversations'), {
-      ownerId: state.user.uid,
-      platform: plat,
-      name,
-      externalId: $('ncExt').value.trim() || '',
-      color: colors[plat],
-      unread: 0,
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp()
+      ownerId: state.user.uid, platform: plat, name, color: colors[plat],
+      unread: 0, createdAt: serverTimestamp(), updatedAt: serverTimestamp()
     });
-    closeModal();
-    toast('✅ أُنشئت');
-  } catch (e) {
-    toast('❌ ' + e.message);
-  }
+    closeModal(); toast('✅');
+  } catch (e) { toast('❌ ' + e.message); }
 };
 
 window.delConv = async (id) => {
   if (!confirm('حذف المحادثة؟')) return;
-  try {
-    await deleteDoc(doc(db, 'conversations', id));
-    state.conv = null;
-    toast('✅ حُذفت');
-  } catch (e) { toast('❌ ' + e.message); }
+  try { await deleteDoc(doc(db, 'conversations', id)); state.conv = null; toast('✅'); }
+  catch (e) { toast('❌ ' + e.message); }
 };
 
 /* ============================================================
@@ -633,23 +607,23 @@ window.renderContent = () => {
   </div>
   <div class="card"><h3 style="margin-bottom:14px">📚 المكتبة</h3><div id="ctList"></div></div>
   <div class="card"><h3 style="margin-bottom:14px">📅 التقويم</h3><div id="cal"></div></div>`;
+  renderContentList();
 };
 
 window.genContent = async (again) => {
   const topic = $('ctTopic').value.trim() || 'موضوع عام';
   const out = $('ctOut');
   out.value = '⏳ يكتب…';
+  const plat = $('ctPlatform').value, tone = $('ctTone').value;
+  const platName = { facebook: 'فيسبوك', instagram: 'إنستجرام', twitter: 'تويتر', linkedin: 'لينكدإن', telegram: 'تيليجرام' }[plat];
+  const toneName = { professional: 'احترافي', friendly: 'ودّي', funny: 'فكاهي', inspiring: 'ملهم' }[tone];
   try {
-    const res = await AI.content({
-      topic: topic + (again ? ' (نسخة جديدة)' : ''),
-      platform: $('ctPlatform').value,
-      tone: $('ctTone').value
-    });
-    out.value = res.data.text;
-  } catch (e) {
-    out.value = '';
-    toast('❌ ' + (e.message || 'فشل التوليد'));
-  }
+    const text = await callAI([
+      { role: 'system', content: `كاتب محتوى خبير. اكتب منشور ${platName} بنبرة ${toneName}. ${plat === 'twitter' ? 'لا تتجاوز 280 حرفًا.' : ''} أضف هاشتاجات. أعد النص فقط.` },
+      { role: 'user', content: `الموضوع: ${topic}${again ? ' (نسخة جديدة)' : ''}` }
+    ], { temperature: 0.8, maxTokens: 800 });
+    out.value = text;
+  } catch (e) { out.value = ''; toast('❌ ' + e.message); }
 };
 
 window.saveContent = async () => {
@@ -657,11 +631,8 @@ window.saveContent = async () => {
   if (!txt) return toast('لا محتوى');
   try {
     await addDoc(collection(db, 'content'), {
-      ownerId: state.user.uid,
-      text: txt,
-      platform: $('ctPlatform').value,
-      scheduled: $('ctSched').value || null,
-      createdAt: serverTimestamp()
+      ownerId: state.user.uid, text: txt, platform: $('ctPlatform').value,
+      scheduled: $('ctSched').value || null, createdAt: serverTimestamp()
     });
     toast('✅ حُفظ');
   } catch (e) { toast('❌ ' + e.message); }
@@ -708,7 +679,7 @@ window.renderAutomations = () => {
   $('mainContent').innerHTML = `
   <div class="topbar"><div><h1>الأتمتة</h1><div class="sub">قواعد تعمل بدلًا عنك</div></div><div class="actions"><button class="btn-sm" onclick="addAutomation()">+ أتمتة</button></div></div>
   <div class="grid-2">
-    ${state.automations.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:8px"><b>${esc(a.name)}</b><span class="chip ${a.on ? 'active' : ''}" style="cursor:pointer" onclick="toggleAuto('${a.id}',${a.on})">${a.on ? 'مفعّل' : 'متوقف'}</span></div><div style="font-size:13px;color:var(--mu);margin-bottom:12px">${esc(a.desc || '')}</div><button class="btn-sm s" onclick="delAuto('${a.id}')">🗑</button></div>`).join('') || '<div class="empty"><div class="icon">⚡</div><div>لا أتمتات — أضف واحدة</div></div>'}
+    ${state.automations.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:8px"><b>${esc(a.name)}</b><span class="chip ${a.on ? 'active' : ''}" style="cursor:pointer" onclick="toggleAuto('${a.id}',${a.on})">${a.on ? 'مفعّل' : 'متوقف'}</span></div><div style="font-size:13px;color:var(--mu);margin-bottom:12px">${esc(a.desc || '')}</div><button class="btn-sm s" onclick="delAuto('${a.id}')">🗑</button></div>`).join('') || '<div class="empty"><div class="icon">⚡</div><div>لا أتمتات</div></div>'}
   </div>`;
 };
 
@@ -730,14 +701,10 @@ window.doAddAuto = async () => {
   if (!name) return toast('أدخل اسمًا');
   try {
     await addDoc(collection(db, 'automations'), {
-      ownerId: state.user.uid,
-      name,
-      desc: $('anDesc').value.trim(),
-      on: true,
-      createdAt: serverTimestamp()
+      ownerId: state.user.uid, name, desc: $('anDesc').value.trim(),
+      on: true, createdAt: serverTimestamp()
     });
-    closeModal();
-    toast('✅');
+    closeModal(); toast('✅');
   } catch (e) { toast('❌ ' + e.message); }
 };
 
@@ -772,15 +739,10 @@ window.doAddTask = async () => {
   if (!title) return toast('أدخل عنوانًا');
   try {
     await addDoc(collection(db, 'tasks'), {
-      ownerId: state.user.uid,
-      title,
-      date: $('tkDate').value || today(),
-      pri: $('tkPri').value,
-      status: 'todo',
-      createdAt: serverTimestamp()
+      ownerId: state.user.uid, title, date: $('tkDate').value || today(),
+      pri: $('tkPri').value, status: 'todo', createdAt: serverTimestamp()
     });
-    closeModal();
-    toast('✅');
+    closeModal(); toast('✅');
   } catch (e) { toast('❌ ' + e.message); }
 };
 
@@ -852,31 +814,53 @@ window.renderChannels = () => {
 };
 
 window.setupChannel = (k) => {
-  openModal(`<h3>${k}</h3><div style="padding:20px;text-align:center;color:var(--mu)"><div style="font-size:40px;margin-bottom:12px">🔌</div>اضبط المتغيرات عبر:<br><code>firebase functions:config:set</code><br>راجع README</div><div class="form-actions"><button class="btn-sm" onclick="closeModal()">حسنًا</button></div>`);
+  openModal(`<h3>${k}</h3><div style="padding:20px;text-align:center;color:var(--mu)"><div style="font-size:40px;margin-bottom:12px">🔌</div>يُضبط عبر Cloud Functions وWebhook<br>راجع README</div><div class="form-actions"><button class="btn-sm" onclick="closeModal()">حسنًا</button></div>`);
 };
 
 window.renderSettings = () => {
   $('mainContent').innerHTML = `
-  <div class="topbar"><div><h1>الإعدادات</h1><div class="sub">حسابك</div></div></div>
+  <div class="topbar"><div><h1>الإعدادات</h1><div class="sub">حسابك + AI</div></div></div>
   <div class="card"><h3 style="margin-bottom:14px">👤 الحساب</h3>
-    <div class="form-row"><label>الاسم</label><input value="${esc(state.user.displayName || '')}" disabled></div>
     <div class="form-row"><label>البريد</label><input value="${esc(state.user.email)}" disabled></div>
     <div class="form-row"><label>UID</label><input value="${esc(state.user.uid)}" disabled></div>
+  </div>
+  <div class="card"><h3 style="margin-bottom:14px">🤖 الذكاء الاصطناعي</h3>
+    <div class="form-row"><label>المزود</label>
+      <select id="aiProv" onchange="saveAI()">
+        <option value="groq" ${AI_CFG.provider === 'groq' ? 'selected' : ''}>Groq (مجاني)</option>
+        <option value="openai" ${AI_CFG.provider === 'openai' ? 'selected' : ''}>OpenAI</option>
+        <option value="gemini" ${AI_CFG.provider === 'gemini' ? 'selected' : ''}>Gemini</option>
+      </select>
+    </div>
+    <div class="form-row"><label>API Key</label><input type="password" id="aiKey" value="${esc(AI_CFG.key)}" placeholder="gsk_..."></div>
+    <div class="form-row"><label>النموذج</label><input id="aiModel" value="${esc(AI_CFG.model)}"></div>
+    <div class="form-actions"><button class="btn-sm s" onclick="testAI()">اختبار</button><button class="btn-sm" onclick="saveAI()">حفظ</button></div>
+    <div style="font-size:12px;color:var(--mu);margin-top:8px">Groq: console.groq.com — النموذج: openai/gpt-oss-120b</div>
   </div>
   <div class="card"><h3 style="margin-bottom:14px">⚙️ عام</h3>
     <div class="form-actions"><button class="btn-sm d" onclick="logout()">🚪 تسجيل الخروج</button></div>
   </div>`;
 };
 
-/* ============================================================
-   Init
-   ============================================================ */
-setTimeout(() => {
-  const el = $('serverStatus');
-  if (el) el.innerHTML = '<span class="status-dot on"></span>Firebase متصل';
-}, 1500);
+window.saveAI = () => {
+  AI_CFG.provider = $('aiProv').value;
+  AI_CFG.key = $('aiKey').value.trim();
+  AI_CFG.model = $('aiModel').value.trim();
+  localStorage.setItem('ai_provider', AI_CFG.provider);
+  localStorage.setItem('ai_key', AI_CFG.key);
+  localStorage.setItem('ai_model', AI_CFG.model);
+  toast('✅ حُفظ');
+};
 
-console.log('✅ EMAA Social Suite loaded — Firebase mode');
+window.testAI = async () => {
+  saveAI();
+  try {
+    const r = await callAI([{ role: 'user', content: 'قل: تم' }], { maxTokens: 20 });
+    toast('✅ ' + r);
+  } catch (e) { toast('❌ ' + e.message); }
+};
+
+console.log('✅ EMAA Social Suite loaded');
 </script>
 </body>
 </html>
